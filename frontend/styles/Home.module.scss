@@ -1,0 +1,134 @@
+@use 'partials/buttons' as *;
+
+.container {
+  padding: 0 2rem;
+  background-color: var(--background-yellow);
+  
+}
+
+#nav{
+  width: 100%;
+
+}
+.decorative{
+  background-color: var(--main-yellow);
+  width: 100%;
+  height: 25px;
+}
+
+.info{
+  background-color: var(--background-black);
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  p{
+    color: white;
+    margin: 0.5rem 0;
+  }
+}
+.main {
+  max-width: 1200px;
+  min-height: 100vh;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  button{
+    @include button;
+    width: 100%;
+    margin: 0.5rem 0 0;
+  }
+#buttons{
+  #start{
+    font-size: large
+  }
+  div{display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;}
+}  
+}
+
+#image{
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  flex: 1;
+  padding: 2rem 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.title{
+  text-decoration: none;
+  font-weight: normal;
+  margin: 1rem 0;
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
+.title,
+.description {
+  text-align: center;
+}
+
+.description {
+  margin: 4rem 0;
+  line-height: 1.5;
+  font-size: 1.5rem;
+}
+
+.code {
+  background: #fafafa;
+  border-radius: 5px;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+
+.logo {
+  height: 1em;
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .container{
+    padding: 0 1rem;
+  }
+  .title{
+    font-size: 2rem;
+  }
+  .info{
+    p{
+      font-size: smaller;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .container{
+    display: flex;
+  align-items: center;
+  flex-direction: column;
+  }
+  #nav{
+    min-width: 1200px;
+  }
+}

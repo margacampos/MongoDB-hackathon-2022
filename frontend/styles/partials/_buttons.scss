@@ -1,0 +1,14 @@
+@mixin button {
+    padding: 0.5rem 1rem;
+    border: solid 2px var(--background-black);
+    background-color: var(--main-yellow);
+    color: var(--background-black);
+    border-radius: 5px;
+    transition: all 0.2s ease;
+    &:hover{
+        color: black;
+        border: solid 2px black;
+        cursor: pointer;
+        font-weight: bold;
+    }
+}
