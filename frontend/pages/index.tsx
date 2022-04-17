@@ -1,9 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.scss'
 
 const Home: NextPage = () => {
+  const Router = useRouter();
   return (
     <div className={styles.container}>
       <Head>
@@ -31,7 +33,7 @@ const Home: NextPage = () => {
           <button id={styles.start}>START</button>
           <div >
             <button>How it works</button>
-            <button>About us</button>
+            <button onClick={()=>{Router.push("/about","/more-about-gdelt-newsroom")}}>About us</button>
           </div>
         </div>
       </main>
