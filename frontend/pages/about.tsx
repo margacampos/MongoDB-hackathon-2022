@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.scss'
 
@@ -29,6 +30,7 @@ const About: NextPage = () => {
         <div id={styles.image}>
           
           <section>
+              <Link href="/">back</Link>
               <h2>Welcome to GDELT newsroom</h2>
               <h3>Want to create your own newspaper?</h3>
               <p>GDELT Newsroom allows you to create your own newspaper with the latest and most relevant news from the GDELT database.<br/>
