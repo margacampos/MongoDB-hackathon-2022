@@ -1,15 +1,17 @@
 import { NextRouter } from "next/router";
-import { IButtonsProps } from "../components/Buttons";
+import { Url } from "url";
 
 export interface ButtonsBig {
     text:string;
     onClick:()=>void;
     grid:false;
+    router:string;
 }
 export interface ButtonsGrid {
     button:{
         text:string;
         onClick:()=>void;
+        router:string;
     }[]
     grid:true;
     gridID:number;
@@ -21,20 +23,46 @@ const homeButtons:(ButtonsBig|ButtonsGrid)[]= [
     {
         text:"START",
         onClick:()=>{},
-        grid:false
+        grid:false,
+        router:""
     },
     {
         button:[{
             text:"How it works",
-            onClick:()=>{}
+            onClick:()=>{},
+            router:""
         },
         {
             text:"About us",
-            onClick:()=>{router.push("/about","/more-about-gdelt-newsroom")}
+            router:"/about",
+            onClick:()=>{}
         }],
         grid:true,
         gridID:1
     }
 ];
 
-export { homeButtons };
+const aboutButtons:(ButtonsBig|ButtonsGrid)[]= [
+    {
+        text:"START",
+        onClick:()=>{},
+        grid:false,
+        router:""
+    },
+    {
+        button:[{
+            text:"How it works",
+            onClick:()=>{},
+            router:""
+        },
+        {
+            text:"Home",
+            router:"/",
+            onClick:()=>{}
+        }],
+        grid:true,
+        gridID:1
+    }
+];
+
+export { homeButtons, aboutButtons };

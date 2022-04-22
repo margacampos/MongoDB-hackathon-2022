@@ -14,7 +14,7 @@ export default function Buttons (props: IButtonsProps) {
             if(!item.grid)return <button id={styles.start} key={item.text} onClick={item.onClick}>{item.text}</button>
             return(
                 <div key={item.gridID}>
-                    {item.button.map((b)=><button key={b.text} onClick={b.onClick}>{b.text}</button>)}
+                    {item.button.map((b)=><button key={b.text} onClick={b.router!==""?()=>router.push(b.router):b.onClick}>{b.text}</button>)}
                 </div>
             );
         })}

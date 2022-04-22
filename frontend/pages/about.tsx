@@ -3,10 +3,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Buttons from '../components/Buttons'
+import { aboutButtons } from '../data/buttons'
 import styles from '../styles/Home.module.scss'
 
 const About: NextPage = () => {
-  const Router = useRouter();
   return (
     <div className={styles.container}>
       <Head>
@@ -55,13 +56,7 @@ const About: NextPage = () => {
               If you would like to only work with the first two, you can go to settings and turn the &#34;positive mindset&#34; option on</p>
           </section>
         </div>
-        <div id={styles.buttons}>
-          <button id={styles.start}>START</button>
-          <div >
-            <button>How it works</button>
-            <button onClick={()=>{Router.push("/")}}>Home</button>
-          </div>
-        </div>
+        <Buttons buttons={aboutButtons}/>
       </main>
 
       <footer className={styles.footer}>
