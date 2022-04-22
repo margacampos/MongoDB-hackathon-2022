@@ -1,20 +1,10 @@
 import * as React from 'react';
 import styles from "../styles/Home.module.scss"
 import {useRouter} from 'next/router';
+import { ButtonsBig, ButtonsGrid } from '../data/buttons';
 
 export interface IButtonsProps {
-    buttons:({
-        text:string;
-        onClick:()=>void;
-        grid:false;
-    }|{
-        button:{
-            text:string;
-            onClick:()=>void;
-        }[]
-        grid:true;
-        gridID:number;
-    })[]
+    buttons:(ButtonsBig|ButtonsGrid)[]
 }
 export default function Buttons (props: IButtonsProps) {
     const router = useRouter()

@@ -1,20 +1,23 @@
 import { NextRouter } from "next/router";
 import { IButtonsProps } from "../components/Buttons";
 
-let router:NextRouter;
-
-const homeButtons:({
+export interface ButtonsBig {
     text:string;
     onClick:()=>void;
     grid:false;
-}|{
+}
+export interface ButtonsGrid {
     button:{
         text:string;
         onClick:()=>void;
     }[]
     grid:true;
     gridID:number;
-})[] = [
+}
+
+let router:NextRouter;
+
+const homeButtons:(ButtonsBig|ButtonsGrid)[]= [
     {
         text:"START",
         onClick:()=>{},
