@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import Archive from '../components/Archive'
 import Buttons from '../components/Buttons'
 import { homeButtons } from '../data/buttons'
 import styles from '../styles/Home.module.scss'
@@ -29,7 +30,7 @@ const Home: NextPage = () => {
         </section>
        
         <div id={styles.image}>
-          IMAGE
+          <Archive/>
         </div>
         <Buttons buttons={homeButtons}/>
       </main>
