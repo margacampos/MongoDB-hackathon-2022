@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Archive from '../components/Archive'
 import Buttons from '../components/Buttons'
+import EventGenerator from '../components/EventGenerator'
 import { homeButtons } from '../data/buttons'
 import styles from '../styles/Home.module.scss'
 
@@ -33,6 +34,7 @@ const Home: NextPage = () => {
           <Archive/>
         </div>
         <Buttons buttons={homeButtons}/>
+        <EventGenerator/>
       </main>
 
       <footer className={styles.footer}>
