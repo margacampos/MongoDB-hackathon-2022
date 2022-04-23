@@ -41,19 +41,26 @@ const cameoTypeCodes = [
     },
     {
         code:"AGR",
-        label:"Agriculture"
+        label:"Agriculture",
+        decor:"SUB",
     },
     {
         code:"BUS",
-        label:"Business"
+        label:"Business",
+        decor:"REPLACE",
+        word:"a"
     },
     {
         code:"CRM",
-        label:"Criminal"
+        label:"Criminal",
+        decor:"REPLACE",
+        word:"a"
     },
     {
         code:"CVL",
-        label:"Civilian"
+        label:"Civilian",
+        decor:"REPLACE",
+        word:"a"
     },
     {
         code:"DEV",
@@ -61,7 +68,8 @@ const cameoTypeCodes = [
     },
     {
         code:"EDU",
-        label:"Education"
+        label:"Education",
+        decor:"SUB",
     },
     {
         code:"ELI",
@@ -69,19 +77,23 @@ const cameoTypeCodes = [
     },
     {
         code:"ENV",
-        label:"Environmental"
+        label:"Environmental",
+        decor:"SUB",
     },
     {
         code:"HLH",
-        label:"Health"
+        label:"Health",
+        decor:"SUB"
     },
     {
         code:"HRI",
-        label:"Human Rights"
+        label:"Human Rights",
+        decor:"SUB"
     },
     {
         code:"LAB",
-        label:"Labor"
+        label:"Labor",
+        decor:"SUB"
     },
     {
         code:"LEG",
@@ -97,7 +109,8 @@ const cameoTypeCodes = [
     },
     {
         code:"MOD",
-        label:"Moderate"
+        label:"Moderate",
+        decor:"SUB"
     },
     {
         code:"RAD",
@@ -113,7 +126,8 @@ const cameoTypeCodes = [
     },
     {
         code:"GRP",
-        label:"Greenpeace"
+        label:"Greenpeace",
+        decor:"SUB"
     },
     {
         code:"UNO",
@@ -160,6 +174,7 @@ const cameoTypeCodes = [
         label:"Inter-Governmental Organization"
     }
 ]
+
 const cameoEventCodes = [
     {
         rootCode:"01",
