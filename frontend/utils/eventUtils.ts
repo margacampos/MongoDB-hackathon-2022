@@ -19,17 +19,26 @@ const getEventName = (event:Event) =>{
 const getEventCodeLabel = (event:string) =>{
   let rootCode = event.slice(0,2);
   let rootCode2;
-  if(event.length>3)rootCode2=event.slice(0,3);
+  if(event.length>=3)rootCode2=event.slice(0,3);
+  console.log(rootCode, rootCode2, event)
     for(let i=0;i<cameoEventCodes.length;i++){
         if(cameoEventCodes[i].rootCode===rootCode){
+            console.log('found by rootcode: ', cameoEventCodes[i].label);
+            console.log(cameoEventCodes[i])
             for(let j=0;j<cameoEventCodes[i].codes.length;j++){
-                if(cameoEventCodes[i].codes[j].rootCode!=undefined&&cameoEventCodes[i].codes[j].rootCode===rootCode2){
-                    for(let k=0;k<cameoEventCodes[i].codes[j].codes.length;k++){
-                        if(cameoEventCodes[i].codes[j].codes[k].code===event.eventCode){return cameoEventCodes[i].codes[j].codes[k].label};
+                console.log(cameoEventCodes[i].codes[j].rootCode, rootCode2, cameoEventCodes[i].codes[j].rootCode===rootCode2)
+                if(cameoEventCodes[i].codes[j].rootCode&&cameoEventCodes[i].codes[j].rootCode==rootCode2){
+                    console.log('matched rootCode2');
+                    if(cameoEventCodes[i].codes[j].rootCode===event)return cameoEventCodes[i].codes[j].label;
+                    else{
+                        for(let k=0;k<cameoEventCodes[i].codes[j].codes.length;k++){
+                            if(cameoEventCodes[i].codes[j].codes[k].code===event){return cameoEventCodes[i].codes[j].codes[k].label};
+                        }
                     }
-                }
-                if(cameoEventCodes[i].codes[j].code&&cameoEventCodes[i].codes[j].code===event){return cameoEventCodes[i].codes[j].label};
+                }else if(cameoEventCodes[i].codes[j].code&&cameoEventCodes[i].codes[j].code===event){console.log('No rootCode2, ', cameoEventCodes[i].codes[j].code); return cameoEventCodes[i].codes[j].label};
+                console.log(cameoEventCodes[i].codes[j].code)
             }
+            console.log("didn't match either");
         }
     }
   return "error";
