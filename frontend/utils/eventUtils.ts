@@ -9,39 +9,40 @@ const getEventName = (event:Event) =>{
   let eventTitle =``,actor1,actor2,eventText;
 
   if(event.actor1){actor1=getActorCodeLabel(event.actor1);eventTitle+=`The ${actor1==="error"?"":actor1}`}
-  if(event.eventCode){eventText=getEventCodeLabel(event.eventCode);eventTitle+=` ${eventText==="error"?"":eventText}`}
-  if(event.actor2){actor2=getActorCodeLabel(event.actor2);eventTitle+=` to the ${actor2==="error"?"":actor2}`}
+  if(event.eventCode){eventText=getEventCodeLabel(event.eventCode);eventTitle+=`${eventText.label==="error"?"":` ${eventText.decor}`}${eventText.follow?eventText.follow==="none"?"":` ${eventText.follow}`:" to"}`}
+  if(event.actor2){actor2=getActorCodeLabel(event.actor2);eventTitle+=` the ${actor2==="error"?"":actor2}`}
   if(event.location){eventTitle+=` in ${event.location}`}
-  
+  if(eventText?.label==="error")return "Could not find event code";
   return eventTitle+=".";
 }
 
 const getEventCodeLabel = (event:string) =>{
+  //Variables
   let rootCode = event.slice(0,2);
   let rootCode2;
-  if(event.length>=3)rootCode2=event.slice(0,3);
-  console.log(rootCode, rootCode2, event)
+
+  if(event.length>3)rootCode2=event.slice(0,3);
+
+  //first for loop for matching rootCodes
     for(let i=0;i<cameoEventCodes.length;i++){
         if(cameoEventCodes[i].rootCode===rootCode){
-            console.log('found by rootcode: ', cameoEventCodes[i].label);
-            console.log(cameoEventCodes[i])
+
+            //Second for loop for searching through the codes
             for(let j=0;j<cameoEventCodes[i].codes.length;j++){
-                console.log(cameoEventCodes[i].codes[j].rootCode, rootCode2, cameoEventCodes[i].codes[j].rootCode===rootCode2)
-                if(cameoEventCodes[i].codes[j].rootCode&&cameoEventCodes[i].codes[j].rootCode==rootCode2){
-                    console.log('matched rootCode2');
-                    if(cameoEventCodes[i].codes[j].rootCode===event)return cameoEventCodes[i].codes[j].label;
-                    else{
-                        for(let k=0;k<cameoEventCodes[i].codes[j].codes.length;k++){
-                            if(cameoEventCodes[i].codes[j].codes[k].code===event){return cameoEventCodes[i].codes[j].codes[k].label};
-                        }
+
+                //If the code has nested codes rootCode exists and the property codes is an array
+                if(rootCode2 && rootCode2===cameoEventCodes[i].codes[j].code && typeof cameoEventCodes[i].codes[j].codes !== "undefined"){
+                    //Loops through codes array for matching code
+                    for(let k=0;cameoEventCodes[i].codes?[j].codes?.length>0 && k<cameoEventCodes[i].codes[j].codes.length;k++){
+                        if(cameoEventCodes[i].codes[j].codes[k].code===event) return cameoEventCodes[i].codes[j].codes[k];
                     }
-                }else if(cameoEventCodes[i].codes[j].code&&cameoEventCodes[i].codes[j].code===event){console.log('No rootCode2, ', cameoEventCodes[i].codes[j].code); return cameoEventCodes[i].codes[j].label};
-                console.log(cameoEventCodes[i].codes[j].code)
+                //If it does not have nested codes, looks for the matching code
+                }else if(cameoEventCodes[i].codes[j].code===event)return cameoEventCodes[i].codes[j];
             }
-            console.log("didn't match either");
         }
     }
-  return "error";
+  //There was no matching code, it returns an error object with type Code;
+  return {label:"error", decor:"", code:"404"};
 }
 const getActorCodeLabel = (event:string) =>{
     for(let i=0;i<cameoTypeCodes.length;i++){

@@ -1,3 +1,15 @@
+interface Codes{
+    code:string;
+    label:string;
+    decor:string;
+    follow?:string;
+    codes?:[Codes, ...Codes[]];
+}
+interface cameoEvent{
+    rootCode:string;
+    label:string;
+    codes:[Codes, ...Codes[]]
+}
 const cameoTypeCodes = [
     {
         code:"COP",
@@ -174,61 +186,50 @@ const cameoTypeCodes = [
         label:"Inter-Governmental Organization"
     }
 ]
-
-const cameoEventCodes = [
+const cameoEventCodesRaw = [
     {
         rootCode:"01",
         label:"MAKE PUBLIC STATEMENT",
         codes:[
             {
                 code:"010",
-                label:"Make statement, not specified below",
-                decor:"made a statement"
+                label:"Make statement, not specified below"
             },
             {
                 code:"011",
-                label:"Decline comment",
-                decor:"declined to comment"
+                label:"Decline comment"
             },
             {
                 code:"012",
-                label:"Make pessimistic comment",
-                decor:"made a pessimistic comment"
+                label:"Make pessimistic comment"
             },
             {
                 code:"013",
-                label:"Make optimistic comment",
-                decor:"Made an optimistic comment"
+                label:"Make optimistic comment"
             },
             {
                 code:"014",
-                label:"Consider policy option",
-                decor:"Considered a policy option"
+                label:"Consider policy option"
             },
             {
                 code:"015",
-                label:"Acknowledge or claim responsibility",
-                decor:"Acknowledged or claimed responsibility"
+                label:"Acknowledge or claim responsibility"
             },
             {
                 code:"016",
-                label:"Deny responsibility",
-                decor:"denied responsibility"
+                label:"Deny responsibility"
             },
             {
                 code:"017",
-                label:"Engage in symbolic act",
-                decor:"engaged in symbolic act"
+                label:"Engage in symbolic act"
             },
             {
                 code:"018",
-                label:"Make empathetic comment",
-                decor:"made an empathetic comment"
+                label:"Make empathetic comment"
             },
             {
                 code:"019",
-                label:"Express accord",
-                decor:"expressed accord"
+                label:"Express accord"
             }
         ]
     },
@@ -238,146 +239,119 @@ const cameoEventCodes = [
         codes:[
             {
                 code:"020",
-                label:"Appeal, not specified below",
-                decor:"appealed"
+                label:"Appeal, not specified below"
             },
             {
                 rootCode:"021",
                 label:"Appeal for material cooperation, not specified below",
-                decor:"appealed for material cooperation",
                 codes:[
                     {
                         code:"0211",
-                        label:"Appeal for economic cooperation",
-                        decor:"appealed for economic cooperation"
+                        label:"Appeal for economic cooperation"
                     },
                     {
                         code:"0212",
-                        label:"Appeal for military cooperation",
-                        decor:"appealed for military cooperation"
+                        label:"Appeal for military cooperation"
                     },
                     {
                         code:"0213",
-                        label:"Appeal for judicial cooperation",
-                        decor:"appealed for judicial cooperation"
+                        label:"Appeal for judicial cooperation"
                     },
                     {
                         code:"0214",
-                        label:"Appeal for intelligence",
-                        decor:"appealed for intelligence"
+                        label:"Appeal for intelligence"
                     }
                 ]
             },
             {
                 code:"022",
-                label:"Appeal for diplomatic cooperation, such as policy support",
-                decor:"appealed for diplomatic cooperation, such as policy support"
+                label:"Appeal for diplomatic cooperation, such as policy support"
             },
             {
                 rootCode:"023",
                 label:"Appeal for aid, not specified below",
-                decor:"appealed for aid",
                 codes:[
                     {
                         code:"0231",
-                        label:"Appeal for economic aid",
-                        decor:"appealed for economic aid"
+                        label:"Appeal for economic aid"
                     },
                     {
                         code:"0232",
-                        label:"Appeal for military aid",
-                        decor:"appealed for military aid"
+                        label:"Appeal for military aid"
                     },
                     {
                         code:"0233",
-                        label:"Appeal for humanitarian aid",
-                        decor:"appealed for humanitarian aid"
+                        label:"Appeal for humanitarian aid"
                     },
                     {
                         code:"0234",
-                        label:"Appeal for military protection or peacekeeping",
-                        decor:"appealed for military protection or peacekeeping"
+                        label:"Appeal for military protection or peacekeeping"
                     }
                 ]
             },
             {
                 rootCode:"024",
                 label:"Appeal for political reform, not specified below",
-                decor:"appealed for political reform",
                 codes:[
                     {
                         code:"0241",
-                        label:"Appeal for change in leadership",
-                        decor:"appealed for change in leadership"
+                        label:"Appeal for change in leadership"
                     },
                     {
                         code:"0242",
-                        label:"Appeal for policy change",
-                        decor:"appealed for policy change"
+                        label:"Appeal for policy change"
                     },
                     {
                         code:"0243",
-                        label:"Appeal for rights",
-                        decor:"appealed for rights"
+                        label:"Appeal for rights"
                     },
                     {
                         code:"0244",
-                        label:"Appeal for change in institutions, regime",
-                        decor:"appealed for change in institutions, regime"
+                        label:"Appeal for change in institutions, regime"
                     }
                 ]
             },
             {
                 rootCode:"025",
-                label:"Appeal to yield, not specified below",
-                decor:"appealed to yield",
+                label:"Appeal to yield",
                 codes:[
                     {
                         code:"0251",
-                        label:"Appeal for easing of administrative sanction",
-                        decor:"appealed for easing of administrative sanction"
+                        label:"Appeal for easing of administrative sanctions"
                     },
                     {
                         code:"0252",
-                        label:"Appeal for easing of popular dissent",
-                        decor:"appealed for easing of popular dissent"
+                        label:"Appeal for easing of popular dissentAppeal for policy change"
                     },
                     {
                         code:"0253",
-                        label:"Appeal for release of persons or property",
-                        decor:"appealed for release of persons or property"
+                        label:"Appeal for release of persons or property"
                     },
                     {
                         code:"0254",
-                        label:"Appeal for easing of economic sanctions, boycott, or embargo",
-                        decor:"appealed for easing of economic sanctions, boycott, or embargo"
+                        label:"Appeal for easing of economic sanctions, boycott, or embargo"
                     },
                     {
                         code:"0255",
-                        label:"Appeal for target to allow international involvement (non-mediation)",
-                        decor:"appealed for target to allow international involvement (non-mediation)"
+                        label:"Appeal for target to allow international involvement (non-mediation)"
                     },
                     {
                         code:"0256",
-                        label:"Appeal for de-escalation of military engagement",
-                        decor:"appealed for de-escalation of military engagement"
+                        label:"Appeal for de-escalation of military engagement"
                     }
                 ]
             },
             {
                 code:"026",
-                label:"Appeal to others to meet or negotiate",
-                decor:"appealed to others to meet or negotiate"
+                label:"Appeal to others to meet or negotiate"
             },
             {
                 code:"027",
-                label:"Appeal to others to settle dispute",
-                decor:"appealed to others to settle dispute"
+                label:"Appeal to others to settle dispute"
             },
             {
                 code:"028",
-                label:"Appeal to others to engage in or accept mediation",
-                decor:"appealed to others to engage in or accept mediation"
+                label:"Appeal to others to engage in or accept mediation"
             }
         ]
     },
@@ -387,167 +361,123 @@ const cameoEventCodes = [
         codes:[
             {
                 code:"030",
-                label:"Express intent to cooperate, not specified below",
-                decor:"expressed intent to cooperate",
-                follow:"with"
+                label:"Express intent to cooperate, not specified below"
             },
             {
                 rootCode:"031",
                 label:"Express intent to engage in material cooperation,  not specified below",
-                decor:"expressed intent to engage in material cooperation",
-                follow:"with",
                 codes:[
                     {
                         code:"0311",
-                        label:"Express intent to cooperate economically",
-                        decor:"expressed intent to cooperate economically",
-                        follow:"with"
+                        label:"Express intent to cooperate economically"
                     },
                     {
                         code:"0312",
-                        label:"Express intent to cooperate militarily",
-                        decor:"expressed intent to cooperate militarily",
-                        follow:"with"
+                        label:"Express intent to cooperate militarily"
                     },
                     {
                         code:"0313",
-                        label:"Express intent to cooperate on judicial matters",
-                        decor:"expressed intent to cooperate on judicial matters",
-                        follow:"with"
+                        label:"Express intent to cooperate on judicial matters"
                     },
                     {
                         code:"0314",
-                        label:"Express intent to cooperate on intelligence",
-                        decor:"expressed intent to cooperate on intelligence",
-                        follow:"with"
+                        label:"Express intent to cooperate on intelligence"
                     }
                 ]
             },
             {
                 code:"032",
-                label:"Express intent to provide diplomatic cooperation such as policy support",
-                decor:"expressed intent to provide diplomatic cooperation such as policy support"
+                label:"Express intent to provide diplomatic cooperation such as policy support"
             },
             {
                 rootCode:"033",
                 label:"Express intent to provide material aid, not specified below",
-                decor:"expressed intent to provide material aid",
                 codes:[
                     {
                         code:"0331",
-                        label:"Express intent to provide economic aid",
-                        decor:"expressed intent to provide economic aid"
+                        label:"Express intent to provide economic aid"
                     },
                     {
                         code:"0332",
-                        label:"Express intent to provide military aid",
-                        decor:"expressed intent to provide military aid"
+                        label:"Express intent to provide military aid"
                     },
                     {
                         code:"0333",
-                        label:"Express intent to provide humanitarian aid",
-                        decor:"expressed intent to provide humanitarian aid"
+                        label:"Express intent to provide humanitarian aid"
                     },
                     {
                         code:"0334",
-                        label:"Express intent to provide military protection or peacekeeping",
-                        decor:"expressed intent to provide military protection or peacekeeping"
+                        label:"Express intent to provide military protection or peacekeeping"
                     }
                 ]
             },
             {
                 rootCode:"034",
                 label:"Express intent to institute political reform, not specified below",
-                decor:"expressed intent to institute political reform",
-                follow:"in",
                 codes:[
                     {
                         code:"0341",
-                        label:"Express intent to change leadership",
-                        decor:"expressed intent to change leadership",
-                        follow:"in"
+                        label:"Express intent to change leadership"
                     },
                     {
                         code:"0342",
-                        label:"Express intent to change policy",
-                        decor:"expressed intent to change policy",
-                        follow:"in"
+                        label:"Express intent to change policy"
                     },
                     {
                         code:"0343",
-                        label:"Express intent to provide rights",
-                        decor:"expressed intent to provide rights"
+                        label:"Express intent to provide rights"
                     },
                     {
                         code:"0344",
-                        label:"Express intent to change institutions, regime",
-                        decor:"expressed intent to change institutions, regime",
-                        follow:"in"
+                        label:"Express intent to change institutions, regime"
                     }
                 ]
             },
             {
                 rootCode:"035",
                 label:"Express intent to yield, not specified below",
-                decor:"expressed intent to yield",
                 codes:[
                     {
                         code:"0351",
-                        label:"Express intent to ease administrative sanctions",
-                        decor:"expressed intent to ease administrative sanctions"
+                        label:"Express intent to ease administrative sanctions"
                     },
                     {
                         code:"0352",
-                        label:"Express intent to ease popular dissent",
-                        decor:"expressed intent to ease popular dissent"
+                        label:"Express intent to ease popular dissent"
                     },
                     {
                         code:"0353",
-                        label:"Express intent to release persons or property",
-                        decor:"expressed intent to release persons or property",
-                        follow:"of/from"
+                        label:"Express intent to release persons or property"
                     },
                     {
                         code:"0354",
-                        label:"Express intent to ease economic sanctions, boycott, or embargo",
-                        decor:"expressed intent to ease economic sanctions, boycott, or embargo"
+                        label:"Express intent to ease economic sanctions, boycott, or embargo"
                     },
                     {
                         code:"0355",
-                        label:"Express intent to allow international involvement (not mediation)",
-                        decor:"expressed intent to allow international involvement (not mediation)"
+                        label:"Express intent to allow international involvement (not mediation)"
                     },
                     {
                         code:"0356",
-                        label:"Express intent to de-escalate military engagement",
-                        decor:"expressed intent to de-escalate military engagement",
-                        follow:"of"
+                        label:"Express intent to de-escalate military engagement "
                     }
                 ]
             },
             {
                 code:"036",
-                label:"Express intent to meet or negotiate",
-                decor:"expressed intent to meet or negotiate",
-                follow:"with"
+                label:"Express intent to meet or negotiate"
             },
             {
                 code:"037",
-                label:"Express intent to settle dispute",
-                decor:"expressed intent to settle dispute",
-                follow:"with"
+                label:"Express intent to settle dispute"
             },
             {
                 code:"038",
-                label:"Express intent to accept mediation",
-                decor:"expressed intent to accept mediation",
-                follow:"with"
+                label:"Express intent to accept mediation"
             },
             {
                 code:"039",
-                label:"Express intent to mediate",
-                decor:"expressed intent to mediate",
-                follow:"with"
+                label:"Express intent to mediate"
             },
         ]
     },
@@ -557,44 +487,31 @@ const cameoEventCodes = [
         codes:[
             {
                 code:"041",
-                label:"Discuss by telephone",
-                decor:"discussed by telephone",
-                follow:"with"
+                label:"Discuss by telephone"
             },
             {
                 code:"042",
-                label:"Make a visit",
-                decor:"made a visit"
+                label:"Make a visit"
             },
             {
                 code:"043",
-                label:"Host a visit",
-                decor:"hosted a visit",
-                follow:"for"
+                label:"Host a visit"
             },
             {
                 code:"044",
-                label:"Meet at a Meet at a 'third' location",
-                decor:"met at a Meet at a 'third' location",
-                follow:"with"
+                label:"Meet at a Meet at a 'third' location"
             },
             {
                 code:"045",
-                label:"Mediate",
-                decor:"mediated",
-                follow:"with"
+                label:"Mediate"
             },
             {
                 code:"046",
-                label:"Engage in negotiation",
-                decor:"engaged in negotiation",
-                follow:"with"
+                label:"Engage in negotiation"
             },
             {
                 code:"040",
-                label:"Consult, not specified below",
-                decor:"consulted",
-                follow:"none"
+                label:"Consult, not specified below"
             }
         ]
     },
@@ -604,48 +521,35 @@ const cameoEventCodes = [
         codes:[
             {
                 code:"050",
-                label:"Engage in diplomatic cooperation, not specified below",
-                decor:"engaged in diplomatic cooperation",
-                follow:"with"
+                label:"Engage in diplomatic cooperation, not specified below"
             },
             {
                 code:"051",
-                label:"Praise or endorse",
-                decor:"praised or endorsed",
-                follow:"none"
+                label:"Praise or endorse"
             },
             {
                 code:"052",
-                label:"Defend verbally",
-                decor:"defended verbally",
-                follow:"none"
+                label:"Defend verbally"
             },
             {
                 code:"053",
-                label:"Rally support on behalf of",
-                decor:"rallied support",
-                follow:"on behalf of"
+                label:"Rally support on behalf of"
             },
             {
                 code:"054",
-                label:"Grant diplomatic recognition",
-                decor:"granted diplomatic recognition"
+                label:"Grant diplomatic recognition"
             },
             {
                 code:"055",
-                label:"Apologize",  
-                decor:"apologized",
+                label:"Apologize"
             },
             {
                 code:"056",
-                label:"Forgive",
-                decor:"forgived"
+                label:"Forgive"
             },
             {
                 code:"057",
-                label:"Sign formal agreement",
-                decor:"signed formal agreement",
-                follow:"with"
+                label:"Sign formal agreement"
             }
         ]
     },
@@ -655,33 +559,23 @@ const cameoEventCodes = [
         codes:[
             {
                 code:"060",
-                label:"Engage in material cooperation, not specified below",
-                decor:"engaged in material cooperation",
-                follow:"to help"
+                label:"Engage in material cooperation, not specified below"
             },
             {
                 code:"061",
-                label:"Cooperate economically",
-                decor:"cooperated economically",
-                follow:"with"
+                label:"Cooperate economically"
             },
             {
                 code:"062",
-                label:"Cooperate militarily",
-                decor:"cooperated militarily",
-                follow:"with"
+                label:"Cooperate militarily"
             },
             {
                 code:"063",
-                label:"Engage in judicial cooperation",
-                decor:"engaged in judicial cooperation",
-                follow:"to help/with"
+                label:"Engage in judicial cooperation"
             },
             {
                 code:"064",
-                label:"Share intelligence or information",
-                decor:"shared intelligence or information",
-                follow:"with"
+                label:"Share intelligence or information"
             },
         ]
     },
@@ -691,33 +585,27 @@ const cameoEventCodes = [
         codes:[
             {
                 code:"070",
-                label:"Provide aid, not specified below",
-                decor:"provided aid"
+                label:"Provide aid, not specified below"
             },
             {
                 code:"071",
-                label:"Provide economic aid",
-                decor:"provided economic aid"
+                label:"Provide economic aid"
             },
             {
                 code:"072",
-                label:"Provide military aid",
-                decor:"provided military aid"
+                label:"Provide military aid"
             },
             {
                 code:"073",
-                label:"Provide humanitarian aid",
-                decor:"provided humanitarian aid"
+                label:"Provide humanitarian aid"
             },
             {
                 code:"074",
-                label:"Provide military protection or peacekeeping",
-                decor:"provided military protection or peacekeeping"
+                label:"Provide military protection or peacekeeping"
             },
             {
                 code:"075",
-                label:"Grant asylum",
-                decor:"granted asylum"
+                label:"Grant asylum"
             }
         ]
     },
@@ -727,145 +615,111 @@ const cameoEventCodes = [
         codes:[
             {
                 code:"080",
-                label:"Yield, not specified below",
-                decor:"yielded"
+                label:"Yield, not specified below "
             },
             {
                 rootCode:"081",
                 label:"Ease administrative sanctions, not specified below",
-                decor:"eased administrative sanctions",
                 codes:[
                     {
                         code:"0811",
-                        label:"Ease restrictions on political freedoms",
-                        decor:"eased restrictions on political freedoms"
+                        label:"Ease restrictions on political freedoms"
                     },
                     {
                         code:"0812",
-                        label:"Ease ban on political parties or politicians",
-                        decor:"eased ban on political parties or politicians"
+                        label:"Ease ban on political parties or politicians"
                     },
                     {
                         code:"0813",
-                        label:"Ease curfew",
-                        decor:"eased curfew"
+                        label:"Ease curfew"
                     },
                     {
                         code:"0814",
-                        label:"Ease state of emergency or martial law",
-                        decor:"eased state of emergency or martial law"
+                        label:"Ease state of emergency or martial law"
                     }
                 ]
             },
             {
                 code:"082",
-                label:"Ease political dissent",
-                decor:"eased political dissent"
+                label:"Ease political dissent"
             },
             {
                 rootCode:"083",
                 label:"Accede to requests or demands for political reform not specified below",
-                decor:"acceded to requests or demands for political reform",
-                follow:"from",
                 codes:[
                     {
                         code:"0831",
-                        label:"Accede to demands for change in leadership",
-                        decor:"acceded to demands for change in leadership",
-                        follow:"from"
+                        label:"Accede to demands for change in leadership"
                     },
                     {
                         code:"0832",
-                        label:"Accede to demands for change in policy",
-                        decor:"acceded to demands for change in policy",
-                        follow:"from"
+                        label:"Accede to demands for change in policy"
                     },
                     {
                         code:"0833",
-                        label:"Accede to demands for rights",
-                        decor:"acceded to demands for rights",
-                        follow:"from"
+                        label:"Accede to demands for rights"
                     },
                     {
                         code:"0834",
-                        label:"Accede to demands for change in institutions, regime",
-                        decor:"acceded to demands for change in institutions, regime",
-                        follow:"from"
+                        label:"Accede to demands for change in institutions, regime"
                     }
                 ]
             },
             {
                 rootCode:"084",
                 label:"Return, release, not specified below",
-                decor:"returned, released",
                 codes:[
                     {
                         code:"0841",
-                        label:"Return, release person(s)",
-                        decor:"returned, released person(s)"
+                        label:"Return, release person(s)"
                     },
                     {
                         code:"0842",
-                        label:"Return, release property",
-                        decor:"returned, released property"
+                        label:"Return, release property"
                     }
                 ]
             },
             {
                 code:"085",
-                label:"Ease economic sanctions, boycott, embargo",
-                decor:"eased economic sanctions, boycott, embargo"
+                label:"Ease economic sanctions, boycott, embargo"
             },
             {
                 rootCode:"086",
                 label:"Allow international involvement not specified below",
-                decor:"allowed international involvement",
-                follow:"from",
                 codes:[
                     {
                         code:"0861",
-                        label:"Receive deployment of peacekeepers",
-                        decor:"received deployment of peacekeepers",
-                        follow:"from"
+                        label:"Receive deployment of peacekeepers"
                     },
                     {
                         code:"0862",
-                        label:"Receive inspectors",
-                        decor:"received inspectors",
-                        follow:"from"
+                        label:"Receive inspectors"
                     },
                     {
                         code:"0863",
-                        label:"Allow delivery of humanitarian aid",
-                        decor:"allowed delivery of humanitarian aid",
-                        follow:"from"
+                        label:"Allow delivery of humanitarian aid"
                     }
                 ]
             },
             {
                 rootCode:"087",
                 label:"De-escalate military engagement",
-                decor:"de-escalated military engagement",
                 codes:[
                     {
                         code:"0871",
-                        label:"Declare truce, ceasefire",
-                        decor:"declared truce, ceasefire"
+                        label:"Declare truce, ceasefire"
                     },
                     {
                         code:"0872",
-                        label:"Ease military blockade",
-                        decor:"eased military blockade"
+                        label:"Ease military blockade"
                     },
                     {
                         code:"0873",
-                        label:"Demobilize armed forces",
-                        decor:"demobilized armed forces"
+                        label:"Demobilize armed forces"
                     },
                     {
                         code:"0874",
-                        label:"Retreat or surrender militarily",
-                        decor:"retreated or surrendered militarily"
+                        label:"Retreat or surrender militarily"
                     }
                 ]
             }
@@ -1686,6 +1540,703 @@ const cameoEventCodes = [
                     {
                         code:"2042",
                         label:"Detonate nuclear weapons"
+                    }
+                ]
+            }
+        ]
+    }
+]
+const cameoEventCodes:cameoEvent[] = [
+    {
+        rootCode:"01",
+        label:"MAKE PUBLIC STATEMENT",
+        codes:[
+            {
+                code:"010",
+                label:"Make statement, not specified below",
+                decor:"made a statement"
+            },
+            {
+                code:"011",
+                label:"Decline comment",
+                decor:"declined to comment"
+            },
+            {
+                code:"012",
+                label:"Make pessimistic comment",
+                decor:"made a pessimistic comment"
+            },
+            {
+                code:"013",
+                label:"Make optimistic comment",
+                decor:"Made an optimistic comment"
+            },
+            {
+                code:"014",
+                label:"Consider policy option",
+                decor:"Considered a policy option"
+            },
+            {
+                code:"015",
+                label:"Acknowledge or claim responsibility",
+                decor:"Acknowledged or claimed responsibility"
+            },
+            {
+                code:"016",
+                label:"Deny responsibility",
+                decor:"denied responsibility"
+            },
+            {
+                code:"017",
+                label:"Engage in symbolic act",
+                decor:"engaged in symbolic act"
+            },
+            {
+                code:"018",
+                label:"Make empathetic comment",
+                decor:"made an empathetic comment"
+            },
+            {
+                code:"019",
+                label:"Express accord",
+                decor:"expressed accord"
+            }
+        ]
+    },
+    {
+        rootCode:"02",
+        label:"APPEAL",
+        codes:[
+            {
+                code:"020",
+                label:"Appeal, not specified below",
+                decor:"appealed"
+            },
+            {
+                code:"021",
+                label:"Appeal for material cooperation, not specified below",
+                decor:"appealed for material cooperation",
+                codes:[
+                    {
+                        code:"0211",
+                        label:"Appeal for economic cooperation",
+                        decor:"appealed for economic cooperation"
+                    },
+                    {
+                        code:"0212",
+                        label:"Appeal for military cooperation",
+                        decor:"appealed for military cooperation"
+                    },
+                    {
+                        code:"0213",
+                        label:"Appeal for judicial cooperation",
+                        decor:"appealed for judicial cooperation"
+                    },
+                    {
+                        code:"0214",
+                        label:"Appeal for intelligence",
+                        decor:"appealed for intelligence"
+                    }
+                ]
+            },
+            {
+                code:"022",
+                label:"Appeal for diplomatic cooperation, such as policy support",
+                decor:"appealed for diplomatic cooperation, such as policy support"
+            },
+            {
+                code:"023",
+                label:"Appeal for aid, not specified below",
+                decor:"appealed for aid",
+                codes:[
+                    {
+                        code:"0231",
+                        label:"Appeal for economic aid",
+                        decor:"appealed for economic aid"
+                    },
+                    {
+                        code:"0232",
+                        label:"Appeal for military aid",
+                        decor:"appealed for military aid"
+                    },
+                    {
+                        code:"0233",
+                        label:"Appeal for humanitarian aid",
+                        decor:"appealed for humanitarian aid"
+                    },
+                    {
+                        code:"0234",
+                        label:"Appeal for military protection or peacekeeping",
+                        decor:"appealed for military protection or peacekeeping"
+                    }
+                ]
+            },
+            {
+                code:"024",
+                label:"Appeal for political reform, not specified below",
+                decor:"appealed for political reform",
+                codes:[
+                    {
+                        code:"0241",
+                        label:"Appeal for change in leadership",
+                        decor:"appealed for change in leadership"
+                    },
+                    {
+                        code:"0242",
+                        label:"Appeal for policy change",
+                        decor:"appealed for policy change"
+                    },
+                    {
+                        code:"0243",
+                        label:"Appeal for rights",
+                        decor:"appealed for rights"
+                    },
+                    {
+                        code:"0244",
+                        label:"Appeal for change in institutions, regime",
+                        decor:"appealed for change in institutions, regime"
+                    }
+                ]
+            },
+            {
+                code:"025",
+                label:"Appeal to yield, not specified below",
+                decor:"appealed to yield",
+                codes:[
+                    {
+                        code:"0251",
+                        label:"Appeal for easing of administrative sanction",
+                        decor:"appealed for easing of administrative sanction"
+                    },
+                    {
+                        code:"0252",
+                        label:"Appeal for easing of popular dissent",
+                        decor:"appealed for easing of popular dissent"
+                    },
+                    {
+                        code:"0253",
+                        label:"Appeal for release of persons or property",
+                        decor:"appealed for release of persons or property"
+                    },
+                    {
+                        code:"0254",
+                        label:"Appeal for easing of economic sanctions, boycott, or embargo",
+                        decor:"appealed for easing of economic sanctions, boycott, or embargo"
+                    },
+                    {
+                        code:"0255",
+                        label:"Appeal for target to allow international involvement (non-mediation)",
+                        decor:"appealed for target to allow international involvement (non-mediation)"
+                    },
+                    {
+                        code:"0256",
+                        label:"Appeal for de-escalation of military engagement",
+                        decor:"appealed for de-escalation of military engagement"
+                    }
+                ]
+            },
+            {
+                code:"026",
+                label:"Appeal to others to meet or negotiate",
+                decor:"appealed to others to meet or negotiate"
+            },
+            {
+                code:"027",
+                label:"Appeal to others to settle dispute",
+                decor:"appealed to others to settle dispute"
+            },
+            {
+                code:"028",
+                label:"Appeal to others to engage in or accept mediation",
+                decor:"appealed to others to engage in or accept mediation"
+            }
+        ]
+    },
+    {
+        rootCode:"03",
+        label:"EXPRESS INTENT TO COOPERATE",
+        codes:[
+            {
+                code:"030",
+                label:"Express intent to cooperate, not specified below",
+                decor:"expressed intent to cooperate",
+                follow:"with"
+            },
+            {
+                code:"031",
+                label:"Express intent to engage in material cooperation,  not specified below",
+                decor:"expressed intent to engage in material cooperation",
+                follow:"with",
+                codes:[
+                    {
+                        code:"0311",
+                        label:"Express intent to cooperate economically",
+                        decor:"expressed intent to cooperate economically",
+                        follow:"with"
+                    },
+                    {
+                        code:"0312",
+                        label:"Express intent to cooperate militarily",
+                        decor:"expressed intent to cooperate militarily",
+                        follow:"with"
+                    },
+                    {
+                        code:"0313",
+                        label:"Express intent to cooperate on judicial matters",
+                        decor:"expressed intent to cooperate on judicial matters",
+                        follow:"with"
+                    },
+                    {
+                        code:"0314",
+                        label:"Express intent to cooperate on intelligence",
+                        decor:"expressed intent to cooperate on intelligence",
+                        follow:"with"
+                    }
+                ]
+            },
+            {
+                code:"032",
+                label:"Express intent to provide diplomatic cooperation such as policy support",
+                decor:"expressed intent to provide diplomatic cooperation such as policy support"
+            },
+            {
+                code:"033",
+                label:"Express intent to provide material aid, not specified below",
+                decor:"expressed intent to provide material aid",
+                codes:[
+                    {
+                        code:"0331",
+                        label:"Express intent to provide economic aid",
+                        decor:"expressed intent to provide economic aid"
+                    },
+                    {
+                        code:"0332",
+                        label:"Express intent to provide military aid",
+                        decor:"expressed intent to provide military aid"
+                    },
+                    {
+                        code:"0333",
+                        label:"Express intent to provide humanitarian aid",
+                        decor:"expressed intent to provide humanitarian aid"
+                    },
+                    {
+                        code:"0334",
+                        label:"Express intent to provide military protection or peacekeeping",
+                        decor:"expressed intent to provide military protection or peacekeeping"
+                    }
+                ]
+            },
+            {
+                code:"034",
+                label:"Express intent to institute political reform, not specified below",
+                decor:"expressed intent to institute political reform",
+                follow:"in",
+                codes:[
+                    {
+                        code:"0341",
+                        label:"Express intent to change leadership",
+                        decor:"expressed intent to change leadership",
+                        follow:"in"
+                    },
+                    {
+                        code:"0342",
+                        label:"Express intent to change policy",
+                        decor:"expressed intent to change policy",
+                        follow:"in"
+                    },
+                    {
+                        code:"0343",
+                        label:"Express intent to provide rights",
+                        decor:"expressed intent to provide rights"
+                    },
+                    {
+                        code:"0344",
+                        label:"Express intent to change institutions, regime",
+                        decor:"expressed intent to change institutions, regime",
+                        follow:"in"
+                    }
+                ]
+            },
+            {
+                code:"035",
+                label:"Express intent to yield, not specified below",
+                decor:"expressed intent to yield",
+                codes:[
+                    {
+                        code:"0351",
+                        label:"Express intent to ease administrative sanctions",
+                        decor:"expressed intent to ease administrative sanctions"
+                    },
+                    {
+                        code:"0352",
+                        label:"Express intent to ease popular dissent",
+                        decor:"expressed intent to ease popular dissent"
+                    },
+                    {
+                        code:"0353",
+                        label:"Express intent to release persons or property",
+                        decor:"expressed intent to release persons or property",
+                        follow:"of/from"
+                    },
+                    {
+                        code:"0354",
+                        label:"Express intent to ease economic sanctions, boycott, or embargo",
+                        decor:"expressed intent to ease economic sanctions, boycott, or embargo"
+                    },
+                    {
+                        code:"0355",
+                        label:"Express intent to allow international involvement (not mediation)",
+                        decor:"expressed intent to allow international involvement (not mediation)"
+                    },
+                    {
+                        code:"0356",
+                        label:"Express intent to de-escalate military engagement",
+                        decor:"expressed intent to de-escalate military engagement",
+                        follow:"of"
+                    }
+                ]
+            },
+            {
+                code:"036",
+                label:"Express intent to meet or negotiate",
+                decor:"expressed intent to meet or negotiate",
+                follow:"with"
+            },
+            {
+                code:"037",
+                label:"Express intent to settle dispute",
+                decor:"expressed intent to settle dispute",
+                follow:"with"
+            },
+            {
+                code:"038",
+                label:"Express intent to accept mediation",
+                decor:"expressed intent to accept mediation",
+                follow:"with"
+            },
+            {
+                code:"039",
+                label:"Express intent to mediate",
+                decor:"expressed intent to mediate",
+                follow:"with"
+            },
+        ]
+    },
+    {
+        rootCode:"04",
+        label:"CONSULT",
+        codes:[
+            {
+                code:"041",
+                label:"Discuss by telephone",
+                decor:"discussed by telephone",
+                follow:"with"
+            },
+            {
+                code:"042",
+                label:"Make a visit",
+                decor:"made a visit"
+            },
+            {
+                code:"043",
+                label:"Host a visit",
+                decor:"hosted a visit",
+                follow:"for"
+            },
+            {
+                code:"044",
+                label:"Meet at a Meet at a 'third' location",
+                decor:"met at a Meet at a 'third' location",
+                follow:"with"
+            },
+            {
+                code:"045",
+                label:"Mediate",
+                decor:"mediated",
+                follow:"with"
+            },
+            {
+                code:"046",
+                label:"Engage in negotiation",
+                decor:"engaged in negotiation",
+                follow:"with"
+            },
+            {
+                code:"040",
+                label:"Consult, not specified below",
+                decor:"consulted",
+                follow:"none"
+            }
+        ]
+    },
+    {
+        rootCode:"05",
+        label:"ENGAGE IN DIPLOMATIC COOPERATION",
+        codes:[
+            {
+                code:"050",
+                label:"Engage in diplomatic cooperation, not specified below",
+                decor:"engaged in diplomatic cooperation",
+                follow:"with"
+            },
+            {
+                code:"051",
+                label:"Praise or endorse",
+                decor:"praised or endorsed",
+                follow:"none"
+            },
+            {
+                code:"052",
+                label:"Defend verbally",
+                decor:"defended verbally",
+                follow:"none"
+            },
+            {
+                code:"053",
+                label:"Rally support on behalf of",
+                decor:"rallied support",
+                follow:"on behalf of"
+            },
+            {
+                code:"054",
+                label:"Grant diplomatic recognition",
+                decor:"granted diplomatic recognition"
+            },
+            {
+                code:"055",
+                label:"Apologize",  
+                decor:"apologized",
+            },
+            {
+                code:"056",
+                label:"Forgive",
+                decor:"forgived"
+            },
+            {
+                code:"057",
+                label:"Sign formal agreement",
+                decor:"signed formal agreement",
+                follow:"with"
+            }
+        ]
+    },
+    {
+        rootCode:"06",
+        label:"ENGAGE IN MATERIAL COOPERATION",
+        codes:[
+            {
+                code:"060",
+                label:"Engage in material cooperation, not specified below",
+                decor:"engaged in material cooperation",
+                follow:"to help"
+            },
+            {
+                code:"061",
+                label:"Cooperate economically",
+                decor:"cooperated economically",
+                follow:"with"
+            },
+            {
+                code:"062",
+                label:"Cooperate militarily",
+                decor:"cooperated militarily",
+                follow:"with"
+            },
+            {
+                code:"063",
+                label:"Engage in judicial cooperation",
+                decor:"engaged in judicial cooperation",
+                follow:"to help/with"
+            },
+            {
+                code:"064",
+                label:"Share intelligence or information",
+                decor:"shared intelligence or information",
+                follow:"with"
+            },
+        ]
+    },
+    {
+        rootCode:"07",
+        label:"PROVIDE AID",
+        codes:[
+            {
+                code:"070",
+                label:"Provide aid, not specified below",
+                decor:"provided aid"
+            },
+            {
+                code:"071",
+                label:"Provide economic aid",
+                decor:"provided economic aid"
+            },
+            {
+                code:"072",
+                label:"Provide military aid",
+                decor:"provided military aid"
+            },
+            {
+                code:"073",
+                label:"Provide humanitarian aid",
+                decor:"provided humanitarian aid"
+            },
+            {
+                code:"074",
+                label:"Provide military protection or peacekeeping",
+                decor:"provided military protection or peacekeeping"
+            },
+            {
+                code:"075",
+                label:"Grant asylum",
+                decor:"granted asylum"
+            }
+        ]
+    },
+    {
+        rootCode:"08",
+        label:"YIELD",
+        codes:[
+            {
+                code:"080",
+                label:"Yield, not specified below",
+                decor:"yielded"
+            },
+            {
+                code:"081",
+                label:"Ease administrative sanctions, not specified below",
+                decor:"eased administrative sanctions",
+                codes:[
+                    {
+                        code:"0811",
+                        label:"Ease restrictions on political freedoms",
+                        decor:"eased restrictions on political freedoms"
+                    },
+                    {
+                        code:"0812",
+                        label:"Ease ban on political parties or politicians",
+                        decor:"eased ban on political parties or politicians"
+                    },
+                    {
+                        code:"0813",
+                        label:"Ease curfew",
+                        decor:"eased curfew"
+                    },
+                    {
+                        code:"0814",
+                        label:"Ease state of emergency or martial law",
+                        decor:"eased state of emergency or martial law"
+                    }
+                ]
+            },
+            {
+                code:"082",
+                label:"Ease political dissent",
+                decor:"eased political dissent"
+            },
+            {
+                code:"083",
+                label:"Accede to requests or demands for political reform not specified below",
+                decor:"acceded to requests or demands for political reform",
+                follow:"from",
+                codes:[
+                    {
+                        code:"0831",
+                        label:"Accede to demands for change in leadership",
+                        decor:"acceded to demands for change in leadership",
+                        follow:"from"
+                    },
+                    {
+                        code:"0832",
+                        label:"Accede to demands for change in policy",
+                        decor:"acceded to demands for change in policy",
+                        follow:"from"
+                    },
+                    {
+                        code:"0833",
+                        label:"Accede to demands for rights",
+                        decor:"acceded to demands for rights",
+                        follow:"from"
+                    },
+                    {
+                        code:"0834",
+                        label:"Accede to demands for change in institutions, regime",
+                        decor:"acceded to demands for change in institutions, regime",
+                        follow:"from"
+                    }
+                ]
+            },
+            {
+                code:"084",
+                label:"Return, release, not specified below",
+                decor:"returned, released",
+                codes:[
+                    {
+                        code:"0841",
+                        label:"Return, release person(s)",
+                        decor:"returned, released person(s)"
+                    },
+                    {
+                        code:"0842",
+                        label:"Return, release property",
+                        decor:"returned, released property"
+                    }
+                ]
+            },
+            {
+                code:"085",
+                label:"Ease economic sanctions, boycott, embargo",
+                decor:"eased economic sanctions, boycott, embargo"
+            },
+            {
+                code:"086",
+                label:"Allow international involvement not specified below",
+                decor:"allowed international involvement",
+                follow:"from",
+                codes:[
+                    {
+                        code:"0861",
+                        label:"Receive deployment of peacekeepers",
+                        decor:"received deployment of peacekeepers",
+                        follow:"from"
+                    },
+                    {
+                        code:"0862",
+                        label:"Receive inspectors",
+                        decor:"received inspectors",
+                        follow:"from"
+                    },
+                    {
+                        code:"0863",
+                        label:"Allow delivery of humanitarian aid",
+                        decor:"allowed delivery of humanitarian aid",
+                        follow:"from"
+                    }
+                ]
+            },
+            {
+                code:"087",
+                label:"De-escalate military engagement",
+                decor:"de-escalated military engagement",
+                codes:[
+                    {
+                        code:"0871",
+                        label:"Declare truce, ceasefire",
+                        decor:"declared truce, ceasefire"
+                    },
+                    {
+                        code:"0872",
+                        label:"Ease military blockade",
+                        decor:"eased military blockade"
+                    },
+                    {
+                        code:"0873",
+                        label:"Demobilize armed forces",
+                        decor:"demobilized armed forces"
+                    },
+                    {
+                        code:"0874",
+                        label:"Retreat or surrender militarily",
+                        decor:"retreated or surrendered militarily"
                     }
                 ]
             }
