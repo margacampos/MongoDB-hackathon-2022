@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import Archive from '../components/Archive'
 import Buttons from '../components/Buttons'
 import EventGenerator from '../components/EventGenerator'
-import SettingsButton from '../components/settings/SettingsButton'
+import Header from '../components/Header'
 import { homeButtons } from '../data/buttons'
 import styles from '../styles/Home.module.scss'
 
@@ -18,19 +18,8 @@ const Home: NextPage = () => {
         <meta name="description" content="Create your own newspaper with the latest news from the GDELT database. This is a project made for the 2022 MongoDB Hackathon" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SettingsButton />
       <main className={styles.main}>
-        <section id={styles.nav}>
-           <div className={styles.decorative}></div>
-        <h1 className={styles.title}>
-          THE NEWSROOM
-        </h1>
-        <div className={styles.info}>
-          <p>Since 2022</p>
-          <p>MongoDB 2022 Hackathon</p>
-        </div>
-        </section>
-       
+        <Header/>
         <div id={styles.image}>
           <Archive/>
         </div>

@@ -9,7 +9,7 @@ export interface IButtonsProps {
 export default function Buttons (props: IButtonsProps) {
     const router = useRouter()
   return (
-    <div id={styles.buttons}>
+    <nav id={styles.buttons}>
         {props.buttons.map((item)=>{
             if(!item.grid)return <button id={styles.start} key={item.text} onClick={item.onClick}>{item.text}</button>
             return(
@@ -19,6 +19,6 @@ export default function Buttons (props: IButtonsProps) {
             );
         })}
           
-    </div>
+    </nav>
   );
 }

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Buttons from '../components/Buttons'
+import Header from '../components/Header'
 import { aboutButtons } from '../data/buttons'
 import styles from '../styles/Home.module.scss'
 
@@ -17,17 +18,7 @@ const About: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <section id={styles.nav}>
-           <div className={styles.decorative}></div>
-        <h1 className={styles.title}>
-          THE NEWSROOM
-        </h1>
-        <div className={styles.info}>
-          <p>Since 2022</p>
-          <p>MongoDB 2022 Hackathon</p>
-        </div>
-        </section>
-       
+        <Header/>
         <div id={styles.image}>
           
           <section>
