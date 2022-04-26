@@ -1,9 +1,9 @@
 import { cameoEventCodes, cameoTypeCodes } from "../data/cameoCodes"
 interface Event{
     eventCode:string;
-    location:string;
-    actor1:string;
-    actor2:string;
+    location?:string;
+    actor1?:string;
+    actor2?:string;
 }
 const getEventName = (event:Event) =>{
   let eventTitle ="",actor1,actor2,eventText;

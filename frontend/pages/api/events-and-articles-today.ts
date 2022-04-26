@@ -5,7 +5,7 @@ import {MongoClient} from 'mongodb';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Event>
+  res: NextApiResponse<Event[]>
 ) {
     let client; 
     if(process.env.MONGODB_URI){
@@ -15,15 +15,14 @@ export default async function handler(
             const database = client.db(process.env.MONGODB_DB);
             const events = database.collection("eventsCSV");
             const query = { Day: 20220406 };
-            const event:Event|null = await events.findOne<Event>(query,{
-                // sort matched documents in descending order by rating
-                sort: { Day: -1 },
+            const cursor = events.find<Event>(query,{
                 // Include only the `title` and `imdb` fields in the returned document
-                projection: { _id: 0, actor1:"$Actor1Type1Code", actor2:"$Actor2Type1Code", eventCode:"$EventCode", location:"$ActionGeo_Fullname" }
-              });
+                projection: { _id: 0, actor1:"$Actor1Type1Code", actor2:"$Actor2Type1Code", eventCode:"$EventCode", location:"$ActionGeo_Fullname", GoldsteinScale:1
+             }
+              }).sort({GoldsteinScale:-1}).limit(5);
               // since this method returns the matched document, not a cursor, print it directly
-            console.log(event);
-            if(event)res.status(200).json(event);
+            let eventList:Event[] = await cursor.toArray();
+            if(eventList)res.status(200).json(eventList);
         } catch (error) {
             console.log(error)
         } finally{

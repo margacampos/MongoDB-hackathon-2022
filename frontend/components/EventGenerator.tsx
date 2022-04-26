@@ -5,7 +5,7 @@ export interface IEventGeneratorProps {
 }
 
 export default function EventGenerator (props: IEventGeneratorProps) {
-    const [event, setEvent] = React.useState("")
+    const [event, setEvent] = React.useState([""])
     const [eventCode, setEventCode] = React.useState("");
     const [location, setLocation] = React.useState("");
     const [actor1, setActor1] = React.useState("");
@@ -17,8 +17,10 @@ export default function EventGenerator (props: IEventGeneratorProps) {
         console.log("called")
         try {
             const res = await fetch("http://localhost:3000/api/events-and-articles-today");
-            const event = await res.json();
-            setEvent(getEventName(event));
+            const event:{eventCode:string}[] = await res.json();
+            event.map((i)=>{
+                setEvent((state)=>[...state, getEventName(i)])
+            });
         } catch (error) {
             console.log(error)
         }
@@ -41,9 +43,9 @@ export default function EventGenerator (props: IEventGeneratorProps) {
             Location:
             <input type="text" value={location} onChange={(e)=>handleChange(e,setLocation)} name="location"/>
         </label>
-        <button onClick={()=>setEvent(getEventName({eventCode, location, actor1, actor2}))}>Generate event</button>
+        <button onClick={()=>setEvent([getEventName({eventCode, location, actor1, actor2})])}>Generate event</button>
         <button onClick={getEvent}>Get 06/04/2022 best event</button>
-        {event!=""&&<p>{event}</p>}
+        {event!=[""]&&event.map((i,index)=><p key={index}>{i}</p>)}
     </div>
   );
 }
