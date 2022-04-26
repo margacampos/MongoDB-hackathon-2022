@@ -9,8 +9,8 @@ const getEventName = (event:Event) =>{
   let eventTitle =``,actor1,actor2,eventText;
 
   if(event.actor1){actor1=getActorCodeLabel(event.actor1);eventTitle+=`The ${actor1==="error"?"":actor1}`}
-  if(event.eventCode){eventText=getEventCodeLabel(event.eventCode);eventTitle+=`${eventText.label==="error"?"":` ${eventText.decor}`}${eventText.follow?eventText.follow==="none"?"":` ${eventText.follow}`:" to"}`}
-  if(event.actor2){actor2=getActorCodeLabel(event.actor2);eventTitle+=` the ${actor2==="error"?"":actor2}`}
+  if(event.eventCode){eventText=getEventCodeLabel(event.eventCode);eventTitle+=`${eventText.label==="error"?"":` ${eventText.decor}`}`}
+  if(event.actor2){actor2=getActorCodeLabel(event.actor2);eventTitle+=`${eventText?.follow?eventText.follow==="none"?"":` ${eventText.follow}`:" to"} the ${actor2==="error"?"":actor2}`}
   if(event.location){eventTitle+=` in ${event.location}`}
   if(eventText?.label==="error")return "Could not find event code";
   return eventTitle+=".";

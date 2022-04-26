@@ -13,6 +13,16 @@ export default function EventGenerator (props: IEventGeneratorProps) {
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>,set:React.Dispatch<React.SetStateAction<string>>) =>{
           set(e.target.value);
         }
+    const getEvent =async()=>{
+        console.log("called")
+        try {
+            const res = await fetch("http://localhost:3000/api/events-and-articles-today");
+            const event = await res.json();
+            setEvent(getEventName(event));
+        } catch (error) {
+            console.log(error)
+        }
+    }
   return (
     <div>
         <label htmlFor="actor1">
@@ -32,6 +42,7 @@ export default function EventGenerator (props: IEventGeneratorProps) {
             <input type="text" value={location} onChange={(e)=>handleChange(e,setLocation)} name="location"/>
         </label>
         <button onClick={()=>setEvent(getEventName({eventCode, location, actor1, actor2}))}>Generate event</button>
+        <button onClick={getEvent}>Get 06/04/2022 best event</button>
         {event!=""&&<p>{event}</p>}
     </div>
   );
