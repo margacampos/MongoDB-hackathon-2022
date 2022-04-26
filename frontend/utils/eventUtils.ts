@@ -29,15 +29,15 @@ const getEventCodeLabel = (event:string) =>{
 
             //Second for loop for searching through the codes
             for(let j=0;j<cameoEventCodes[i].codes.length;j++){
-
+                let second = cameoEventCodes[i].codes[j]
                 //If the code has nested codes rootCode exists and the property codes is an array
-                if(rootCode2 && rootCode2===cameoEventCodes[i].codes[j].code && typeof cameoEventCodes[i].codes[j].codes !== "undefined"){
+                if(rootCode2 && second.codes?.length && rootCode2===second.code && typeof second.codes !== "undefined"){
                     //Loops through codes array for matching code
-                    for(let k=0;cameoEventCodes[i].codes?[j].codes?.length>0 && k<cameoEventCodes[i].codes[j].codes.length;k++){
-                        if(cameoEventCodes[i].codes[j].codes[k].code===event) return cameoEventCodes[i].codes[j].codes[k];
+                    for(let k=0;k<second.codes?.length;k++){
+                        if(second.codes[k].code && second.codes[k].code===event) return second.codes[k];
                     }
                 //If it does not have nested codes, looks for the matching code
-                }else if(cameoEventCodes[i].codes[j].code===event)return cameoEventCodes[i].codes[j];
+                }else if(second.code===event)return second;
             }
         }
     }
