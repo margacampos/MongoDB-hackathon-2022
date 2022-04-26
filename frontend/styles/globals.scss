@@ -1,7 +1,11 @@
+@use 'partials/layout' as layout;
+
 :root{
   --main-yellow: #dfc79e;
   --background-yellow: #F5F2E8;
   --background-black: #32281e;
+  --padding-top:0.5rem;
+  --padding-side:1.2rem;
 }
 html,
 body,
@@ -18,4 +22,10 @@ a {
 
 * {
   box-sizing: border-box;
+}
+#settings{
+  @include layout.popUp;
+  background-color: var(--background-black);
+  color: var(--background-yellow);
+  z-index: 11;
 }

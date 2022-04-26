@@ -1,0 +1,15 @@
+@use 'partials/buttons' as buttons;
+@use 'partials/layout' as layout;
+
+#sideMenu{
+    @include layout.columnFlex;
+    padding: var(--padding-side);
+
+    button{
+        margin: var(--padding-top);
+        @include buttons.button;
+    }
+}
+#settings{
+    padding: var(--padding-side);
+}
