@@ -13,13 +13,12 @@ export default async function handler(
         try {
             await client.connect();
             const database = client.db(process.env.MONGODB_DB);
-            const events = database.collection("eventsCSV");
-            const query = { Day: 20220406, QuadClass:{$in:[1,2,3]}, Actor1Type1Code:{$exists:true}, Actor2Type1Code:{$exists:true}, ActionGeo_Fullname:{$exists:true}, NumArticles:{$gte:10} };
+            const events = database.collection("recentEvents");
+            const query = { Actor1Type1Code:{$ne:null}, Actor2Type1Code:{$ne:null} };
             const cursor = events.find<Event>(query,{
                 // Include only the `title` and `imdb` fields in the returned document
-                projection: { _id: 0, SourceURL:1, actor1:"$Actor1Type1Code", actor2:"$Actor2Type1Code", eventCode:"$EventCode", location:"$ActionGeo_Fullname", GoldsteinScale:1
-             }
-              }).sort({GoldsteinScale:-1}).limit(5);
+                projection: { _id: 0, actor1:"$Actor1Type1Code", actor2:"$Actor2Type1Code", eventCode:"$EventCode", location1:"$Actor1CountryCode", location2:"$Actor2CountryCode", GoldsteinScale:1, AvgTone:{$toDecimal:"$AvgTone"}}
+              }).sort({AvgTone:1}).limit(5);
               // since this method returns the matched document, not a cursor, print it directly
             let eventList:Event[] = await cursor.toArray();
             if(eventList)res.status(200).json(eventList);
