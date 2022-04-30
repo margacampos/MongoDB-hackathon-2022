@@ -6,6 +6,7 @@ import Archive from '../components/Archive'
 import Buttons from '../components/Buttons'
 import EventGenerator from '../components/EventGenerator'
 import Header from '../components/Header'
+import NewsTitleGenerator from '../components/NewsTitleGenerator'
 import { homeButtons } from '../data/buttons'
 import styles from '../styles/Home.module.scss'
 
@@ -25,6 +26,7 @@ const Home: NextPage = () => {
         </div>
         <Buttons buttons={homeButtons}/>
         <EventGenerator/>
+        <NewsTitleGenerator/>
       </main>
 
       <footer className={styles.footer}>
