@@ -1,15 +1,18 @@
 const getNewsTitle = async(url:string) =>{
     try {
-        const res = await fetch(url);
-        const data = await res.text()
-        console.log("data: ")
-        console.log(data);
-        const match = data.match(/<title>(.+)<\/title>/);
-        console.log("match: ")
-        if (match) return match[1];
+        const res = await fetch(process.env.NEXT_PUBLIC_DOMAIN+"/api/news-title-generator", {
+            method:"POST",
+            body: JSON.stringify({url:url}),
+            headers: {
+                'Content-Type': 'application/json'
+              }
+        });
+        const data = await res.json()
+        if (data.success) return data.data;
         else {
-            console.log("No title available")
-            return "error"
+            console.log(data)
+            if (data.error)return data.error;
+            return "fetch data came back";
         };
     } catch (error) {
         console.log(error)

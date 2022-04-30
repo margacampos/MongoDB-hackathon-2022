@@ -6,12 +6,13 @@ export interface INewsTitleGeneratorProps {
 
 export default function NewsTitleGenerator (props: INewsTitleGeneratorProps) {
     const [newsTitle, setNewsTitle] = React.useState("");
+    const [newsDesc, setNewsDesc] = React.useState("");
     const [url, setUrl] =React.useState("");
 
   const setTitle = async(url:string)=>{
     const res = await getNewsTitle(url);
-    console.log(res);
-    setNewsTitle(res);
+    if(res.desc)setNewsDesc(res.desc);
+    setNewsTitle(res.title);
   }
   
   return (
@@ -21,7 +22,8 @@ export default function NewsTitleGenerator (props: INewsTitleGeneratorProps) {
             <input type="text" value={url} onChange={(e)=>setUrl(e.target.value)} name="location2"/>
         </label>
       <button onClick={()=>setTitle(url)}>Get title</button>
-        {newsTitle!="" && newsTitle}
+        <p>{newsTitle!="" && newsTitle}</p>
+        <p>{newsDesc}</p>
     </div>
   );
 }
