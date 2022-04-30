@@ -7,7 +7,8 @@ export interface IEventGeneratorProps {
 export default function EventGenerator (props: IEventGeneratorProps) {
     const [event, setEvent] = React.useState([""])
     const [eventCode, setEventCode] = React.useState("");
-    const [location, setLocation] = React.useState("");
+    const [location1, setLocation1] = React.useState("");
+    const [location2, setLocation2] = React.useState("");
     const [actor1, setActor1] = React.useState("");
     const [actor2, setActor2] = React.useState("");
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>,set:React.Dispatch<React.SetStateAction<string>>) =>{
@@ -39,11 +40,15 @@ export default function EventGenerator (props: IEventGeneratorProps) {
             Actor2:
             <input type="text" value={actor2} onChange={(e)=>handleChange(e,setActor2)} name="actor2"/>
         </label>
-        <label htmlFor="location">
+        <label htmlFor="location1">
             Location:
-            <input type="text" value={location} onChange={(e)=>handleChange(e,setLocation)} name="location"/>
+            <input type="text" value={location1} onChange={(e)=>handleChange(e,setLocation1)} name="location1"/>
         </label>
-        <button onClick={()=>setEvent([getEventName({eventCode, location, actor1, actor2})])}>Generate event</button>
+        <label htmlFor="location2">
+            Location:
+            <input type="text" value={location2} onChange={(e)=>handleChange(e,setLocation2)} name="location2"/>
+        </label>
+        <button onClick={()=>setEvent([getEventName({eventCode, location1, location2, actor1, actor2})])}>Generate event</button>
         <button onClick={getEvent}>Get 06/04/2022 best event</button>
         {event!=[""]&&event.map((i,index)=><p key={index}>{i}</p>)}
     </div>
