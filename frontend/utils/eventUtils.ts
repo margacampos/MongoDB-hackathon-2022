@@ -6,6 +6,19 @@ interface Event{
     actor1?:string;
     actor2?:string;
 }
+const genRandomEvent = (number:number) =>{
+    let events = []
+    for (let i=0;i<number;i++){
+        let event = {
+            eventCode:getRandomEvCode(),
+            location1:"",
+            location2:"",
+            actor1: "",
+            actor2: ""
+        }
+        events.push(event)
+    }
+}
 const getEventName = (event:Event) =>{
   let eventTitle ="",actor1,actor2,eventText;
 
@@ -53,5 +66,16 @@ const getActorCodeLabel = (event:string) =>{
     console.log("error")
     return "error"
 }
-
-export {getEventName};
+const getRandomEvCode = () =>{
+    const ranRoot = Math.round(Math.random()*cameoEventCodes.length)
+    const ev1 = Math.round(Math.random()*cameoEventCodes[ranRoot].codes.length)
+    console.log(ranRoot)
+    var keys = Object.keys(cameoEventCodes[ranRoot].codes[ev1]);
+    console.log(keys)
+    if (keys.includes("codes")){
+        const ev2 = Math.round(Math.random()*cameoEventCodes[ranRoot].codes[ev1].codes.length)
+        return cameoEventCodes[ranRoot].codes[ev1].codes[ev2].code
+    }
+    return cameoEventCodes[ranRoot].codes[ev1].code;
+}
+export {getEventName, getRandomEvCode};

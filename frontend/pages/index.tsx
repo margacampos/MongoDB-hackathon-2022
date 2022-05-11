@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 import Archive from '../components/Archive'
 import Buttons from '../components/Buttons'
 import EventGenerator from '../components/EventGenerator'
@@ -9,9 +10,11 @@ import Header from '../components/Header'
 import NewsTitleGenerator from '../components/NewsTitleGenerator'
 import { homeButtons } from '../data/buttons'
 import styles from '../styles/Home.module.scss'
+import { getRandomEvCode } from '../utils/eventUtils'
 
 const Home: NextPage = () => {
   const Router = useRouter();
+  const [code, setCode] = useState("")
   return (
     <div className={styles.container}>
       <Head>
@@ -27,6 +30,8 @@ const Home: NextPage = () => {
         <Buttons buttons={homeButtons}/>
         <EventGenerator/>
         <NewsTitleGenerator/>
+        <button onClick={()=>setCode(getRandomEvCode())}>get random event code</button>
+        <p>{code}</p>
       </main>
 
       <footer className={styles.footer}>
