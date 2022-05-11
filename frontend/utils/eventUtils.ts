@@ -72,9 +72,10 @@ const getRandomEvCode = () =>{
     console.log(ranRoot)
     var keys = Object.keys(cameoEventCodes[ranRoot].codes[ev1]);
     console.log(keys)
-    if (keys.includes("codes")){
-        const ev2 = Math.round(Math.random()*cameoEventCodes[ranRoot].codes[ev1].codes.length)
-        return cameoEventCodes[ranRoot].codes[ev1].codes[ev2].code
+    let obj = cameoEventCodes[ranRoot].codes[ev1].codes
+    if (keys.includes("codes") && typeof obj !== "undefined"){
+        const ev2 = Math.round(Math.random()*obj.length)
+        return obj[ev2].code
     }
     return cameoEventCodes[ranRoot].codes[ev1].code;
 }
