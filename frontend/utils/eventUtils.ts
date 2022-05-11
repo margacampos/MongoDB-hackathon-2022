@@ -17,24 +17,43 @@ const genRandomEvent = (number:number) =>{
             eventCode:getRandomEvCode(),
         }
         //Number of properties we will be setting
-        const numProperties = Math.round(Math.random()*properties.length-1)
+        const numProperties = Math.round(Math.random()*(properties.length-1))
         for (let j=0;j<numProperties;j++){
             console.log(properties)
-            let ranProp = Math.round(Math.random()*properties.length-1)
+            let ranProp = Math.round(Math.random()*(properties.length-1))
+            console.log(ranProp)
             event[properties[ranProp].name] = getRandomProperty(properties[ranProp].type)
             properties.splice(ranProp, 1)
         }
         events.push(event)
     }
-    console.log(events)
     return events;
 }
 const getEventName = (event:Event) =>{
   let eventTitle ="",actor1,actor2,eventText;
 
-  if(event.actor1){actor1=getActorCodeLabel(event.actor1);eventTitle+=`The ${actor1==="error"?"":actor1} ${event.location1?`from ${event.location1} `:""}`}
-  if(event.eventCode){eventText=getEventCodeLabel(event.eventCode);eventTitle+=`${eventText.label==="error"?"":`${eventText.decor}`}`}
-  if(event.actor2){actor2=getActorCodeLabel(event.actor2);eventTitle+=`${eventText?.follow?eventText.follow==="none"?"":` ${eventText.follow}`:" to"} the ${actor2==="error"?"":actor2}${event.location2?` from ${event.location2}`:""}`}
+  if(event.actor1){
+      actor1=getActorCodeLabel(event.actor1);
+      let location
+      if(event.location1)location=getLocCodeLabel(event.location1)
+      eventTitle+=`${actor1==="error"?"":actor1} ${event.location1?`from ${location && location} `:""}`
+    }else if (event.location1){
+        let location=getLocCodeLabel(event.location1)
+        eventTitle+=`${location} `
+    }
+  if(event.eventCode){
+      eventText=getEventCodeLabel(event.eventCode);
+      eventTitle+=`${eventText.label==="error"?"":`${eventText.decor}`}`
+    }
+  if(event.actor2){
+      let location
+      if(event.location2)location=getLocCodeLabel(event.location2)
+      actor2=getActorCodeLabel(event.actor2);
+      eventTitle+=`${eventText?.follow?eventText.follow==="none"?"":` ${eventText.follow}`:" to"} the ${actor2==="error"?"":actor2}${event.location2?` from ${location}`:""}`
+    }else if (event.location2){
+        let location=getLocCodeLabel(event.location2)
+        eventTitle+=` in ${location} `
+    }
   if(eventText?.label==="error"||eventText?.label===undefined)return "Could not find event code";
   return eventTitle.charAt(0).toUpperCase()+eventTitle.slice(1)+".";
 }
@@ -76,23 +95,32 @@ const getActorCodeLabel = (event:string) =>{
     console.log("error")
     return "error"
 }
+const getLocCodeLabel = (event:string) => {
+    for(let i=0;i<cameoCountryCodes.length;i++){
+        if(cameoCountryCodes[i].code===event){
+            return cameoCountryCodes[i].label
+        };
+    }
+    console.log("error")
+    return "error"
+}
 const getRandomEvCode = () =>{
-    const ranRoot = Math.round(Math.random()*cameoEventCodes.length-1)
-    const ev1 = Math.round(Math.random()*cameoEventCodes[ranRoot].codes.length-1)
+    const ranRoot = Math.round(Math.random()*(cameoEventCodes.length-1))
+    const ev1 = Math.round(Math.random()*(cameoEventCodes[ranRoot].codes.length-1))
     console.log(ranRoot)
     var keys = Object.keys(cameoEventCodes[ranRoot].codes[ev1]);
     let obj = cameoEventCodes[ranRoot].codes[ev1].codes
     if (keys.includes("codes") && typeof obj !== "undefined"){
-        const ev2 = Math.round(Math.random()*obj.length-1)
+        const ev2 = Math.round(Math.random()*(obj.length-1))
         return obj[ev2].code
     }
     return cameoEventCodes[ranRoot].codes[ev1].code;
 }
 const getRandomProperty = (prop:string) =>{
     if (prop==="location"){
-        return cameoCountryCodes[Math.round(Math.random()*cameoTypeCodes.length)].code
+        return cameoCountryCodes[Math.round(Math.random()*(cameoTypeCodes.length-1))].code
     }else if(prop==="actor"){
-        return cameoTypeCodes[Math.round(Math.random()*cameoTypeCodes.length)].code
+        return cameoTypeCodes[Math.round(Math.random()*(cameoTypeCodes.length-1))].code
     }
     return "";
 }
