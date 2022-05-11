@@ -30,7 +30,7 @@ const Home: NextPage = () => {
         <Buttons buttons={homeButtons}/>
         <EventGenerator/>
         <NewsTitleGenerator/>
-        <button onClick={()=>setCode(genRandomEvent(1))}>get random event code</button>
+        <button onClick={()=>setCode(genRandomEvent(3))}>get random event code</button>
         {code && code.map((i, index)=><p key={index}>{i.eventCode} Location: {i.location1 && i.location1} {i.location2 && i.location2} Actor: {i.actor1 && i.actor1} {i.actor2 && i.actor2} Event: {getEventName(i)}</p>)}
       </main>
 
