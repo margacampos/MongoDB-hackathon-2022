@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import Archive from '../components/Archive'
 import Buttons from '../components/Buttons'
 import EventGenerator from '../components/EventGenerator'
@@ -10,11 +10,11 @@ import Header from '../components/Header'
 import NewsTitleGenerator from '../components/NewsTitleGenerator'
 import { homeButtons } from '../data/buttons'
 import styles from '../styles/Home.module.scss'
-import { getRandomEvCode } from '../utils/eventUtils'
+import { genRandomEvent, getEventName } from '../utils/eventUtils'
 
 const Home: NextPage = () => {
   const Router = useRouter();
-  const [code, setCode] = useState("")
+  const [code, setCode]:[any[], Dispatch<SetStateAction<any[]>>] = useState([{eventCode:""}])
   return (
     <div className={styles.container}>
       <Head>
@@ -30,8 +30,8 @@ const Home: NextPage = () => {
         <Buttons buttons={homeButtons}/>
         <EventGenerator/>
         <NewsTitleGenerator/>
-        <button onClick={()=>setCode(getRandomEvCode())}>get random event code</button>
-        <p>{code}</p>
+        <button onClick={()=>setCode(genRandomEvent(1))}>get random event code</button>
+        {code && code.map((i, index)=><p key={index}>{i.eventCode} Location: {i.location1 && i.location1} {i.location2 && i.location2} Actor: {i.actor1 && i.actor1} {i.actor2 && i.actor2} Event: {getEventName(i)}</p>)}
       </main>
 
       <footer className={styles.footer}>

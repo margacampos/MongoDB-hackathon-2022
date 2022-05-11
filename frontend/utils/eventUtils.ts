@@ -1,4 +1,4 @@
-import { cameoEventCodes, cameoTypeCodes } from "../data/cameoCodes"
+import { cameoCountryCodes, cameoEventCodes, cameoTypeCodes } from "../data/cameoCodes"
 interface Event{
     eventCode:string;
     location1?:string;
@@ -8,16 +8,26 @@ interface Event{
 }
 const genRandomEvent = (number:number) =>{
     let events = []
+    //loop for number of events required
     for (let i=0;i<number;i++){
-        let event = {
+        //Properties available for the event
+        let properties =[{name:"location1", type:"location"}, {name:"location2", type:"location"}, {name:"actor1", type:"actor"}, {name:"actor2", type:"actor"}]
+        //Initiate the event
+        let event:any = {
             eventCode:getRandomEvCode(),
-            location1:"",
-            location2:"",
-            actor1: "",
-            actor2: ""
+        }
+        //Number of properties we will be setting
+        const numProperties = Math.round(Math.random()*properties.length-1)
+        for (let j=0;j<numProperties;j++){
+            console.log(properties)
+            let ranProp = Math.round(Math.random()*properties.length-1)
+            event[properties[ranProp].name] = getRandomProperty(properties[ranProp].type)
+            properties.splice(ranProp, 1)
         }
         events.push(event)
     }
+    console.log(events)
+    return events;
 }
 const getEventName = (event:Event) =>{
   let eventTitle ="",actor1,actor2,eventText;
@@ -67,16 +77,23 @@ const getActorCodeLabel = (event:string) =>{
     return "error"
 }
 const getRandomEvCode = () =>{
-    const ranRoot = Math.round(Math.random()*cameoEventCodes.length)
-    const ev1 = Math.round(Math.random()*cameoEventCodes[ranRoot].codes.length)
+    const ranRoot = Math.round(Math.random()*cameoEventCodes.length-1)
+    const ev1 = Math.round(Math.random()*cameoEventCodes[ranRoot].codes.length-1)
     console.log(ranRoot)
     var keys = Object.keys(cameoEventCodes[ranRoot].codes[ev1]);
-    console.log(keys)
     let obj = cameoEventCodes[ranRoot].codes[ev1].codes
     if (keys.includes("codes") && typeof obj !== "undefined"){
-        const ev2 = Math.round(Math.random()*obj.length)
+        const ev2 = Math.round(Math.random()*obj.length-1)
         return obj[ev2].code
     }
     return cameoEventCodes[ranRoot].codes[ev1].code;
 }
-export {getEventName, getRandomEvCode};
+const getRandomProperty = (prop:string) =>{
+    if (prop==="location"){
+        return cameoCountryCodes[Math.round(Math.random()*cameoTypeCodes.length)].code
+    }else if(prop==="actor"){
+        return cameoTypeCodes[Math.round(Math.random()*cameoTypeCodes.length)].code
+    }
+    return "";
+}
+export {getEventName, genRandomEvent};
