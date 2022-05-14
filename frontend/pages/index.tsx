@@ -6,6 +6,7 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import Archive from '../components/Archive'
 import Buttons from '../components/Buttons'
 import EventGenerator from '../components/EventGenerator'
+import SelectEvent from '../components/Game/SelectEvent'
 import Header from '../components/Header'
 import NewsTitleGenerator from '../components/NewsTitleGenerator'
 import { homeButtons } from '../data/buttons'
@@ -25,13 +26,13 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <Header/>
         <div id={styles.image}>
-          <Archive/>
+          <SelectEvent/>
         </div>
         <Buttons buttons={homeButtons}/>
-        <EventGenerator/>
+        {/* <EventGenerator/>
         <NewsTitleGenerator/>
         <button onClick={()=>setCode(genRandomEvent(3))}>get random event code</button>
-        {code && code.map((i, index)=><p key={index}>{i.eventCode} Location: {i.location1 && i.location1} {i.location2 && i.location2} Actor: {i.actor1 && i.actor1} {i.actor2 && i.actor2} Event: {getEventName(i)}</p>)}
+        {code && code.map((i, index)=><p key={index}>{i.eventCode} Location: {i.location1 && i.location1} {i.location2 && i.location2} Actor: {i.actor1 && i.actor1} {i.actor2 && i.actor2} Event: {getEventName(i)}</p>)} */}
       </main>
 
       <footer className={styles.footer}>
