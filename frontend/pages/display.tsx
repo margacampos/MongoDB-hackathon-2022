@@ -6,14 +6,9 @@ import { genRandomEvent } from "../utils/eventUtils";
 
 const Display: NextPage = () => {
     const Router = useRouter();
-    const [event, setEvent] = useState([{name:"", eventCode:"", locations: [], participants:[]}])
+    const [event, setEvent] = useState(genRandomEvent(1))
 
-    useEffect(() => {
-      setEvent(genRandomEvent(1))
-      return () => {
-        
-      }
-    }, [])
+    
     
     return (
       <div>

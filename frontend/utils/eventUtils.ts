@@ -43,12 +43,10 @@ const organizeByLocAndAct = (event:Event) =>{
     Object.keys(event).forEach((i)=>{
     let value = event[i as keyof typeof event]
     if(value){
-            console.log(value)
             if (i=="actor1"||i=="actor2")ev.participants.push({type:i, value:value})
             if(i=="location1"||i=="location2")ev.locations.push({type:i, value:value})
         }  
     })
-    console.log(ev)
     return ev
 }
 const getEventName = (event:Event) =>{
@@ -74,7 +72,7 @@ const getEventName = (event:Event) =>{
       eventTitle+=`${eventText?.follow?eventText.follow==="none"?"":` ${eventText.follow}`:" to"} the ${actor2==="error"?"":actor2}${event.location2?` from ${location}`:""}`
     }else if (event.location2){
         let location=getLocCodeLabel(event.location2)
-        eventTitle+=` in ${location} `
+        eventTitle+=` in ${location}`
     }
   if(eventText?.label==="error"||eventText?.label===undefined)return "Could not find event code";
   return eventTitle.charAt(0).toUpperCase()+eventTitle.slice(1)+".";
@@ -114,7 +112,6 @@ const getActorCodeLabel = (event:string) =>{
             return cameoTypeCodes[i].label
         };
     }
-    console.log("error")
     return "error"
 }
 const getLocCodeLabel = (event:string) => {
@@ -123,13 +120,11 @@ const getLocCodeLabel = (event:string) => {
             return cameoCountryCodes[i].label
         };
     }
-    console.log("error")
     return "error"
 }
 const getRandomEvCode = () =>{
     const ranRoot = Math.round(Math.random()*(cameoEventCodes.length-1))
     const ev1 = Math.round(Math.random()*(cameoEventCodes[ranRoot].codes.length-1))
-    console.log(ranRoot)
     var keys = Object.keys(cameoEventCodes[ranRoot].codes[ev1]);
     let obj = cameoEventCodes[ranRoot].codes[ev1].codes
     if (keys.includes("codes") && typeof obj !== "undefined"){
