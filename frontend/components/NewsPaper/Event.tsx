@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { genRandomEvent, getActorCodeLabel, getEventCodeLabel, getEventName, getLocCodeLabel, organizeByLocAndAct } from '../../utils/eventUtils';
+import { EventByLocAct, genRandomEvent, getActorCodeLabel, getEventCodeLabel, getEventName, getLocCodeLabel, organizeByLocAndAct } from '../../utils/eventUtils';
 
 type Props = {
-    event:Event
+    event:EventByLocAct;
 }
 
 export default function Event({event}: Props) {
@@ -20,8 +20,8 @@ export default function Event({event}: Props) {
         <h2>Event: {ev && ev.name}</h2>
         <div>
             <h3>In this event...</h3>
-            {ev && ev.participants[0] && <p>Actors: {ev.participants?.map((i,index)=>index==0?getActorCodeLabel(i.value):` and ${getLocCodeLabel(i.value)}`)}</p>}
-            {ev && ev.locations[0] && <p>Countries: {ev.locations?.map((i,index)=>index==0?getLocCodeLabel(i.value):` and ${getLocCodeLabel(i.value)}`)}</p>}
+            {ev && ev.participants[0] && <p>Actors: {ev.participants?.map((i:{value:string},index:number)=>index==0?getActorCodeLabel(i.value):` and ${getLocCodeLabel(i.value)}`)}</p>}
+            {ev && ev.locations[0] && <p>Countries: {ev.locations?.map((i:{value:string},index:number)=>index==0?getLocCodeLabel(i.value):` and ${getLocCodeLabel(i.value)}`)}</p>}
             <p>Action: {ev && getEventCodeLabel(ev.eventCode).label}</p>
         </div>
     </div>

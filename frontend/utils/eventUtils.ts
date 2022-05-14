@@ -6,7 +6,7 @@ interface Event{
     actor1?:string;
     actor2?:string;
 }
-interface EventByLocAct{
+export interface EventByLocAct{
     name:string;
     eventCode:string;
     locations:{type:string;value:string;}[];
