@@ -1,25 +1,31 @@
-import React, { useState } from 'react'
-import { genRandomEvent } from '../../utils/eventUtils';
+import React, { useEffect, useState } from 'react'
+import { genRandomEvent, getActorCodeLabel, getEventCodeLabel, getEventName, getLocCodeLabel, organizeByLocAndAct } from '../../utils/eventUtils';
 
 type Props = {
-    event:{
-        name:string;
-        eventCode:string;
-        locations?:string[];
-        participants?:string[];
-    }
+    event:Event
 }
 
 export default function Event({event}: Props) {
+  const [ev, setEvent]:[any, React.Dispatch<React.SetStateAction<any>>] = useState()
+  useEffect(() => {
+    setEvent(organizeByLocAndAct(event))
+  
+    return () => {
+      
+    }
+  }, [])
+  
   return (
     <div>
-        <h2>Event: {event.name}</h2>
+        <h2>Event: {ev && ev.name}</h2>
         <div>
             <h3>In this event...</h3>
-            {event.participants && <p>Actors: {event.participants?.map(i=>i)}</p>}
-            {event.locations && <p>Countries: {event.locations?.map(i=>i)}</p>}
-            <p>Action: {event.eventCode}</p>
+            {ev && ev.participants[0] && <p>Actors: {ev.participants?.map((i,index)=>index==0?getActorCodeLabel(i.value):` and ${getLocCodeLabel(i.value)}`)}</p>}
+            {ev && ev.locations[0] && <p>Countries: {ev.locations?.map((i,index)=>index==0?getLocCodeLabel(i.value):` and ${getLocCodeLabel(i.value)}`)}</p>}
+            <p>Action: {ev && getEventCodeLabel(ev.eventCode).label}</p>
         </div>
     </div>
   )
 }
+
+

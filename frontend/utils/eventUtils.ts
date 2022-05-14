@@ -6,6 +6,12 @@ interface Event{
     actor1?:string;
     actor2?:string;
 }
+interface EventByLocAct{
+    name:string;
+    eventCode:string;
+    locations:{type:string;value:string;}[];
+    participants:{type:string;value:string;}[];
+}
 const genRandomEvent = (number:number) =>{
     let events = []
     //loop for number of events required
@@ -14,20 +20,36 @@ const genRandomEvent = (number:number) =>{
         let properties =[{name:"location1", type:"location"}, {name:"location2", type:"location"}, {name:"actor1", type:"actor"}, {name:"actor2", type:"actor"}]
         //Initiate the event
         let event:any = {
-            eventCode:getRandomEvCode(),
+            eventCode:getRandomEvCode()
         }
         //Number of properties we will be setting
         const numProperties = Math.round(Math.random()*(properties.length-1))
         for (let j=0;j<numProperties;j++){
-            console.log(properties)
             let ranProp = Math.round(Math.random()*(properties.length-1))
-            console.log(ranProp)
             event[properties[ranProp].name] = getRandomProperty(properties[ranProp].type)
             properties.splice(ranProp, 1)
         }
         events.push(event)
     }
     return events;
+}
+const organizeByLocAndAct = (event:Event) =>{
+    let ev:EventByLocAct = {
+        name: getEventName(event),
+        eventCode: event.eventCode,
+        participants: [],
+        locations: []
+    }
+    Object.keys(event).forEach((i)=>{
+    let value = event[i as keyof typeof event]
+    if(value){
+            console.log(value)
+            if (i=="actor1"||i=="actor2")ev.participants.push({type:i, value:value})
+            if(i=="location1"||i=="location2")ev.locations.push({type:i, value:value})
+        }  
+    })
+    console.log(ev)
+    return ev
 }
 const getEventName = (event:Event) =>{
   let eventTitle ="",actor1,actor2,eventText;
@@ -124,4 +146,4 @@ const getRandomProperty = (prop:string) =>{
     }
     return "";
 }
-export {getEventName, genRandomEvent};
+export {getEventName, genRandomEvent, getActorCodeLabel,getLocCodeLabel, getEventCodeLabel, organizeByLocAndAct};
