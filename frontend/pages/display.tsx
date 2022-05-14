@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Event from "../components/NewsPaper/Event"
 import { genRandomEvent } from "../utils/eventUtils";
+import styles from "../styles/events/Display.module.scss"
 
 const Display: NextPage = () => {
     const Router = useRouter();
