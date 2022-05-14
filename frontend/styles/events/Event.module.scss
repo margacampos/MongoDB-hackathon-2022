@@ -1,0 +1,11 @@
+.event{
+    max-width: 300px;
+    background-color: var(--background-yellow);
+    padding: 1rem;
+    color: var(--background-black);
+    hr{
+        height:5px;
+        background-color: var(--background-black);
+    }
+    box-shadow: 10px 10px 30px rgba(22, 22, 22, 0.2);
+}
