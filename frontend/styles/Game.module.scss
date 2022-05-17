@@ -1,3 +1,4 @@
+@use 'partials/buttons' as *;
 
 #screen{
     position: fixed;
@@ -23,13 +24,19 @@
     left: 0;
     max-width: 90%;
     min-width: 80%;
-    height: 20vh;
+    max-height: 20vh;
     background-color: var(--background-yellow);
     padding: 2rem;
     border-radius: 10px;
     margin: 10px;
     border: solid 2px var(--background-black);
     color: var(--background-black);
+        button{
+            @include button;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
 }
 .person{
     position: relative;

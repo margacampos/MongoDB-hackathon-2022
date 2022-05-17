@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from "../../styles/Game.module.scss"
+import Dialog from './Dialog'
 import SelectEvent from './SelectEvent'
 
 type Props = {}
@@ -13,7 +14,7 @@ export default function GameScreen({}: Props) {
             </div>
         </div>
         <div className={styles.dialog}>
-            this is dialog
+            <Dialog/>
         </div>
         <div className={styles.display}>
             <div className={styles.inside}>
