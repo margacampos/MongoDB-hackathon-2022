@@ -1,7 +1,7 @@
 
 #screen{
     position: fixed;
-    background-color: var(--background-yellow);
+    background-color: var(--main-yellow);
     width: 100vw;
     height: 100vh;
     display: grid;
@@ -9,8 +9,7 @@
 }
 .display{
     .inside{
-        background-color: var(--background-yellow);
-        height: 65vh;
+        height: 75vh;
         padding: 2rem;
         display: flex;
         flex-direction: column;
@@ -24,7 +23,7 @@
     left: 0;
     max-width: 90%;
     min-width: 80%;
-    height: 30vh;
+    height: 20vh;
     background-color: var(--background-yellow);
     padding: 2rem;
     border-radius: 10px;
@@ -41,5 +40,18 @@
         background-color: rgb(102, 102, 102);
         max-width: 100%;
         height: auto;
+    }
+}
+
+@media (max-width:1300px) {
+    #screen{
+        grid-template-columns: 1fr;
+        grid-template-rows: 2fr 1fr;
+    }
+    .person{
+        grid-row: 2;
+        .img{
+          max-width: 300px;
+        }
     }
 }

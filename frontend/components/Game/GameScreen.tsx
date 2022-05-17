@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from "../../styles/Game.module.scss"
+import SelectEvent from './SelectEvent'
 
 type Props = {}
 
@@ -16,7 +17,7 @@ export default function GameScreen({}: Props) {
         </div>
         <div className={styles.display}>
             <div className={styles.inside}>
-                This is display
+                <SelectEvent/>
             </div>
         </div>
     </div>
