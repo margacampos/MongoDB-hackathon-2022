@@ -8,16 +8,16 @@ export interface ILayoutProps {
 
 export default function Layout (props: ILayoutProps) {
   const [game, setGame] = React.useState({
-    name: "Person's name",
-    punctuation: [5.00, 7.50],
-    media: 6.25,
-    doneEvents:["firstweek"],
-    achievements: ["eotm", "fired"]
+    name: "",
+    punctuation: [],
+    media: 0,
+    doneEvents:[],
+    achievements: ["fired"]
 })
   return (
     <div>
         <SettingsButton/>
-        <Achievements/>
+        <Achievements achieved={game.achievements}/>
       {props.children}
     </div>
   );
