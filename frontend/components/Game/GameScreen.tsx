@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import styles from "../../styles/Game.module.scss"
+import { Game } from '../Layout'
 import Dialog from './Dialog'
 import SelectEvent from './SelectEvent'
 
-type Props = {}
+type Props = {
+    gameObject:Game;
+}
 
-export default function GameScreen({}: Props) {
-    const [texto, setTexto]:any = useState(1)
-    const [butText, setButText] = useState("Next")
+export default function GameScreen({gameObject}: Props) {
+    const [texto, setTexto]:any = useState(null);
   return (
     <div id={styles.screen}>
         <div className={styles.person}>
@@ -16,7 +18,7 @@ export default function GameScreen({}: Props) {
             </div>
         </div>
         {texto!="closed" && <div className={styles.dialog}>
-            <Dialog text={texto} butText={butText} setText={setTexto}/>
+            <Dialog text={texto} setText={setTexto}/>
         </div>}
         <div className={styles.display}>
             <div className={styles.inside}>

@@ -1,8 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 type Props = {
-    text:number;
-    butText:string;
+    text:string[];
     setText:any
 }
 const dialog = [
@@ -34,17 +33,17 @@ const dialog = [
         "Also, I am looking forward to working with you. See you!"
     ]
 ]
-export default function Dialog({text, butText, setText}: Props) {
+export default function Dialog({text, setText}: Props) {
     const [numDialog, setNumDialog] = useState(0)
-    const [texto, setTexto] = useState(dialog[text][numDialog])
+    const [texto, setTexto] = useState(text[numDialog])
     const nextText = () =>{
         //Change to next piece of dialog
-        if (dialog[text].length == numDialog+1) return setText("closed");
+        if (text.length == numDialog+1) return setText("closed");
         setNumDialog(state=>state+1)
         
     }
     useEffect(() => {
-        setTexto(dialog[text][numDialog])
+        setTexto(text[numDialog])
       return () => {
         
       }
@@ -54,7 +53,7 @@ export default function Dialog({text, butText, setText}: Props) {
   return (
     <div>
         <p>{texto}</p>
-        {dialog[text][numDialog] && <button onClick={nextText}>{dialog[text].length == numDialog+1?"close":"next"}</button>}
+        {text[numDialog] && <button onClick={nextText}>{text.length == numDialog+1?"close":"next"}</button>}
     </div>
   )
 }
