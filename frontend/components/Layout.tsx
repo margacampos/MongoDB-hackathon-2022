@@ -12,7 +12,8 @@ export default function Layout (props: ILayoutProps) {
     punctuation: [],
     media: 0,
     doneEvents:[],
-    achievements: ["fired"]
+    achievements: ["fired"],
+    currentEvent: "firstweek"
 })
   return (
     <div>

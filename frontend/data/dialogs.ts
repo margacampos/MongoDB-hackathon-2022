@@ -1,3 +1,31 @@
+export interface Week{
+    salute: string[][];
+    goodbye: string[][];
+    comment: {
+        score: number;
+        comment: {
+            media:number;
+            comment:string[];
+        }[];
+    }[];
+    events: {
+        eventId: string;
+        dialogs: string[];
+    }[];
+}
+interface Dialog{
+        person: string;
+        firstWeek: {
+            salute: never[];
+            goodbye: never[];
+            comment: never[];
+            events: {
+                eventId: string;
+                dialogs: string[];
+            };
+        };
+        weeks:Week[];
+} 
 const NEWS_EDITOR = [
     
     [
@@ -54,5 +82,960 @@ const REPORTER = [
     ],
 
 ]
+const dialogs:Dialog[] = [
+    {
+        person:"MANAGING_EDITOR",
+        firstWeek: {
+            salute: [],
+            goodbye:[],
+            comment:[],
+            events:{
+                        eventId: "firstweek",
+                        //Each index leads to the next piece of dialog relating to this topic from the person
+                        dialogs:[
+                            "Welcome to your first week aboard! I am Grabielle and I love boats and the see",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    }
+        },
+        weeks:[
+            {
+                salute:[
+                    ["Hello"],
+                    ["Hi"]
+                ],
+                goodbye:[
+                    ["Good bye!"],
+                    ["See you!"]
+                ],
+                comment:[
+                    {
+                        score: 9,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 7,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    
+                    {
+                        score: 5,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 3,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 0,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                ],
+                events:[
+                    {
+                        eventId: "cupcakes",
+                        //Each index leads to the next piece of dialog relating to this topic from the person
+                        dialogs:[
+                            "I brought cupcakes today!",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    },
+                    {
+                        eventId: "missingcoat",
+                        dialogs:[
+                            "Anyway, I don't know where I placed my coat today. It is long and green. If you see it, Could you let me know?",
+                            "Turns out I left my coat at home, sorry for bothering you. I need to be more careful."
+                        ]
+                    },
+                    {
+                        eventId: "runninglate",
+                        dialogs:[
+                            "Thomas is late and we need the story anyway",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    },
+                    {
+                        eventId: "sick",
+                        dialogs:[
+                            "Jakub is sick today, I need you to work on the title alone today. Do you think you can do this?",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    }
+                ]
+            },
+            
+            
+        ]
+    },
+    {
+        person: "NEWS_EDITOR",
+        firstWeek: {
+            salute: [],
+            goodbye:[],
+            comment:[],
+            events:{
+                        eventId: "firstweek",
+                        //Each index leads to the next piece of dialog relating to this topic from the person
+                        dialogs:[
+                            "Welcome to your first week aboard! I am Grabielle and I love boats and the see",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    }
+        },
+        weeks:[
+            {
+                salute:[
+                    ["Hello"],
+                    ["Hi"]
+                ],
+                goodbye:[
+                    ["Good bye!"],
+                    ["See you!"]
+                ],
+                comment:[
+                    {
+                        score: 9,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 7,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    
+                    {
+                        score: 5,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 3,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 0,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                ],
+                events:[
+                    {
+                        eventId: "cupcakes",
+                        //Each index leads to the next piece of dialog relating to this topic from the person
+                        dialogs:[
+                            "I brought cupcakes today!",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    },
+                    {
+                        eventId: "missingcoat",
+                        dialogs:[
+                            "Anyway, I don't know where I placed my coat today. It is long and green. If you see it, Could you let me know?",
+                            "Turns out I left my coat at home, sorry for bothering you. I need to be more careful."
+                        ]
+                    },
+                    {
+                        eventId: "runninglate",
+                        dialogs:[
+                            "Thomas is late and we need the story anyway",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    },
+                    {
+                        eventId: "sick",
+                        dialogs:[
+                            "Jakub is sick today, I need you to work on the title alone today. Do you think you can do this?",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    }
+                ]
+            },
+            
+            
+        ]
+    },
+    {
+        person:"ART_EDITOR",
+        firstWeek: {
+            salute: [],
+            goodbye:[],
+            comment:[],
+            events:{
+                        eventId: "firstweek",
+                        //Each index leads to the next piece of dialog relating to this topic from the person
+                        dialogs:[
+                            "Welcome to your first week aboard! I am Grabielle and I love boats and the see",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    }
+        },
+        weeks:[
+            {
+                salute:[
+                    ["Hello"],
+                    ["Hi"]
+                ],
+                goodbye:[
+                    ["Good bye!"],
+                    ["See you!"]
+                ],
+                comment:[
+                    {
+                        score: 9,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 7,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    
+                    {
+                        score: 5,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 3,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 0,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                ],
+                events:[
+                    {
+                        eventId: "cupcakes",
+                        //Each index leads to the next piece of dialog relating to this topic from the person
+                        dialogs:[
+                            "I brought cupcakes today!",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    },
+                    {
+                        eventId: "missingcoat",
+                        dialogs:[
+                            "Anyway, I don't know where I placed my coat today. It is long and green. If you see it, Could you let me know?",
+                            "Turns out I left my coat at home, sorry for bothering you. I need to be more careful."
+                        ]
+                    },
+                    {
+                        eventId: "runninglate",
+                        dialogs:[
+                            "Thomas is late and we need the story anyway",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    },
+                    {
+                        eventId: "sick",
+                        dialogs:[
+                            "Jakub is sick today, I need you to work on the title alone today. Do you think you can do this?",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    }
+                ]
+            },
+            
+            
+        ]
+    },
+    {
+        person:"REPORTER",
+        firstWeek: {
+            salute: [],
+            goodbye:[],
+            comment:[],
+            events:{
+                        eventId: "firstweek",
+                        //Each index leads to the next piece of dialog relating to this topic from the person
+                        dialogs:[
+                            "Welcome to your first week aboard! I am Grabielle and I love boats and the see",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    }
+        },
+        weeks:[
+            {
+                salute:[
+                    ["Hello"],
+                    ["Hi"]
+                ],
+                goodbye:[
+                    ["Good bye!"],
+                    ["See you!"]
+                ],
+                comment:[
+                    {
+                        score: 9,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 7,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    
+                    {
+                        score: 5,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 3,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 0,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                ],
+                events:[
+                    {
+                        eventId: "cupcakes",
+                        //Each index leads to the next piece of dialog relating to this topic from the person
+                        dialogs:[
+                            "I brought cupcakes today!",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    },
+                    {
+                        eventId: "missingcoat",
+                        dialogs:[
+                            "Anyway, I don't know where I placed my coat today. It is long and green. If you see it, Could you let me know?",
+                            "Turns out I left my coat at home, sorry for bothering you. I need to be more careful."
+                        ]
+                    },
+                    {
+                        eventId: "runninglate",
+                        dialogs:[
+                            "Thomas is late and we need the story anyway",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    },
+                    {
+                        eventId: "sick",
+                        dialogs:[
+                            "Jakub is sick today, I need you to work on the title alone today. Do you think you can do this?",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    }
+                ]
+            },
+            
+            
+        ]
+    },
+    {
+        person:"EDITOR_IN_CHIEF",
+        firstWeek: {
+            salute: [],
+            goodbye:[],
+            comment:[],
+            events:{
+                        eventId: "firstweek",
+                        //Each index leads to the next piece of dialog relating to this topic from the person
+                        dialogs:[
+                            "Welcome to your first week aboard! I am Grabielle and I love boats and the see",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    }
+        },
+        weeks:[
+            {
+                salute:[
+                    ["Hello"],
+                    ["Hi"]
+                ],
+                goodbye:[
+                    ["Good bye!"],
+                    ["See you!"]
+                ],
+                comment:[
+                    {
+                        score: 9,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 7,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    
+                    {
+                        score: 5,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 3,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                    {
+                        score: 0,
+                        comment: [
+                            {
+                                media:9,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:7,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:5,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:3,
+                                comment: ["You did super great last week!"]
+                            },
+                            {
+                                media:0,
+                                comment: ["You did super great last week!"]
+                            },
+                    ]
+                    },
+                ],
+                events:[
+                    {
+                        eventId: "cupcakes",
+                        //Each index leads to the next piece of dialog relating to this topic from the person
+                        dialogs:[
+                            "I brought cupcakes today!",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    },
+                    {
+                        eventId: "missingcoat",
+                        dialogs:[
+                            "Anyway, I don't know where I placed my coat today. It is long and green. If you see it, Could you let me know?",
+                            "Turns out I left my coat at home, sorry for bothering you. I need to be more careful."
+                        ]
+                    },
+                    {
+                        eventId: "runninglate",
+                        dialogs:[
+                            "Thomas is late and we need the story anyway",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    },
+                    {
+                        eventId: "sick",
+                        dialogs:[
+                            "Jakub is sick today, I need you to work on the title alone today. Do you think you can do this?",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    }
+                ]
+            },
+            
+            
+        ]
+    },
 
-export {NEWS_EDITOR}
+]
+const eventDialogOrder = [
+    {
+        event:"firstweek",
+        week: -1,
+        order: ["MANAGING_EDITOR", "NEWS_EDITOR", "SELECT_EVENT", "REPORTER", "ART_DIRECTOR","SELECT_TITLE", "NEWS_EDITOR", "ART_DIRECTOR", "SELECT_LAYOUT", "ART_DIRECTOR", "MANAGING_EDITOR", "SCORE_SCREEN"]
+    },
+
+]
+export {dialogs, eventDialogOrder}
