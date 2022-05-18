@@ -12,13 +12,19 @@ import SelectTitle from './SelectTitle'
 type Props = {
     gameObject:Game;
     setGameObject:React.Dispatch<React.SetStateAction<Game>>;
+    setStart:React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function GameScreen({gameObject, setGameObject}: Props) {
+export default function GameScreen({gameObject, setGameObject, setStart}: Props) {
     const [texto, setTexto]:any = useState("closed");
     const [game, setGame]:any = useState({});
     const finishWeek = () =>{
+        //Quit game
+        setStart(false)
+    }
+    const continueGame = () =>{
         //Finish week and update gameObject
+        
     }
     const getNextInteraction = (punctuation?:number) =>{
         console.log("next Interaction")
@@ -126,7 +132,7 @@ export default function GameScreen({gameObject, setGameObject}: Props) {
         </div>
         :game.currentActivity==="SCORE_SCREEN"?
         <div>
-            <FinishWeek finish={finishWeek}/>
+            <FinishWeek finish={finishWeek} continueGame={continueGame}/>
         </div>:
         <div>
             <p>What is your name?</p>
