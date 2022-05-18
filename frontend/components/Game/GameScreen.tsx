@@ -31,6 +31,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         const index = game.order.indexOf(game.currentActivity)
         if(!punctuation)return(setGame((state:any)=>{
             return({
+                tutorial:state.tutorial,
                 name: state.name,
                 punctuation: state.punctuation,
                 selectEvent: state.selectEvent,
@@ -83,7 +84,8 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
           currentEvent: getEvent(gameObject.punctuation.length-1).event,
           currentActivity:current,
           order: order,
-          currentMoment:gameObject.currentMoment
+          currentMoment:gameObject.currentMoment,
+          tutorial:true
     })
       return () => {
       }
@@ -92,7 +94,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         if(game){
            console.log("useEffect is called for dialog")
            if (game.currentActivity==="MANAGING_EDITOR"||game.currentActivity==="NEWS_EDITOR"||game.currentActivity==="ART_DIRECTOR"||game.currentActivity==="REPORTER"||game.currentActivity==="EDITOR_IN_CHIEF"){
-               setTexto(genDialog(game.currentMoment,game.punctuation.length-1, game.currentEvent,game.currentActivity,game.punctuation[game.punctuation.length-1],game.media))
+               setTexto(genDialog(game.turorial,game.currentMoment,game.punctuation.length-1, game.currentEvent,game.currentActivity,game.punctuation[game.punctuation.length-1],game.media))
            } 
         }
         return () =>{
