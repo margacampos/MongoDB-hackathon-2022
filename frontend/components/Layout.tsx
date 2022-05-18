@@ -8,10 +8,13 @@ export interface ILayoutProps {
 export interface Game{
   name: string;
   punctuation: number[];
+  selectEvent:number[];
+  selectTitle:number[];
   media: number;
   doneEvents: string[];
   achievements: string[];
   currentEvent: string;
+  currentActivity:string;
   order: string[];
   currentMoment: string;
 }
@@ -19,12 +22,18 @@ export default function Layout (props: ILayoutProps) {
   const [game, setGame]:[Game,React.Dispatch<React.SetStateAction<Game>>] = React.useState({
     name: "",
     punctuation: [0],
+    selectEvent:[0],
+    selectTitle:[0],
     media: 0,
     doneEvents:[""],
     achievements: [""],
+    //Event happening on dialog
     currentEvent: "firstweek",
     order:[""],
-    currentMoment:"start"
+    //Name of activity as seen in order
+    currentActivity:"MANAGING_EDITOR",
+    //Moment in which we are playing
+    currentMoment:"START"
 })
   return (
     <div>
