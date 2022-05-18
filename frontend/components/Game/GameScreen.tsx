@@ -21,6 +21,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     const checkForAchievements=()=>{
         //Check on gameObject for achievements and activate respective popUps
     }
+
     const finishWeek = (selectTitle:number, selectEvent:number, punctuation:number) =>{
         //Quit game
         setGameObject((state)=>{
@@ -37,6 +38,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         })
         setStart(false)
     }
+
     const continueGame = (selectTitle:number, selectEvent:number, punctuation:number) =>{
         //Finish week and update gameObject
         setGameObject((state)=>{
@@ -52,6 +54,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
             })
         })
     }
+
     const getNextInteraction = (punctuation?:number) =>{
         console.log("next Interaction")
         const index = game.order.indexOf(game.currentActivity)
@@ -88,6 +91,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         })
         
     }
+
     useEffect(() => {
         console.log("starting useEffect")
         let order = getEvent(0).order;
@@ -105,26 +109,30 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
       return () => {
       }
     }, []);
+
     useEffect(()=>{
         let week = gameObject.punctuation.length%4===0?3:(gameObject.punctuation.length%4)-1;
         if(game){
            console.log("useEffect is called for dialog")
            if (game.currentActivity==="MANAGING_EDITOR"||game.currentActivity==="NEWS_EDITOR"||game.currentActivity==="ART_DIRECTOR"||game.currentActivity==="REPORTER"||game.currentActivity==="EDITOR_IN_CHIEF"){
-               setTexto(genDialog(gameObject.tutorial,game.currentMoment,week,game.event, game.currentActivity, game.currentMoment==="START"?gameObject.punctuation[gameObject.punctuation.length-1]:game.currentMoment==="SELECT_TITLE"?game.selectTitle:game.currentMoment==="SELECT_EVENT"?game.selectEvent:(game.selectEvent+game.selectTitle)/2, gameObject.media))
+               setTexto(genDialog(gameObject.tutorial,game.currentMoment,week,game.currentEvent, game.currentActivity, game.currentMoment==="START"?gameObject.punctuation[gameObject.punctuation.length-1]:game.currentMoment==="SELECT_TITLE"?game.selectTitle:game.currentMoment==="SELECT_EVENT"?game.selectEvent:(game.selectEvent+game.selectTitle)/2, gameObject.media))
            } 
         }
         return () =>{
 
         }
     }, [game])
+
     useEffect(() => {
-        let order = getEvent(0).order;
-        let current = order[0];
         let week = gameObject.punctuation.length%4===0?3:(gameObject.punctuation.length%4)-1;
+        let event = getEvent(week)
+        let order = event.order;
+        let current = order[week];
+
         setGame({
                 selectEvent: 0,
                 selectTitle: 0,
-                currentEvent: getEvent(week).event,
+                currentEvent: event.event,
                 currentActivity:current,
                 order: order,
                 currentMoment:"START"

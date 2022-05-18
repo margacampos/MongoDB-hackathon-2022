@@ -28,6 +28,7 @@ const genDialog = (tutorial:boolean, type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"A
 
 const getEvent = (weekNum:number, lastWeekPoints?:number, media?:number) => {
     const weekArr = eventDialogOrder.filter(i=>i.week===weekNum-1)
+    console.log(weekArr)
     const ranNum = Math.floor(Math.random()*weekArr.length);
     return weekArr[ranNum];
 }
@@ -43,19 +44,21 @@ const getComment = (weekInfo:Week, type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFT
     if (!comment)return;
     let defaultComment = comment.comment[0].comment[type];
     if(!defaultComment)return;
+    let random1 = Math.round(Math.random()*defaultComment.length-1)
     if(media){
         const result = comment.comment.find(i=>i.media<media)
-        let random1 = Math.round(Math.random()*defaultComment.length-1)
         if(!result) return defaultComment[random1]
         let obj = result.comment[type];
         if (!obj) return defaultComment[random1];
         let random = Math.round(Math.random()*obj.length-1)
+        console.log("Comment: ", obj[random])
         return obj[random];
     }
-    return ;
+    return defaultComment[random1];
 }
 const getEventText = (weekInfo:Week, type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT", event:string) =>{
     let result = weekInfo.events.find(i=>i.eventId===event);
+    console.log("Event: ",event)
     console.log(result)
     if(!result)return;
     let obj = result.dialogs[type];
