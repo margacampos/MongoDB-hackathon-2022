@@ -15,10 +15,7 @@ export interface Game{
   media: number;
   doneEvents: string[];
   achievements: any;
-  currentEvent: string;
-  currentActivity:string;
-  order: string[];
-  currentMoment: any;
+  tutorial:any;
 }
 export default function Layout (props: ILayoutProps) {
   const [loading, setLoading] = React.useState(true);
@@ -31,13 +28,7 @@ export default function Layout (props: ILayoutProps) {
     media: 0,
     doneEvents:[""],
     achievements: [],
-    //Event happening on dialog
-    currentEvent: "firstweek",
-    order:[""],
-    //Name of activity as seen in order
-    currentActivity:"",
-    //Moment in which we are playing
-    currentMoment:"START"
+    tutorial: true
 })
 React.useEffect(() => {
   console.log("layout")

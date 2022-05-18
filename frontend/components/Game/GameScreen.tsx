@@ -18,13 +18,36 @@ type Props = {
 export default function GameScreen({gameObject, setGameObject, setStart}: Props) {
     const [texto, setTexto]:any = useState("closed");
     const [game, setGame]:any = useState({});
-    const finishWeek = () =>{
+    const finishWeek = (selectTitle:number, selectEvent:number, punctuation:number) =>{
         //Quit game
+        setGameObject((state)=>{
+            return({
+                name: state.name,
+                selectTitle: [...state.selectTitle, selectTitle],
+                selectEvent: [...state.selectEvent, selectEvent],
+                punctuation: [...state.punctuation, punctuation],
+                media: (state.media+punctuation)/2,
+                doneEvents: [...state.doneEvents, game.currentEvent],
+                achievements: state.achievements,
+                tutorial:false
+            })
+        })
         setStart(false)
     }
-    const continueGame = () =>{
+    const continueGame = (selectTitle:number, selectEvent:number, punctuation:number) =>{
         //Finish week and update gameObject
-        
+        setGameObject((state)=>{
+            return({
+                name: state.name,
+                selectTitle: [...state.selectTitle, selectTitle],
+                selectEvent: [...state.selectEvent, selectEvent],
+                punctuation: [...state.punctuation, punctuation],
+                media: (state.media+punctuation)/2,
+                doneEvents: [...state.doneEvents, game.currentEvent],
+                achievements: state.achievements,
+                tutorial:false
+            })
+        })
     }
     const getNextInteraction = (punctuation?:number) =>{
         console.log("next Interaction")
@@ -64,28 +87,17 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     }
     useEffect(() => {
         console.log("starting useEffect")
-        let order,current;
-        if(gameObject.order.length<=1){
-            order = getEvent(0).order;
-            current = order[0]
-        }else{
-            order =gameObject.order;
-            current = gameObject.currentActivity;
-        }
+        let order = getEvent(0).order;
+        let current = order[0]
+        let week = gameObject.punctuation.length%4===0?3:(gameObject.punctuation.length%4)-1;
         
       setGame({
-          name: gameObject.name,
-          punctuation: gameObject.punctuation,
-          selectEvent:gameObject.selectEvent,
-          selectTitle: gameObject.selectTitle,
-          media: gameObject.media,
-          doneEvents:gameObject.doneEvents,
-          achievements: gameObject.achievements,
-          currentEvent: getEvent(gameObject.punctuation.length-1).event,
+          selectEvent:0,
+          selectTitle: 0,
+          currentEvent: getEvent(week).event,
           currentActivity:current,
           order: order,
-          currentMoment:gameObject.currentMoment,
-          tutorial:true
+          currentMoment:"START"
     })
       return () => {
       }
@@ -94,13 +106,29 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         if(game){
            console.log("useEffect is called for dialog")
            if (game.currentActivity==="MANAGING_EDITOR"||game.currentActivity==="NEWS_EDITOR"||game.currentActivity==="ART_DIRECTOR"||game.currentActivity==="REPORTER"||game.currentActivity==="EDITOR_IN_CHIEF"){
-               setTexto(genDialog(game.turorial,game.currentMoment,game.punctuation.length-1, game.currentEvent,game.currentActivity,game.punctuation[game.punctuation.length-1],game.media))
+               setTexto(genDialog(gameObject.tutorial,game.currentMoment,game.currentMoment==="START"?gameObject.punctuation.length-1:game.currentMoment==="SELECT_TITLE"?game.selectTitle:game.currentMoment==="SELECT_EVENT"?game.selectEvent:(game.selectEvent+game.selectTitle)/2, game.currentEvent,game.currentActivity,game.punctuation[game.punctuation.length-1],game.media))
            } 
         }
         return () =>{
 
         }
     }, [game])
+    useEffect(() => {
+        let order = getEvent(0).order;
+        let current = order[0];
+        let week = gameObject.punctuation.length%4===0?3:(gameObject.punctuation.length%4)-1;
+        setGame({
+                selectEvent: 0,
+                selectTitle: 0,
+                currentEvent: getEvent(week).event,
+                currentActivity:current,
+                order: order,
+                currentMoment:"START"
+            })
+      return () => {
+        
+      }
+    }, [gameObject])
     
   return (
       <div>
