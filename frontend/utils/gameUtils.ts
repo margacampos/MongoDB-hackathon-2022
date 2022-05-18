@@ -44,5 +44,5 @@ const getEventText = (weekInfo:Week, event:string) =>{
     if(!result)return;
     return result.dialogs;
 }
-export {getEvent}
+export {getEvent, genDialog}
 
