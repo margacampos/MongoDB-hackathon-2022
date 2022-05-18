@@ -480,7 +480,7 @@ const dialogs:Dialog[] = [
         ]
     },
     {
-        person:"ART_EDITOR",
+        person:"ART_DIRECTOR",
         firstWeek: {
             salute: [],
             goodbye:[],

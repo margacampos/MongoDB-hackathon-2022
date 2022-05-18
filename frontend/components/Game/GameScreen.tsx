@@ -17,6 +17,9 @@ type Props = {
 export default function GameScreen({gameObject, setGameObject}: Props) {
     const [texto, setTexto]:any = useState("closed");
     const [game, setGame]:any = useState({});
+    const finishWeek = () =>{
+        //Finish week and update gameObject
+    }
     const getNextInteraction = (punctuation?:number) =>{
         console.log("next Interaction")
         const index = game.order.indexOf(game.currentActivity)
@@ -31,7 +34,7 @@ export default function GameScreen({gameObject, setGameObject}: Props) {
                 achievements: state.achievements,
                 currentEvent: state.currentEvent,
                 currentActivity: state.order[index+1],
-                order: state.order,
+                order: state.order.slice(index),
                 currentMoment: state.currentActivity==="SELECT_EVENT"?"AFTER_EVENT":state.currentActivity==="SELECT_TITLE"?"AFTER_TITLE":state.currentActivity==="SELECT_LAYOUT"?"AFTER_LAYOUT":state.currentMoment
             })
         }));
