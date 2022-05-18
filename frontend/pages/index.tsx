@@ -26,7 +26,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <Header/>
         <div id={styles.image}>
-          <SelectEvent/>
+          {/* <SelectEvent/> */}
         </div>
         <Buttons buttons={homeButtons}/>
         {/* <EventGenerator/>

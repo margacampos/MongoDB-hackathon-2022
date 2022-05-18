@@ -25,7 +25,7 @@ const getEvent = (weekNum:number, lastWeekPoints?:number, media?:number) => {
 }
 const getSalute = (posDialogs:Week, type:"salute"|"goodbye",moment:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT") =>{
     //Get saludo
-    const ranNum = Math.round(Math.random());
+    const ranNum = Math.floor(Math.random()*posDialogs[type][moment].length);
     console.log(ranNum)
     return posDialogs[type][moment][ranNum];
 }

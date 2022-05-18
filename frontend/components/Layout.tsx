@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Achievements from './Game/Achievements';
 import GameScreen from './Game/GameScreen';
+import Loading from './Loading';
 import SettingsButton from './settings/SettingsButton';
 
 export interface ILayoutProps {
@@ -20,6 +21,7 @@ export interface Game{
   currentMoment: any;
 }
 export default function Layout (props: ILayoutProps) {
+  const [loading, setLoading] = React.useState(true);
   const [game, setGame]:[Game,React.Dispatch<React.SetStateAction<Game>>] = React.useState({
     name: "",
     punctuation: [0],
@@ -32,16 +34,28 @@ export default function Layout (props: ILayoutProps) {
     currentEvent: "firstweek",
     order:[""],
     //Name of activity as seen in order
-    currentActivity:"MANAGING_EDITOR",
+    currentActivity:"",
     //Moment in which we are playing
     currentMoment:"START"
 })
+React.useEffect(() => {
+  console.log("layout")
+  setLoading(false)
+  return () => {
+    
+  }
+}, [])
+
   return (
     <div>
+      { !loading?
+      <div>
         <SettingsButton/>
         <Achievements achieved={game.achievements}/>
         <GameScreen gameObject={game} setGameObject={setGame}/>
       {props.children}
+      </div>  
+    :<Loading/>}
     </div>
   );
 }
