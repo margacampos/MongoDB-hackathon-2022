@@ -7,11 +7,12 @@ import SelectEvent from './SelectEvent'
 
 type Props = {
     gameObject:Game;
-    setGame:React.Dispatch<React.SetStateAction<Game>>;
+    setGameObject:React.Dispatch<React.SetStateAction<Game>>;
 }
 
-export default function GameScreen({gameObject, setGame}: Props) {
-    const [texto, setTexto]:any = useState(null);
+export default function GameScreen({gameObject, setGameObject}: Props) {
+    const [texto, setTexto]:any = useState("closed");
+    const [game, setGame] = useState(gameObject);
     const getNextInteraction = (punctuation:number) =>{
         const index = gameObject.order.indexOf(gameObject.currentActivity)
         setGame((state)=>{
@@ -32,6 +33,7 @@ export default function GameScreen({gameObject, setGame}: Props) {
         
     }
     useEffect(() => {
+        console.log("starting useEffect")
       setGame((state)=>{
           return({
           name: state.name,
@@ -50,10 +52,11 @@ export default function GameScreen({gameObject, setGame}: Props) {
       return () => {
         
       }
-    });
+    }, []);
     useEffect(()=>{
+        console.log("useEffect is called for dialog")
         if (gameObject.currentActivity==="MANAGING_EDITOR"||gameObject.currentActivity==="NEWS_EDITOR"||gameObject.currentActivity==="ART_DIRECTOR"||gameObject.currentActivity==="REPORTER"||gameObject.currentActivity==="EDITOR_IN_CHIEF"){
-            setTexto(genDialog(gameObject.currentMoment,gameObject.punctuation.length-2, gameObject.currentEvent,gameObject.currentActivity,gameObject.punctuation[gameObject.punctuation.length-1],gameObject.media))
+            setTexto(genDialog(gameObject.currentMoment,gameObject.punctuation.length-1, gameObject.currentEvent,gameObject.currentActivity,gameObject.punctuation[gameObject.punctuation.length-1],gameObject.media))
         }
     }, [gameObject])
     
@@ -64,14 +67,30 @@ export default function GameScreen({gameObject, setGame}: Props) {
                 This is person
             </div>
         </div>
-        {texto!="closed" && <div className={styles.dialog}>
+        {texto!="closed" ? <div className={styles.dialog}>
             <Dialog text={texto} setText={setTexto}/>
-        </div>}
-        <div className={styles.display}>
-            <div className={styles.inside}>
-                <SelectEvent/>
-            </div>
         </div>
+        :game.currentActivity==="SELECT_EVENT"?
+        <div>
+            <SelectEvent/>
+        </div>
+        :game.currentActivity==="SELECT_TITLE"?
+        <div>
+
+        </div>
+        :game.currentActivity==="SELECT_LAYOUT"?
+        <div>
+
+        </div>
+        :game.currentActivity==="SCORE_SCREEN"?
+        <div>
+
+        </div>:
+        <div>
+            <p>What is your name?</p>
+            <input type="text" />
+        </div>
+    }
     </div>
   )
 }

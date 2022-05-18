@@ -1,6 +1,16 @@
 export interface Week{
-    salute: string[][];
-    goodbye: string[][];
+    salute: {
+        START:string[][];
+        AFTER_EVENT:string[][];
+        AFTER_TITLE:string[][];
+        AFTER_LAYOUT:string[][];
+    };
+    goodbye: {
+        START:string[][];
+        AFTER_EVENT:string[][];
+        AFTER_TITLE:string[][];
+        AFTER_LAYOUT:string[][];
+    };
     comment: {
         score: number;
         comment: {
@@ -100,14 +110,18 @@ const dialogs:Dialog[] = [
         },
         weeks:[
             {
-                salute:[
-                    ["Hello"],
-                    ["Hi"]
-                ],
-                goodbye:[
-                    ["Good bye!"],
-                    ["See you!"]
-                ],
+                salute:{
+                    START:[["Hello"]],
+                    AFTER_EVENT:[["Hi"]],
+                    AFTER_TITLE:[["haoh"]],
+                    AFTER_LAYOUT:[["haha"]]
+                },
+                goodbye:{
+                    START:[["Goodbye"]],
+                    AFTER_EVENT:[["Good bye"]],
+                    AFTER_TITLE:[["Bye"]],
+                    AFTER_LAYOUT:[["Agur yogur"]]
+                },
                 comment:[
                     {
                         score: 9,
@@ -289,14 +303,18 @@ const dialogs:Dialog[] = [
         },
         weeks:[
             {
-                salute:[
-                    ["Hello"],
-                    ["Hi"]
-                ],
-                goodbye:[
-                    ["Good bye!"],
-                    ["See you!"]
-                ],
+                salute:{
+                    START:[["Hello"]],
+                    AFTER_EVENT:[["Hi"]],
+                    AFTER_TITLE:[["haoh"]],
+                    AFTER_LAYOUT:[["haha"]]
+                },
+                goodbye:{
+                    START:[["Goodbye"]],
+                    AFTER_EVENT:[["Good bye"]],
+                    AFTER_TITLE:[["Bye"]],
+                    AFTER_LAYOUT:[["Agur yogur"]]
+                },
                 comment:[
                     {
                         score: 9,
@@ -478,14 +496,18 @@ const dialogs:Dialog[] = [
         },
         weeks:[
             {
-                salute:[
-                    ["Hello"],
-                    ["Hi"]
-                ],
-                goodbye:[
-                    ["Good bye!"],
-                    ["See you!"]
-                ],
+                salute:{
+                    START:[["Hello"]],
+                    AFTER_EVENT:[["Hi"]],
+                    AFTER_TITLE:[["haoh"]],
+                    AFTER_LAYOUT:[["haha"]]
+                },
+                goodbye:{
+                    START:[["Goodbye"]],
+                    AFTER_EVENT:[["Good bye"]],
+                    AFTER_TITLE:[["Bye"]],
+                    AFTER_LAYOUT:[["Agur yogur"]]
+                },
                 comment:[
                     {
                         score: 9,
@@ -667,14 +689,18 @@ const dialogs:Dialog[] = [
         },
         weeks:[
             {
-                salute:[
-                    ["Hello"],
-                    ["Hi"]
-                ],
-                goodbye:[
-                    ["Good bye!"],
-                    ["See you!"]
-                ],
+                salute:{
+                    START:[["Hello"]],
+                    AFTER_EVENT:[["Hi"]],
+                    AFTER_TITLE:[["haoh"]],
+                    AFTER_LAYOUT:[["haha"]]
+                },
+                goodbye:{
+                    START:[["Goodbye"]],
+                    AFTER_EVENT:[["Good bye"]],
+                    AFTER_TITLE:[["Bye"]],
+                    AFTER_LAYOUT:[["Agur yogur"]]
+                },
                 comment:[
                     {
                         score: 9,
@@ -856,14 +882,18 @@ const dialogs:Dialog[] = [
         },
         weeks:[
             {
-                salute:[
-                    ["Hello"],
-                    ["Hi"]
-                ],
-                goodbye:[
-                    ["Good bye!"],
-                    ["See you!"]
-                ],
+                salute:{
+                    START:[["Hello"]],
+                    AFTER_EVENT:[["Hi"]],
+                    AFTER_TITLE:[["haoh"]],
+                    AFTER_LAYOUT:[["haha"]]
+                },
+                goodbye:{
+                    START:[["Goodbye"]],
+                    AFTER_EVENT:[["Good bye"]],
+                    AFTER_TITLE:[["Bye"]],
+                    AFTER_LAYOUT:[["Agur yogur"]]
+                },
                 comment:[
                     {
                         score: 9,

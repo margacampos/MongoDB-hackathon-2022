@@ -7,7 +7,7 @@ const Display: NextPage = () => {
     
     return (
       <div>
-        <GameScreen/>
+        {/* <GameScreen gameObject={game} setGame={setGame}/> */}
       </div>
     )
   }

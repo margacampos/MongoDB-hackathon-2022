@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Achievements from './Game/Achievements';
+import GameScreen from './Game/GameScreen';
 import SettingsButton from './settings/SettingsButton';
 
 export interface ILayoutProps {
@@ -12,11 +13,11 @@ export interface Game{
   selectTitle:number[];
   media: number;
   doneEvents: string[];
-  achievements: string[];
+  achievements: any;
   currentEvent: string;
   currentActivity:string;
   order: string[];
-  currentMoment: string;
+  currentMoment: any;
 }
 export default function Layout (props: ILayoutProps) {
   const [game, setGame]:[Game,React.Dispatch<React.SetStateAction<Game>>] = React.useState({
@@ -26,7 +27,7 @@ export default function Layout (props: ILayoutProps) {
     selectTitle:[0],
     media: 0,
     doneEvents:[""],
-    achievements: [""],
+    achievements: [],
     //Event happening on dialog
     currentEvent: "firstweek",
     order:[""],
@@ -39,6 +40,7 @@ export default function Layout (props: ILayoutProps) {
     <div>
         <SettingsButton/>
         <Achievements achieved={game.achievements}/>
+        <GameScreen gameObject={game} setGameObject={setGame}/>
       {props.children}
     </div>
   );
