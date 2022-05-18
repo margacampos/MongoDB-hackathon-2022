@@ -18,6 +18,9 @@ type Props = {
 export default function GameScreen({gameObject, setGameObject, setStart}: Props) {
     const [texto, setTexto]:any = useState("closed");
     const [game, setGame]:any = useState({});
+    const checkForAchievements=()=>{
+        //Check on gameObject for achievements and activate respective popUps
+    }
     const finishWeek = (selectTitle:number, selectEvent:number, punctuation:number) =>{
         //Quit game
         setGameObject((state)=>{
@@ -103,10 +106,11 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
       }
     }, []);
     useEffect(()=>{
+        let week = gameObject.punctuation.length%4===0?3:(gameObject.punctuation.length%4)-1;
         if(game){
            console.log("useEffect is called for dialog")
            if (game.currentActivity==="MANAGING_EDITOR"||game.currentActivity==="NEWS_EDITOR"||game.currentActivity==="ART_DIRECTOR"||game.currentActivity==="REPORTER"||game.currentActivity==="EDITOR_IN_CHIEF"){
-               setTexto(genDialog(gameObject.tutorial,game.currentMoment,game.currentMoment==="START"?gameObject.punctuation.length-1:game.currentMoment==="SELECT_TITLE"?game.selectTitle:game.currentMoment==="SELECT_EVENT"?game.selectEvent:(game.selectEvent+game.selectTitle)/2, game.currentEvent,game.currentActivity,game.punctuation[game.punctuation.length-1],game.media))
+               setTexto(genDialog(gameObject.tutorial,game.currentMoment,week,game.event, game.currentActivity, game.currentMoment==="START"?gameObject.punctuation[gameObject.punctuation.length-1]:game.currentMoment==="SELECT_TITLE"?game.selectTitle:game.currentMoment==="SELECT_EVENT"?game.selectEvent:(game.selectEvent+game.selectTitle)/2, gameObject.media))
            } 
         }
         return () =>{
@@ -125,6 +129,8 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
                 order: order,
                 currentMoment:"START"
             })
+
+        checkForAchievements()
       return () => {
         
       }
