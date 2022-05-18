@@ -67,7 +67,6 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         if(gameObject.order.length<=1){
             order = getEvent(0).order;
             current = order[0]
-        console.log(order, current)
         }else{
             order =gameObject.order;
             current = gameObject.currentActivity;
@@ -81,7 +80,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
           media: gameObject.media,
           doneEvents:gameObject.doneEvents,
           achievements: gameObject.achievements,
-          currentEvent: gameObject.currentEvent,
+          currentEvent: getEvent(gameObject.punctuation.length-1).event,
           currentActivity:current,
           order: order,
           currentMoment:gameObject.currentMoment

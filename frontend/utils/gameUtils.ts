@@ -26,7 +26,6 @@ const getEvent = (weekNum:number, lastWeekPoints?:number, media?:number) => {
 const getSalute = (posDialogs:Week, type:"salute"|"goodbye",moment:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT") =>{
     //Get saludo
     const ranNum = Math.floor(Math.random()*posDialogs[type][moment].length);
-    console.log(ranNum)
     return posDialogs[type][moment][ranNum];
 }
 const getComment = (weekInfo:Week, lastWeekPoints:number, media?:number) =>{
@@ -41,6 +40,7 @@ const getComment = (weekInfo:Week, lastWeekPoints:number, media?:number) =>{
 }
 const getEventText = (weekInfo:Week, event:string) =>{
     let result = weekInfo.events.find(i=>i.eventId===event);
+    console.log(result)
     if(!result)return;
     return result.dialogs;
 }

@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { Game } from '../Layout';
 
 type Props = {
     text:string[];
@@ -39,24 +38,6 @@ const dialog = [
 export default function Dialog({text, setText, getNextInteraction}: Props) {
     const [numDialog, setNumDialog] = useState(0)
     const [texto, setTexto] = useState(text[numDialog])
-    // const nextInteraction=()=>{
-    //     const index = gameObject.order.indexOf(gameObject.currentActivity)
-    //     setGame((state)=>{
-    //         return({
-    //             name: state.name,
-    //             punctuation: state.punctuation,
-    //             selectEvent: state.selectEvent,
-    //             selectTitle: state.selectTitle,
-    //             media: state.media,
-    //             doneEvents: state.doneEvents,
-    //             achievements: state.achievements,
-    //             currentEvent: state.currentEvent,
-    //             currentActivity: state.order[index+1],
-    //             order: state.order,
-    //             currentMoment: state.currentActivity==="SELECT_EVENT"?"AFTER_EVENT":state.currentActivity==="SELECT_TITLE"?"AFTER_TITLE":state.currentActivity==="SELECT_LAYOUT"?"AFTER_LAYOUT":state.currentMoment
-    //         })
-    //     })
-    // }
     const nextText = () =>{
         //Change to next piece of dialog
         if (text.length == numDialog+1){

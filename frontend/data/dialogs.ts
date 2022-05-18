@@ -26,9 +26,9 @@ export interface Week{
 interface Dialog{
         person: string;
         firstWeek: {
-            salute: never[];
-            goodbye: never[];
-            comment: never[];
+            salute: string[];
+            goodbye: string[];
+            comment: string[];
             events: {
                 eventId: string;
                 dialogs: string[];
@@ -36,35 +36,21 @@ interface Dialog{
         };
         weeks:Week[];
 } 
-const NEWS_EDITOR = [
-    
-    [
-        "Hello, my name is Jakub and I am the news editor.",
-        "The first thing we need to do is assign a story for Thomas to cover.",
-        "Here I have some of the current events, all you have to do is choose the one you think will fit better this weeks newspaper.",
-        "Here is a note with what we are looking for these week. Remember to check it from time to time.",
-        "Thomas will be here soon but you don't need to worry, I'll distract him a little bit, just focus on making the best decision.",
-        "First weeks can be hard but you will do great, I know it."
-    ],
-    [
 
-    ]
-]
 const MANAGING_EDITOR = [
     [
-        "Welcome to the newsroom! I am Gabrielle the managing editor and I just saw your profile and thought you would be perfect for this job",
-        "You will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
-        "Once you have finnished, the editor-in-chief will review your work and judge if it is ready to publish.",
-        "Remember, there is a deadline! Let's see if you can handle the pressure!"
+       ,
+        ,
+        
     ],
     [
-        "Welcome back crew mate! You did great last week.",
+        ,
         "Between you and me, the editor in chief was super happy you decided to come for another week.",
         "Well, I need to go now. Jakup must be arriving soon.",
         "Keep up the good work!"
     ],
     [
-        "Last week was a tough one wasn't it?",
+        ,
         "I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better.",
         "Anyway, I need to go now. Remember to listen to your co-workers!",
     ],
@@ -74,45 +60,29 @@ const MANAGING_EDITOR = [
         "I have brought a few cupcakes to celebrate. If you see Aaliyah make sure to give her one, She is the only one I haven't seen this morning.",
     ]
 ]
-const ART_EDITOR = [
-    [
-        "Was that Thomas running?",
-        "Anyway, welcome to the newsroom. I'm the newspaper art director, Aaliyah.",
-        "I was told both of us would be working on the front page today. I have some ideas for how I want it to look but I need to talk to Jakub, have you seen him?",
-        "Well If you see him please tell him to give me the title so I can start planning",
-        "Also, I am looking forward to working with you. See you!"
-    ]
-]
-const REPORTER = [
-    [
-        "Sorry I'm a little late. I forgot you were starting today and got a little carried away talking to Jakub.",
-        "I'm Thomas by the way, these team's reporter.",
-        "I would show you arround or something but you know, It is a little late. Do you have the story I need to cover?",
-        "Okay, thanks. It has been a pleasure meeting you! Hope we can talk more some other day!"
-    ],
 
-]
 const dialogs:Dialog[] = [
     {
         person:"MANAGING_EDITOR",
         firstWeek: {
-            salute: [],
-            goodbye:[],
-            comment:[],
+            salute: [ "Welcome to the newsroom! I am Gabrielle the managing editor."],
+            goodbye:["Just remember the deadlines!"],
+            comment:["You will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
+            "Once you have finnished, the editor-in-chief will review your work and judge if it is ready to publish."],
             events:{
                         eventId: "firstweek",
                         //Each index leads to the next piece of dialog relating to this topic from the person
                         dialogs:[
-                            "Welcome to your first week aboard! I am Grabielle and I love boats and the see",
-                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                            "Soon Jakub will be here to help you.",
+                            "I am sure you will do fine..."
                         ]
                     }
         },
         weeks:[
             {
                 salute:{
-                    START:[["Hello"]],
-                    AFTER_EVENT:[["Hi"]],
+                    START:[[]],
+                    AFTER_EVENT:[["Ahoy!"]],
                     AFTER_TITLE:[["haoh"]],
                     AFTER_LAYOUT:[["haha"]]
                 },
@@ -128,23 +98,23 @@ const dialogs:Dialog[] = [
                         comment: [
                             {
                                 media:9,
-                                comment: ["You did super great last week!"]
+                                comment: ["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]
                             },
                             {
                                 media:7,
-                                comment: ["You did super great last week!"]
+                                comment: ["I knew this job was perfect for you. Keep up the good work."]
                             },
                             {
                                 media:5,
-                                comment: ["You did super great last week!"]
+                                comment: ["You are starting to get the hang of it. I am sure soon everyone will notice."]
                             },
                             {
                                 media:3,
-                                comment: ["You did super great last week!"]
+                                comment: ["See? I was sure you had it in you.","This week we are proving the editor in chief wrong."]
                             },
                             {
                                 media:0,
-                                comment: ["You did super great last week!"]
+                                comment: ["Last week was a tough one wasn't it?","Luckily you are doing sooo much better now", "keep up the good work."]
                             },
                     ]
                     },
@@ -153,23 +123,23 @@ const dialogs:Dialog[] = [
                         comment: [
                             {
                                 media:9,
-                                comment: ["You did super great last week!"]
+                                comment: ["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]
                             },
                             {
                                 media:7,
-                                comment: ["You did super great last week!"]
+                                comment: ["I knew this job was perfect for you. Keep up the good work."]
                             },
                             {
                                 media:5,
-                                comment: ["You did super great last week!"]
+                                comment: ["You are starting to get the hang of it. I am sure soon everyone will notice."]
                             },
                             {
                                 media:3,
-                                comment: ["You did super great last week!"]
+                                comment: ["See? I was sure you had it in you.","This week we are proving the editor in chief wrong."]
                             },
                             {
                                 media:0,
-                                comment: ["You did super great last week!"]
+                                comment: ["Last week was a tough one wasn't it?","Luckily you are doing sooo much better now", "keep up the good work."]
                             },
                     ]
                     },
@@ -191,11 +161,11 @@ const dialogs:Dialog[] = [
                             },
                             {
                                 media:3,
-                                comment: ["You did super great last week!"]
+                                comment: ["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better.",]
                             },
                             {
                                 media:0,
-                                comment: ["You did super great last week!"]
+                                comment: ["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better.",]
                             },
                     ]
                     },
@@ -229,15 +199,15 @@ const dialogs:Dialog[] = [
                         comment: [
                             {
                                 media:9,
-                                comment: ["You did super great last week!"]
+                                comment: ["You did great last week! Whatever is it that is happening now I am sure you can overcome it and come back on top again!", "Just remember to listen to your crewmates."]
                             },
                             {
                                 media:7,
-                                comment: ["You did super great last week!"]
+                                comment: ["You "]
                             },
                             {
                                 media:5,
-                                comment: ["You did super great last week!"]
+                                comment: ["Let's get motivation going on! You can do this.", "The boss isn't too happy but I think you are great. You just need some more practice."]
                             },
                             {
                                 media:3,
@@ -245,7 +215,7 @@ const dialogs:Dialog[] = [
                             },
                             {
                                 media:0,
-                                comment: ["You did super great last week!"]
+                                comment: ["We are starting a new week. That means fresh start and new oportunities.", "Don't let me down crewmate."]
                             },
                     ]
                     },
@@ -289,22 +259,23 @@ const dialogs:Dialog[] = [
     {
         person: "NEWS_EDITOR",
         firstWeek: {
-            salute: [],
-            goodbye:[],
-            comment:[],
+            salute: ["Hello, my name is Jakub and I am the news editor."],
+            goodbye:["First weeks can be hard but you will do great, I know it."],
+            comment:["The first thing we need to do is assign a story for Thomas to cover.",
+            "Here I have some of the current events, all you have to do is choose the one you think will fit better this weeks newspaper.",
+            "I made you a note with what we are looking for these week. Remember to check it from time to time."],
             events:{
                         eventId: "firstweek",
                         //Each index leads to the next piece of dialog relating to this topic from the person
                         dialogs:[
-                            "Welcome to your first week aboard! I am Grabielle and I love boats and the see",
-                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                            "Remember Thomas will arrive soon but don't worry, I'll distract him a little bit, just focus on making the best decision."
                         ]
                     }
         },
         weeks:[
             {
                 salute:{
-                    START:[["Hello"]],
+                    START:[["Welcome back crewmate!"],[""]],
                     AFTER_EVENT:[["Hi"]],
                     AFTER_TITLE:[["haoh"]],
                     AFTER_LAYOUT:[["haha"]]
@@ -325,7 +296,7 @@ const dialogs:Dialog[] = [
                             },
                             {
                                 media:7,
-                                comment: ["You did super great last week!"]
+                                comment: ["You did great last week."]
                             },
                             {
                                 media:5,
@@ -482,15 +453,15 @@ const dialogs:Dialog[] = [
     {
         person:"ART_DIRECTOR",
         firstWeek: {
-            salute: [],
+            salute: ["Was that Thomas running?", "Anyway, welcome to the newsroom. I'm the newspaper art director, Aaliyah."],
             goodbye:[],
-            comment:[],
+            comment:["I was told both of us would be working on the front page today. I have some ideas for how I want it to look but I need to talk to Jakub, have you seen him?",
+            "Well If you see him please tell him to give me the title so I can start planning"],
             events:{
                         eventId: "firstweek",
                         //Each index leads to the next piece of dialog relating to this topic from the person
                         dialogs:[
-                            "Welcome to your first week aboard! I am Grabielle and I love boats and the see",
-                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                            "Also, I am looking forward to working with you. See you!"
                         ]
                     }
         },
@@ -638,6 +609,14 @@ const dialogs:Dialog[] = [
                 ],
                 events:[
                     {
+                        eventId: "firstweek",
+                        //Each index leads to the next piece of dialog relating to this topic from the person
+                        dialogs:[
+                            "I brought cupcakes today!",
+                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                        ]
+                    },
+                    {
                         eventId: "cupcakes",
                         //Each index leads to the next piece of dialog relating to this topic from the person
                         dialogs:[
@@ -675,15 +654,14 @@ const dialogs:Dialog[] = [
     {
         person:"REPORTER",
         firstWeek: {
-            salute: [],
-            goodbye:[],
-            comment:[],
+            salute: ["Sorry I'm a little late. I forgot you were starting today and got a little carried away talking to Jakub."],
+            goodbye:["Okay, thanks. It has been a pleasure meeting you! Hope we can talk more some other day!"],
+            comment:["I'm Thomas by the way, these team's reporter.",],
             events:{
                         eventId: "firstweek",
                         //Each index leads to the next piece of dialog relating to this topic from the person
                         dialogs:[
-                            "Welcome to your first week aboard! I am Grabielle and I love boats and the see",
-                            "I heard Jakub brought cupcakes today, did he leave one for me?"
+                            "I would show you arround or something but you know, it is a little late. Do you have the story I need to cover?",
                         ]
                     }
         },
