@@ -4,7 +4,10 @@ import { genDialog, getEvent } from '../../utils/gameUtils'
 import { Game } from '../Layout'
 import Loading from '../Loading'
 import Dialog from './Dialog'
+import FinishWeek from './FinishWeek'
 import SelectEvent from './SelectEvent'
+import SelectLayout from './SelectLayout'
+import SelectTitle from './SelectTitle'
 
 type Props = {
     gameObject:Game;
@@ -108,19 +111,19 @@ export default function GameScreen({gameObject, setGameObject}: Props) {
         </div> 
         :game.currentActivity==="SELECT_EVENT"?
         <div>
-            <SelectEvent/>
+            <SelectEvent getNextInteraction={getNextInteraction}/>
         </div>
         :game.currentActivity==="SELECT_TITLE"?
         <div>
-
+            <SelectTitle getNextInteraction={getNextInteraction}/>
         </div>
         :game.currentActivity==="SELECT_LAYOUT"?
         <div>
-
+            <SelectLayout getNextInteraction={getNextInteraction}/>
         </div>
         :game.currentActivity==="SCORE_SCREEN"?
         <div>
-
+            <FinishWeek finish={finishWeek}/>
         </div>:
         <div>
             <p>What is your name?</p>

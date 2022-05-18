@@ -22,6 +22,7 @@ export interface Game{
 }
 export default function Layout (props: ILayoutProps) {
   const [loading, setLoading] = React.useState(true);
+  const [start, setStart] = React.useState(false);
   const [game, setGame]:[Game,React.Dispatch<React.SetStateAction<Game>>] = React.useState({
     name: "",
     punctuation: [0],
@@ -52,8 +53,8 @@ React.useEffect(() => {
       <div>
         <SettingsButton/>
         <Achievements achieved={game.achievements}/>
-        <GameScreen gameObject={game} setGameObject={setGame}/>
-      {props.children}
+        {start && <GameScreen gameObject={game} setGameObject={setGame}/>}
+      {React.cloneElement(props.children, { start: start, setStart:setStart })}
       </div>  
     :<Loading/>}
     </div>

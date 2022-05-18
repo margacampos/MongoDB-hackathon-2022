@@ -2,20 +2,55 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import Archive from '../components/Archive'
 import Buttons from '../components/Buttons'
 import EventGenerator from '../components/EventGenerator'
 import SelectEvent from '../components/Game/SelectEvent'
 import Header from '../components/Header'
 import NewsTitleGenerator from '../components/NewsTitleGenerator'
-import { homeButtons } from '../data/buttons'
+import { ButtonsBig, ButtonsGrid } from '../data/buttons'
+// import { homeButtons } from '../data/buttons'
 import styles from '../styles/Home.module.scss'
 import { genRandomEvent, getEventName } from '../utils/eventUtils'
+type Props = {
+  setStart:React.Dispatch<React.SetStateAction<boolean>>;
+  start:boolean;
+}
 
-const Home: NextPage = () => {
+const Home: any = ({setStart, start}:Props) => {
+  const homeButtons:(ButtonsBig|ButtonsGrid)[]= [
+    {
+        text:"START",
+        onClick:()=>{setStart(true)},
+        grid:false,
+        router:""
+    },
+    {
+        button:[{
+            text:"How it works",
+            onClick:()=>{},
+            router:""
+        },
+        {
+            text:"About us",
+            router:"/about",
+            onClick:()=>{}
+        }],
+        grid:true,
+        gridID:1
+    }
+];
   const Router = useRouter();
   const [code, setCode]:[any[], Dispatch<SetStateAction<any[]>>] = useState([{eventCode:""}])
+  useEffect(() => {
+    console.log(start)
+  
+    return () => {
+      
+    }
+  }, [])
+  
   return (
     <div className={styles.container}>
       <Head>
