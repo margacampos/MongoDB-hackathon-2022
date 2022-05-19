@@ -6,10 +6,14 @@ import { genRandomEvent } from "../../utils/eventUtils";
 
 type Props = {
   getNextInteraction:(punctuation?:number)=>void;
+  request:any;
 }
 
-export default function SelectEvent({getNextInteraction}: Props) {
+export default function SelectEvent({getNextInteraction, request}: Props) {
     const [event, setEvent] = useState(genRandomEvent(3))
+    const getEventsForSelection = () =>{
+      //GET 5 events (completly diferent, 4/5, 3/5, 2/5, 1/5)
+    }
   return (
     <div className={styles.display}>
         {event && event.map((i,index)=><button key={index} onClick={()=>getNextInteraction()}><Event event={i}/></button>) }

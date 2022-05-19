@@ -31,17 +31,7 @@
             bottom: 10px;
         }
 }
-.person{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    .img{
-        background-color: rgb(102, 102, 102);
-        max-width: 100%;
-        height: auto;
-    }
-}
+
 
 @media (max-width:1300px) {
     .dialog{
