@@ -10,6 +10,7 @@ import SelectEvent from './SelectEvent'
 import SelectLayout from './SelectLayout'
 import SelectTitle from './SelectTitle'
 import Image from "next/image"
+import ToDo from './ToDo'
 
 type Props = {
     gameObject:Game;
@@ -22,6 +23,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     const [request, setRequest] = useState(genRandomEvent(1)[0]);
     const [game, setGame]:any = useState({});
     const [img, setImg] = useState({src:"", alt:"", height:0, width:0})
+    
     const checkForAchievements=()=>{
         //Check on gameObject for achievements and activate respective popUps
     }
@@ -69,6 +71,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
                 punctuation: state.punctuation,
                 selectEvent: state.selectEvent,
                 selectTitle: state.selectTitle,
+                selectLayout: state.selectLayout,
                 media: state.media,
                 doneEvents: state.doneEvents,
                 achievements: state.achievements,
@@ -84,6 +87,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
                 punctuation: state.punctuation,
                 selectEvent: state.currentActivity==="SELECT_EVENT"?[...state.selectEvent, punctuation]:state.selectEvent,
                 selectTitle: state.currentActivity==="SELECT_TITLE"?[...state.selectTitle, punctuation]:state.selectTitle,
+                selectLayout: state.selectLayout,
                 media: state.media,
                 doneEvents: state.doneEvents,
                 achievements: state.achievements,
@@ -104,8 +108,9 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         let week = gameObject.punctuation.length%4===0?3:(gameObject.punctuation.length%4)-1;
         
       setGame({
-          selectEvent:0,
-          selectTitle: 0,
+          selectEvent: -1,
+          selectTitle: -1,
+          selectLayout: -1,
           currentEvent: getEvent(week).event,
           currentActivity:current,
           order: order,
@@ -142,8 +147,9 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         let current = order[week];
 
         setGame({
-                selectEvent: 0,
-                selectTitle: 0,
+                selectEvent: -1,
+                selectTitle: -1,
+                selectLayout: -1,
                 currentEvent: event.event,
                 currentActivity:current,
                 order: order,
@@ -189,8 +195,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
             <FinishWeek finish={finishWeek} continueGame={continueGame}/>
         </div>:
         <div className={styles.display}>
-            <p>What is your name?</p>
-            <input type="text" />
+            <ToDo name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}}/>
         </div>
     }
     </div>

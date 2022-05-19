@@ -1,4 +1,5 @@
 import React from 'react'
+import Templates from './Templates/Templates';
 
 type Props = {
   getNextInteraction:(punctuation?:number)=>void;
@@ -7,7 +8,8 @@ type Props = {
 export default function SelectLayout({getNextInteraction}: Props) {
   return (
     <div>
-      <button onClick={()=>getNextInteraction()}>Next</button>
+      <Templates title={"hola"}/>
+      <button onClick={()=>getNextInteraction()}>Close</button>
     </div>
   )
 }

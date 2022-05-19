@@ -32,6 +32,9 @@ export default function Templates({title}: Props) {
               if(words.length===0){rows.push(quote); setDisplayTitle(rows); finish=true;};
         }
     }
+    const handleNext =(templateid:string)=>{
+        //Add templateid to game results.
+    }
     useEffect(() => {
       if(title.length>27){
          arrangeTitle(title);
@@ -46,18 +49,18 @@ export default function Templates({title}: Props) {
   return (
       <div className={styles.templates}>
         <div className={styles.newspaper}>
-            <button className={styles.img}>
+            <button className={styles.img} onClick={()=>handleNext("template1")}>
                 <Template1 title={displayTitle} date="November 20th, 2022" website='hola.es'/>
             </button>
             
         </div>  
         <div className={styles.newspaper}>
-            <button className={styles.img}>
+            <button className={styles.img} onClick={()=>handleNext("template2")}>
                 <Template2 title={displayTitle} date={"November 20th, 2022"} website="hola.es"/>
             </button>
         </div> 
         <div className={styles.newspaper}>
-            <button className={styles.img}>
+            <button className={styles.img} onClick={()=>handleNext("template3")}>
                 <Template3 title={displayTitle} date={"November 20th, 2022"} website="hola.es"/>
             </button>
         </div> 
