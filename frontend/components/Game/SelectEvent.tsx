@@ -10,7 +10,7 @@ type Props = {
 }
 
 export default function SelectEvent({getNextInteraction, request}: Props) {
-    const [event, setEvent] = useState(genRandomEvent(3))
+    const [event, setEvent] = useState(genRandomEvent(5))
     const getEventsForSelection = () =>{
       //GET 5 events (completly diferent, 4/5, 3/5, 2/5, 1/5)
     }

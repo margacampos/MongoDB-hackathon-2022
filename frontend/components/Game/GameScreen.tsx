@@ -160,7 +160,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
       <div id={styles.screen}>
 {game ?
     <div >
-        {texto!="closed" ?
+        {texto!="closed" &&
         <div>
             <div className={styles.person}>
                 <div className={styles.img}>
@@ -170,24 +170,25 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
             <div className={styles.dialog}>
                 <Dialog text={texto} setText={setTexto} getNextInteraction={getNextInteraction}/>
             </div>
-        </div> 
-        :game.currentActivity==="SELECT_EVENT"?
-        <div>
+        </div> }
+        {game.currentActivity==="SELECT_EVENT"?
+        <div className={styles.display}>
+            <h2>Select Event:</h2>
             <SelectEvent getNextInteraction={getNextInteraction} request={request}/>
         </div>
         :game.currentActivity==="SELECT_TITLE"?
-        <div>
+        <div className={styles.display}>
             <SelectTitle getNextInteraction={getNextInteraction} request={request}/>
         </div>
         :game.currentActivity==="SELECT_LAYOUT"?
-        <div>
+        <div className={styles.display}>
             <SelectLayout getNextInteraction={getNextInteraction}/>
         </div>
         :game.currentActivity==="SCORE_SCREEN"?
-        <div>
+        <div className={styles.display}>
             <FinishWeek finish={finishWeek} continueGame={continueGame}/>
         </div>:
-        <div>
+        <div className={styles.display}>
             <p>What is your name?</p>
             <input type="text" />
         </div>
