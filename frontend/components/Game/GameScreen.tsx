@@ -22,14 +22,38 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     const [texto, setTexto]:any = useState("closed");
     const [gameEvents, setGameEvents]:any = useState();
     const [game, setGame]:any = useState({});
+    const [choices, setChoices] = useState({event:[], title:"", template:""})
     const [img, setImg] = useState({src:"", alt:"", height:0, width:0})
     const [currentActivity, setCurrentActivity] = useState("MANAGING_DIRECTOR")
+    const finishSelection = (type:string, choice:any, getPoints:()=>number) =>{
+        setChoices((state)=>{
+            return({
+                event:type==="event"?choice:state.event,
+                title:type==="title"?choice.title:state.title,
+                template:type==="template"?choice:state.template
+            })
+        })
+        let score = getPoints();
+        setGame((state:any)=>{
+            return({
+                selectEvent: type==="event"?getPoints():state.selectEvent,
+                selectTitle: type==="title"?getPoints():state.selectTitle,
+                selectLayout: type==="template"?10:state.selectLayout,
+                currentEvent: state.currentEvent,
+                currentActivity:state.currentActivity,
+                order: state.order,
+                currentMoment: state.currentMoment
+            })
+        })
+        
+    }
     const getEventsFromDatabase = async()=>{
         try {
           const res = await fetch("http://localhost:3000/api/events-and-articles-today");
           const result = await res.json();  
           const winner = await result[Math.floor(Math.random()*result.length)];
           setGameEvents({result,winner})
+          console.log(result)
         } catch (error) {
             console.log(error);
         }
@@ -194,15 +218,15 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         :game.currentActivity==="SELECT_EVENT"?
         <div className={styles.display}>
             <h2>Select Event:</h2>
-            <SelectEvent getNextInteraction={getNextInteraction} gameEvents={gameEvents}/>
+            <SelectEvent getNextInteraction={getNextInteraction} gameEvents={gameEvents} choice={choices} finishSelection={finishSelection}/>
         </div>
         :game.currentActivity==="SELECT_TITLE"?
         <div className={styles.display}>
-            <SelectTitle getNextInteraction={getNextInteraction} winnerEvent={gameEvents.winner}/>
+            <SelectTitle getNextInteraction={getNextInteraction}  gameEvents={gameEvents} choice={choices} finishSelection={finishSelection}/>
         </div>
         :game.currentActivity==="SELECT_LAYOUT"?
         <div className={styles.display}>
-            <SelectLayout getNextInteraction={getNextInteraction}/>
+            <SelectLayout getNextInteraction={getNextInteraction} choice={choices} finishSelection={finishSelection}/>
         </div>
         :game.currentActivity==="SCORE_SCREEN"?
         <div className={styles.display}>

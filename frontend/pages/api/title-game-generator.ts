@@ -1,21 +1,14 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import {MongoClient} from 'mongodb';
-import { Event } from '../../utils/eventUtils';
 
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Event[]>
 ) {
+    if(req.method!="POST")return res.status(404).send();
     let client; 
-    const convertToTitles = async(url:string) => {
-      const response = await fetch("http://localhost:3000/api/news-title-generator?url="+url);
-      const result = await response.json();
-      if (result.success)return(await result).data.title;
-      else return;
-    }
-    
     if(process.env.MONGODB_URI){
         client=new MongoClient(process.env.MONGODB_URI);
         try {
@@ -64,12 +57,7 @@ export default async function handler(
             ]);
 
               let eventList:Event[] = await cursor.toArray();
-              for (let i=0; i<eventList.length; i++){
-                let url = eventList[i].SourceURL;
-                if(url!=undefined)eventList[i].title = await convertToTitles(url);
-              }
-              console.log(eventList)
-            if(eventList[0].title)res.status(200).json(eventList);
+            if(eventList)res.status(200).json(eventList);
         } catch (error) {
             console.log(error)
         } finally{

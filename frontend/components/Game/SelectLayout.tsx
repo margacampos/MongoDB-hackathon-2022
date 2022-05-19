@@ -1,14 +1,17 @@
 import React from 'react'
+import { Event } from '../../utils/eventUtils';
 import Templates from './Templates/Templates';
 
 type Props = {
   getNextInteraction:(punctuation?:number)=>void;
+  choice:{event:Event[], title:string, template:string}
+  finishSelection:(type:string, choice:any, getPoints:()=>number)=>void;
 }
 
-export default function SelectLayout({getNextInteraction}: Props) {
+export default function SelectLayout({getNextInteraction, choice}: Props) {
   return (
     <div>
-      <Templates title={"hola"}/>
+      <Templates title={choice.title}/>
       <button onClick={()=>getNextInteraction()}>Close</button>
     </div>
   )
