@@ -6,17 +6,24 @@ import { genRandomEvent } from "../../utils/eventUtils";
 
 type Props = {
   getNextInteraction:(punctuation?:number)=>void;
-  request:any;
+  gameEvents:{result:any[]; winner:any;};
 }
 
-export default function SelectEvent({getNextInteraction, request}: Props) {
-    const [event, setEvent] = useState(genRandomEvent(5))
+export default function SelectEvent({getNextInteraction, gameEvents}: Props) {
     const getEventsForSelection = () =>{
       //GET 5 events (completly diferent, 4/5, 3/5, 2/5, 1/5)
     }
+    useEffect(() => {
+      console.log(gameEvents)
+    
+      return () => {
+        
+      }
+    }, [])
+    
   return (
     <div className={styles.display}>
-        {event && event.map((i,index)=><button key={index} onClick={()=>getNextInteraction()}><Event event={i}/></button>) }
+        {gameEvents && gameEvents.result && gameEvents.result.map((i,index)=><button key={index} onClick={()=>getNextInteraction()}><Event event={i}/></button>) }
     </div>
   )
 }

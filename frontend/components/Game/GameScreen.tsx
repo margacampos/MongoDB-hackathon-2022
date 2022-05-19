@@ -20,10 +20,33 @@ type Props = {
 
 export default function GameScreen({gameObject, setGameObject, setStart}: Props) {
     const [texto, setTexto]:any = useState("closed");
-    const [request, setRequest] = useState(genRandomEvent(1)[0]);
+    const [gameEvents, setGameEvents]:any = useState();
     const [game, setGame]:any = useState({});
     const [img, setImg] = useState({src:"", alt:"", height:0, width:0})
-    
+    const [currentActivity, setCurrentActivity] = useState("MANAGING_DIRECTOR")
+    const getEventsFromDatabase = async()=>{
+        try {
+          const res = await fetch("http://localhost:3000/api/events-and-articles-today");
+          const result = await res.json();  
+          const winner = await result[Math.floor(Math.random()*result.length)];
+          setGameEvents({result,winner})
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+    const dialogCheck = (week:number) =>{
+        if (game.currentActivity==="MANAGING_EDITOR"||game.currentActivity==="NEWS_EDITOR"||game.currentActivity==="ART_DIRECTOR"||game.currentActivity==="REPORTER"||game.currentActivity==="EDITOR_IN_CHIEF"){
+                   setTexto(genDialog(gameObject.tutorial,game.currentMoment,week,game.currentEvent, game.currentActivity, game.currentMoment==="START"?gameObject.punctuation[gameObject.punctuation.length-1]:game.currentMoment==="SELECT_TITLE"?game.selectTitle:game.currentMoment==="SELECT_EVENT"?game.selectEvent:(game.selectEvent+game.selectTitle)/2, gameObject.media))
+                   setImg(()=>{
+                       if(game.currentActivity==="MANAGING_EDITOR")return({src:"/characters/managingeditor.png", alt:"The newsroom Manging editor", height:724, width:365});
+                       if(game.currentActivity==="NEWS_EDITOR")return({src:"/characters/newseditor.png", alt:"The newsroom News editor", height:543, width:654});
+                       if(game.currentActivity==="ART_DIRECTOR")return({src:"/characters/artdirector.png", alt:"The newsroom Art director", height:659, width:430});
+                       if(game.currentActivity==="REPORTER")return({src:"/characters/reporter.png", alt:"The newsroom reporter", height:676, width:332});
+                       return({src:"", alt:"", height:0, width:0})
+                   })
+                } 
+    }
     const checkForAchievements=()=>{
         //Check on gameObject for achievements and activate respective popUps
     }
@@ -102,11 +125,10 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
 
     useEffect(() => {
         console.log("starting useEffect")
-        console.log(request)
+        getEventsFromDatabase()
         let order = getEvent(0).order;
         let current = order[0]
         let week = gameObject.punctuation.length%4===0?3:(gameObject.punctuation.length%4)-1;
-        
       setGame({
           selectEvent: -1,
           selectTitle: -1,
@@ -124,16 +146,8 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         let week = gameObject.punctuation.length%4===0?3:(gameObject.punctuation.length%4)-1;
         if(game){
            console.log("useEffect is called for dialog")
-           if (game.currentActivity==="MANAGING_EDITOR"||game.currentActivity==="NEWS_EDITOR"||game.currentActivity==="ART_DIRECTOR"||game.currentActivity==="REPORTER"||game.currentActivity==="EDITOR_IN_CHIEF"){
-               setTexto(genDialog(gameObject.tutorial,game.currentMoment,week,game.currentEvent, game.currentActivity, game.currentMoment==="START"?gameObject.punctuation[gameObject.punctuation.length-1]:game.currentMoment==="SELECT_TITLE"?game.selectTitle:game.currentMoment==="SELECT_EVENT"?game.selectEvent:(game.selectEvent+game.selectTitle)/2, gameObject.media))
-               setImg(()=>{
-                   if(game.currentActivity==="MANAGING_EDITOR")return({src:"/characters/managingeditor.png", alt:"The newsroom Manging editor", height:724, width:365});
-                   if(game.currentActivity==="NEWS_EDITOR")return({src:"/characters/newseditor.png", alt:"The newsroom News editor", height:543, width:654});
-                   if(game.currentActivity==="ART_DIRECTOR")return({src:"/characters/artdirector.png", alt:"The newsroom Art director", height:659, width:430});
-                   if(game.currentActivity==="REPORTER")return({src:"/characters/reporter.png", alt:"The newsroom reporter", height:676, width:332});
-                   return({src:"", alt:"", height:0, width:0})
-               })
-            } 
+        dialogCheck(week); 
+        
         }
         return () =>{
 
@@ -166,7 +180,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
       <div id={styles.screen}>
 {game ?
     <div >
-        {texto!="closed" &&
+        {texto!="closed" ?
         <div>
             <div className={styles.person}>
                 <div className={styles.img}>
@@ -176,15 +190,15 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
             <div className={styles.dialog}>
                 <Dialog text={texto} setText={setTexto} getNextInteraction={getNextInteraction}/>
             </div>
-        </div> }
-        {game.currentActivity==="SELECT_EVENT"?
+        </div> 
+        :game.currentActivity==="SELECT_EVENT"?
         <div className={styles.display}>
             <h2>Select Event:</h2>
-            <SelectEvent getNextInteraction={getNextInteraction} request={request}/>
+            <SelectEvent getNextInteraction={getNextInteraction} gameEvents={gameEvents}/>
         </div>
         :game.currentActivity==="SELECT_TITLE"?
         <div className={styles.display}>
-            <SelectTitle getNextInteraction={getNextInteraction} request={request}/>
+            <SelectTitle getNextInteraction={getNextInteraction} winnerEvent={gameEvents.winner}/>
         </div>
         :game.currentActivity==="SELECT_LAYOUT"?
         <div className={styles.display}>
