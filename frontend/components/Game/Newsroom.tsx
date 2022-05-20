@@ -4,9 +4,9 @@ import style from "../../styles/Game.module.scss"
 import Ask from './Ask'
 import Image from "next/image"
 
-type Props = {available:string[];setTodo:any;gameEvents:any;}
+type Props = {available:string[];setTodo:any;gameEvents:any;knowledge:any}
 
-export default function Newsroom({available, setTodo, gameEvents}: Props) {
+export default function Newsroom({available, setTodo, gameEvents, knowledge}: Props) {
     // width="2401" height="812" 
     const [per, setPer] = useState(-50)
     const [img, setImg] = useState({src:"", alt:"", width:"", height:""});
@@ -18,7 +18,6 @@ export default function Newsroom({available, setTodo, gameEvents}: Props) {
     const handleButtons =(dir:string) =>{
         if(dir==="left")setPer((state)=>state+5)
         if(dir==="right")setPer((state)=>state-5)
-        console.log(per)
     }
     useEffect(() => {
       if(person){
@@ -42,7 +41,7 @@ export default function Newsroom({available, setTodo, gameEvents}: Props) {
               </div>
             </div>
               <div className={style.dialog} style={{zIndex:13}}>
-              <Ask person={person} setPerson={setPerson} setImg={setImg} gameEvents={gameEvents}/>
+              <Ask person={person} setPerson={setPerson} setImg={setImg} gameEvents={gameEvents} knowledge={knowledge}/>
             </div>
           </div>
           :<div>
@@ -110,7 +109,7 @@ export default function Newsroom({available, setTodo, gameEvents}: Props) {
     <path id="Vector_87" d="M880.14 456.05H868.74L843 456.03L843.05 455.74C843.1 455.47 843.12 455.2 843.1 454.93C843.03 453.76 842.8 450.16 842.41 445.01C842.48 445 842.52 444.99 842.53 444.99C842.53 444.99 853.56 443.61 864.65 447.21C865.51 447.49 866.51 447.84 867.57 448.26C868.87 448.76 870.27 449.36 871.66 450.04C875.15 451.71 878.58 453.84 880.14 456.05V456.05Z" fill="#32281E"/>
     <path id="Vector_88" d="M923.87 456.06H880.14L870.76 456.04H843L843.05 455.74C843.1 455.47 843.12 455.2 843.1 454.93C843.03 453.76 842.8 450.16 842.41 445.01C842.34 444.03 842.25 442.99 842.17 441.9H842.53C852.35 441.81 851.56 440.79 861.55 440.57C863.4 440.53 864.97 440.48 866.33 440.43C867.21 440.4 868.01 440.37 868.74 440.33C869.55 440.29 870.27 440.25 870.95 440.2C874.41 439.98 876.62 439.7 881.09 439.37C881.32 439.35 881.57 439.33 881.82 439.31C882.13 439.29 882.45 439.26 882.79 439.24C888.9 438.81 893.77 438.38 897.69 438.02C910.82 436.79 913.44 436.27 916.85 438.8C918.99 440.39 920.7 442.63 921.9 445.13C923.6 448.63 924.31 452.62 923.87 456.06V456.06Z" fill="#32281E"/>
     </g>);
-    else if(i==="REPORTER")return(<g id="reporter" key={index} className={styles.person} onClick={()=>getDialog("MANAGING_EDITOR")}>
+    else if(i==="REPORTER")return(<g id="reporter" key={index} className={styles.person} onClick={()=>getDialog("REPORTER")}>
     <path id="Vector_89" d="M732.54 456H729.05C713.9 456.03 698.86 457.61 684.2 460.69C683.35 460.87 682.51 461.05 681.66 461.24C678.88 461.86 676.11 462.53 673.35 463.26C660.82 466.58 648.62 471.01 636.94 476.51C633.35 478.2 629.83 480 626.39 481.91C619.1 485.93 612.15 490.43 605.58 495.38C606.64 492.34 608.04 488.31 609.19 482.22C609.39 481.17 609.58 480.06 609.76 478.88C613.41 454.98 606.69 442.5 614.18 436.65C616.88 434.56 619.97 434.43 624.9 434.97C624.9 434.96 624.9 434.97 624.92 434.97C626.53 435.14 628.34 435.39 630.39 435.67C649 438.18 662.85 440.04 673.05 440.76C675.58 440.94 677.89 441.04 679.99 441.07C681.31 441.09 682.59 441.07 683.84 441.04C708.82 440.28 719.63 428.86 727.6 436.14L727.62 436.16C729.82 438.18 729.16 439.19 732.54 456V456Z" fill="#32281E"/>
     <path id="g" d="M615.66 429.29C614.92 425.88 618.45 422.56 618.61 422.42C625.57 416.03 637.45 423.9 660.84 428.8C683.73 433.6 701.12 437.24 715.84 429.78C719.23 428.06 725.86 424.04 728.61 426.34C730.46 427.89 730.11 431.96 728.61 434.69C726.11 439.25 720.26 440.42 716.33 441.07C699.62 443.85 684.85 442.77 681.96 442.54C666.07 441.29 657.91 440.63 647.09 439.1C620.32 435.32 616.32 432.31 615.66 429.28V429.29Z" fill="#DFC79E"/>
     <path id="h" d="M718.78 299.15C713.09 294.84 710.26 297.01 688.33 288.84C670.86 282.33 669.7 279.86 664.27 280C647.25 280.45 633.47 305.36 627.93 320.27C616.18 351.9 617.17 404.2 651.01 424.38C665.56 433.05 687.98 436.86 704.54 426.84C723.27 415.5 725.46 391.93 728.6 358.09C730.71 335.34 733.07 309.97 718.78 299.16V299.15Z" fill="#F5F2E8"/>

@@ -291,7 +291,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
                 <ToDo name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}} current={game.currentActivity} setCurrentActivity={setCurrentActivity}/>
             </div>}
             <div className={styles.newsroom}>
-                <Newsroom available={game.eventDialog.available[game.currentMoment]} setTodo={setTodo} gameEvents={gameEvents}/>
+                <Newsroom available={game.eventDialog.available[game.currentMoment]} setTodo={setTodo} gameEvents={gameEvents} knowledge={game.eventDialog.knowledge}/>
             </div>
         </div>
         

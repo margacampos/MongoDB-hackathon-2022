@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { getClueDialog } from '../../utils/gameUtils';
 import Dialog from './Dialog';
 
-type Props = {person:string;setPerson:any;setImg:any;gameEvents:any;}
+type Props = {person:string;setPerson:any;setImg:any;gameEvents:any;knowledge:any}
 
-export default function Ask({person, setPerson, setImg, gameEvents}: Props) {
+export default function Ask({person, setPerson, setImg, gameEvents, knowledge}: Props) {
     const handleClick = (type:"location" | "actor" | "eventCode") =>{
-        let dialog = getClueDialog(person, type, gameEvents.winner)
+        let dialog = getClueDialog(person, type, gameEvents.winner, knowledge)
         setDialog([{person:person, text:dialog}]);
     }
     const [dialog, setDialog] = useState([{person:"", text:[""]}]);
