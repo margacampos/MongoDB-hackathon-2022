@@ -138,7 +138,7 @@ const simpleDialogs =[
                     START:["Welcome to the newsroom! I am Gabrielle the managing editor.","Here, you will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
                     "Once you have finished, the editor-in-chief will review your work and judge if it is ready to publish.", "Soon Jakub will be here to help you.",
                     "If you need anything, just ask."],
-                    AFTER_LAYOUT:[["How was your first week?", "Now all you have to do is present your work to the editor in chief.", "She will be the one to say if your work will be published or not.","I'll stay a little longer in case you need anything, It really was nice meeting you."]],
+                    AFTER_LAYOUT:["How was your first week?", "Now all you have to do is present your work to the editor in chief.", "She will be the one to say if your work will be published or not.","I'll stay a little longer in case you need anything, It really was nice meeting you."],
                     AFTER_EVENT:[""],
                     AFTER_TITLE:[""]
                 }
@@ -165,9 +165,9 @@ const simpleDialogs =[
                     START:["Hello, my name is Jakub and I am the news editor.", "The first thing we need to do is assign a story for Thomas to cover.",
                     "Here I have some of the current events, all you have to do is choose the one you think will fit better this weeks newspaper.",
                     "If you are not sure what decision to make, ask around.", "There will always be someone that knows the answer."],
-                    AFTER_LAYOUT:["Almost finished the week already, how do you feel?","Do you like the job? I can see why Gabrielle hired you.", "Anyway, I'm going back to work.","See you next week!"],
+                    AFTER_LAYOUT:[""],
                     AFTER_EVENT:[""],
-                    AFTER_TITLE:[""]
+                    AFTER_TITLE:["Almost finished the week already, how do you feel?","Do you like the job? I can see why Gabrielle hired you.", "Anyway, I'm going back to work.","See you next week!"]
                 }
             },
             {

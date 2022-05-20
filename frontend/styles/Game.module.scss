@@ -74,7 +74,17 @@
     }
 }
 
-
+.titles{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    button{
+        display: block;
+        @include button;
+        margin: 0.5rem;
+    }
+}
 @media (min-width:1500px) {
     .dialog{
         max-width: 1000px;

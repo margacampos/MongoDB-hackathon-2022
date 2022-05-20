@@ -6,9 +6,10 @@ import Template3 from './Template3';
 type Props = {
     title:string;
     select:(type:string, choice:any, getPoints:()=>number)=>void;
+    next:any;
 }
 
-export default function Templates({title,select}: Props) {
+export default function Templates({title,select, next}: Props) {
     const [displayTitle, setDisplayTitle] = useState([""]);
     const arrangeTitle = (title:string) =>{
         let words = title.split(" ");
@@ -50,18 +51,18 @@ export default function Templates({title,select}: Props) {
   return (
       <div className={styles.templates}>
         <div className={styles.newspaper}>
-            <button className={styles.img} onClick={()=>select("template","template1",()=>5)}>
+            <button className={styles.img} onClick={()=>{select("template","template1",()=>5);next("SELECT_LAYOUT", 5)}}>
                 <Template1 title={displayTitle} date="November 20th, 2022" website='hola.es'/>
             </button>
             
         </div>  
         <div className={styles.newspaper}>
-            <button className={styles.img} onClick={()=>select("template","template2",()=>5)}>
+            <button className={styles.img} onClick={()=>{select("template","template2",()=>5);next("SELECT_LAYOUT", 5)}}>
                 <Template2 title={displayTitle} date={"November 20th, 2022"} website="hola.es"/>
             </button>
         </div> 
         <div className={styles.newspaper}>
-            <button className={styles.img} onClick={()=>select("template","template3",()=>5)}>
+            <button className={styles.img} onClick={()=>{select("template","template3",()=>5);next("SELECT_LAYOUT", 5)}}>
                 <Template3 title={displayTitle} date={"November 20th, 2022"} website="hola.es"/>
             </button>
         </div> 

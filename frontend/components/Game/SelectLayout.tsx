@@ -11,8 +11,7 @@ type Props = {
 export default function SelectLayout({getNextInteraction, choice, finishSelection}: Props) {
   return (
     <div>
-      <Templates title={choice.title} select={finishSelection}/>
-      <button onClick={()=>getNextInteraction("SELECT_LAYOUT", 5)}>Close</button>
+      <Templates title={choice.title} select={finishSelection} next={getNextInteraction}/>
     </div>
   )
 }
