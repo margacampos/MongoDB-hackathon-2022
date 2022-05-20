@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 type Props = {
-    text:string[];
+    text:{person:string;text:string[]}[];
     setText:any;
+    setImg:any;
     // setGame:React.Dispatch<React.SetStateAction<Game>>;
-    getNextInteraction:(punctuation?:number)=>void;
 }
 const dialog = [
     [
@@ -35,30 +35,40 @@ const dialog = [
         "Also, I am looking forward to working with you. See you!"
     ]
 ]
-export default function Dialog({text, setText, getNextInteraction}: Props) {
+export default function Dialog({text, setText,setImg}: Props) {
     const [numDialog, setNumDialog] = useState(0)
-    const [texto, setTexto] = useState(text[numDialog])
+    const [person, setPerson] = useState(0)
+    const [texto, setTexto] = useState(text[person].text[numDialog])
     const nextText = () =>{
         //Change to next piece of dialog
-        if (text.length == numDialog+1){
-            getNextInteraction();
+        if (text[person].text.length == numDialog+1 && person+1==text.length){
             return setText("closed");
-        } 
+        } else if(text[person].text.length == numDialog+1){
+            setPerson((state)=>state+1);
+            setNumDialog(0)
+        }
         setNumDialog(state=>state+1)
         
     }
     useEffect(() => {
-        setTexto(text[numDialog])
+        setTexto(text[person].text[numDialog]);
+        setImg(()=>{
+            if(text[person].person==="MANAGING_EDITOR")return({src:"/characters/managingeditor.png", alt:"The newsroom Manging editor", height:724, width:365});
+            if(text[person].person==="NEWS_EDITOR")return({src:"/characters/newseditor.png", alt:"The newsroom News editor", height:543, width:654});
+            if(text[person].person==="ART_DIRECTOR")return({src:"/characters/artdirector.png", alt:"The newsroom Art director", height:659, width:430});
+            if(text[person].person==="REPORTER")return({src:"/characters/reporter.png", alt:"The newsroom reporter", height:676, width:332});
+            return({src:"", alt:"", height:0, width:0})
+        })
       return () => {
         
       }
-    }, [numDialog, text])
-    
+    }, [numDialog, text, person])
     
   return (
     <div>
+        <h2>{text[person].person}</h2>
         <p>{texto}</p>
-        {text[numDialog] && <button onClick={nextText}>{text.length == numDialog+1?"close":"next"}</button>}
+        {text[person].text[numDialog] && <button onClick={nextText}>{text[person].text.length == numDialog+1?"close":"next"}</button>}
     </div>
   )
 }

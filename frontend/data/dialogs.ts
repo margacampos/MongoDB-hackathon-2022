@@ -143,7 +143,7 @@ const dialogs:Dialog[] = [
                 "I am sure you will do fine..."],
                 AFTER_EVENT:["Anyway, the first week can be intimidating.", "Make sure you ask whenever needed. Everyone here would love to help."],
                 AFTER_TITLE:["Anyway, the first week can be intimidating.", "Make sure you ask whenever needed. Everyone here would love to help."],
-                AFTER_LAYOUT:[ "Anyway, the first week can be intimidating.", "Make sure you ask whenever needed. Everyone here would love to help."]
+                AFTER_LAYOUT:[ "Anyway", "Make sure you ask whenever needed. Everyone here would love to help."]
             }
             
         },

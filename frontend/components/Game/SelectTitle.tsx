@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Event } from '../../utils/eventUtils';
 
 type Props = {
-  getNextInteraction:(punctuation?:number)=>void;
+  getNextInteraction:(event:string,punctuation:number)=>void;
   gameEvents:{result:any[], winner:any};
   choice:{event:Event[], title:string, template:string}
-  finishSelection:(type:string, choice:any, getPoints:(chosen:any)=>number)=>void;
+  finishSelection:(type:string, choice:any)=>void;
 }
 
 export default function SelectTitle({getNextInteraction, gameEvents, finishSelection}: Props) {
@@ -37,8 +37,7 @@ export default function SelectTitle({getNextInteraction, gameEvents, finishSelec
   }
   return (
     <div>
-      {gameEvents && gameEvents.result.map((i, index)=><button onClick={()=>finishSelection("title", i, getPoints)} key={index}>{i.title}</button>)}
-        <button onClick={()=>getNextInteraction()}>Next</button>
+      {gameEvents && gameEvents.result.map((i, index)=><button onClick={()=>{finishSelection("title", i);getNextInteraction("SELECT_TITLE",getPoints(i));}} key={index}>{i.title}</button>)}
     </div>
   )
 }

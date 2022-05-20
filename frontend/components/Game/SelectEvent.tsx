@@ -5,10 +5,10 @@ import Event from "../../components/NewsPaper/Event"
 import { genRandomEvent } from "../../utils/eventUtils";
 
 type Props = {
-  getNextInteraction:(punctuation?:number)=>void;
+  getNextInteraction:(event:string, punctuation:number)=>void;
   gameEvents:{result:any[]; winner:any;};
   choice:{event:Event[], title:string, template:string}
-  finishSelection:(type:string, choice:any, getPoints:(chosen:any)=>number)=>void;
+  finishSelection:(type:string, choice:any)=>void;
 }
 
 export default function SelectEvent({getNextInteraction, gameEvents, finishSelection}: Props) {
@@ -26,7 +26,7 @@ export default function SelectEvent({getNextInteraction, gameEvents, finishSelec
   }
   return (
     <div className={styles.display}>
-        {gameEvents && gameEvents.result && gameEvents.result.map((i,index)=><button key={index} onClick={()=>{finishSelection("event",i, getPoints);getNextInteraction();}}><Event event={i}/></button>) }
+        {gameEvents && gameEvents.result && gameEvents.result.map((i,index)=><button key={index} onClick={()=>{finishSelection("event",i);getNextInteraction("SELECT_EVENT", getPoints(i));}}><Event event={i}/></button>) }
     </div>
   )
 }
