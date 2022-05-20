@@ -43,9 +43,9 @@ React.useEffect(() => {
       { !loading?
       <div>
         <SettingsButton/>
-        <Achievements achieved={game.achievements}/>
+        {/* <Achievements achieved={game.achievements}/> */}
         {start && <GameScreen gameObject={game} setGameObject={setGame} setStart={setStart}/>}
-      {React.cloneElement(props.children, { start: start, setStart:setStart })}
+      {React.cloneElement(props.children, { start: start, setStart:setStart, gameObject:game })}
       </div>  
     :<Loading/>}
     </div>

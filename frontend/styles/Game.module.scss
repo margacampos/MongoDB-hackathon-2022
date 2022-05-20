@@ -19,18 +19,15 @@
     transform: translateX(-50%);
     max-width: 95%;
     min-width: 80%;
-    max-height: 20vh;
     background-color: var(--background-yellow);
     padding: 2rem;
     border-radius: 10px;
     border: solid 2px var(--background-black);
     color: var(--background-black);
-        button{
-            @include button;
-            position: absolute;
-            right: 10px;
-            bottom: 10px;
-        }
+    button{
+        @include button;
+        
+    }
 }
 .todo{
     position: absolute;
@@ -77,12 +74,7 @@
     }
 }
 
-@media (max-width:1300px) {
-    .dialog{
-        min-height: 15vh;
-        max-height: 30vh;
-    }
-}
+
 @media (min-width:1500px) {
     .dialog{
         max-width: 1000px;

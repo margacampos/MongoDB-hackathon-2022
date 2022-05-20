@@ -1,4 +1,5 @@
 import { dialogs, eventDialogOrder, Week } from "../data/dialogs";
+import { clueDialogs } from "../data/dialogsNew";
 
 const genDialog = (tutorial:boolean, type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT", weekNum:number, event:string, person:string, lastWeekPoints:number, media:number) => {
     //Create dialogs for specific sections  
@@ -61,5 +62,23 @@ const getEventText = (weekInfo:Week, type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"A
     if(!obj)return;
     return obj;
 }
-export {getEvent, genDialog}
+const getClueDialog = (person:string, type:"location"|"actor"|"eventCode", winner:any) =>{
+    let dialog = clueDialogs.find((i)=>i.person===person);
+    let random = Math.floor(Math.random()*3);
+    let word:string;
+    if(type!="eventCode")word = winner[type+1];
+    else word = winner[type];
+    if(dialog){
+        let text =dialog.text[type].knows[random];
+        text.map((i, index)=>{
+            if(/[$]/i.test(i)){
+              let newWord = i.replace(/[$]/,word);
+              text[index]=newWord;
+            }
+        })
+        return text;
+    }
+    return [""];
+}
+export {getEvent, genDialog, getClueDialog}
 

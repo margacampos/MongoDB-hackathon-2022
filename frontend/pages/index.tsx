@@ -6,6 +6,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import Archive from '../components/Archive'
 import Buttons from '../components/Buttons'
 import EventGenerator from '../components/EventGenerator'
+import Achievements from '../components/Game/Achievements'
 import SelectEvent from '../components/Game/SelectEvent'
 import Header from '../components/Header'
 import NewsTitleGenerator from '../components/NewsTitleGenerator'
@@ -16,9 +17,10 @@ import { genRandomEvent, getEventName } from '../utils/eventUtils'
 type Props = {
   setStart:React.Dispatch<React.SetStateAction<boolean>>;
   start:boolean;
+  gameObject:any;
 }
 
-const Home: any = ({setStart, start}:Props) => {
+const Home: any = ({setStart, start, gameObject}:Props) => {
   const homeButtons:(ButtonsBig|ButtonsGrid)[]= [
     {
         text:"START",
@@ -53,6 +55,7 @@ const Home: any = ({setStart, start}:Props) => {
   
   return (
     <div className={styles.container}>
+      {gameObject && <Achievements achieved={gameObject.achievements}/>}
       <Head>
         <title>THE NEWSROOM</title>
         <meta name="description" content="Create your own newspaper with the latest news from the GDELT database. This is a project made for the 2022 MongoDB Hackathon" />

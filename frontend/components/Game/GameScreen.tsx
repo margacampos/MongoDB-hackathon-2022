@@ -27,6 +27,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     const [choices, setChoices] = useState({event:[], title:"", template:""})
     const [img, setImg] = useState({src:"", alt:"", height:0, width:0})
     const [currentActivity, setCurrentActivity] = useState("")
+    const [todo, setTodo] = useState(true);
     const resetGame = () =>{
         getEventsFromDatabase()
             let week = gameObject.punctuation.length%4===0?3:(gameObject.punctuation.length%4)-1;
@@ -69,7 +70,6 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
           const result = await res.json();  
           const winner = await result[Math.floor(Math.random()*result.length)];
           setGameEvents({result,winner})
-          console.log(result)
         } catch (error) {
             console.log(error);
         }
@@ -287,11 +287,11 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
             <FinishWeek finish={finishWeek} continueGame={continueGame} game={game} choices={choices}/>
         </div>:
         <div>
-            <div className={styles.todo}>
+            {todo && <div className={styles.todo}>
                 <ToDo name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}} current={game.currentActivity} setCurrentActivity={setCurrentActivity}/>
-            </div>
+            </div>}
             <div className={styles.newsroom}>
-                <Newsroom available={game.eventDialog.available[game.currentMoment]}/>
+                <Newsroom available={game.eventDialog.available[game.currentMoment]} setTodo={setTodo} gameEvents={gameEvents}/>
             </div>
         </div>
         
