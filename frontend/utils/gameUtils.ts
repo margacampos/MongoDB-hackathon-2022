@@ -5,14 +5,11 @@ import { getActorCodeLabel, getEventCodeLabel, getLocCodeLabel } from "./eventUt
 
 const genDialog =( type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT", event:string, person:string, )=>{
     let arr = simpleDialogs.find(i=>i.person===person);
-    console.log(person)
-    console.log(arr)
-    console.log(type)
-    console.log(event)
     if(!arr)return;
     for(let i=0;i<arr.event.length;i++){
         if(arr.event[i].eventId===event){
-           return arr.event[i].dialogs[type];
+            let obj = arr.event[i].dialogs
+            if(type in obj)return obj[type]
         }
     }  
     return [""]
@@ -52,34 +49,34 @@ const getEventText = (weekInfo:Week, type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"A
     if(!obj)return;
     return obj;
 }
-const genDialog1 = (tutorial:boolean, type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT", weekNum:number, event:string, person:string, lastWeekPoints:number, media:number) => {
-    //Create dialogs for specific sections  
-    let arr = simpleDialogs.find(i=>i.person===person);
-    if (arr != undefined){
-        if (tutorial) {
-            // let obj = arr.firstWeek.comment.find((i)=>lastWeekPoints<i.score);
-            // if(!obj)return;
-            return [ ...arr.firstWeek.event[type] ];
-            // let comment = obj.comment[type];
-            // if (!comment)return 
-            // return [ ...comment, ...arr.firstWeek.event[type] ]
-            // if (!comment)return [...arr.firstWeek.salute, ...arr.firstWeek.event[type], ...arr.firstWeek.goodbye ]
-            // return [...arr.firstWeek.salute, ...comment, ...arr.firstWeek.event[type], ...arr.firstWeek.goodbye ]
-        }
-        const weekInfo = arr.weeks[weekNum];
-        // const salute = getSalute(weekInfo, "salute", type);
-        // const comment = getComment(weekInfo, type, lastWeekPoints, media);
-        const eventText = getEventText(weekInfo, type, event);
-        // const goodbye = getSalute(weekInfo, "goodbye", type)
-        let d:string[] = []
+// const genDialog1 = (tutorial:boolean, type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT", weekNum:number, event:string, person:string, lastWeekPoints:number, media:number) => {
+//     //Create dialogs for specific sections  
+//     let arr = simpleDialogs.find(i=>i.person===person);
+//     if (arr != undefined){
+//         if (tutorial) {
+//             // let obj = arr.firstWeek.comment.find((i)=>lastWeekPoints<i.score);
+//             // if(!obj)return;
+//             return [ ...arr.firstWeek.event[type] ];
+//             // let comment = obj.comment[type];
+//             // if (!comment)return 
+//             // return [ ...comment, ...arr.firstWeek.event[type] ]
+//             // if (!comment)return [...arr.firstWeek.salute, ...arr.firstWeek.event[type], ...arr.firstWeek.goodbye ]
+//             // return [...arr.firstWeek.salute, ...comment, ...arr.firstWeek.event[type], ...arr.firstWeek.goodbye ]
+//         }
+//         const weekInfo = arr.weeks[weekNum];
+//         // const salute = getSalute(weekInfo, "salute", type);
+//         // const comment = getComment(weekInfo, type, lastWeekPoints, media);
+//         const eventText = getEventText(weekInfo, type, event);
+//         // const goodbye = getSalute(weekInfo, "goodbye", type)
+//         let d:string[] = []
         
-        // if(salute) d = [...d, ...salute];
-        // if(comment) d = [...d, ...comment];
-        if(eventText) d = [...d, ...eventText];
-        // if(goodbye) d = [...d, ...goodbye];
-        return d;
-    }else return "error";
-}
+//         // if(salute) d = [...d, ...salute];
+//         // if(comment) d = [...d, ...comment];
+//         if(eventText) d = [...d, ...eventText];
+//         // if(goodbye) d = [...d, ...goodbye];
+//         return d;
+//     }else return "error";
+// }
 const getClueDialog = (person:string, type:"location"|"actor"|"eventCode", winner:any, knowledge:any) =>{
     let dialog = clueDialogs.find((i)=>i.person===person);
     if(dialog){

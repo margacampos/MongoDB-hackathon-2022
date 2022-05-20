@@ -46,8 +46,8 @@ const organizeByLocAndAct = (event:Event) =>{
     Object.keys(event).forEach((i)=>{
     let value = event[i as keyof typeof event]
     if(value){
-            if (i=="actor1"||i=="actor2")ev.participants.push({type:i, value:value})
-            if(i=="location1"||i=="location2")ev.locations.push({type:i, value:value})
+            if (i=="actor1"||i=="actor2")ev.participants.push({type:i, value:value as string})
+            if(i=="location1"||i=="location2")ev.locations.push({type:i, value:value as string})
         }  
     })
     return ev

@@ -217,14 +217,17 @@ const simpleDialogs =[
                     AFTER_EVENT:["Was that Thomas running?", "Welcome to the newsroom. I'm the newspaper's art director, Aaliyah.", "I was told the both of us would be working on the front page today. I have some ideas for how I want it to look but I need to talk to Jakub, have you seen him?",
                     "If you see him could you tell him I'm looking for him?","I am looking forward to working with you."],
                     AFTER_TITLE:["Hey! can I borrow you a minute?", "I need you to choose what design you prefer."],
-                    
+                    START:[""],
+                    AFTER_LAYOUT:[""]
                 }
             },
             {
                 eventId:"cupcakes",
                 dialogs:{
                     AFTER_LAYOUT:["🎶 Happy birthday to you 🎶"],
-                    AFTER_TITLE:["I just found out today is Gabrielle's birthday!", "I can't believe I forgot...", "At least Thomas brought cupcakes."]
+                    AFTER_TITLE:["I just found out today is Gabrielle's birthday!", "I can't believe I forgot...", "At least Thomas brought cupcakes."],
+                    AFTER_EVENT:[""],
+                    START:[""]
                 }
             },
 
