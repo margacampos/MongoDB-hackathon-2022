@@ -1,0 +1,31 @@
+@use 'partials/buttons' as *;
+
+.container{
+    background-color: var(--main-yellow);
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow-x: hidden;
+}
+.infoContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.img{
+    max-width: 90vw;
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+}
+.info{
+    max-width: 1900px;
+    background-color: var(--background-yellow);
+    padding: 2rem;
+    .button{
+        @include button;
+    }
+}

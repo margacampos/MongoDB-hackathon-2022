@@ -28,9 +28,9 @@ const Home: any = ({setStart, start}:Props) => {
     },
     {
         button:[{
-            text:"How it works",
+            text:"Gallery",
             onClick:()=>{},
-            router:""
+            router:"/gallery"
         },
         {
             text:"About us",
