@@ -42,6 +42,7 @@ export default function Dialog({text, setText,setImg}: Props) {
     const nextText = () =>{
         //Change to next piece of dialog
         if (text[person].text.length == numDialog+1 && person+1==text.length){
+            setTexto("")
             return setText("closed");
         } else if(text[person].text.length == numDialog+1){
             setPerson((state)=>state+1);
@@ -51,6 +52,7 @@ export default function Dialog({text, setText,setImg}: Props) {
         
     }
     useEffect(() => {
+        console.log("Change")
         setTexto(text[person].text[numDialog]);
         setImg(()=>{
             if(text[person].person==="MANAGING_EDITOR")return({src:"/characters/managingeditor.png", alt:"The newsroom Manging editor", height:724, width:365});
@@ -62,7 +64,7 @@ export default function Dialog({text, setText,setImg}: Props) {
       return () => {
         
       }
-    }, [numDialog, text, person])
+    }, [numDialog, person])
     
   return (
     <div>

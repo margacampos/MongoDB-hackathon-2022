@@ -1,16 +1,16 @@
 export interface Week{
-    salute: {
-        START:string[][];
-        AFTER_EVENT:string[][];
-        AFTER_TITLE:string[][];
-        AFTER_LAYOUT:string[][];
-    };
-    goodbye: {
-        START:string[][];
-        AFTER_EVENT?:string[][];
-        AFTER_TITLE?:string[][];
-        AFTER_LAYOUT:string[][];
-    };
+    // salute: {
+    //     START:string[][];
+    //     AFTER_EVENT:string[][];
+    //     AFTER_TITLE:string[][];
+    //     AFTER_LAYOUT:string[][];
+    // };
+    // goodbye: {
+    //     START:string[][];
+    //     AFTER_EVENT?:string[][];
+    //     AFTER_TITLE?:string[][];
+    //     AFTER_LAYOUT:string[][];
+    // };
     comment: {
         score: number;
         comment: {
@@ -36,8 +36,8 @@ export interface Week{
 interface Dialog{
         person: string;
         firstWeek: {
-            salute: string[];
-            goodbye: string[];
+            // salute: string[];
+            // goodbye: string[];
             comment:{
                 score: number;
                 comment:{
@@ -85,13 +85,13 @@ const dialogs:Dialog[] = [
     {
         person:"MANAGING_EDITOR",
         firstWeek: {
-            salute: [ "Welcome to the newsroom! I am Gabrielle the managing editor."],
-            goodbye:["Just remember the deadlines!"],
+            // salute: [ "Welcome to the newsroom! I am Gabrielle the managing editor."],
+            // goodbye:["Just remember the deadlines!"],
             comment:[
                 {
                     score: 9,
                     comment:{
-                            START:["You will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
+                            START:["Welcome to the newsroom! I am Gabrielle the managing editor.","You will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
                             "Once you have finished, the editor-in-chief will review your work and judge if it is ready to publish."],
                             AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
                             AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
@@ -101,7 +101,7 @@ const dialogs:Dialog[] = [
                     {
                         score: 7,
                         comment:{
-                                START:["You will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
+                                START:["Welcome to the newsroom! I am Gabrielle the managing editor.","You will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
                                 "Once you have finished, the editor-in-chief will review your work and judge if it is ready to publish."],
                                 AFTER_EVENT:["You did great with the event chosing. Thomas could not wait to start writing"],
                                 AFTER_TITLE:["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."],
@@ -111,7 +111,7 @@ const dialogs:Dialog[] = [
                     {
                         score: 5,
                         comment:{
-                                START:["You will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
+                                START:["Welcome to the newsroom! I am Gabrielle the managing editor.","You will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
                                 "Once you have finished, the editor-in-chief will review your work and judge if it is ready to publish."],
                                 AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
                                 AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
@@ -121,7 +121,7 @@ const dialogs:Dialog[] = [
                     {
                         score: 3,
                         comment:{
-                                START:["You will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
+                                START:["Welcome to the newsroom! I am Gabrielle the managing editor.","You will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
                                 "Once you have finished, the editor-in-chief will review your work and judge if it is ready to publish."],
                                 AFTER_EVENT:["I heard Thomas wasn't too happy about your event decision."],
                                 AFTER_TITLE:["I heard Jakub wasn't too happy about your title decision."],
@@ -131,7 +131,7 @@ const dialogs:Dialog[] = [
                     {
                         score: 0,
                         comment:{
-                                START:["You will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
+                                START:["Welcome to the newsroom! I am Gabrielle the managing editor.","You will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
                                 "Once you have finished, the editor-in-chief will review your work and judge if it is ready to publish."],
                                 AFTER_EVENT:["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."],
                                 AFTER_TITLE:["First title choice. That must be exciting.", "I have not spoken to Jakub yet but I'm sure you are doing great."],
@@ -140,27 +140,326 @@ const dialogs:Dialog[] = [
                         },],
             event:{
                 START:["Soon Jakub will be here to help you.",
-                "I am sure you will do fine..."],
+                "I am sure you will do fine...","Just remember the deadlines!"],
                 AFTER_EVENT:["Anyway, the first week can be intimidating.", "Make sure you ask whenever needed. Everyone here would love to help."],
                 AFTER_TITLE:["Anyway, the first week can be intimidating.", "Make sure you ask whenever needed. Everyone here would love to help."],
-                AFTER_LAYOUT:[ "Anyway", "Make sure you ask whenever needed. Everyone here would love to help."]
+                AFTER_LAYOUT:[ "Anyway, I hope you had a great first week. It really was nice meeting you."]
             }
             
         },
         weeks:[
             {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
+                comment:[
+                    {
+                        score: 9,
+                        comment: [
+                            {
+                                media:9,
+                                comment: {
+                                    START:[["Welcome back to the ship!", "First week of the month... feels like a fresh start."]],
+                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
+                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
+                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
+                                }
+                            },
+                            {
+                                media:7,
+                                comment:{
+                                    START:[["Welcome back to the ship!", "First week of the month... feels like a fresh start."]],
+                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
+                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
+                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
+                                }
+                            },
+                            {
+                                media:5,
+                                comment: {
+                                    START:[["Welcome back to the ship!", "First week of the month... feels like a fresh start."]],
+                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
+                                }
+                            },
+                            {
+                                media:3,
+                                comment: {
+                                    START:[["Welcome back to the ship!", "First week of the month... feels like a fresh start."]],
+                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
+                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
+                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
+                                }
+                            },
+                            {
+                                media:0,
+                                comment: {
+                                    START:[["Welcome back to the ship!", "First week of the month... feels like a fresh start."]],
+                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
+                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
+                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
+                                }
+                            }
+                    ]
+                    },
+                    {
+                        score: 7,
+                        comment: [
+                            {
+                                media:9,
+                                comment: {
+                                    START:[["Welcome back to the ship!", "First week of the month... feels like a fresh start.","You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]],
+                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
+                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
+                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
+                                }
+                            },
+                            {
+                                media:7,
+                                comment:{
+                                    START:[["Welcome back to the ship!", "First week of the month... feels like a fresh start.","You did great last week.","I knew this job was perfect for you. Keep up the good work."]],
+                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
+                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
+                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
+                                }
+                            },
+                            {
+                                media:5,
+                                comment: {
+                                    START:[["Welcome back to the ship!", "First week of the month... feels like a fresh start.","You are starting to get the hang of it. I am sure soon everyone will notice."]],
+                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
+                                }
+                            },
+                            {
+                                media:3,
+                                comment: {
+                                    START:[["Welcome back to the ship!", "First week of the month... feels like a fresh start.","See? I was sure you had it in you.","This week we are proving the editor in chief wrong."]],
+                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
+                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
+                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
+                                }
+                            },
+                            {
+                                media:0,
+                                comment: {
+                                    START:[["Last week was a tough one wasn't it?","Luckily you are doing sooo much better now", "keep up the good work."]],
+                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
+                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
+                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
+                                }
+                            }
+                    ]
+                    },
+                    
+                    {
+                        score: 5,
+                        comment: [
+                            {
+                                media:9,
+                                comment: {
+                                    START:[["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]],
+                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
+                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
+                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
+                                }
+                            },
+                            {
+                                media:7,
+                                comment:{
+                                    START:[["You did great last week.","I knew this job was perfect for you. Keep up the good work."]],
+                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
+                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
+                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
+                                }
+                            },
+                            {
+                                media:5,
+                                comment: {
+                                    START:[["You are starting to get the hang of it. I am sure soon everyone will notice."]],
+                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
+                                }
+                            },
+                            {
+                                media:3,
+                                comment: {
+                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
+                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
+                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
+                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
+                                }
+                            },
+                            {
+                                media:0,
+                                comment: {
+                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
+                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
+                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
+                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
+                                }
+                            }
+                            
+                    ]
+                    },
+                    {
+                        score: 3,
+                        comment: [
+                            {
+                                media:9,
+                                comment: {
+                                    START:[["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]],
+                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
+                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
+                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
+                                }
+                            },
+                            {
+                                media:7,
+                                comment:{
+                                    START:[["You did great last week.","I knew this job was perfect for you. Keep up the good work."]],
+                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
+                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
+                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
+                                }
+                            },
+                            {
+                                media:5,
+                                comment: {
+                                    START:[["You are starting to get the hang of it. I am sure soon everyone will notice."]],
+                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
+                                }
+                            },
+                            {
+                                media:3,
+                                comment: {
+                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
+                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
+                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
+                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
+                                }
+                            },
+                            {
+                                media:0,
+                                comment: {
+                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
+                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
+                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
+                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
+                                }
+                            }
+                            
+                    ]
+                    },
+                    {
+                        score: 0,
+                        comment: [
+                            {
+                                media:9,
+                                comment: {
+                                    START:[["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]],
+                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
+                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
+                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
+                                }
+                            },
+                            {
+                                media:7,
+                                comment:{
+                                    START:[["You did great last week.","I knew this job was perfect for you. Keep up the good work."]],
+                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
+                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
+                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
+                                }
+                            },
+                            {
+                                media:5,
+                                comment: {
+                                    START:[["You are starting to get the hang of it. I am sure soon everyone will notice."]],
+                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
+                                }
+                            },
+                            {
+                                media:3,
+                                comment: {
+                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
+                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
+                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
+                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
+                                }
+                            },
+                            {
+                                media:0,
+                                comment: {
+                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
+                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
+                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
+                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
+                                }
+                            }
+                            
+                    ]
+                    },
+                ],
+                events:[
+                    {
+                        eventId: "cupcakes",
+                        //Each index leads to the next piece of dialog relating to this topic from the person
+                        dialogs:{
+                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
+                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
+                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
+                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
+                        }
+                    },
+                    {
+                        eventId: "missingcoat",
+                        dialogs:{
+                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
+                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
+                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
+                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
+                        }
+                    },
+                    {
+                        eventId: "runninglate",
+                        dialogs:{
+                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
+                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
+                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
+                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
+                        }
+                    },
+                    {
+                        eventId: "sick",
+                        dialogs:{
+                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
+                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
+                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
+                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
+                        }
+                    }
+                ]
+            },
+            {
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
                 comment:[
                     {
                         score: 9,
@@ -448,18 +747,18 @@ const dialogs:Dialog[] = [
                 ]
             },
             {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
                 comment:[
                     {
                         score: 9,
@@ -747,317 +1046,18 @@ const dialogs:Dialog[] = [
                 ]
             },
             {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
-                comment:[
-                    {
-                        score: 9,
-                        comment: [
-                            {
-                                media:9,
-                                comment: {
-                                    START:[["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]],
-                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
-                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
-                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
-                                }
-                            },
-                            {
-                                media:7,
-                                comment:{
-                                    START:[["You did great last week.","I knew this job was perfect for you. Keep up the good work."]],
-                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
-                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
-                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
-                                }
-                            },
-                            {
-                                media:5,
-                                comment: {
-                                    START:[["You are starting to get the hang of it. I am sure soon everyone will notice."]],
-                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
-                                }
-                            },
-                            {
-                                media:3,
-                                comment: {
-                                    START:[["See? I was sure you had it in you.","This week we are proving the editor in chief wrong."]],
-                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
-                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
-                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
-                                }
-                            },
-                            {
-                                media:0,
-                                comment: {
-                                    START:[["Last week was a tough one wasn't it?","Luckily you are doing sooo much better now", "keep up the good work."]],
-                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
-                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
-                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
-                                }
-                            }
-                    ]
-                    },
-                    {
-                        score: 7,
-                        comment: [
-                            {
-                                media:9,
-                                comment: {
-                                    START:[["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]],
-                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
-                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
-                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
-                                }
-                            },
-                            {
-                                media:7,
-                                comment:{
-                                    START:[["You did great last week.","I knew this job was perfect for you. Keep up the good work."]],
-                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
-                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
-                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
-                                }
-                            },
-                            {
-                                media:5,
-                                comment: {
-                                    START:[["You are starting to get the hang of it. I am sure soon everyone will notice."]],
-                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
-                                }
-                            },
-                            {
-                                media:3,
-                                comment: {
-                                    START:[["See? I was sure you had it in you.","This week we are proving the editor in chief wrong."]],
-                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
-                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
-                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
-                                }
-                            },
-                            {
-                                media:0,
-                                comment: {
-                                    START:[["Last week was a tough one wasn't it?","Luckily you are doing sooo much better now", "keep up the good work."]],
-                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
-                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
-                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
-                                }
-                            }
-                    ]
-                    },
-                    
-                    {
-                        score: 5,
-                        comment: [
-                            {
-                                media:9,
-                                comment: {
-                                    START:[["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]],
-                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
-                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
-                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
-                                }
-                            },
-                            {
-                                media:7,
-                                comment:{
-                                    START:[["You did great last week.","I knew this job was perfect for you. Keep up the good work."]],
-                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
-                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
-                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
-                                }
-                            },
-                            {
-                                media:5,
-                                comment: {
-                                    START:[["You are starting to get the hang of it. I am sure soon everyone will notice."]],
-                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
-                                }
-                            },
-                            {
-                                media:3,
-                                comment: {
-                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
-                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
-                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
-                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
-                                }
-                            },
-                            {
-                                media:0,
-                                comment: {
-                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
-                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
-                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
-                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
-                                }
-                            }
-                            
-                    ]
-                    },
-                    {
-                        score: 3,
-                        comment: [
-                            {
-                                media:9,
-                                comment: {
-                                    START:[["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]],
-                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
-                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
-                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
-                                }
-                            },
-                            {
-                                media:7,
-                                comment:{
-                                    START:[["You did great last week.","I knew this job was perfect for you. Keep up the good work."]],
-                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
-                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
-                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
-                                }
-                            },
-                            {
-                                media:5,
-                                comment: {
-                                    START:[["You are starting to get the hang of it. I am sure soon everyone will notice."]],
-                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
-                                }
-                            },
-                            {
-                                media:3,
-                                comment: {
-                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
-                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
-                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
-                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
-                                }
-                            },
-                            {
-                                media:0,
-                                comment: {
-                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
-                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
-                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
-                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
-                                }
-                            }
-                            
-                    ]
-                    },
-                    {
-                        score: 0,
-                        comment: [
-                            {
-                                media:9,
-                                comment: {
-                                    START:[["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]],
-                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
-                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
-                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
-                                }
-                            },
-                            {
-                                media:7,
-                                comment:{
-                                    START:[["You did great last week.","I knew this job was perfect for you. Keep up the good work."]],
-                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
-                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
-                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
-                                }
-                            },
-                            {
-                                media:5,
-                                comment: {
-                                    START:[["You are starting to get the hang of it. I am sure soon everyone will notice."]],
-                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
-                                }
-                            },
-                            {
-                                media:3,
-                                comment: {
-                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
-                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
-                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
-                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
-                                }
-                            },
-                            {
-                                media:0,
-                                comment: {
-                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
-                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
-                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
-                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
-                                }
-                            }
-                            
-                    ]
-                    },
-                ],
-                events:[
-                    {
-                        eventId: "cupcakes",
-                        //Each index leads to the next piece of dialog relating to this topic from the person
-                        dialogs:{
-                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
-                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
-                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
-                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
-                        }
-                    },
-                    {
-                        eventId: "missingcoat",
-                        dialogs:{
-                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
-                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
-                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
-                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
-                        }
-                    },
-                    {
-                        eventId: "runninglate",
-                        dialogs:{
-                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
-                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
-                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
-                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
-                        }
-                    },
-                    {
-                        eventId: "sick",
-                        dialogs:{
-                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
-                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
-                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
-                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
-                        }
-                    }
-                ]
-            },
-            {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
                 comment:[
                     {
                         score: 9,
@@ -1350,8 +1350,8 @@ const dialogs:Dialog[] = [
     {
         person: "NEWS_EDITOR",
         firstWeek: {
-            salute: ["Hello, my name is Jakub and I am the news editor."],
-            goodbye:["First weeks can be hard but you will do great, I know it."],
+            // salute: ["Hello, my name is Jakub and I am the news editor."],
+            // goodbye:["First weeks can be hard but you will do great, I know it."],
             comment:[
             {
                 score: 9,
@@ -1417,18 +1417,18 @@ const dialogs:Dialog[] = [
         },
         weeks:[
             {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
                 comment:[
                     {
                         score: 9,
@@ -1716,18 +1716,18 @@ const dialogs:Dialog[] = [
                 ]
             },
             {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
                 comment:[
                     {
                         score: 9,
@@ -2015,18 +2015,18 @@ const dialogs:Dialog[] = [
                 ]
             },
             {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
                 comment:[
                     {
                         score: 9,
@@ -2314,18 +2314,18 @@ const dialogs:Dialog[] = [
                 ]
             },
             {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
                 comment:[
                     {
                         score: 9,
@@ -2617,8 +2617,8 @@ const dialogs:Dialog[] = [
     {
         person:"ART_DIRECTOR",
         firstWeek: {
-            salute: ["Was that Thomas running?", "Anyway, welcome to the newsroom. I'm the newspaper's art director, Aaliyah."],
-            goodbye:["Also, I am looking forward to working with you. See you!"],
+            // salute: ["Was that Thomas running?", "Anyway, welcome to the newsroom. I'm the newspaper's art director, Aaliyah."],
+            // goodbye:["Also, I am looking forward to working with you. See you!"],
             comment:[
                 {
                     score: 9,
@@ -2685,18 +2685,18 @@ const dialogs:Dialog[] = [
         },
        weeks:[
             {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
                 comment:[
                     {
                         score: 9,
@@ -2984,18 +2984,18 @@ const dialogs:Dialog[] = [
                 ]
             },
             {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
                 comment:[
                     {
                         score: 9,
@@ -3283,18 +3283,18 @@ const dialogs:Dialog[] = [
                 ]
             },
             {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
                 comment:[
                     {
                         score: 9,
@@ -3582,18 +3582,18 @@ const dialogs:Dialog[] = [
                 ]
             },
             {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
                 comment:[
                     {
                         score: 9,
@@ -3886,8 +3886,8 @@ const dialogs:Dialog[] = [
     {
         person:"REPORTER",
         firstWeek: {
-            salute: ["Sorry I'm a little late. I forgot you were starting today and got a little carried away talking to Jakub."],
-            goodbye:["Okay, thanks. It has been a pleasure meeting you! Hope we can talk more some other day!"],
+            // salute: ["Sorry I'm a little late. I forgot you were starting today and got a little carried away talking to Jakub."],
+            // goodbye:["Okay, thanks. It has been a pleasure meeting you! Hope we can talk more some other day!"],
             comment:[
                 {
                 score: 9,
@@ -3944,18 +3944,327 @@ const dialogs:Dialog[] = [
         },
         weeks:[
             {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
+                // salute:{
+                //     START:[[""]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
+                comment:[
+                    {
+                        score: 9,
+                        comment: [
+                            {
+                                media:9,
+                                comment: {
+                                    START:[["What an improvement, I am in disbelief.", "You surprised me."]],
+                                    AFTER_EVENT:[["You are definetly improving.", "I can't wait to start writing"]],
+                                    AFTER_TITLE:[["I like the title you chose. Looks good on my article."]],
+                                    AFTER_LAYOUT:[["I like the title you chose. Looks good on my article."]]
+                                }
+                            },
+                            {
+                                media:7,
+                                comment:{
+                                    START:[["Such a beutiful morning... and such a great event you chose.", "What are you doing later?"]],
+                                    AFTER_EVENT:[["You are definetly improving.", "I can't wait to start writing"]],
+                                    AFTER_TITLE:[["I like the title you chose. Looks good on my article."]],
+                                    AFTER_LAYOUT:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]],
+                                }
+                            },
+                            {
+                                media:5,
+                                comment: {
+                                    START:[["Such a beutiful morning...", "What are you doing later?"]],
+                                    AFTER_LAYOUT:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]],
+                                    AFTER_TITLE:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]],
+                                    AFTER_EVENT:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]]
+                                }
+                            },
+                            {
+                                media:3,
+                                comment: {
+                                    START:[["Such a beutiful morning...", "What are you doing later?"]],
+                                    AFTER_EVENT:[["That event wasn't quite what I was looking for...", "I think it does not fit with the rest. Could you change it?"]],
+                                    AFTER_TITLE:[["I am not too sure about that title...", "My advice would be to change it."]],
+                                    AFTER_LAYOUT:[ ["Every cloud has a silver lining","Remember to keep being positive and I am sure next month will be better."]]
+                                }
+                            },
+                            {
+                                media:0,
+                                comment: {
+                                    START:[["Last month was... A little disapointing but you definitly have what I takes.", "Just listen to other people more often."]],
+                                    AFTER_EVENT:[["That event... How can I say it...", "It just does not fit. Could you change it? Please?🙏"]],
+                                    AFTER_TITLE:[["I am not too sure about that title...", "My advice would be to change it."]],
+                                    AFTER_LAYOUT:[ ["Every cloud has a silver lining","Remember to keep being positive and I am sure next month will be better."]]
+                                }
+                            }
+                    ]
+                    },
+                    {
+                        score: 7,
+                        comment: [
+                            {
+                                media:9,
+                                comment: {
+                                    START:[["What an improvement, I am in disbelief.", "You surprised me."]],
+                                    AFTER_EVENT:[["You are definetly improving.", "I can't wait to start writing"]],
+                                    AFTER_TITLE:[["I like the title you chose. Looks good on my article."]],
+                                    AFTER_LAYOUT:[["I like the title you chose. Looks good on my article."]]
+                                }
+                            },
+                            {
+                                media:7,
+                                comment:{
+                                    START:[["Such a beutiful morning... and such a great event you chose.", "What are you doing later?"]],
+                                    AFTER_EVENT:[["You are definetly improving.", "I can't wait to start writing"]],
+                                    AFTER_TITLE:[["I like the title you chose. Looks good on my article."]],
+                                    AFTER_LAYOUT:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]],
+                                }
+                            },
+                            {
+                                media:5,
+                                comment: {
+                                    START:[["Such a beutiful morning...", "What are you doing later?"]],
+                                    AFTER_LAYOUT:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]],
+                                    AFTER_TITLE:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]],
+                                    AFTER_EVENT:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]]
+                                }
+                            },
+                            {
+                                media:3,
+                                comment: {
+                                    START:[["Such a beutiful morning...", "What are you doing later?"]],
+                                    AFTER_EVENT:[["That event wasn't quite what I was looking for...", "I think it does not fit with the rest. Could you change it?"]],
+                                    AFTER_TITLE:[["I am not too sure about that title...", "My advice would be to change it."]],
+                                    AFTER_LAYOUT:[ ["Every cloud has a silver lining","Remember to keep being positive and I am sure next month will be better."]]
+                                }
+                            },
+                            {
+                                media:0,
+                                comment: {
+                                    START:[["Last month was... A little disapointing but you definitly have what I takes.", "Just listen to other people more often."]],
+                                    AFTER_EVENT:[["That event... How can I say it...", "It just does not fit. Could you change it? Please?🙏"]],
+                                    AFTER_TITLE:[["I am not too sure about that title...", "My advice would be to change it."]],
+                                    AFTER_LAYOUT:[ ["Every cloud has a silver lining","Remember to keep being positive and I am sure next month will be better."]]
+                                }
+                            }
+                    ]
+                    },
+                    
+                    {
+                        score: 5,
+                        comment: [
+                            {
+                                media:9,
+                                comment: {
+                                    START:[["What an improvement, I am in disbelief.", "You surprised me."]],
+                                    AFTER_EVENT:[["You are definetly improving.", "I can't wait to start writing"]],
+                                    AFTER_TITLE:[["I like the title you chose. Looks good on my article."]],
+                                    AFTER_LAYOUT:[["I like the title you chose. Looks good on my article."]]
+                                }
+                            },
+                            {
+                                media:7,
+                                comment:{
+                                    START:[["Such a beutiful morning... and such a great event you chose.", "What are you doing later?"]],
+                                    AFTER_EVENT:[["You are definetly improving.", "I can't wait to start writing"]],
+                                    AFTER_TITLE:[["I like the title you chose. Looks good on my article."]],
+                                    AFTER_LAYOUT:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]],
+                                }
+                            },
+                            {
+                                media:5,
+                                comment: {
+                                    START:[["Such a beutiful morning...", "What are you doing later?"]],
+                                    AFTER_LAYOUT:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]],
+                                    AFTER_TITLE:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]],
+                                    AFTER_EVENT:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]]
+                                }
+                            },
+                            {
+                                media:3,
+                                comment: {
+                                    START:[["Such a beutiful morning...", "What are you doing later?"]],
+                                    AFTER_EVENT:[["That event wasn't quite what I was looking for...", "I think it does not fit with the rest. Could you change it?"]],
+                                    AFTER_TITLE:[["I am not too sure about that title...", "My advice would be to change it."]],
+                                    AFTER_LAYOUT:[ ["Every cloud has a silver lining","Remember to keep being positive and I am sure next month will be better."]]
+                                }
+                            },
+                            {
+                                media:0,
+                                comment: {
+                                    START:[["Last month was... A little disapointing but you definitly have what I takes.", "Just listen to other people more often."]],
+                                    AFTER_EVENT:[["That event... How can I say it...", "It just does not fit. Could you change it? Please?🙏"]],
+                                    AFTER_TITLE:[["I am not too sure about that title...", "My advice would be to change it."]],
+                                    AFTER_LAYOUT:[ ["Every cloud has a silver lining","Remember to keep being positive and I am sure next month will be better."]]
+                                }
+                            }
+                            
+                    ]
+                    },
+                    {
+                        score: 3,
+                        comment: [
+                            {
+                                media:9,
+                                comment: {
+                                    START:[["What an improvement, I am in disbelief.", "You surprised me."]],
+                                    AFTER_EVENT:[["You are definetly improving.", "I can't wait to start writing"]],
+                                    AFTER_TITLE:[["I like the title you chose. Looks good on my article."]],
+                                    AFTER_LAYOUT:[["I like the title you chose. Looks good on my article."]]
+                                }
+                            },
+                            {
+                                media:7,
+                                comment:{
+                                    START:[["Such a beutiful morning... and such a great event you chose.", "What are you doing later?"]],
+                                    AFTER_EVENT:[["You are definetly improving.", "I can't wait to start writing"]],
+                                    AFTER_TITLE:[["I like the title you chose. Looks good on my article."]],
+                                    AFTER_LAYOUT:[["I like the title you chose. Looks good on my article."]],
+                                }
+                            },
+                            {
+                                media:5,
+                                comment: {
+                                    START:[["Such a beutiful morning...", "What are you doing later?"]],
+                                    AFTER_LAYOUT:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]],
+                                    AFTER_TITLE:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]],
+                                    AFTER_EVENT:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]]
+                                }
+                            },
+                            {
+                                media:3,
+                                comment: {
+                                    START:[["Such a beutiful morning...", "What are you doing later?"]],
+                                    AFTER_EVENT:[["That event wasn't quite what I was looking for...", "I think it does not fit with the rest. Could you change it?"]],
+                                    AFTER_TITLE:[["I am not too sure about that title...", "My advice would be to change it."]],
+                                    AFTER_LAYOUT:[ ["Every cloud has a silver lining","Remember to keep being positive and I am sure next month will be better."]]
+                                }
+                            },
+                            {
+                                media:0,
+                                comment: {
+                                    START:[["Last month was... A little disapointing but you definitly have what I takes.", "Just listen to other people more often."]],
+                                    AFTER_EVENT:[["That event... How can I say it...", "It just does not fit. Could you change it? Please?🙏"]],
+                                    AFTER_TITLE:[["I am not too sure about that title...", "My advice would be to change it."]],
+                                    AFTER_LAYOUT:[ ["Every cloud has a silver lining","Remember to keep being positive and I am sure next month will be better."]]
+                                }
+                            }
+                            
+                    ]
+                    },
+                    {
+                        score: 0,
+                        comment: [
+                            {
+                                media:9,
+                                comment: {
+                                    START:[["What an improvement, I am in disbelief.", "You surprised me."]],
+                                    AFTER_EVENT:[["You are definetly improving.", "I can't wait to start writing"]],
+                                    AFTER_TITLE:[["I like the title you chose. Looks good on my article."]],
+                                    AFTER_LAYOUT:[["I like the title you chose. Looks good on my article."]]
+                                }
+                            },
+                            {
+                                media:7,
+                                comment:{
+                                    START:[["Such a beutiful morning... and such a great event you chose.", "What are you doing later?"]],
+                                    AFTER_EVENT:[["You are definetly improving.", "I can't wait to start writing"]],
+                                    AFTER_TITLE:[["I like the title you chose. Looks good on my article."]],
+                                    AFTER_LAYOUT:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]],
+                                }
+                            },
+                            {
+                                media:5,
+                                comment: {
+                                    START:[["Such a beutiful morning...", "What are you doing later?"]],
+                                    AFTER_LAYOUT:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]],
+                                    AFTER_TITLE:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]],
+                                    AFTER_EVENT:[["Is it me or everyone is in a hurry?", "You should probably stay and check your decisions."]]
+                                }
+                            },
+                            {
+                                media:3,
+                                comment: {
+                                    START:[["Such a beutiful morning...", "What are you doing later?"]],
+                                    AFTER_EVENT:[["That event wasn't quite what I was looking for...", "I think it does not fit with the rest. Could you change it?"]],
+                                    AFTER_TITLE:[["I am not too sure about that title...", "My advice would be to change it."]],
+                                    AFTER_LAYOUT:[ ["Every cloud has a silver lining","Remember to keep being positive and I am sure next month will be better."]]
+                                }
+                            },
+                            {
+                                media:0,
+                                comment: {
+                                    START:[["Last month was... A little disapointing but you definitly have what I takes.", "Just listen to other people more often."]],
+                                    AFTER_EVENT:[["That event... How can I say it...", "It just does not fit. Could you change it? Please?🙏"]],
+                                    AFTER_TITLE:[["I am not too sure about that title...", "My advice would be to change it."]],
+                                    AFTER_LAYOUT:[ ["Every cloud has a silver lining","Remember to keep being positive and I am sure next month will be better."]]
+                                }
+                            }
+                            
+                    ]
+                    },
+                ],
+                events:[
+                    {
+                        eventId: "cupcakes",
+                        //Each index leads to the next piece of dialog relating to this topic from the person
+                        dialogs:{
+                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
+                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
+                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
+                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
+                        }
+                    },
+                    {
+                        eventId: "missingcoat",
+                        dialogs:{
+                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
+                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
+                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
+                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
+                        }
+                    },
+                    {
+                        eventId: "runninglate",
+                        dialogs:{
+                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
+                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
+                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
+                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
+                        }
+                    },
+                    {
+                        eventId: "sick",
+                        dialogs:{
+                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
+                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
+                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
+                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
+                        }
+                    }
+                ]
+            },
+            {
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
                 comment:[
                     {
                         score: 9,
@@ -4243,18 +4552,18 @@ const dialogs:Dialog[] = [
                 ]
             },
             {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
                 comment:[
                     {
                         score: 9,
@@ -4542,317 +4851,18 @@ const dialogs:Dialog[] = [
                 ]
             },
             {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
-                comment:[
-                    {
-                        score: 9,
-                        comment: [
-                            {
-                                media:9,
-                                comment: {
-                                    START:[["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]],
-                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
-                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
-                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
-                                }
-                            },
-                            {
-                                media:7,
-                                comment:{
-                                    START:[["You did great last week.","I knew this job was perfect for you. Keep up the good work."]],
-                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
-                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
-                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
-                                }
-                            },
-                            {
-                                media:5,
-                                comment: {
-                                    START:[["You are starting to get the hang of it. I am sure soon everyone will notice."]],
-                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
-                                }
-                            },
-                            {
-                                media:3,
-                                comment: {
-                                    START:[["See? I was sure you had it in you.","This week we are proving the editor in chief wrong."]],
-                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
-                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
-                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
-                                }
-                            },
-                            {
-                                media:0,
-                                comment: {
-                                    START:[["Last week was a tough one wasn't it?","Luckily you are doing sooo much better now", "keep up the good work."]],
-                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
-                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
-                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
-                                }
-                            }
-                    ]
-                    },
-                    {
-                        score: 7,
-                        comment: [
-                            {
-                                media:9,
-                                comment: {
-                                    START:[["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]],
-                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
-                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
-                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
-                                }
-                            },
-                            {
-                                media:7,
-                                comment:{
-                                    START:[["You did great last week.","I knew this job was perfect for you. Keep up the good work."]],
-                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
-                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
-                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
-                                }
-                            },
-                            {
-                                media:5,
-                                comment: {
-                                    START:[["You are starting to get the hang of it. I am sure soon everyone will notice."]],
-                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
-                                }
-                            },
-                            {
-                                media:3,
-                                comment: {
-                                    START:[["See? I was sure you had it in you.","This week we are proving the editor in chief wrong."]],
-                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
-                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
-                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
-                                }
-                            },
-                            {
-                                media:0,
-                                comment: {
-                                    START:[["Last week was a tough one wasn't it?","Luckily you are doing sooo much better now", "keep up the good work."]],
-                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
-                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
-                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
-                                }
-                            }
-                    ]
-                    },
-                    
-                    {
-                        score: 5,
-                        comment: [
-                            {
-                                media:9,
-                                comment: {
-                                    START:[["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]],
-                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
-                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
-                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
-                                }
-                            },
-                            {
-                                media:7,
-                                comment:{
-                                    START:[["You did great last week.","I knew this job was perfect for you. Keep up the good work."]],
-                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
-                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
-                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
-                                }
-                            },
-                            {
-                                media:5,
-                                comment: {
-                                    START:[["You are starting to get the hang of it. I am sure soon everyone will notice."]],
-                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
-                                }
-                            },
-                            {
-                                media:3,
-                                comment: {
-                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
-                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
-                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
-                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
-                                }
-                            },
-                            {
-                                media:0,
-                                comment: {
-                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
-                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
-                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
-                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
-                                }
-                            }
-                            
-                    ]
-                    },
-                    {
-                        score: 3,
-                        comment: [
-                            {
-                                media:9,
-                                comment: {
-                                    START:[["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]],
-                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
-                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
-                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
-                                }
-                            },
-                            {
-                                media:7,
-                                comment:{
-                                    START:[["You did great last week.","I knew this job was perfect for you. Keep up the good work."]],
-                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
-                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
-                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
-                                }
-                            },
-                            {
-                                media:5,
-                                comment: {
-                                    START:[["You are starting to get the hang of it. I am sure soon everyone will notice."]],
-                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
-                                }
-                            },
-                            {
-                                media:3,
-                                comment: {
-                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
-                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
-                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
-                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
-                                }
-                            },
-                            {
-                                media:0,
-                                comment: {
-                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
-                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
-                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
-                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
-                                }
-                            }
-                            
-                    ]
-                    },
-                    {
-                        score: 0,
-                        comment: [
-                            {
-                                media:9,
-                                comment: {
-                                    START:[["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."]],
-                                    AFTER_EVENT:[["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."]],
-                                    AFTER_TITLE:[["I knew I had made a great decision hiring you.", "That title you chose was just perfect."]],
-                                    AFTER_LAYOUT:[["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]]
-                                }
-                            },
-                            {
-                                media:7,
-                                comment:{
-                                    START:[["You did great last week.","I knew this job was perfect for you. Keep up the good work."]],
-                                    AFTER_EVENT:[["You did great with the event chosing. Thomas could not wait to start writing"]],
-                                    AFTER_TITLE:[["I knew you would be great. I just saw Thomas and he was super happy.", "He said you chose exactly the title he would have chosen."]],
-                                    AFTER_LAYOUT:[["You did really well! Even better than past weeks I may add.", "I am sure the editor in chief will be happy to publish your work."]]
-                                }
-                            },
-                            {
-                                media:5,
-                                comment: {
-                                    START:[["You are starting to get the hang of it. I am sure soon everyone will notice."]],
-                                    AFTER_LAYOUT:[["You did fine this week but there still room for improvement.", "Let's see what the editor in chief thinks."]]
-                                }
-                            },
-                            {
-                                media:3,
-                                comment: {
-                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
-                                    AFTER_EVENT:[["I heard Thomas wasn't too happy about your event decision."]],
-                                    AFTER_TITLE:[["I heard Jakub wasn't too happy about your title decision."]],
-                                    AFTER_LAYOUT:[ ["I have only heard good things about you so...","Don't be too hard on yourself. There is a lot of room for improvement."]]
-                                }
-                            },
-                            {
-                                media:0,
-                                comment: {
-                                    START:[["I heard the editor in chief wasn't too happy about your work but don't worry I'm sure this week will be better."]],
-                                    AFTER_EVENT:[["How do you feel? Was it too hard?", "Remember to always pay attention to the details, they can be the difference between great and bad."]],
-                                    AFTER_TITLE:[["I have not spoken to Jakub yet but I'm sure you are doing great."]],
-                                    AFTER_LAYOUT:[ ["It can be hard sometimes but you can't lose motivation!","Remember constructive critizism is always good!"]]
-                                }
-                            }
-                            
-                    ]
-                    },
-                ],
-                events:[
-                    {
-                        eventId: "cupcakes",
-                        //Each index leads to the next piece of dialog relating to this topic from the person
-                        dialogs:{
-                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
-                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
-                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
-                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
-                        }
-                    },
-                    {
-                        eventId: "missingcoat",
-                        dialogs:{
-                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
-                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
-                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
-                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
-                        }
-                    },
-                    {
-                        eventId: "runninglate",
-                        dialogs:{
-                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
-                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
-                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
-                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
-                        }
-                    },
-                    {
-                        eventId: "sick",
-                        dialogs:{
-                            START:["You did super great last week!", "Between you and me, the editor in chief was super happy you decided to come for another week."],
-                            AFTER_EVENT:["Wow! Jakub just told me you were a natural.", "The event you chose to cover was really interesting and engaging."],
-                            AFTER_TITLE:["I knew I had made a great decision hiring you.", "That title you chose was just perfect."],
-                            AFTER_LAYOUT:["Wow! You are a natural! I don't think I have any advice for you.", "I am sure the editor in chief will love your work, as usual."]
-                        }
-                    }
-                ]
-            },
-            {
-                salute:{
-                    START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
-                    AFTER_EVENT:[["Ahoy!"]],
-                    AFTER_TITLE:[["haoh"]],
-                    AFTER_LAYOUT:[["haha"]]
-                },
-                goodbye:{
-                    START:[["Goodbye"]],
-                    AFTER_EVENT:[["Good bye"]],
-                    AFTER_TITLE:[["Bye"]],
-                    AFTER_LAYOUT:[["Agur yogur"]]
-                },
+                // salute:{
+                //     START:[["Welcome back to the ship!", "Firs week of the month, let's see how we do."], ["First days of the month are great, they always feel like a fresh start."],["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶", "Bonjour! How is everything?"]],
+                //     AFTER_EVENT:[["Ahoy!"]],
+                //     AFTER_TITLE:[["haoh"]],
+                //     AFTER_LAYOUT:[["haha"]]
+                // },
+                // goodbye:{
+                //     START:[["Goodbye"]],
+                //     AFTER_EVENT:[["Good bye"]],
+                //     AFTER_TITLE:[["Bye"]],
+                //     AFTER_LAYOUT:[["Agur yogur"]]
+                // },
                 comment:[
                     {
                         score: 9,

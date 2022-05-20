@@ -13,7 +13,7 @@ export default function SettingsButton (props: ISettingsButtonProps) {
       {displaySettings?
         <SettingsMenu displaySettings={displaySettings} setDisplaySettings={setDisplaySettings}/>
       : <button id={styles.icon} onClick={()=>setDisplaySettings(true)}>
-          <Image src="/favicon.ico" alt='Icono settings' layout="fill"/>
+          <Image src="/favicon.svg" alt='Icono settings' layout="fill"/>
       </button>
       }
       </>

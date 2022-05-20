@@ -31,14 +31,15 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     const resetGame = () =>{
         getEventsFromDatabase()
             let week = gameObject.punctuation.length%4===0?3:(gameObject.punctuation.length%4)-1;
-            let eventDialog = eventDialogs[0] //change to random generation
+            let random = Math.floor(Math.random()*eventDialogs.length);
+            let eventDialog = eventDialogs[random] 
             if(gameObject.punctuation.length<1){
                 
                 setGame({
                     selectEvent: -1,
                     selectTitle: -1,
                     selectLayout: -1,
-                    currentEvent: "firstday",
+                    currentEvent: eventDialog.event,
                     eventDialog: eventDialog,
                     currentMoment:"START",
                     week: week
@@ -90,10 +91,11 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     const checkForAchievements=()=>{
         //Check on gameObject for achievements and activate respective popUps
     }
-    const startDialog = (eventDialog:any, week:number) =>{
+    const startDialog = (eventDialog:any) =>{
+        console.log(eventDialog.dialog[game.currentMoment])
         let dialog:any[] = []
         eventDialog.dialog[game.currentMoment].map((i:string)=>{
-            dialog.push({person:i, text:genDialog(gameObject.tutorial,game.currentMoment,week,eventDialog.event, i, game.currentMoment==="START"?gameObject.punctuation[gameObject.punctuation.length-1]:game.currentMoment==="SELECT_TITLE"?game.selectTitle:game.currentMoment==="SELECT_EVENT"?game.selectEvent:(game.selectEvent+game.selectTitle)/2, gameObject.media)});
+            dialog.push({person:i, text:genDialog(game.currentMoment, game.currentEvent,i )});
         })
         setTexto(dialog)
     }
@@ -234,7 +236,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
             currentMoment:event==="SELECT_EVENT"?"AFTER_EVENT":event==="SELECT_TITLE"?"AFTER_TITLE":event==="SELECT_LAYOUT"?"AFTER_LAYOUT":state.currentMoment
         })});
         setCurrentActivity("")
-        startDialog(game.eventDialog, game.week)
+        startDialog(game.eventDialog)
     }
     useEffect(() => {
             resetGame()
@@ -246,7 +248,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     
     useEffect(() => {
         if(game.eventDialog){
-            startDialog(game.eventDialog, game.week)
+            startDialog(game.eventDialog)
         }
         
       return () => {

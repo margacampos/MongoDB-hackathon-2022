@@ -1,45 +1,56 @@
 import { dialogs, eventDialogOrder, Week } from "../data/dialogs";
-import { clueDialogs } from "../data/dialogsNew";
+import { clueDialogs, simpleDialogs } from "../data/dialogsNew";
 import { getActorCodeLabel, getEventCodeLabel, getLocCodeLabel } from "./eventUtils";
 
-const genDialog = (tutorial:boolean, type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT", weekNum:number, event:string, person:string, lastWeekPoints:number, media:number) => {
+const genDialog1 = (tutorial:boolean, type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT", weekNum:number, event:string, person:string, lastWeekPoints:number, media:number) => {
     //Create dialogs for specific sections  
-    let arr = dialogs.find(i=>i.person===person);
+    let arr = simpleDialogs.find(i=>i.person===person);
     if (arr != undefined){
         if (tutorial) {
-            let obj = arr.firstWeek.comment.find((i)=>lastWeekPoints<i.score);
-            if(!obj)return;
-            let comment = obj.comment[type];
-            if (!comment)return [...arr.firstWeek.salute, ...arr.firstWeek.event[type], ...arr.firstWeek.goodbye ]
-            return [...arr.firstWeek.salute, ...comment, ...arr.firstWeek.event[type], ...arr.firstWeek.goodbye ]
+            // let obj = arr.firstWeek.comment.find((i)=>lastWeekPoints<i.score);
+            // if(!obj)return;
+            return [ ...arr.firstWeek.event[type] ];
+            // let comment = obj.comment[type];
+            // if (!comment)return 
+            // return [ ...comment, ...arr.firstWeek.event[type] ]
+            // if (!comment)return [...arr.firstWeek.salute, ...arr.firstWeek.event[type], ...arr.firstWeek.goodbye ]
+            // return [...arr.firstWeek.salute, ...comment, ...arr.firstWeek.event[type], ...arr.firstWeek.goodbye ]
         }
         const weekInfo = arr.weeks[weekNum];
-        const salute = getSalute(weekInfo, "salute", type);
-        const comment = getComment(weekInfo, type, lastWeekPoints, media);
+        // const salute = getSalute(weekInfo, "salute", type);
+        // const comment = getComment(weekInfo, type, lastWeekPoints, media);
         const eventText = getEventText(weekInfo, type, event);
-        const goodbye = getSalute(weekInfo, "goodbye", type)
+        // const goodbye = getSalute(weekInfo, "goodbye", type)
         let d:string[] = []
         
-        if(salute) d = [...d, ...salute];
-        if(comment) d = [...d, ...comment];
+        // if(salute) d = [...d, ...salute];
+        // if(comment) d = [...d, ...comment];
         if(eventText) d = [...d, ...eventText];
-        if(goodbye) d = [...d, ...goodbye];
+        // if(goodbye) d = [...d, ...goodbye];
         return d;
     }else return "error";
 }
-
+const genDialog =( type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT", event:string, person:string, )=>{
+    let arr = simpleDialogs.find(i=>i.person===person);
+    if(!arr)return;
+    for(let i=0;i<arr.event.length;i++){
+        if(arr.event[i].eventId===event){
+           return arr.event[i].dialogs[type];
+        }
+    }  
+}
 const getEvent = (weekNum:number, lastWeekPoints?:number, media?:number) => {
     const weekArr = eventDialogOrder.filter(i=>i.week===weekNum-1)
     const ranNum = Math.floor(Math.random()*weekArr.length);
     return weekArr[ranNum];
 }
-const getSalute = (posDialogs:Week, type:"salute"|"goodbye",moment:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT") =>{
-    //Get saludo
-    let saludo = posDialogs[type][moment];
-    if(!saludo)return;
-    const ranNum = Math.floor(Math.random()*saludo.length);
-    return saludo[ranNum];
-}
+// const getSalute = (posDialogs:Week, type:"salute"|"goodbye",moment:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT") =>{
+//     //Get saludo
+//     let saludo = posDialogs[type][moment];
+//     if(!saludo)return;
+//     const ranNum = Math.floor(Math.random()*saludo.length);
+//     return saludo[ranNum];
+// }
 const getComment = (weekInfo:Week, type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT", lastWeekPoints:number, media?:number) =>{
     let comment = weekInfo.comment.find(i=>lastWeekPoints>=i.score);
     if (!comment)return;
