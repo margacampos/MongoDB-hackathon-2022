@@ -5,9 +5,9 @@ import {MongoClient} from 'mongodb';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Event[]>
+  res: NextApiResponse<Event[]|"">
 ) {
-    if(req.method!="POST")return res.status(404).send();
+    if(req.method!="POST")return res.status(404).send("");
     let client; 
     if(process.env.MONGODB_URI){
         client=new MongoClient(process.env.MONGODB_URI);
