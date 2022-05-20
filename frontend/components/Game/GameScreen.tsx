@@ -12,6 +12,7 @@ import SelectTitle from './SelectTitle'
 import Image from "next/image"
 import ToDo from './ToDo'
 import { eventDialogs } from '../../data/dialogsNew'
+import Newsroom from './Newsroom'
 
 type Props = {
     gameObject:Game;
@@ -285,9 +286,15 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         <div className={styles.display}>
             <FinishWeek finish={finishWeek} continueGame={continueGame} game={game} choices={choices}/>
         </div>:
-        <div className={styles.display}>
-            <ToDo name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}} current={game.currentActivity} setCurrentActivity={setCurrentActivity}/>
+        <div>
+            <div className={styles.todo}>
+                <ToDo name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}} current={game.currentActivity} setCurrentActivity={setCurrentActivity}/>
+            </div>
+            <div className={styles.newsroom}>
+                <Newsroom available={game.eventDialog.available[game.currentMoment]}/>
+            </div>
         </div>
+        
     }
     </div>
 : <Loading/>}

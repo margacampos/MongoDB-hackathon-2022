@@ -1,0 +1,29 @@
+@use 'partials/buttons' as *;
+.person{
+    border: 3px solid var(--background-black);
+    &:hover{
+        cursor: pointer;
+        transform: translateY(5px);
+    }
+}
+.display{
+    position: absolute;
+    bottom: 0;
+    width: auto;
+    height: 100vh;
+    left: 50%;
+    transform: -50%;
+    z-index: 5;
+    overflow: hidden;
+}
+.buttons{
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    z-index: 6;
+    transform: translateX(-50%);
+    button{
+        @include button;
+
+    }
+}

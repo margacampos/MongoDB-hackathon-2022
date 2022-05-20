@@ -15,7 +15,7 @@ export default function FinishWeek({finish, continueGame, choices, game}: Props)
         your punctuation is...
         <h2>{punctuation}</h2>
         Your work was...{punctuation>5?" published!": " not published :("}
-        <button onClick={()=>finish(0,0,0)}>GoodBye!</button>
+        <button onClick={()=>finish(game.selectEvent,game.selectTitle,punctuation)}>GoodBye!</button>
         <button onClick={()=>continueGame(game.selectEvent,game.selectTitle,punctuation)}>Lets keep playing</button>
     </div>
   )

@@ -63,7 +63,7 @@ const Home: any = ({setStart, start}:Props) => {
         <div id={styles.image}>
           {/* <SelectEvent/> */}
           {/* <Image src={"/newsroom/the-newsroom-background-final.svg"} alt="The newsroom" layout='intrinsic' height={820} width={2400}/> */}
-          <img src={"/newsroom/the-newsroom-background-final.svg"} alt="The newsroom"/>
+          <img src={"/newsroom/newsroom.svg"} alt="The newsroom"/>
 
         </div>
         <Buttons buttons={homeButtons}/>

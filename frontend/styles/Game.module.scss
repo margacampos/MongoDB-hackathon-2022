@@ -32,13 +32,33 @@
             bottom: 10px;
         }
 }
-
+.todo{
+    position: absolute;
+    left: 0;
+    top: 0px;
+    max-height: 50vh;
+    box-shadow: 10px 10px 30px var(--background-black);
+    width: fit-content;
+    background-color: var(--main-yellow);
+    color: var(--background-black);
+    padding: 1rem;
+    z-index: 11;
+    button{
+        @include button;
+    }
+    h2{
+        background-color: var(--background-yellow);
+        text-transform: uppercase;
+        border-radius: 10px;
+        padding: 1rem;
+    }
+}
 .display{
     position: absolute;
-    right: 5vw;
-    top: 5vh;
-    width: 60vw;
-    max-height: 70vh;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
     overflow-y: auto;
     overflow-x: hidden;
     // &::-webkit-scrollbar {
