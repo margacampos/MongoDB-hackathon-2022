@@ -18,7 +18,7 @@ export default async function handler(
     if(req.method==="GET"){
       let {url} = req.query;
       try {
-        const response = await fetch(url);
+        const response = await fetch(url as string);
         const data = await response.text();
         const match = data.match(/<title>(.+)<\/title>/);
         const desc = data.match(/<meta name="description" content="(.+)"/);
