@@ -24,27 +24,14 @@ const About: NextPage = () => {
           <section>
               <Link href="/">back</Link>
               <h2>Welcome to GDELT newsroom</h2>
-              <h3>Want to create your own newspaper?</h3>
-              <p>GDELT Newsroom allows you to create your own newspaper with the latest and most relevant news from the GDELT database.<br/>
-              Our goal is to create an entretaining interactive experience that allows you to look at what is going on arround the world while having fun creating your own newspaper.<br/>
-              Our database is updated once every day with 1000 of the most relevant events of the day before. This means everyday you visit us you will be able to create a completely new newspaper and learn what is going on arround the world.<br/>
-              You will be able to filter news on how positive or negative, relevant or by who is involved.</p>
-              <h3>Playmodes</h3>
-              <h4>Editor</h4>
-              <p>We are looking for a new editor, will you be able to fill the role? Join our newsroom and prove your editor skills.<br/>
-              You have to come up with this weeks front page. Choose the event you want your team of reporters to cover, choose between headlines, design the front page and get that important last minute new that will make your newspaper stand out.<br/>
-              Lets see if you have what we are looking for!</p>
-              <h4>Sandbox</h4>
-              <p>Would you like to make your newspaper without anyone telling you what it should cover? You are in luck!<br/>
-              Our archives are open to everyone! Look through yesterday events and select whatever matters to you, no restrictions! Just having fun and learning about what&#39;s been happening arround the world.</p>
               <h3>We are still in development</h3>
-              <p>
-              This project is still in development that is why the news might not be updated as frequently and why we only support articles written in english.<br/>
-              We are working on making it available for everyone.
-              </p>
-              <h3>News we cover</h3>
-              <p>Because we ultimatly want it to be a fun experience, most of our events are positive. We cover the first three QuadClass (Verbal Cooperation, Material Cooperation, Verbal Conflict).<br/>
-              If you would like to only work with the first two, you can go to settings and turn the &#34;positive mindset&#34; option on</p>
+              <p>This project started because of the mongodb hackathon 2022 but I will continue to develop it as I have grown fond of it.</p>
+              <h3>What is this?</h3>
+              <p>Right now it is a simple visual novel type of game where by talking to your co-workers on the newsroom, you have to guess the right choices for the event they are looking for that week.</p>
+              <p>It is powered by the GDELT database which means all the events present in the game are real.</p>
+              <h3>What is it for?</h3>
+              <p>In the future I would like it to be a funny game where you catch up on present events and learn about the different people behind newspapers and maybe one day I might make one for tv and another for radio too, who knows.</p>
+              <p>Anyway, I hope you enjoy it! Any opinion is welcomed, just keep in mind It is still in early development.</p>
           </section>
         </div>
         <Buttons buttons={aboutButtons}/>
