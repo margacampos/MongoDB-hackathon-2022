@@ -51,16 +51,21 @@
 }
 
 #image{
+  position: relative;
   width: 100%;
   min-height: 400px;
+  max-height: 60vh;
   margin: 1rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  border: 3px solid var(--background-black);
   background-color: var(--main-yellow);
+  overflow: hidden;
+  img{
+    max-height: 100%;
+    width: auto;
+  }
 }
 
 .footer {

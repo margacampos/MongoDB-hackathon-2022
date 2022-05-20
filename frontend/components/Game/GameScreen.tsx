@@ -34,6 +34,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
             })
         })
         let score = getPoints(choice);
+        console.log("Score: ",score)
         setGame((state:any)=>{
             return({
                 selectEvent: type==="event"?score:state.selectEvent,
