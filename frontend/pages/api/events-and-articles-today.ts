@@ -68,7 +68,6 @@ export default async function handler(
                 let url = eventList[i].SourceURL;
                 if(url!=undefined)eventList[i].title = await convertToTitles(url);
               }
-              console.log(eventList)
             if(eventList[0].title)res.status(200).json(eventList);
         } catch (error) {
             console.log(error)

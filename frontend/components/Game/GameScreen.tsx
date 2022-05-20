@@ -24,8 +24,8 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     const [game, setGame]:any = useState({});
     const [choices, setChoices] = useState({event:[], title:"", template:""})
     const [img, setImg] = useState({src:"", alt:"", height:0, width:0})
-    const [currentActivity, setCurrentActivity] = useState("MANAGING_DIRECTOR")
-    const finishSelection = (type:string, choice:any, getPoints:()=>number) =>{
+    const [currentActivity, setCurrentActivity] = useState("")
+    const finishSelection = (type:string, choice:any, getPoints:(choice:any)=>number) =>{
         setChoices((state)=>{
             return({
                 event:type==="event"?choice:state.event,
@@ -33,11 +33,11 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
                 template:type==="template"?choice:state.template
             })
         })
-        let score = getPoints();
+        let score = getPoints(choice);
         setGame((state:any)=>{
             return({
-                selectEvent: type==="event"?getPoints():state.selectEvent,
-                selectTitle: type==="title"?getPoints():state.selectTitle,
+                selectEvent: type==="event"?score:state.selectEvent,
+                selectTitle: type==="title"?score:state.selectTitle,
                 selectLayout: type==="template"?10:state.selectLayout,
                 currentEvent: state.currentEvent,
                 currentActivity:state.currentActivity,
@@ -45,7 +45,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
                 currentMoment: state.currentMoment
             })
         })
-        
+        setCurrentActivity("")
     }
     const getEventsFromDatabase = async()=>{
         try {
@@ -202,9 +202,9 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     
   return (
       <div id={styles.screen}>
-{game ?
+{gameEvents ?
     <div >
-        {texto!="closed" ?
+        {texto!="closed" &&
         <div>
             <div className={styles.person}>
                 <div className={styles.img}>
@@ -214,26 +214,26 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
             <div className={styles.dialog}>
                 <Dialog text={texto} setText={setTexto} getNextInteraction={getNextInteraction}/>
             </div>
-        </div> 
-        :game.currentActivity==="SELECT_EVENT"?
+        </div> }
+        {currentActivity==="SELECT_EVENT"?
         <div className={styles.display}>
             <h2>Select Event:</h2>
             <SelectEvent getNextInteraction={getNextInteraction} gameEvents={gameEvents} choice={choices} finishSelection={finishSelection}/>
         </div>
-        :game.currentActivity==="SELECT_TITLE"?
+        :currentActivity==="SELECT_TITLE"?
         <div className={styles.display}>
             <SelectTitle getNextInteraction={getNextInteraction}  gameEvents={gameEvents} choice={choices} finishSelection={finishSelection}/>
         </div>
-        :game.currentActivity==="SELECT_LAYOUT"?
+        :currentActivity==="SELECT_LAYOUT"?
         <div className={styles.display}>
             <SelectLayout getNextInteraction={getNextInteraction} choice={choices} finishSelection={finishSelection}/>
         </div>
-        :game.currentActivity==="SCORE_SCREEN"?
+        :currentActivity==="SCORE_SCREEN"?
         <div className={styles.display}>
             <FinishWeek finish={finishWeek} continueGame={continueGame}/>
         </div>:
         <div className={styles.display}>
-            <ToDo name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}}/>
+            <ToDo name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}} current={game.currentActivity} setCurrentActivity={setCurrentActivity}/>
         </div>
     }
     </div>

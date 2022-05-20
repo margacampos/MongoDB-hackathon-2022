@@ -8,10 +8,10 @@ type Props = {
   finishSelection:(type:string, choice:any, getPoints:()=>number)=>void;
 }
 
-export default function SelectLayout({getNextInteraction, choice}: Props) {
+export default function SelectLayout({getNextInteraction, choice, finishSelection}: Props) {
   return (
     <div>
-      <Templates title={choice.title}/>
+      <Templates title={choice.title} select={finishSelection}/>
       <button onClick={()=>getNextInteraction()}>Close</button>
     </div>
   )
