@@ -53,8 +53,6 @@ export default function Dialog({text, setText,setImg}: Props) {
         
     }
     useEffect(() => {
-        console.log(text)
-        console.log(text[person].text[numDialog])
         setTexto(text[person].text[numDialog]);
         setImg(()=>{
             if(text[person].person==="MANAGING_EDITOR")return({src:"/characters/managingeditor.png", alt:"The newsroom Manging editor", height:724, width:365});
