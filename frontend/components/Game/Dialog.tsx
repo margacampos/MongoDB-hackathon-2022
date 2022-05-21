@@ -52,6 +52,10 @@ export default function Dialog({text, setText,setImg}: Props) {
         setNumDialog(state=>state+1)
         
     }
+    const getName = (name:string) => {
+        let result = name.split("_").join(" ") ;
+        return result;
+    }
     useEffect(() => {
         setTexto(text[person].text[numDialog]);
         setImg(()=>{
@@ -68,7 +72,7 @@ export default function Dialog({text, setText,setImg}: Props) {
     
   return (
     <div>
-        <h2>{text[person].person}</h2>
+        <h2>{getName(text[person].person)}</h2>
         <p>{texto}</p>
         {text[person].text[numDialog] && <button onClick={nextText}>{text[person].text.length == numDialog+1?"close":"next"}</button>}
     </div>
