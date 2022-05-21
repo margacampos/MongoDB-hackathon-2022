@@ -67,7 +67,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     }
     const getEventsFromDatabase = async()=>{
         try {
-          const res = await fetch("http://localhost:3000/api/events-and-articles-today");
+          const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/events-and-articles-today`);
           const result = await res.json();  
           const winner = await result[Math.floor(Math.random()*result.length)];
           setGameEvents({result,winner})
