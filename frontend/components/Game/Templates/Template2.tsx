@@ -19,7 +19,7 @@ export default function Template2({date,title,website}: Props) {
 </text>
 <g id="You can learn more about this event in webpage.com">
 <text fill="#32281E" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Arial" fontSize="15" letterSpacing="0em"><tspan x="13" y={260+(title.length*36)}>You can learn more about this event in </tspan></text>
-<text fill="#78672C" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Arial" fontSize="15" letterSpacing="0em" textDecoration="underline"><tspan x="272.849" y={260+(title.length*36)}>{website}</tspan></text>
+<text onClick={()=>window.open(website,'_blank')} className="svglink" fill="#78672C" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Arial" fontSize="15" letterSpacing="0em" textDecoration="underline"><tspan x="272.849" y={260+(title.length*36)}>here</tspan></text>
 </g>
 <g id="text" transform={`translate(0, ${(title.length-1)*36})`}>
 <rect id="Rectangle 49_3" x="13" y="341" width="187" height="17" fill="#32281E"/>

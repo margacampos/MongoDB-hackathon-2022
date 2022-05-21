@@ -118,5 +118,28 @@ const getClueDialog = (person:string, type:"location"|"actor"|"eventCode", winne
 }
     return [""];
 }
-export {getEvent, genDialog, getClueDialog}
+const arrangeTitle = (title:string, setDisplayTitle:any) =>{
+    let words = title.split(" ");
+    let rows = []
+    let finish = false;
+    let last = 0;         
+    while (finish==false) {
+        let i=0;
+        let quote = ""
+        if(words.length===0){setDisplayTitle(rows); finish=true;};
+        for(i; i<words.length;i++){
+        if(words[i].length+quote.length<27){
+                quote+=`${words[i]} `
+                words.splice
+            }else{
+                rows.push(quote);
+                last = i;
+                break;
+            }
+          }
+          words.splice(0,i);
+          if(words.length===0){rows.push(quote); setDisplayTitle(rows); finish=true;};
+    }
+}
+export {getEvent, genDialog, getClueDialog, arrangeTitle}
 
