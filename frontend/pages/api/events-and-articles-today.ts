@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import {MongoClient} from 'mongodb';
-import { Event } from '../../utils/eventUtils';
+import { Event, getEventName } from '../../utils/eventUtils';
 
 
 export default async function handler(
@@ -66,7 +66,9 @@ export default async function handler(
               let eventList:Event[] = await cursor.toArray();
               for (let i=0; i<eventList.length; i++){
                 let url = eventList[i].SourceURL;
-                if(url!=undefined)eventList[i].title = await convertToTitles(url);
+                // if(url!=undefined)eventList[i].title = await convertToTitles(url);
+                if(url!=undefined)eventList[i].title = getEventName(eventList[i]);
+
               }
             if(eventList[0].title)res.status(200).json(eventList);
         } catch (error) {

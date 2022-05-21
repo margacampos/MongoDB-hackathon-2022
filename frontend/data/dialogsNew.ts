@@ -192,7 +192,7 @@ const simpleDialogs =[
                     START:[""],
                     AFTER_LAYOUT:[""],
                     AFTER_TITLE:[""],
-                    AFTER_EVENT:["Sorry I'm a little late. I forgot you were starting today and got a little carried away talking to Jakub.", "I'm Thomas by the way, these team's reporter.", "I would show you around or something but you know, it is a little late. Do you have the story I need to cover?"],
+                    AFTER_EVENT:["Sorry I'm a little late. I forgot you were starting today and got a little carried away talking to Jakub.", "I'm Thomas by the way, these team's reporter.", "I would show you around or something but you know, it is a little late. Do you have the story I need to cover?","Okay, thanks. It has been a pleasure meeting you! Hope we can talk more some other day!"],
                 }
             },
             {

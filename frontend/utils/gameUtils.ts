@@ -79,18 +79,31 @@ const getEventText = (weekInfo:Week, type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"A
 // }
 const getClueDialog = (person:string, type:"location"|"actor"|"eventCode", winner:any, knowledge:any) =>{
     let dialog = clueDialogs.find((i)=>i.person===person);
+    let word="error";
     if(dialog){
         if(type === knowledge[person].type){
-        let word:string;
-        let random = Math.floor(Math.random()*2)+1;
     if(type=="eventCode"){
         word = getEventCodeLabel(winner[type]).label;
     }else if(type=="actor"){
-        word = getActorCodeLabel(winner[type+random]);
+        if(winner.actor1){
+            word=getActorCodeLabel(winner.actor1);
+            if(word==="error")word = getActorCodeLabel(winner.actor2);
+        }else if(winner.actor2){
+            word=getActorCodeLabel(winner.actor2);
+        }
+        
     }else if(type=="location"){
-        word = getLocCodeLabel(winner[type+random]);
+        if(winner.location1){
+            word=getLocCodeLabel(winner.location1);
+            if(word==="error")word = getLocCodeLabel(winner.location2);
+        }else if(winner.location2){
+            word=getLocCodeLabel(winner.location2);
+        }
     }
-        let text =dialog.text[type].knows[knowledge[person].knowledge];
+        let text;
+        if(word==="error")text=dialog.text[type].dontknow[0];
+        else text =dialog.text[type].knows[knowledge[person].knowledge];
+        
         text.map((i, index)=>{
             if(/[$]/i.test(i)){
               let newWord = i.replace(/[$]/,word);

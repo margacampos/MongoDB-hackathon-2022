@@ -47,8 +47,7 @@ export default function Dialog({text, setText,setImg}: Props) {
             setPerson(0);
             return setText("closed");
         } else if(text[person].text.length == numDialog+1){
-            setPerson((state)=>state+1);
-            setNumDialog(0)
+            setPerson((state)=>{setNumDialog(0);return state+1});
         }
         setNumDialog(state=>state+1)
         
