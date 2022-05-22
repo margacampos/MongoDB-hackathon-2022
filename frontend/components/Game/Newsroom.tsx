@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from "../../styles/Newsroom.module.scss"
 import { AnimatePresence, motion } from 'framer-motion'
 
@@ -8,16 +8,29 @@ type Props = {available:string[];startDialog:any;setTodo:any;setPerson:React.Dis
 export default function Newsroom({available,startDialog, setTodo, setPerson, person, eventDialog, event}: Props) {
     // width="2401" height="812" 
     const [per, setPer] = useState(-50)
+    const dragRef = useRef(null);
+    const [dir, setDir] = useState("none");
     // const [img, setImg] = useState({src:"", alt:"", width:"", height:""});
     const getDialog = (person:string) =>{
         //getClueDialog and display
         startDialog(eventDialog, event, person)
     }
-    const handleButtons =(dir:string) =>{
-        if(dir==="left")setPer((state)=>state+5)
-        if(dir==="right")setPer((state)=>state-5)
+    const handleButtons =() =>{
+        setPer((state)=>dir==="left"?state+0.5:dir==="right"?state-0.5:state)
+    }
+    const moveLeft = () =>{
+      setPer((state)=>state+0.5);
+      console.log("left")
+    }
+    const moveRight = () =>{
+      console.log("right")
+      setPer((state)=>state+0.5);
+    }
+    const stop = () =>{
+      setDir("none");
     }
     useEffect(() => {
+      // let moveInterval = setInterval(()=>handleButtons(), 500)
       if(person){
           setTodo(false);
       }else{
@@ -25,19 +38,23 @@ export default function Newsroom({available,startDialog, setTodo, setPerson, per
       }
     
       return () => {
-        
+        //  clearInterval(moveInterval)
       }
     }, [person])
     
+    
   return (
-      <div>
+      <div ref={dragRef}>
         <AnimatePresence>
-          <div>
-              <div className={styles.buttons}>
-            {per<-25 ? <button onClick={()=>handleButtons("left")}>left</button>:<button disabled>left</button>}
-            {per>-75 ? <button onClick={()=>handleButtons("right")}>right</button>:<button disabled>right</button>}
-          </div>
-        <div className={styles.display} style={{transform:`translateX(${per}%)`}}>
+        <div>
+          {/* <div className={styles.buttons}>
+            {per<-25 ? <button id="moveNewsroomLeft" onMouseOver={()=>setDir("left")} onMouseOut={stop}>left</button>:<button disabled>left</button>}
+            {per>-75 ? <button id="moveNewsroomRight" onMouseOver={()=>setDir("right")} onMouseOut={stop}>right</button>:<button disabled>right</button>}
+          </div> */}
+        <motion.div 
+        drag="x"
+        dragConstraints={dragRef}
+        className={styles.display}>
         
         <svg viewBox="0 0 2401 812"  height={"100vh"} fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="newsroom">
@@ -218,7 +235,7 @@ export default function Newsroom({available,startDialog, setTodo, setPerson, per
 </g>
 </svg>
 
-    </div>
+    </motion.div>
           </div>
             
         </AnimatePresence>

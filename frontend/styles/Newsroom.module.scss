@@ -11,18 +11,19 @@
     bottom: 0;
     width: auto;
     height: 100vh;
-    left: 50%;
-    transform: -50%;
+    left: -800px;
+    // transform: translateX(-50%);
     z-index: 5;
     overflow: hidden;
 }
 .buttons{
     position: fixed;
-    bottom: 0;
-    left: 50%;
+    bottom: 0px;
+    left: 0px;
+    width: 100vw;
     z-index: 6;
-    transform: translateX(-50%);
     button{
+        width: 50%;
         @include button;
         &:disabled{
             background-color: gray;
