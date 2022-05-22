@@ -8,6 +8,7 @@ type Props = {
     setText:any;
     setImg:any;
     setPerson:any;
+    when:string;
     // setGame:React.Dispatch<React.SetStateAction<Game>>;
 }
 const dialog = [
@@ -39,7 +40,7 @@ const dialog = [
         "Also, I am looking forward to working with you. See you!"
     ]
 ]
-export default function Dialog({text, setText,setImg, setPerson}: Props) {
+export default function Dialog({text, setText,setImg, setPerson, when}: Props) {
     // const [numDialog, setNumDialog] = useState(0)
     const [dialog, setDialog] = useState({person:0, texto:0})
     // const [person, setPerson] = useState(0)
@@ -49,7 +50,7 @@ export default function Dialog({text, setText,setImg, setPerson}: Props) {
         if (text[dialog.person].text.length == dialog.texto+1 && dialog.person+1==text.length){
             console.log("closing")
             setTexto("");
-            setPerson(text[dialog.person].person);
+            if(when==="ONCLICK")setPerson(text[dialog.person].person);
             setDialog({person:0, texto:0});
             return setText("closed");
         } else if(text[dialog.person].text.length == dialog.texto+1){

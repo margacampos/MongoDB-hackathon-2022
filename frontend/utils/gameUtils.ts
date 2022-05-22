@@ -82,9 +82,11 @@ const getEventText = (weekInfo:Week, type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"A
 //     }else return "error";
 // }
 const getClueDialog = (person:string, type:"location"|"actor"|"eventCode", winner:any, knowledge:any) =>{
+    
     let dialog = clueDialogs.find((i)=>i.person===person);
     let word="error";
     if(dialog){
+        let random = Math.floor(Math.random()*dialog.text[type].dontknow.length)
         if(type === knowledge[person].type){
     if(type=="eventCode"){
         word = getEventCodeLabel(winner[type]).label;
@@ -105,7 +107,6 @@ const getClueDialog = (person:string, type:"location"|"actor"|"eventCode", winne
         }
     }
         let text;
-        let random = Math.floor(Math.random()*dialog.text[type].dontknow.length)
         if(word==="error")text=dialog.text[type].dontknow[random];
         else text =dialog.text[type].knows[knowledge[person].knowledge];
         
@@ -118,7 +119,7 @@ const getClueDialog = (person:string, type:"location"|"actor"|"eventCode", winne
         return text;
     
     }else{
-        return dialog.text[type].dontknow[0]
+        return dialog.text[type].dontknow[random]
     }
 }
     return [""];

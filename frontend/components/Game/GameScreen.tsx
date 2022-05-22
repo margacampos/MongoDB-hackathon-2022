@@ -47,6 +47,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
             week:0
         }
         );
+    const [when, setWhen] = useState("START")
     const [choices, setChoices] = useState({event:{SourceURL:"", eventCode:""}, title:"", template:""})
     const [img, setImg] = useState({src:"", alt:"", height:0, width:0})
     const [currentActivity, setCurrentActivity] = useState("")
@@ -120,7 +121,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         eventDialog.dialog[game.currentMoment].map((i:string)=>{
             if(i==person)dialog.push({person:i, text:genDialog(game.currentMoment, event, i, "ONCLICK" )});
         });
-        
+        setWhen("ONCLICK")
         if(dialog.length>0)setTexto(dialog);
         else setPerson(person);
     }
@@ -129,6 +130,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         eventDialog.dialog[game.currentMoment].map((i:string)=>{
             dialog.push({person:i, text:genDialog(game.currentMoment, event, i, "AFTEREVENT" )});
         });
+        setWhen("AFTEREVENT");
         if(dialog.length>0){
             setTexto(dialog);
             setDone((state)=>{
@@ -256,7 +258,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
             </div>
             <AnimatePresence exitBeforeEnter={true}>
                 {person && <Ask person={person} setPerson={setPerson} setImg={setImg} gameEvents={gameEvents} knowledge={game.eventDialog.knowledge} setText={setTexto}/>}
-                {texto !="closed" && <Dialog text={texto} setPerson={setPerson} setText={setTexto} setImg={setImg}/>}
+                {texto !="closed" && <Dialog text={texto} setPerson={setPerson} setText={setTexto} setImg={setImg} when={when}/>}
             </AnimatePresence>
         </motion.div> :
         currentActivity==="SELECT_EVENT"?
