@@ -13,6 +13,8 @@ import Image from "next/image"
 import ToDo from './ToDo'
 import { eventDialogs } from '../../data/dialogsNew'
 import Newsroom from './Newsroom'
+import { AnimatePresence, motion } from 'framer-motion'
+import { valueD, valueI, valueP, variants } from '../../utils/newsUtils'
 
 type Props = {
     gameObject:Game;
@@ -276,45 +278,99 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
       <div id={styles.screen}>
 {gameEvents ?
     <div >
+        <AnimatePresence>
         {texto!="closed" ?
-        <div>
+      <motion.div
+      key="dialog"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+>
             <div className={styles.person}>
-                <div className={styles.img}>
-                    {img.src && <Image src={img.src} alt={img.alt} width={img.width} height={img.height}/>}
-                </div>
+                <AnimatePresence exitBeforeEnter={true}>
+                {img.src!="" && <motion.div
+                key={img.src}
+                custom={valueI}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                className={styles.img}>
+                    <Image src={img.src} alt={img.alt} width={img.width} height={img.height}/>
+                </motion.div>}
+                </AnimatePresence>
             </div>
-            <div className={styles.dialog}>
-                <Dialog text={texto} setText={setTexto} setImg={setImg}/>
-            </div>
-        </div> :
+            <AnimatePresence exitBeforeEnter={true}>
+            
+                  <Dialog text={texto} setText={setTexto} setImg={setImg}/>
+            
+            </AnimatePresence>
+        </motion.div> :
         currentActivity==="SELECT_EVENT"?
-        <div className={styles.display}>
+        <motion.div
+        key="SELECT_EVENT"
+        variants={variants}
+        custom={valueP}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        className={styles.display}>
             <h2>Select Event:</h2>
             <SelectEvent getNextInteraction={getNextInteraction} gameEvents={gameEvents} choice={choices} finishSelection={finishSelection}/>
-        </div>
+        </motion.div>
         :currentActivity==="SELECT_TITLE"?
-        <div className={styles.display}>
+        <motion.div 
+        key="SELECT_TITLE"
+        variants={variants}
+        custom={valueP}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        className={styles.display}>
             <SelectTitle getNextInteraction={getNextInteraction}  gameEvents={gameEvents} choice={choices} finishSelection={finishSelection}/>
-        </div>
+        </motion.div>
         :currentActivity==="SELECT_LAYOUT"?
-        <div className={styles.display}>
+        <motion.div 
+        key="SELECT_LAYOUT"
+        variants={variants}
+        custom={valueP}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        className={styles.display}>
             <h2>Select a design:</h2>
             <SelectLayout getNextInteraction={getNextInteraction} choice={choices} finishSelection={finishSelection}/>
-        </div>
+        </motion.div>
         :currentActivity==="SCORE_SCREEN"?
-        <div className={styles.display}>
+        <motion.div
+        key="SCORE_SCREEN"
+        variants={variants}
+        custom={valueP}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        className={styles.display}>
             <FinishWeek finish={finishWeek} game={game} choices={choices}/>
-        </div>:
-        <div>
-            {todo && <div className={styles.todo}>
+        </motion.div>:
+        <motion.div
+        key="TODO"
+        variants={variants}
+        custom={valueP}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        style={{position:"inherit", height:"100vh", width:"100vw"}}>
+            {todo && <div className={styles.todo} style={{zIndex:11}}>
                 <ToDo name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}} current={game.currentActivity} setCurrentActivity={setCurrentActivity}/>
             </div>}
             <div className={styles.newsroom}>
                 <Newsroom available={game.eventDialog.available[game.currentMoment]} setTodo={setTodo} gameEvents={gameEvents} knowledge={game.eventDialog.knowledge}/>
             </div>
-        </div>
+        </motion.div>
         
     }
+        </AnimatePresence>
+        
     </div>
 : <Loading/>}
       </div>

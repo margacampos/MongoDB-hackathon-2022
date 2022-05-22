@@ -117,6 +117,12 @@
         }
     }
 }
+.person{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
 @media (min-width:1500px) {
     .dialog{
         max-width: 1000px;

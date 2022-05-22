@@ -1,4 +1,7 @@
+import { motion } from 'framer-motion';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { valueD, variants } from '../../utils/newsUtils';
+import styles from "../../styles/Game.module.scss"
 
 type Props = {
     text:{person:string;text:string[]}[];
@@ -43,8 +46,9 @@ export default function Dialog({text, setText,setImg}: Props) {
     const nextText = () =>{
         //Change to next piece of dialog
         if (text[dialog.person].text.length == dialog.texto+1 && dialog.person+1==text.length){
+            console.log("closing")
             setTexto("");
-            setDialog({person:0, texto:0})
+            setDialog({person:0, texto:0});
             return setText("closed");
         } else if(text[dialog.person].text.length == dialog.texto+1){
             console.log("change of person")
@@ -73,10 +77,22 @@ export default function Dialog({text, setText,setImg}: Props) {
     }, [dialog])
     
   return (
-    <div>
+    <motion.div 
+            key={dialog.person}
+            custom={valueD}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            className={styles.dialog}>
         <h2>{getName(text[dialog.person].person)}</h2>
-        <p>{texto}</p>
+        <motion.p
+        key={texto}
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        exit={{opacity:0}}
+        >{texto}</motion.p>
         {text[dialog.person].text[dialog.texto] && <button onClick={nextText}>{text[dialog.person].text.length == dialog.texto+1?"close":"next"}</button>}
-    </div>
+    </motion.div>
   )
 }

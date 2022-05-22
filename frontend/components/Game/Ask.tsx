@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { getClueDialog } from '../../utils/gameUtils';
+import styles from "../../styles/Game.module.scss"
 import Dialog from './Dialog';
+import { AnimatePresence, motion } from 'framer-motion';
+import { valueD, variants } from '../../utils/newsUtils';
 
 type Props = {person:string;setPerson:any;setImg:any;gameEvents:any;knowledge:any}
 
@@ -25,16 +28,23 @@ export default function Ask({person, setPerson, setImg, gameEvents, knowledge}: 
     }, [])
     
   return (
-      dialog[0].person?
-      <div>
-          <Dialog text={dialog} setText={setDialog} setImg={setImg}/>
-      </div>
-      :<div>
+    <AnimatePresence>
+      {dialog[0].person?
+      <Dialog text={dialog} setText={setDialog} setImg={setImg}/>
+      :<motion.div
+      custom={valueD}
+      variants={variants}
+      initial="enter"
+      animate="center"
+      exit="exit"
+      className={styles.dialog} style={{zIndex:13}}>
         <p>What do you want to ask about?</p>
         <button onClick={()=>handleClick("location")}>what are the best locations for the event?</button>
         <button onClick={()=>handleClick("actor")}>On what type of participants should I focus on?</button>
         <button onClick={()=>handleClick("eventCode")}>What type of event are we looking for?</button>
         <button onClick={()=>setPerson("")}>close</button>
-      </div>
+      </motion.div>}
+    </AnimatePresence>
+      
   )
 }
