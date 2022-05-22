@@ -1,8 +1,8 @@
 import React, { Dispatch, SetStateAction } from 'react'
 
-type Props = {name:string; obj:{selectEvent:number, selectTitle:number, selectLayout:number}; setCurrentActivity:Dispatch<SetStateAction<string>>; current:string; }
+type Props = {name:string; obj:{selectEvent:number, selectTitle:number, selectLayout:number}; setCurrentActivity:Dispatch<SetStateAction<string>>; }
 
-export default function ToDo({name, obj, setCurrentActivity, current}: Props) {
+export default function ToDo({name, obj, setCurrentActivity}: Props) {
  
   return (
     <div>

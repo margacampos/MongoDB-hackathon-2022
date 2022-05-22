@@ -253,7 +253,7 @@ const simpleOnClickDialogs =[
                 dialogs:{
                     START:[""],
                     AFTER_LAYOUT:["Thank you so much! I can not believe you remembered!"],
-                    AFTER_EVENT:["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶","mmm... It smells like chocalate in here. Do you have any idea why?", "I need to find out where that smell is coming from."],
+                    AFTER_EVENT:["Did anyone brought chocolate?"],
                     AFTER_TITLE:[""]
                 }
             },

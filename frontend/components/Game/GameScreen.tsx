@@ -22,12 +22,31 @@ type Props = {
     setGameObject:React.Dispatch<React.SetStateAction<Game>>;
     setStart:React.Dispatch<React.SetStateAction<boolean>>;
 }
+type GameType = {
+    currentMoment:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT";
+    selectEvent:number;
+    selectTitle:number;
+    selectLayout:number;
+    currentEvent:string;
+    eventDialog:any;
+    week:number;
+}
 
 export default function GameScreen({gameObject, setGameObject, setStart}: Props) {
+    const [done, setDone] = useState({START:false, AFTER_EVENT:false, AFTER_TITLE:false, AFTER_LAYOUT:false});
     const [person, setPerson] = useState("");
     const [texto, setTexto]:any = useState("closed");
     const [gameEvents, setGameEvents]:any = useState();
-    const [game, setGame]:any = useState({});
+    const [game, setGame]:[any,React.Dispatch<React.SetStateAction<any>>] = useState(
+        {
+            currentMoment:"START", 
+            currentEvent:"",
+            selectEvent:-1,
+            selectTitle:-1,
+            selectLayout:-1,
+            week:0
+        }
+        );
     const [choices, setChoices] = useState({event:{SourceURL:"", eventCode:""}, title:"", template:""})
     const [img, setImg] = useState({src:"", alt:"", height:0, width:0})
     const [currentActivity, setCurrentActivity] = useState("")
@@ -110,8 +129,19 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         eventDialog.dialog[game.currentMoment].map((i:string)=>{
             dialog.push({person:i, text:genDialog(game.currentMoment, event, i, "AFTEREVENT" )});
         });
-        
-        if(dialog.length>0)setTexto(dialog);
+        if(dialog.length>0){
+            setTexto(dialog);
+            setDone((state)=>{
+                return(
+                    {
+                     START:game.currentMoment==="START"?true:state.START,
+                     AFTER_EVENT:game.currentMoment==="AFTER_EVENT"?true:state.AFTER_EVENT,
+                     AFTER_TITLE:game.currentMoment==="AFTER_TITLE"?true:state.AFTER_TITLE,
+                     AFTER_LAYOUT:game.currentMoment==="AFTER_LAYOUT"?true:state.AFTER_LAYOUT
+                    }
+                )
+            });
+        }
     }
     const updateGameObject = (tutorial:boolean, selectTitle:number, selectEvent:number, punctuation:number) =>{
         if(tutorial){
@@ -169,14 +199,14 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     }, [])
     
     useEffect(() => {
-        if(game.eventDialog){
+        if(game.eventDialog && !done[game.currentMoment as "START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT"]){
             startDialog(game.eventDialog, game.currentEvent)
         }
         
       return () => {
         
       }
-    }, [game.currentMoment])
+    }, [game])
 
     useEffect(() => {
         console.log(gameObject)
@@ -284,7 +314,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         exit="exit"
         style={{position:"inherit", height:"100vh", width:"100vw"}}>
             {todo && <div className={styles.todo} style={{zIndex:11}}>
-                <ToDo name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}} current={game.currentActivity} setCurrentActivity={setCurrentActivity}/>
+                <ToDo name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}} setCurrentActivity={setCurrentActivity}/>
             </div>}
             <div className={styles.newsroom}>
                 <Newsroom startDialog={startOnClickDialog} available={game.eventDialog.available[game.currentMoment]} setTodo={setTodo} eventDialog={game.eventDialog} event={game.currentEvent} setPerson={setPerson} person={person}/>
