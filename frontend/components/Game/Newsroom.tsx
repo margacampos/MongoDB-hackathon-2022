@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import styles from "../../styles/Newsroom.module.scss"
-import style from "../../styles/Game.module.scss"
-import Ask from './Ask'
-import Image from "next/image"
 import { AnimatePresence, motion } from 'framer-motion'
-import { valueI, variants } from '../../utils/newsUtils'
 
-type Props = {available:string[];setTodo:any;gameEvents:any;knowledge:any}
 
-export default function Newsroom({available, setTodo, gameEvents, knowledge}: Props) {
+type Props = {available:string[];startDialog:any;setTodo:any;setPerson:React.Dispatch<React.SetStateAction<string>>, person:string, eventDialog:any, event:any}
+
+export default function Newsroom({available,startDialog, setTodo, setPerson, person, eventDialog, event}: Props) {
     // width="2401" height="812" 
     const [per, setPer] = useState(-50)
-    const [img, setImg] = useState({src:"", alt:"", width:"", height:""});
-    const [person, setPerson] = useState("");
+    // const [img, setImg] = useState({src:"", alt:"", width:"", height:""});
     const getDialog = (person:string) =>{
         //getClueDialog and display
-        setPerson(person);
+        startDialog(eventDialog, event, person)
     }
     const handleButtons =(dir:string) =>{
         if(dir==="left")setPer((state)=>state+5)
@@ -36,26 +32,10 @@ export default function Newsroom({available, setTodo, gameEvents, knowledge}: Pr
   return (
       <div>
         <AnimatePresence>
-        {person ?
-          <motion.div>
-            <div className={style.person}>
-              <motion.div className={style.img}
-              key={img.src}
-              custom={valueI}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit">
-                 {img.src && <Image src={img.src} alt={img.alt} width={img.width} height={img.height}/>}
-              </motion.div>
-            </div>
-              <Ask person={person} setPerson={setPerson} setImg={setImg} gameEvents={gameEvents} knowledge={knowledge}/>
-
-          </motion.div>
-          :<div>
+          <div>
               <div className={styles.buttons}>
-            {per<-25 && <button onClick={()=>handleButtons("left")}>left</button>}
-            {per>-75 && <button onClick={()=>handleButtons("right")}>right</button>}
+            {per<-25 ? <button onClick={()=>handleButtons("left")}>left</button>:<button disabled>left</button>}
+            {per>-75 ? <button onClick={()=>handleButtons("right")}>right</button>:<button disabled>right</button>}
           </div>
         <div className={styles.display} style={{transform:`translateX(${per}%)`}}>
         
@@ -240,7 +220,7 @@ export default function Newsroom({available, setTodo, gameEvents, knowledge}: Pr
 
     </div>
           </div>
-            }
+            
         </AnimatePresence>
           
           

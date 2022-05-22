@@ -1,10 +1,14 @@
 import { dialogs, eventDialogOrder, Week } from "../data/dialogs";
-import { clueDialogs, simpleDialogs } from "../data/dialogsNew";
+import { clueDialogs, simpleDialogs, simpleOnClickDialogs } from "../data/dialogsNew";
 import { getActorCodeLabel, getEventCodeLabel, getLocCodeLabel } from "./eventUtils";
 
 
-const genDialog =( type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT", event:string, person:string, )=>{
-    let arr = simpleDialogs.find(i=>i.person===person);
+const genDialog =( type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT", event:string, person:string, when:"ONCLICK"|"AFTEREVENT")=>{
+    let dialogs;
+    if(when==="ONCLICK")dialogs=simpleOnClickDialogs;
+    else dialogs=simpleDialogs;
+    if(dialogs===undefined)return[""];
+    let arr = dialogs.find(i=>i.person===person);
     if(!arr)return;
     for(let i=0;i<arr.event.length;i++){
         if(arr.event[i].eventId===event){
@@ -84,7 +88,7 @@ const getClueDialog = (person:string, type:"location"|"actor"|"eventCode", winne
         if(type === knowledge[person].type){
     if(type=="eventCode"){
         word = getEventCodeLabel(winner[type]).label;
-    }else if(type=="actor"){
+    }else if(type=="actor"){ 
         if(winner.actor1){
             word=getActorCodeLabel(winner.actor1);
             if(word==="error")word = getActorCodeLabel(winner.actor2);
@@ -101,7 +105,8 @@ const getClueDialog = (person:string, type:"location"|"actor"|"eventCode", winne
         }
     }
         let text;
-        if(word==="error")text=dialog.text[type].dontknow[0];
+        let random = Math.floor(Math.random()*dialog.text[type].dontknow.length)
+        if(word==="error")text=dialog.text[type].dontknow[random];
         else text =dialog.text[type].knows[knowledge[person].knowledge];
         
         text.map((i, index)=>{

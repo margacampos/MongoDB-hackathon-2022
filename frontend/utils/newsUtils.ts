@@ -33,7 +33,10 @@ const variants = {
     center: (value:{enter:string, center:string, exit:string, duration:string})=>{
         return({
         translateX:value.center,
-        opacity: 1
+        opacity: 1,
+        transition:{
+            duration:value.duration
+          }
         });
     },
     exit: (value:{enter:string, center:string, exit:string, duration:string})=>{
@@ -62,7 +65,7 @@ const valueP = {
     enter: "100%",
     center:"0%",
     exit:"-100%",
-    duration:1
+    duration:0.8
 }
 const pageVariants = {}
 // { 

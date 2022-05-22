@@ -15,6 +15,7 @@ import { eventDialogs } from '../../data/dialogsNew'
 import Newsroom from './Newsroom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { valueD, valueI, valueP, variants } from '../../utils/newsUtils'
+import Ask from './Ask'
 
 type Props = {
     gameObject:Game;
@@ -23,6 +24,7 @@ type Props = {
 }
 
 export default function GameScreen({gameObject, setGameObject, setStart}: Props) {
+    const [person, setPerson] = useState("");
     const [texto, setTexto]:any = useState("closed");
     const [gameEvents, setGameEvents]:any = useState();
     const [game, setGame]:any = useState({});
@@ -94,11 +96,20 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     const checkForAchievements=()=>{
         //Check on gameObject for achievements and activate respective popUps
     }
-    const startDialog = (eventDialog:any, event:string) =>{
-        let dialog:any[] = []
+    const startOnClickDialog = (eventDialog:any, event:string, person:string) =>{
+        let dialog:any[] = [];
         eventDialog.dialog[game.currentMoment].map((i:string)=>{
-            dialog.push({person:i, text:genDialog(game.currentMoment, event, i )});
-        })
+            if(i==person)dialog.push({person:i, text:genDialog(game.currentMoment, event, i, "ONCLICK" )});
+        });
+        
+        if(dialog.length>0)setTexto(dialog);
+        else setPerson(person);
+    }
+    const startDialog = (eventDialog:any, event:string) =>{
+        let dialog:any[] = [];
+        eventDialog.dialog[game.currentMoment].map((i:string)=>{
+            dialog.push({person:i, text:genDialog(game.currentMoment, event, i, "AFTEREVENT" )});
+        });
         
         if(dialog.length>0)setTexto(dialog);
     }
@@ -138,97 +149,6 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         setCurrentActivity("");
     }
 
-    // const getNextInteraction = (punctuation?:number) =>{
-    //     console.log("next Interaction")
-    //     const index = game.order.indexOf(game.currentActivity)
-    //     if(!punctuation)return(setGame((state:any)=>{
-    //         return({
-    //             tutorial:state.tutorial,
-    //             name: state.name,
-    //             punctuation: state.punctuation,
-    //             selectEvent: state.selectEvent,
-    //             selectTitle: state.selectTitle,
-    //             selectLayout: state.selectLayout,
-    //             media: state.media,
-    //             doneEvents: state.doneEvents,
-    //             achievements: state.achievements,
-    //             currentEvent: state.currentEvent,
-    //             currentActivity: state.order[index+1],
-    //             order: state.order.slice(index),
-    //             currentMoment: state.currentActivity==="SELECT_EVENT"?"AFTER_EVENT":state.currentActivity==="SELECT_TITLE"?"AFTER_TITLE":state.currentActivity==="SELECT_LAYOUT"?"AFTER_LAYOUT":state.currentMoment
-    //         })
-    //     }));
-    //     setGame((state:any)=>{
-    //         return({
-    //             name: state.name,
-    //             punctuation: state.punctuation,
-    //             selectEvent: state.currentActivity==="SELECT_EVENT"?[...state.selectEvent, punctuation]:state.selectEvent,
-    //             selectTitle: state.currentActivity==="SELECT_TITLE"?[...state.selectTitle, punctuation]:state.selectTitle,
-    //             selectLayout: state.selectLayout,
-    //             media: state.media,
-    //             doneEvents: state.doneEvents,
-    //             achievements: state.achievements,
-    //             currentEvent: state.currentEvent,
-    //             currentActivity: state.order[index+1],
-    //             order: state.order,
-    //             currentMoment: state.currentActivity==="SELECT_EVENT"?"AFTER_EVENT":state.currentActivity==="SELECT_TITLE"?"AFTER_TITLE":state.currentActivity==="SELECT_LAYOUT"?"AFTER_LAYOUT":state.currentMoment
-    //         })
-    //     })
-        
-    // }
-
-    // useEffect(() => {
-    //     console.log("starting useEffect")
-    //     getEventsFromDatabase()
-    //     let order = getEvent(0).order;
-    //     let current = order[0]
-    //     let week = gameObject.punctuation.length%4===0?3:(gameObject.punctuation.length%4)-1;
-    //   setGame({
-    //       selectEvent: -1,
-    //       selectTitle: -1,
-    //       selectLayout: -1,
-    //       currentEvent: getEvent(week).event,
-    //       currentActivity:current,
-    //       order: order,
-    //       currentMoment:"START"
-    // })
-    //   return () => {
-    //   }
-    // }, []);
-
-    // useEffect(()=>{
-    //     let week = gameObject.punctuation.length%4===0?3:(gameObject.punctuation.length%4)-1;
-    //     if(game){
-    //        console.log("useEffect is called for dialog")
-    //     dialogCheck(week); 
-        
-    //     }
-    //     return () =>{
-
-    //     }
-    // }, [game])
-
-    // useEffect(() => {
-    //     let week = gameObject.punctuation.length%4===0?3:(gameObject.punctuation.length%4)-1;
-    //     let event = getEvent(week)
-    //     let order = event.order;
-    //     let current = order[week];
-
-    //     setGame({
-    //             selectEvent: -1,
-    //             selectTitle: -1,
-    //             selectLayout: -1,
-    //             currentEvent: event.event,
-    //             currentActivity:current,
-    //             order: order,
-    //             currentMoment:"START"
-    //         })
-
-    //     checkForAchievements()
-    //   return () => {
-        
-    //   }
-    // }, [gameObject])
     const getNextInteraction = (event:string, punctuation:number) =>{
 
         setGame((state:any)=>{return({
@@ -278,16 +198,20 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
       <div id={styles.screen}>
 {gameEvents ?
     <div >
-        <AnimatePresence>
-        {texto!="closed" ?
-      <motion.div
-      key="dialog"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
->
+        <AnimatePresence >
+        {texto!="closed" || person!="" ?
+        <motion.div
+        key="dialog"
+        custom={valueP}
+        variants={variants}
+        initial={{
+            opacity:0,
+        }}
+        animate="center"
+        exit="exit"
+        >
             <div className={styles.person}>
-                <AnimatePresence exitBeforeEnter={true}>
+                <AnimatePresence exitBeforeEnter={true} initial={false}>
                 {img.src!="" && <motion.div
                 key={img.src}
                 custom={valueI}
@@ -301,9 +225,8 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
                 </AnimatePresence>
             </div>
             <AnimatePresence exitBeforeEnter={true}>
-            
-                  <Dialog text={texto} setText={setTexto} setImg={setImg}/>
-            
+                {person && <Ask person={person} setPerson={setPerson} setImg={setImg} gameEvents={gameEvents} knowledge={game.eventDialog.knowledge} setText={setTexto}/>}
+                {texto !="closed" && <Dialog text={texto} setPerson={setPerson} setText={setTexto} setImg={setImg}/>}
             </AnimatePresence>
         </motion.div> :
         currentActivity==="SELECT_EVENT"?
@@ -364,7 +287,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
                 <ToDo name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}} current={game.currentActivity} setCurrentActivity={setCurrentActivity}/>
             </div>}
             <div className={styles.newsroom}>
-                <Newsroom available={game.eventDialog.available[game.currentMoment]} setTodo={setTodo} gameEvents={gameEvents} knowledge={game.eventDialog.knowledge}/>
+                <Newsroom startDialog={startOnClickDialog} available={game.eventDialog.available[game.currentMoment]} setTodo={setTodo} eventDialog={game.eventDialog} event={game.currentEvent} setPerson={setPerson} person={person}/>
             </div>
         </motion.div>
         

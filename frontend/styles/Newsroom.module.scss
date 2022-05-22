@@ -24,6 +24,8 @@
     transform: translateX(-50%);
     button{
         @include button;
-
+        &:disabled{
+            background-color: gray;
+        }
     }
 }

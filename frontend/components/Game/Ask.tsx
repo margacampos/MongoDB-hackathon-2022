@@ -5,13 +5,14 @@ import Dialog from './Dialog';
 import { AnimatePresence, motion } from 'framer-motion';
 import { valueD, variants } from '../../utils/newsUtils';
 
-type Props = {person:string;setPerson:any;setImg:any;gameEvents:any;knowledge:any}
+type Props = {person:string;setPerson:any;setImg:any;gameEvents:any;knowledge:any, setText:any}
 
-export default function Ask({person, setPerson, setImg, gameEvents, knowledge}: Props) {
+export default function Ask({person, setPerson, setImg, gameEvents, knowledge, setText}: Props) {
     const handleClick = (type:"location" | "actor" | "eventCode") =>{
         let dialog = getClueDialog(person, type, gameEvents.winner, knowledge)
-        setDialog([{person:person, text:dialog}]);
-    }
+        setText([{person:person, text:dialog}]);
+        setPerson("")
+    } 
     const [dialog, setDialog] = useState([{person:"", text:[""]}]);
     useEffect(() => {
         setImg(()=>{
@@ -29,9 +30,7 @@ export default function Ask({person, setPerson, setImg, gameEvents, knowledge}: 
     
   return (
     <AnimatePresence>
-      {dialog[0].person?
-      <Dialog text={dialog} setText={setDialog} setImg={setImg}/>
-      :<motion.div
+      <motion.div
       custom={valueD}
       variants={variants}
       initial="enter"
@@ -43,7 +42,7 @@ export default function Ask({person, setPerson, setImg, gameEvents, knowledge}: 
         <button onClick={()=>handleClick("actor")}>On what type of participants should I focus on?</button>
         <button onClick={()=>handleClick("eventCode")}>What type of event are we looking for?</button>
         <button onClick={()=>setPerson("")}>close</button>
-      </motion.div>}
+      </motion.div>
     </AnimatePresence>
       
   )
