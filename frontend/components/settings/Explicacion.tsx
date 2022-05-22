@@ -1,23 +1,18 @@
 import * as React from 'react';
 
 export interface IExplicacionProps {
-    settingId:string;
+    settingId:"accessibility"|"help";
 }
 
 export default function Explicacion (props: IExplicacionProps) {
-    const exp = [
-        {
-            id:"accessibility",
-            exp:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia repudiandae saepe aut quisquam reiciendis maxime sit quibusdam provident delectus incidunt suscipit non, consectetur nesciunt ea asperiores, ab, qsdjds dkie fjga skkkkkkkc l."
-        },
-        {
-            id:"positive",
-            exp:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia repudiandae saepe aut quisquam reiciendis maxime sit quibusdam provident delectus incidunt suscipit non, consectetur nesciunt ea asperiores, ab, quos corporis dolor."
-        }
-    ];
+    const exp = {
+      accessibility:[""],
+      help:["Advice for playing the game:", "- Move around the newsroom by dragging.", "- Click on the characters on the newsroom to interact with them.", "- Use the door on the right to enter the archives.", "- Use your pc screen to see your to do list", "- To be able to finish the week you need to finish all the tasks in your to do list."]
+    }
+       
   return (
     <div>
-      <p>{exp.map((i)=>i.id===props.settingId?i.exp:"")}</p>
+      {exp[props.settingId].map((i, index)=><p key={index}>{i}</p>)}
     </div>
   );
 }
