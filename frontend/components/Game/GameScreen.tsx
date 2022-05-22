@@ -128,7 +128,8 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     const startDialog = (eventDialog:any, event:string) =>{
         let dialog:any[] = [];
         eventDialog.dialog[game.currentMoment].map((i:string)=>{
-            dialog.push({person:i, text:genDialog(game.currentMoment, event, i, "AFTEREVENT" )});
+            let text = genDialog(game.currentMoment, event, i, "AFTEREVENT" );
+            if(text[0]!="")dialog.push({person:i, text:text});
         });
         setWhen("AFTEREVENT");
         if(dialog.length>0){

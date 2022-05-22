@@ -9,7 +9,7 @@ const genDialog =( type:"START"|"AFTER_EVENT"|"AFTER_TITLE"|"AFTER_LAYOUT", even
     else dialogs=simpleDialogs;
     if(dialogs===undefined)return[""];
     let arr = dialogs.find(i=>i.person===person);
-    if(!arr)return;
+    if(!arr)return [""];
     for(let i=0;i<arr.event.length;i++){
         if(arr.event[i].eventId===event){
             let obj = arr.event[i].dialogs

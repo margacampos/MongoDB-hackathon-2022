@@ -9,28 +9,15 @@ export default function Newsroom({available,startDialog, setTodo, setPerson, per
     // width="2401" height="812" 
     const [per, setPer] = useState(-50)
     const dragRef = useRef(null);
-    const [dir, setDir] = useState("none");
     // const [img, setImg] = useState({src:"", alt:"", width:"", height:""});
     const getDialog = (person:string) =>{
         //getClueDialog and display
         startDialog(eventDialog, event, person)
     }
-    const handleButtons =() =>{
-        setPer((state)=>dir==="left"?state+0.5:dir==="right"?state-0.5:state)
-    }
-    const moveLeft = () =>{
-      setPer((state)=>state+0.5);
-      console.log("left")
-    }
-    const moveRight = () =>{
-      console.log("right")
-      setPer((state)=>state+0.5);
-    }
-    const stop = () =>{
-      setDir("none");
-    }
+    // const handleButtons =() =>{
+    //     setPer((state)=>dir==="left"?state+0.5:dir==="right"?state-0.5:state)
+    // }
     useEffect(() => {
-      // let moveInterval = setInterval(()=>handleButtons(), 500)
       if(person){
           setTodo(false);
       }else{
@@ -38,7 +25,6 @@ export default function Newsroom({available,startDialog, setTodo, setPerson, per
       }
     
       return () => {
-        //  clearInterval(moveInterval)
       }
     }, [person])
     
