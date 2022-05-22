@@ -5,7 +5,7 @@ import styles from "../../styles/Game.module.scss";
 type Props = {
   getNextInteraction:(event:string,punctuation:number)=>void;
   gameEvents:{result:any[], winner:any};
-  choice:{event:Event[], title:string, template:string}
+  choice:{event:Event, title:string, template:string}
   finishSelection:(type:string, choice:any)=>void;
 }
 
@@ -38,6 +38,7 @@ export default function SelectTitle({getNextInteraction, gameEvents, finishSelec
   }
   return (
     <div className={styles.titles}>
+      <h2>Select Title:</h2>
       {gameEvents && gameEvents.result.map((i, index)=><button onClick={()=>{finishSelection("title", i);getNextInteraction("SELECT_TITLE",getPoints(i));}} key={index}>{i.title}</button>)}
     </div>
   )

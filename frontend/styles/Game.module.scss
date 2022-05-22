@@ -73,6 +73,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    padding: 1rem;
     button{
         display: block;
         @include button;

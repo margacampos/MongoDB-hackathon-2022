@@ -36,20 +36,21 @@ const dialog = [
     ]
 ]
 export default function Dialog({text, setText,setImg}: Props) {
-    const [numDialog, setNumDialog] = useState(0)
-    const [person, setPerson] = useState(0)
-    const [texto, setTexto] = useState(text[person].text[numDialog])
+    // const [numDialog, setNumDialog] = useState(0)
+    const [dialog, setDialog] = useState({person:0, texto:0})
+    // const [person, setPerson] = useState(0)
+    const [texto, setTexto] = useState(text[0].text[0])
     const nextText = () =>{
         //Change to next piece of dialog
-        if (text[person].text.length == numDialog+1 && person+1==text.length){
+        if (text[dialog.person].text.length == dialog.texto+1 && dialog.person+1==text.length){
             setTexto("");
-            setNumDialog(0);
-            setPerson(0);
+            setDialog({person:0, texto:0})
             return setText("closed");
-        } else if(text[person].text.length == numDialog+1){
-            setPerson((state)=>{setNumDialog(0);return state+1});
+        } else if(text[dialog.person].text.length == dialog.texto+1){
+            console.log("change of person")
+            return setDialog((state)=>{return {person:state.person+1, texto:0}});
         }
-        setNumDialog(state=>state+1)
+        setDialog(state=>{return{person:state.person, texto:state.texto+1}})
         
     }
     const getName = (name:string) => {
@@ -57,24 +58,25 @@ export default function Dialog({text, setText,setImg}: Props) {
         return result;
     }
     useEffect(() => {
-        setTexto(text[person].text[numDialog]);
+        console.log(dialog)
+        setTexto(text[dialog.person].text[dialog.texto]);
         setImg(()=>{
-            if(text[person].person==="MANAGING_EDITOR")return({src:"/characters/managingeditor.png", alt:"The newsroom Manging editor", height:724, width:365});
-            if(text[person].person==="NEWS_EDITOR")return({src:"/characters/newseditor.png", alt:"The newsroom News editor", height:543, width:654});
-            if(text[person].person==="ART_DIRECTOR")return({src:"/characters/artdirector.png", alt:"The newsroom Art director", height:659, width:430});
-            if(text[person].person==="REPORTER")return({src:"/characters/reporter.png", alt:"The newsroom reporter", height:676, width:332});
+            if(text[dialog.person].person==="MANAGING_EDITOR")return({src:"/characters/managingeditor.png", alt:"The newsroom Manging editor", height:724, width:365});
+            if(text[dialog.person].person==="NEWS_EDITOR")return({src:"/characters/newseditor.png", alt:"The newsroom News editor", height:543, width:654});
+            if(text[dialog.person].person==="ART_DIRECTOR")return({src:"/characters/artdirector.png", alt:"The newsroom Art director", height:659, width:430});
+            if(text[dialog.person].person==="REPORTER")return({src:"/characters/reporter.png", alt:"The newsroom reporter", height:676, width:332});
             return({src:"", alt:"", height:0, width:0})
         })
       return () => {
         
       }
-    }, [numDialog, person])
+    }, [dialog])
     
   return (
     <div>
-        <h2>{getName(text[person].person)}</h2>
+        <h2>{getName(text[dialog.person].person)}</h2>
         <p>{texto}</p>
-        {text[person].text[numDialog] && <button onClick={nextText}>{text[person].text.length == numDialog+1?"close":"next"}</button>}
+        {text[dialog.person].text[dialog.texto] && <button onClick={nextText}>{text[dialog.person].text.length == dialog.texto+1?"close":"next"}</button>}
     </div>
   )
 }

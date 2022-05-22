@@ -3,5 +3,12 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     justify-items: center;
     gap: 2rem;
-    
+    padding: 1rem;
+    button{
+        transition: all 0.1s ease;
+        &:hover{
+            cursor: pointer;
+            transform: scale(0.99);
+        }
+    }
 }

@@ -146,9 +146,9 @@ const simpleDialogs =[
             {
                 eventId:"cupcakes",
                 dialogs:{
-                    START:["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶","mmm... It smells like chocalate in here. Do you have any idea why?", "I need to find out where that smell is coming from."],
+                    START:[""],
                     AFTER_LAYOUT:["Thank you so much! I can not believe you remembered!"],
-                    AFTER_EVENT:[""],
+                    AFTER_EVENT:["🎶 Adieu donc la belle je m'en va... Puisquc mon bâtiment s'en va... Je m'en vais faire un tour à Nantes... Puisque ie Roi me we demande ... 🎶","mmm... It smells like chocalate in here. Do you have any idea why?", "I need to find out where that smell is coming from."],
                     AFTER_TITLE:[""]
                 }
             },
@@ -173,7 +173,7 @@ const simpleDialogs =[
             {
                 eventId:"cupcakes",
                 dialogs:{
-                    START:["I don't if I can concentrate with this smell, I'm hungry and I just had breakfast!", "Good luck today!"],
+                    START:["I don't know if I can concentrate with this smell, I'm hungry and I just had breakfast!", "Good luck today!"],
                     AFTER_TITLE:["Gabrielle is leaving for a few hours and we thought later today would be a great moment for singing happy birthday.","What do you think? I will be in the newsroom if you need anything."],
                     AFTER_LAYOUT:["🎶 Happy birthday dear Gabrielle 🎶", "🎶 Happy birthday to you 🎶"],
                     AFTER_EVENT:[""]

@@ -141,5 +141,18 @@ const arrangeTitle = (title:string, setDisplayTitle:any) =>{
           if(words.length===0){rows.push(quote); setDisplayTitle(rows); finish=true;};
     }
 }
-export {getEvent, genDialog, getClueDialog, arrangeTitle}
+const formatDate = (date:number) =>{
+    let stringDate = date.toString();
+    let str = `${stringDate.slice(0,4)}-${stringDate.slice(4,6)}-${stringDate.slice(6,8)}`
+    let dateToFormat = new Date(str);
+    console.log(stringDate, str, dateToFormat)
+    const options:{
+        weekday: "long";
+        year: "numeric" | "2-digit" | undefined;
+        month: "long" | "short" | "narrow" | "numeric" | "2-digit"| undefined;
+        day: "numeric" | "2-digit" | undefined;
+    } = {weekday: "long", year: 'numeric', month: 'long', day: 'numeric' }
+    return dateToFormat.toLocaleDateString("en-GB",options)
+}
+export {getEvent, genDialog, getClueDialog, arrangeTitle, formatDate}
 

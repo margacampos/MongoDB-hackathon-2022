@@ -10,7 +10,7 @@ const Display: NextPage = () => {
     const info = [
         {
             title:"Welcome to the newsroom gallery",
-            text:["In this gallery you will find information about the game characters and what their jobs mean.", "You will also find some information on how the newsroom was made, how it was made and some tips for getting some of the achievements.", "Ah! And I might also put here some future improvements I'm working on.", "Enjoy!"],
+            text:["In this gallery you will find information about the game characters and what their jobs mean.", "You will also find some information on how the newsroom was made, how it works and some tips for getting some of the achievements.", "Ah! And I might also put here some future improvements I'm working on.", "Enjoy!"],
             img: {
                 src:"/newsroom/the-newsroom-background-final.png",
                 alt:"This is the newsroom.",

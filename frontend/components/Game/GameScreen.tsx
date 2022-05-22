@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styles from "../../styles/Game.module.scss"
-import { genRandomEvent } from '../../utils/eventUtils'
-import { genDialog, getEvent } from '../../utils/gameUtils'
+// import { genRandomEvent } from '../../utils/eventUtils'
+import {  genDialog,  } from '../../utils/gameUtils'
 import { Game } from '../Layout'
 import Loading from '../Loading'
 import Dialog from './Dialog'
@@ -24,23 +24,24 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     const [texto, setTexto]:any = useState("closed");
     const [gameEvents, setGameEvents]:any = useState();
     const [game, setGame]:any = useState({});
-    const [choices, setChoices] = useState({event:[], title:"", template:""})
+    const [choices, setChoices] = useState({event:{SourceURL:"", eventCode:""}, title:"", template:""})
     const [img, setImg] = useState({src:"", alt:"", height:0, width:0})
     const [currentActivity, setCurrentActivity] = useState("")
     const [todo, setTodo] = useState(true);
+    const [type, setType] =useState("NOTHING");
     const resetGame = () =>{
         getEventsFromDatabase()
             let week = gameObject.punctuation.length%4===0?3:(gameObject.punctuation.length%4)-1;
-            let random = Math.floor(Math.random()*eventDialogs.length);
-            let eventDialog = eventDialogs[0] 
-            if(gameObject.punctuation.length<1){
+            let random = Math.floor(Math.random()*(eventDialogs.length-1))+1;
+            let eventDialog = eventDialogs[random] 
+            if(gameObject.tutorial){
                 
                 setGame({
                     selectEvent: -1,
                     selectTitle: -1,
                     selectLayout: -1,
                     currentEvent: "firstday",
-                    eventDialog: eventDialog,
+                    eventDialog: eventDialogs[0],
                     currentMoment:"START",
                     week: week
               })
@@ -49,7 +50,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
                     selectEvent: -1,
                     selectTitle: -1,
                     selectLayout: -1,
-                    currentEvent: "firstday",//getRandomEvent
+                    currentEvent: eventDialog.event,//getRandomEvent
                     eventDialog: eventDialog,
                     currentMoment:"START",
                     week: week
@@ -99,40 +100,40 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         
         if(dialog.length>0)setTexto(dialog);
     }
-    const finishWeek = (selectTitle:number, selectEvent:number, punctuation:number) =>{
-        //Quit game
-        setGameObject((state)=>{
-            return({
-                name: state.name,
-                selectTitle: [...state.selectTitle, selectTitle],
-                selectEvent: [...state.selectEvent, selectEvent],
-                punctuation: [...state.punctuation, punctuation],
-                media: (state.media+punctuation)/2,
-                doneEvents: [...state.doneEvents, game.currentEvent],
-                achievements: state.achievements,
-                tutorial:false
+    const updateGameObject = (tutorial:boolean, selectTitle:number, selectEvent:number, punctuation:number) =>{
+        if(tutorial){
+            setGameObject((state)=>{
+                return({
+                    name: state.name,
+                    selectTitle: [selectTitle],
+                    selectEvent: [selectEvent],
+                    punctuation: [punctuation],
+                    media: punctuation,
+                    doneEvents: [game.currentEvent],
+                    achievements: state.achievements,
+                    tutorial:false
+                })
             })
-        })
-        setCurrentActivity("")
-        setStart(false)
+        }else{
+            setGameObject((state)=>{
+                return({
+                    name: state.name,
+                    selectTitle: [...state.selectTitle, selectTitle],
+                    selectEvent: [...state.selectEvent, selectEvent],
+                    punctuation: [...state.punctuation, punctuation],
+                    media: (state.media+punctuation)/2,
+                    doneEvents: [...state.doneEvents, game.currentEvent],
+                    achievements: state.achievements,
+                    tutorial:false
+                })
+            })
+        }
     }
-
-    const continueGame = (selectTitle:number, selectEvent:number, punctuation:number) =>{
-        //Finish week and update gameObject
-        setGameObject((state)=>{
-            return({
-                name: state.name,
-                selectTitle: [...state.selectTitle, selectTitle],
-                selectEvent: [...state.selectEvent, selectEvent],
-                punctuation: [...state.punctuation, punctuation],
-                media: (state.media+punctuation)/2,
-                doneEvents: [...state.doneEvents, game.currentEvent],
-                achievements: state.achievements,
-                tutorial:false
-            })
-        })
-        setCurrentActivity("")
-        resetGame()
+    const finishWeek = (selectTitle:number, selectEvent:number, punctuation:number, type:"FINISH"|"CONTINUE") =>{
+        //Quit game
+        setType(type);
+        updateGameObject(gameObject.tutorial, selectTitle, selectEvent, punctuation);
+        setCurrentActivity("");
     }
 
     // const getNextInteraction = (punctuation?:number) =>{
@@ -239,8 +240,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         setCurrentActivity("")
     }
     useEffect(() => {
-            resetGame()
-    
+        resetGame()
       return () => {
         
       }
@@ -255,6 +255,22 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         
       }
     }, [game.currentMoment])
+
+    useEffect(() => {
+        console.log(gameObject)
+        if(type==="FINISH"){
+            setStart(false)
+            setType("NOTHING")
+        } else if(type==="CONTINUE"){
+            resetGame()
+            setType("NOTHING")
+        }
+      
+      return () => {
+        
+      }
+    }, [gameObject])
+    
     
   return (
       <div id={styles.screen}>
@@ -282,11 +298,12 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         </div>
         :currentActivity==="SELECT_LAYOUT"?
         <div className={styles.display}>
+            <h2>Select a design:</h2>
             <SelectLayout getNextInteraction={getNextInteraction} choice={choices} finishSelection={finishSelection}/>
         </div>
         :currentActivity==="SCORE_SCREEN"?
         <div className={styles.display}>
-            <FinishWeek finish={finishWeek} continueGame={continueGame} game={game} choices={choices}/>
+            <FinishWeek finish={finishWeek} game={game} choices={choices}/>
         </div>:
         <div>
             {todo && <div className={styles.todo}>
