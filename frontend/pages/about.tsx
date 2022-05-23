@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Archive from '../components/Archive/Archive'
 import Buttons from '../components/Buttons'
 import Header from '../components/Header'
 import { aboutButtons } from '../data/buttons'
@@ -35,6 +36,7 @@ const About: NextPage = () => {
           </section>
         </div>
         <Buttons buttons={aboutButtons}/>
+        <Archive/>
       </main>
 
       <footer className={styles.footer}>

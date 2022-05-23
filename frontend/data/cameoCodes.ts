@@ -2257,10 +2257,6 @@ const cameoCountryCodes = [
         label:"Gaza Strip"
     },
     {
-        code:"GZS",
-        label:"Gaza Strip"
-    },
-    {
         code:"AFR",
         label:"Africa"
     },
@@ -2333,8 +2329,8 @@ const cameoCountryCodes = [
         label:"Persian Gulf"
     },
     {
-        code:"SCN	Scandinavia",
-        label:""
+        code:"SCN",
+        label:"Scandinavia"
     },
     {
         code:"SAM",
@@ -2585,8 +2581,8 @@ const cameoCountryCodes = [
         label:"Djibouti"
     },
     {
-        code:"DMA	Dominica",
-        label:""
+        code:"DMA",
+        label:"Dominica"
     },
     {
         code:"DOM",
@@ -3117,8 +3113,8 @@ const cameoCountryCodes = [
         label:"Sierra Leone"
     },
     {
-        code:"SGP	Singapore",
-        label:""
+        code:"SGP",
+        label:"Singapore"
     },
     {
         code:"SVN",
