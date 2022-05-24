@@ -1,13 +1,13 @@
 import { cameoCountryCodes, cameoEventCodes, cameoTypeCodes } from "../data/cameoCodes"
 export interface Event{
     eventCode:string;
-    location1:string;
-    location2:string;
-    actor1:string;
-    actor2:string;
-    SourceURL:string;
-    Day:number;
-    title:string|string[];
+    location1?:string;
+    location2?:string;
+    actor1?:string;
+    actor2?:string;
+    SourceURL?:string;
+    Day?:number;
+    title?:string;
 }
 export interface EventByLocAct{
     name:string;
