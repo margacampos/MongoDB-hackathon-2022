@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'; 
+import React, { useEffect, useState } from 'react'; 
 import Image from 'next/image';
 import styles from "../../styles/Newsroom.module.scss"
 import { cameoCountryCodes, cameoEventCodes, cameoTypeCodes } from '../../data/cameoCodes';
@@ -8,13 +8,24 @@ import { motion } from 'framer-motion';
 import Loading from '../Loading';
 import { arrangeTitle2, formatDate } from '../../utils/gameUtils';
 
-export interface IArchiveProps {
+interface IArchiveProps {
 }
+
 const tapaTransition = {
   duration:0.5,
 }
+type Event = {
+  eventCode:string;
+  location1:string;
+  location2:string;
+  actor1:string;
+  actor2:string;
+  SourceURL:string;
+  Day:number;
+  title:string[];
+}
 export default function Archive (props: IArchiveProps) {
-    const [search, setSearch] = useState([])
+    const [search, setSearch]:[Event[]|[], React.Dispatch<React.SetStateAction<any>>] = useState([])
     const [open, setOpen] = useState(false)
     const [date, setDate] = useState("")
     const [loading, setLoading] = useState(false)
@@ -77,7 +88,7 @@ export default function Archive (props: IArchiveProps) {
      <g id="Rectangle 53" filter={`url(#filter${index}_d_175_600)`}>
      <rect x="27" y={14+54*index} width="614.764" height="214" fill="#F5F2E8"/>
      </g>
-     <text id="title" fill="#42413F" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" fontSize="19" letterSpacing="0em">{i.title.map((j:string,ind:number)=><tspan key={ind} x="67.7637" y={60.1621+54*index+30*ind}>{j}</tspan>)}</text>
+     <text id="title" fill="#42413F" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" fontSize="19" letterSpacing="0em">{ i.title.map((j:string,ind:number)=><tspan key={ind} x="67.7637" y={60.1621+54*index+30*ind}>{j}</tspan>)}</text>
      <g id="Group 24">
      <text id="title" fill="#42413F" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" fontSize="13" letterSpacing="0em"><tspan x="67.7637" y={80+54*index+20*i.title.length} onClick={()=>window.open(i.SourceURL,'_blank')}>Find more about this event here.</tspan></text>
      
