@@ -36,7 +36,6 @@ const About: NextPage = () => {
           </section>
         </div>
         <Buttons buttons={aboutButtons}/>
-        <Archive/>
       </main>
 
       <footer className={styles.footer}>
