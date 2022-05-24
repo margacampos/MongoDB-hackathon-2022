@@ -17,7 +17,19 @@ export default async function handler(
             const database = client.db(process.env.MONGODB_DB);
             const events = database.collection("eventsCSV");
             let body = JSON.parse(req.body)
-            let match = {
+            let match:{
+              Day:{$gte:number;},
+                GoldsteinScale: {
+                  $gte:number;
+                }, 
+                NumArticles:number; 
+                AvgTone: {
+                  $gte:number;
+                },
+                Actor1Type1Code?:string;
+                Actor1CountryCode?:string;
+                EventRootCode?:string;
+            } = {
                 'Day':{$gte:20220301},
                 'GoldsteinScale': {
                   '$gte': 8
