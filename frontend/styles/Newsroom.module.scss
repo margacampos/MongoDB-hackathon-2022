@@ -75,3 +75,20 @@
         width: 100%;
     }
 }
+.new{
+    transition: all 0.3s ease;
+    &:hover{
+        transform: translateY(-10%);
+    }
+}
+.archiveSVG{
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    z-index: 11;
+    svg{
+    transition: all 0.3s ease;
+    max-width: 100%;
+        height: auto;
+    }
+}

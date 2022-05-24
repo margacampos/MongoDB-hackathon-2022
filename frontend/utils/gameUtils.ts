@@ -147,6 +147,29 @@ const arrangeTitle = (title:string, setDisplayTitle:any) =>{
           if(words.length===0){rows.push(quote); setDisplayTitle(rows); finish=true;};
     }
 }
+const arrangeTitle2 = (title:string, number:number) =>{
+    let words = title.split(" ");
+    let rows = []
+    let finish = false;
+    let last = 0;         
+    while (finish==false) {
+        let i=0;
+        let quote = ""
+        if(words.length===0)return rows;
+        for(i; i<words.length;i++){
+        if(words[i].length+quote.length<number){
+                quote+=`${words[i]} `
+                words.splice
+            }else{
+                rows.push(quote);
+                last = i;
+                break;
+            }
+          }
+          words.splice(0,i);
+          if(words.length===0){rows.push(quote); return rows};
+    }
+}
 const formatDate = (date:number) =>{
     let stringDate = date.toString();
     let str = `${stringDate.slice(0,4)}-${stringDate.slice(4,6)}-${stringDate.slice(6,8)}`
@@ -160,5 +183,5 @@ const formatDate = (date:number) =>{
     } = {weekday: "long", year: 'numeric', month: 'long', day: 'numeric' }
     return dateToFormat.toLocaleDateString("en-GB",options)
 }
-export {getEvent, genDialog, getClueDialog, arrangeTitle, formatDate}
+export {getEvent, genDialog, getClueDialog, arrangeTitle, formatDate, arrangeTitle2}
 
