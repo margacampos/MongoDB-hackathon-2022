@@ -104,4 +104,5 @@
     display: block;
     padding: 1rem;
     background-color: var(--background-yellow);
+    @include buttons.button;
 }

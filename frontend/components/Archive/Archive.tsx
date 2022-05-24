@@ -10,6 +10,7 @@ import { arrangeTitle2, formatDate } from '../../utils/gameUtils';
 import NewPopUp from './NewPopUp';
 
 interface IArchiveProps {
+  setCurrentActivity:any;
 }
 
 const tapaTransition = {
@@ -64,8 +65,8 @@ export default function Archive (props: IArchiveProps) {
     }, []);
     
   return (
-    <div>
-      {selected && <NewPopUp event={selected} setSelected={setSelected}/>}
+    <div style={{backgroundColor:"var(--background-yellow)", minHeight:"100vh"}}>
+      {selected && <NewPopUp event={selected} setSelected={setSelected} setCurrentActivity={props.setCurrentActivity}/>}
       <Header title='ARCHIVES'/>
       <div className={styles.selection}>
         <Select title={country.label}>

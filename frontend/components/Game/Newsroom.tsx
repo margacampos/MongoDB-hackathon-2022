@@ -3,11 +3,19 @@ import styles from "../../styles/Newsroom.module.scss"
 import { AnimatePresence, motion } from 'framer-motion'
 
 
-type Props = {available:string[];startDialog:any;setTodo:any;setPerson:React.Dispatch<React.SetStateAction<string>>, person:string, eventDialog:any, event:any}
+type Props = {
+  setCurrentActivity:React.Dispatch<React.SetStateAction<string>>;
+  available:string[];
+  startDialog:any;
+  setTodo:any;
+  setPerson:React.Dispatch<React.SetStateAction<string>>;
+  person:string;
+  eventDialog:any; 
+  event:any;
+}
 
-export default function Newsroom({available,startDialog, setTodo, setPerson, person, eventDialog, event}: Props) {
+export default function Newsroom({available,startDialog, setTodo, setPerson, setCurrentActivity, person, eventDialog, event}: Props) {
     // width="2401" height="812" 
-    const [per, setPer] = useState(-50)
     const dragRef = useRef(null);
     // const [img, setImg] = useState({src:"", alt:"", width:"", height:""});
     const getDialog = (person:string) =>{
@@ -44,7 +52,7 @@ export default function Newsroom({available,startDialog, setTodo, setPerson, per
         
         <svg viewBox="0 0 2401 812"  height={"100vh"} fill="none" xmlns="http://www.w3.org/2000/svg">
 <g id="newsroom">
-<g id="background">
+<g id="background" onClick={()=>setCurrentActivity("ARCHIVES")}>
 <path id="Vector" d="M2141 39H880V505H2141V39Z" fill="#AA8F61"/>
 <path id="Vector_2" d="M1660 26H1224V776H1660V26Z" fill="#F5F2E8"/>
 <path id="Vector_3" d="M1576 26V776H2173V26H1576ZM1888 543V480H1675V541H1660V48H1675V47H1660V32H2140V47H2125V48H2140V541H2125V480H1903V543H1888Z" fill="#F5F2E8"/>

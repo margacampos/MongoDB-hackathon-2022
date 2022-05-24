@@ -16,6 +16,7 @@ import Newsroom from './Newsroom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { valueD, valueI, valueP, variants } from '../../utils/newsUtils'
 import Ask from './Ask'
+import Archive from '../Archive/Archive'
 
 type Props = {
     gameObject:Game;
@@ -307,8 +308,19 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         exit="exit"
         className={styles.display}>
             <FinishWeek finish={finishWeek} game={game} choices={choices}/>
-        </motion.div>:
+        </motion.div>
+        :currentActivity==="ARCHIVES"?
         <motion.div
+        key="ARCHIVES"
+        variants={variants}
+        custom={valueP}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        className={styles.display}>
+            <Archive setCurrentActivity={setCurrentActivity}/>
+        </motion.div>
+        :<motion.div
         key="TODO"
         variants={variants}
         custom={valueP}
@@ -320,7 +332,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
                 <ToDo name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}} setCurrentActivity={setCurrentActivity}/>
             </div>}
             <div className={styles.newsroom}>
-                <Newsroom startDialog={startOnClickDialog} available={game.eventDialog.available[game.currentMoment]} setTodo={setTodo} eventDialog={game.eventDialog} event={game.currentEvent} setPerson={setPerson} person={person}/>
+                <Newsroom setCurrentActivity={setCurrentActivity} startDialog={startOnClickDialog} available={game.eventDialog.available[game.currentMoment]} setTodo={setTodo} eventDialog={game.eventDialog} event={game.currentEvent} setPerson={setPerson} person={person}/>
             </div>
         </motion.div>
         
