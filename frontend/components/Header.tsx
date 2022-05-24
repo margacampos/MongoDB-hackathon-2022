@@ -2,6 +2,7 @@ import * as React from 'react';
 import styles from "../styles/Home.module.scss";
 
 export interface IHeaderProps {
+  title:string;
 }
 
 export default function Header (props: IHeaderProps) {
@@ -9,7 +10,7 @@ export default function Header (props: IHeaderProps) {
     <div id={styles.nav}>
            <div className={styles.decorative}></div>
         <h1 className={styles.title}>
-          THE NEWSROOM
+          {props.title}
         </h1>
         <div className={styles.info}>
           <p>Since 2022</p>

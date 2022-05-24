@@ -19,7 +19,7 @@ const About: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <Header/>
+        <Header title='THE NEWSROOM'/>
         <div id={styles.image}>
           
           <section>

@@ -62,7 +62,7 @@ const Home: any = ({setStart, start, gameObject}:Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Header/>
+        <Header title="THE NEWSROOM"/>
         <div id={styles.image}>
           {/* <SelectEvent/> */}
           {/* <Image src={"/newsroom/the-newsroom-background-final.svg"} alt="The newsroom" layout='intrinsic' height={820} width={2400}/> */}

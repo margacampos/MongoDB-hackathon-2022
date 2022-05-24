@@ -174,10 +174,6 @@ const cameoTypeCodes = [
         label:"Non-Governmental Organization"
     },
     {
-        code:"UIS",
-        label:"Unidentified State Actor"
-    },
-    {
         code:"SET",
         label:"Settler"
     },
