@@ -1,4 +1,6 @@
-@use 'partials/buttons' as *;
+@use 'partials/buttons' as buttons;
+@use 'partials/layout' as layout;
+
 .person{
     border: 3px solid var(--background-black);
     &:hover{
@@ -24,7 +26,7 @@
     z-index: 6;
     button{
         width: 50%;
-        @include button;
+        @include buttons.button;
         &:disabled{
             background-color: gray;
         }
@@ -41,33 +43,34 @@
     max-width: 500px;
     position: relative;
     button{
-    font-size: 1.5rem;
-    width: 100%;
-    background-color: var(--background-yellow);
-    border: 2px solid var(--background-black);
-    padding: 0.4rem 0.7rem;
-    border-radius: 3px;
-    transition: all 0.1s ease;
-    display: flex;
-    justify-content: space-between;
-    text-align: left;
-    &:focus{
-        background-color: var(--main-yellow);
-    }
-    &:hover{
-        background-color: var(--main-yellow);
-        cursor: pointer;
-    }
+        font-size: 1.5rem;
+        width: 100%;
+        background-color: var(--background-yellow);
+        border: 2px solid var(--background-black);
+        padding: 0.4rem 0.7rem;
+        border-radius: 3px;
+        transition: all 0.1s ease;
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+        &:focus{
+            background-color: var(--main-yellow);
+        }
+        &:hover{
+            background-color: var(--main-yellow);
+            cursor: pointer;
+        }
     }
     
 }
 .selectBox{
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 11;
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 480px;
+    max-height: 400px;
     overflow-y: auto;
     width: 100%;
     background-color: var(--background-black);
@@ -95,4 +98,10 @@
 .tapa{
     cursor: pointer;
     
+}
+.newPopUp{
+    @include layout.popUp;
+    display: block;
+    padding: 1rem;
+    background-color: var(--background-yellow);
 }

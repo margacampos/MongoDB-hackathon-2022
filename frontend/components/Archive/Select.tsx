@@ -42,15 +42,23 @@ export default function Select({children, title}: Props) {
 }
 const variants = {
   open:{
-    height:0
+    height:0,
+    border:"none"
   },
   close:{
-    height:0
+    height:0,
+    border:"none",
+    transition:{
+      duration:0.3,
+      ease:"easeInOut"
+    }
   },
   middle:{
     height:"auto",
+    border:"5px solid var(--background-black)",
     transition:{
       duration:0.3,
+      ease:"easeInOut"
     }
   }
 }

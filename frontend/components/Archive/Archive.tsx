@@ -7,6 +7,7 @@ import Header from '../Header';
 import { motion } from 'framer-motion';
 import Loading from '../Loading';
 import { arrangeTitle2, formatDate } from '../../utils/gameUtils';
+import NewPopUp from './NewPopUp';
 
 interface IArchiveProps {
 }
@@ -28,6 +29,7 @@ export default function Archive (props: IArchiveProps) {
     const [search, setSearch]:[Event[]|[], React.Dispatch<React.SetStateAction<any>>] = useState([])
     const [open, setOpen] = useState(false)
     const [date, setDate] = useState("")
+    const [selected, setSelected]:[{}|boolean, React.Dispatch<React.SetStateAction<any>>] = useState(false)
     const [loading, setLoading] = useState(false)
     const [country, setCountry] = useState({label:"Country", code:""});
     const [actor, setActor] = useState({label:"Actor", code:""});
@@ -59,10 +61,11 @@ export default function Archive (props: IArchiveProps) {
       return () => {
         
       }
-    }, [])
+    }, []);
     
   return (
     <div>
+      {selected && <NewPopUp event={selected} setSelected={setSelected}/>}
       <Header title='ARCHIVES'/>
       <div className={styles.selection}>
         <Select title={country.label}>
@@ -83,7 +86,7 @@ export default function Archive (props: IArchiveProps) {
      {loading ? <Loading/>
      :<svg viewBox="0 -100 660 797" fill="none">
      <rect id="Rounded rectangle" x="73.5" y="0.5" width="536" height="259" rx="7.5" fill="#52461B" stroke="black"/>
-     {search!=[] && search.map((i, index)=><motion.g id={`Article${index}`} key={index} className={styles.new}
+     {search!=[] && search.map((i, index)=><motion.g id={`Article${index}`} onClick={()=>setSelected(i)} key={index} className={styles.new}
      animate={open?{y:0}:{y:-20*index}} transition={{duration:0.1}} whileHover={{y:-70}}>
      <g id="Rectangle 53" filter={`url(#filter${index}_d_175_600)`}>
      <rect x="27" y={14+54*index} width="614.764" height="214" fill="#F5F2E8"/>
