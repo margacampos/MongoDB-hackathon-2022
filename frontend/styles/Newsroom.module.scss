@@ -50,7 +50,7 @@
     transition: all 0.1s ease;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    text-align: left;
     &:focus{
         background-color: var(--main-yellow);
     }
@@ -91,4 +91,8 @@
     max-width: 100%;
         height: auto;
     }
+}
+.tapa{
+    cursor: pointer;
+    
 }

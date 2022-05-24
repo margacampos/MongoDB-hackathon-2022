@@ -10,9 +10,10 @@ import { arrangeTitle2, formatDate } from '../../utils/gameUtils';
 
 export interface IArchiveProps {
 }
-
+const tapaTransition = {
+  duration:0.5,
+}
 export default function Archive (props: IArchiveProps) {
-    const [objPosition, setObjPosition] = useState("center")
     const [search, setSearch] = useState([])
     const [open, setOpen] = useState(false)
     const [date, setDate] = useState("")
@@ -30,6 +31,7 @@ export default function Archive (props: IArchiveProps) {
       if(await events){
         setSearch(await events);
         setLoading(false);
+        setOpen(true);
       }
     }
     useEffect(() => {
@@ -61,7 +63,7 @@ export default function Archive (props: IArchiveProps) {
           {cameoTypeCodes.map((i)=><button key={i.code} onClick={()=>setActor(i)}>{i.label}</button>)}
         </Select>
         <Select title={event.label}>
-          <button key={"none"} onClick={()=>setActor({label:"Event", code:""})}>None</button>
+          <button key={"none"} onClick={()=>setEvent({label:"Event", code:""})}>None</button>
           {cameoEventCodes.map((i)=><button key={i.rootCode} onClick={()=>setEvent({label:i.label.toLowerCase(), code:i.rootCode})}>{i.label.toLowerCase()}</button>)}
         </Select>
       </div>
@@ -70,7 +72,8 @@ export default function Archive (props: IArchiveProps) {
      {loading ? <Loading/>
      :<svg viewBox="0 -100 660 797" fill="none">
      <rect id="Rounded rectangle" x="73.5" y="0.5" width="536" height="259" rx="7.5" fill="#52461B" stroke="black"/>
-     {search!=[] && search.map((i, index)=><g id={`Article${index}`} key={index} className={styles.new}>
+     {search!=[] && search.map((i, index)=><motion.g id={`Article${index}`} key={index} className={styles.new}
+     animate={open?{y:0}:{y:-20*index}} transition={{duration:0.1}} whileHover={{y:-70}}>
      <g id="Rectangle 53" filter={`url(#filter${index}_d_175_600)`}>
      <rect x="27" y={14+54*index} width="614.764" height="214" fill="#F5F2E8"/>
      </g>
@@ -109,26 +112,26 @@ export default function Archive (props: IArchiveProps) {
      <rect id="Rectangle 103_3" x="491.963" y={148.236+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
      <rect id="Rectangle 104_3" x="491.963" y={218.273+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
      </g>
-     </g>)}
-      <g id="tapa" onClick={()=>setOpen(state=>!state)}>
+     </motion.g>)}
+      <g id="tapa" className={styles.tapa} onClick={()=>setOpen(state=>!state)}>
      <motion.rect 
-     animate={search[0]?{y:"307.5"}:{y:"0"}}
-     id="Rectangle 34" x="1.5" y={search&&search[0]&&open?61.5+61.5*search.length:"0"} width="656" height="468" rx="8.5" fill="#DFC79E" stroke="black" strokeWidth="3"/>
+     animate={open?{y:61.5+61.5*search.length}:{y:0}} transition={tapaTransition} className={styles.tapa}
+     id="Rectangle 34" x="1.5" width="656" height="468" rx="8.5" fill="#DFC79E" stroke="black" strokeWidth="3"/>
      <g id="Group 8">
      <motion.rect 
-     animate={search[0]?{y:"559.973"}:{y:"252.473"}}
-     id="Rectangle 36" x="162.976" y={search&&search[0]&&open?313.973+61.5*search.length:"252.473"} width="341.482" height="15.9758" fill="black"/>
+     animate={open?{y:313.973+61.5*search.length}:{y:252.473}} transition={tapaTransition}
+     id="Rectangle 36" x="162.976"  width="341.482" height="15.9758" fill="black"/>
      <motion.rect 
-     animate={search[0]?{y:"542"}:{y:"234.5"}}
-     id="Rectangle 37" x="147" y={search&&search[0]&&open?296+61.5*search.length:"234.5"} width="15.9758" height="55.9151" rx="3" fill="black"/>
+     animate={open?{y:296+61.5*search.length}:{y:234.5}} transition={tapaTransition}
+     id="Rectangle 37" x="147"  width="15.9758" height="55.9151" rx="3" fill="black"/>
      <motion.rect 
-     animate={search[0]?{y:"542"}:{y:"234.5"}}
-     id="Rectangle 38" x="496.47" y={search&&search[0]&&open?296+61.5*search.length:"234.5"} width="15.9758" height="55.9151" rx="3" fill="black"/>
+     animate={open?{y:296+61.5*search.length}:{y:234.5}} transition={tapaTransition}
+     id="Rectangle 38" x="496.47" width="15.9758" height="55.9151" rx="3" fill="black"/>
      </g>
      <motion.rect 
-     animate={search[0]?{y:"400"}:{y:"92.5"}}
-     id="Rectangle 40" x="94" y={search&&search[0]&&open?154+61.5*search.length:"92.5"} width="471" height="84" rx="10" fill="#F5F2E8"/>
-     <text id="November 20th, 2022" fill="black" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="40" letterSpacing="0em"><motion.tspan animate={search[0]?{y:"457.391"}:{y:"149.891"}} x="131" y={search&&search[0]&&open?211.391+61.5*search.length:"149.891"}>{date}</motion.tspan></text>
+     animate={open?{y:154+61.5*search.length}:{y:92.5}} transition={tapaTransition}
+     id="Rectangle 40" x="94" width="471" height="84" rx="10" fill="#F5F2E8"/>
+     <motion.text id="November 20th, 2022"  animate={open?{y:211.391+61.5*search.length}:{y:149.891}} transition={tapaTransition} fill="black" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="40" letterSpacing="0em"><motion.tspan x="131" >{date}</motion.tspan></motion.text>
      </g>
      <defs>
      <filter id="filter0_d_175_600" x="-3" y="-12" width="674.764" height="274" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
