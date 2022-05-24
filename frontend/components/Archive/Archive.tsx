@@ -119,17 +119,17 @@ export default function Archive (props: IArchiveProps) {
      id="Rectangle 34" x="1.5" width="656" height="468" rx="8.5" fill="#DFC79E" stroke="black" strokeWidth="3"/>
      <g id="Group 8">
      <motion.rect 
-     animate={open?{y:313.973+61.5*search.length}:{y:252.473}} transition={tapaTransition}
+     initial={{opacity:0}} animate={open?{y:313.973+61.5*search.length, opacity:1}:{y:252.4, opacity:173}} transition={tapaTransition}
      id="Rectangle 36" x="162.976"  width="341.482" height="15.9758" fill="black"/>
      <motion.rect 
-     animate={open?{y:296+61.5*search.length}:{y:234.5}} transition={tapaTransition}
+     initial={{opacity:0}} animate={open?{y:296+61.5*search.length, opacity:1}:{y:234.5, opacity:1}} transition={tapaTransition}
      id="Rectangle 37" x="147"  width="15.9758" height="55.9151" rx="3" fill="black"/>
      <motion.rect 
-     animate={open?{y:296+61.5*search.length}:{y:234.5}} transition={tapaTransition}
+     initial={{opacity:0}} animate={open?{y:296+61.5*search.length, opacity:1}:{y:234.5, opacity:1}} transition={tapaTransition}
      id="Rectangle 38" x="496.47" width="15.9758" height="55.9151" rx="3" fill="black"/>
      </g>
      <motion.rect 
-     animate={open?{y:154+61.5*search.length}:{y:92.5}} transition={tapaTransition}
+     initial={{opacity:0}} animate={open?{y:154+61.5*search.length, opacity:1}:{y:92.5, opacity:1}} transition={tapaTransition}
      id="Rectangle 40" x="94" width="471" height="84" rx="10" fill="#F5F2E8"/>
      <motion.text id="November 20th, 2022"  animate={open?{y:211.391+61.5*search.length}:{y:149.891}} transition={tapaTransition} fill="black" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="40" letterSpacing="0em"><motion.tspan x="131" >{date}</motion.tspan></motion.text>
      </g>
