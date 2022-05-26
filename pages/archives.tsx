@@ -22,7 +22,7 @@ const About: NextPage = () => {
     }, [home])
     
   return (
-    <div className={styles.container}>
+    <div >
       <Archive setCurrentActivity={setHome}/>
     </div>
   )

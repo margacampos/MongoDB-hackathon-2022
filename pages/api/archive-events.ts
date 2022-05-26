@@ -38,12 +38,13 @@ export default async function handler(
             const cursor = events.aggregate<Event>([
               {
                 '$match': match
-              }, 
+              },
               {
-                '$sample': {
-                  'size': 5
-                }
-              }, 
+                '$skip': 5*body.row
+              },
+              {
+                '$limit': 5
+              },
               {
                 '$project': {
                   '_id': 0, 
@@ -60,24 +61,11 @@ export default async function handler(
                   'Day': '$SQLDATE', 
                   'title': 1
                 }
-              },
-              {
-                "$match":{
-                  'AvgTone': {
-                    '$gte': 7
-                  }
-                }
               }
             ]);
 
               let eventList:Event[] = await cursor.toArray();
-              // for (let i=0; i<eventList.length; i++){
-              //   let url = eventList[i].SourceURL;
-              //   // if(url!=undefined)eventList[i].title = await convertToTitles(url);
-              //   if(url!=undefined)eventList[i].title = getEventName(eventList[i]);
-
-              // }
-            res.status(200).json(eventList); //Change to notice when titles are missing
+            res.status(200).json(eventList);
         } catch (error) {
             console.log(error)
         } finally{

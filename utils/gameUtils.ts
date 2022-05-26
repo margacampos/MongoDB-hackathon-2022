@@ -175,14 +175,14 @@ const formatDate = (date:number, type?:string) =>{
     let stringDate = date.toString();
     let str = `${stringDate.slice(0,4)}-${stringDate.slice(4,6)}-${stringDate.slice(6,8)}`
     let dateToFormat = new Date(str);
-    console.log(stringDate, str, dateToFormat)
+    
     const options:{
         weekday: "long";
         year: "numeric" | "2-digit" | undefined;
         month: "long" | "short" | "narrow" | "numeric" | "2-digit"| undefined;
         day: "numeric" | "2-digit" | undefined;
     } = {weekday: "long", year: 'numeric', month: 'long', day: 'numeric' }
-    return dateToFormat.toLocaleDateString("en-GB",options)
+    return dateToFormat.toLocaleDateString("en-GB",options);
 }
 export {getEvent, genDialog, getClueDialog, arrangeTitle, formatDate, arrangeTitle2}
 

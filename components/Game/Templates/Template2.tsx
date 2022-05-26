@@ -15,7 +15,7 @@ export default function Template2({date,title,website}: Props) {
 </g>
 <text id="date" fill="white" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="15" letterSpacing="0em"><tspan x="19" y="203.771">{date}</tspan></text>
 <text id="website" fill="white" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="15" letterSpacing="0em"><tspan x="200" y="203.771">{domain.hostname}</tspan></text>
-<text id="title" fill="#32281E" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" fontSize="36" letterSpacing="0em">
+<text id="title" fill="#32281E" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" letterSpacing="0em">
     {title.map((i, index)=><tspan key={index} x="13" y={260+(36*index)}>{i}</tspan>)}
 </text>
 <g id="You can learn more about this event in webpage.com">

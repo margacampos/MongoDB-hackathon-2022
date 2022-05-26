@@ -15,7 +15,7 @@ export default function Template1({title, website, date}: Props) {
 </g>
 <text id="Date of today" fill="white" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="15" letterSpacing="0em"><tspan x="20" y="140.771">{date}</tspan></text>
 <text id="website" fill="white" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="15" letterSpacing="0em"><tspan x="350" y="140.771">{domain.hostname}</tspan></text>
-<text id="Title" fill="#32281E" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" fontSize="36" letterSpacing="0em">{title.map((i, index)=><tspan key={index} x="23" y={196+(36*index)}>{i}</tspan>)}</text>
+<text id="Title" fill="#32281E" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" letterSpacing="0em">{title.map((i, index)=><tspan key={index} x="23" y={196+(36*index)}>{i}</tspan>)}</text>
 <g id="Subtitle">
 <text fill="#32281E" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Arial" fontSize="15" letterSpacing="0em"><tspan x="23" y={196+(title.length*36)}>You can learn more about this event in </tspan></text>
 <text onClick={()=>window.open(website,'_blank')} className="svglink" fill="#78672C" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Arial" fontSize="15" letterSpacing="0em" textDecoration="underline"><tspan x="282.849" y={196+(title.length*36)}>here</tspan></text>

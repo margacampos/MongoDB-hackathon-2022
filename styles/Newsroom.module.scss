@@ -82,6 +82,7 @@
     transition: all 0.3s ease;
     &:hover{
         transform: translateY(-10%);
+        cursor: pointer;
     }
 }
 .archiveSVG{
@@ -89,12 +90,38 @@
     max-width: 500px;
     margin: auto;
     z-index: 11;
+    display: block;
+    
     svg{
-    transition: all 0.3s ease;
-    max-width: 100%;
+        transition: all 0.3s ease;
+        max-width: 100%;
         height: auto;
+        margin-top: -50px;
     }
 }
+.buttonSmall{
+    display: flex;
+    button{
+        width: 100%;
+        padding: 2rem;
+        font-size: 3rem;
+        font-family: "Maison mono";
+        font-weight: 600;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        &:hover{
+            background-color: #dfc79e;
+        }
+    }
+}
+.leftSmall{
+    background: linear-gradient(270deg, #dfc79e, transparent);
+}
+.rightSmall{
+    background: linear-gradient(90deg, #dfc79e, transparent);
+}
+
 .tapa{
     cursor: pointer;
     
@@ -117,4 +144,17 @@
         color: var(--main-yellow);
         }
       }
+      .templatePop{
+          font-size: 25px;
+      }
+    }
+
+@media (max-width:800px) {
+    .archiveSVG{
+        display: block;
+        button{
+            display: none;
+        }
+    }
+    
 }

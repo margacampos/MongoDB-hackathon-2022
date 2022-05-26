@@ -34,6 +34,8 @@ export default function Archive (props: IArchiveProps) {
     const [date, setDate] = useState("")
     const [selected, setSelected]:[{}|boolean, React.Dispatch<React.SetStateAction<any>>] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [row,setRow] = useState(0);
+    const [limit,setLimit] = useState(1000);
     //Categories
     const [countryArr, setCountryArr]:any = useState([]);
     const [actorArr, setActorArr]:any = useState([]);
@@ -46,11 +48,13 @@ export default function Archive (props: IArchiveProps) {
       try {
         const res = await fetch("/api/archive-events", {
           method: "POST",
-          body: JSON.stringify({eventRootCode:event.code, countryCode:country.code, actorCode:actor.code})
+          body: JSON.stringify({eventRootCode:event.code, countryCode:country.code, actorCode:actor.code, row:row})
         });
-        const events = await res.json()
-        await events.map((i:any)=>i.title=arrangeTitle2(i.title.toUpperCase(),17))
+        const events = await res.json();
+        if(events.length<5){setLimit(row)};
+        await events.map((i:any)=>i.title=arrangeTitle2(i.title.toUpperCase(),40));
         if(await events){
+          console.log(events)
           setSearch(await events);
           setLoading(false);
           setOpen(true);
@@ -85,7 +89,7 @@ export default function Archive (props: IArchiveProps) {
       return () => {
         
       }
-    }, [country,actor,event])
+    }, [country,actor,event]);
 
     useEffect(() => {
       let date = new Date();
@@ -102,10 +106,18 @@ export default function Archive (props: IArchiveProps) {
       return () => {
         
       }
-    }, [loading])
+    }, [loading]);
 
+    useEffect(() => {
+      getEvents()
+      console.log(row);
+      return () => {
+        
+      }
+    }, [row])
+    
   return (
-    <div style={{backgroundColor:"var(--background-yellow)", minHeight:"100vh", position:"fixed", top:0, left:0, zIndex:22, width:"100vw"}}>
+    <div style={{backgroundColor:"var(--background-yellow)", minHeight:"100vh", width:"100vw"}}>
       <CloseButton close={props.setCurrentActivity}/>
       {selected && <NewPopUp event={selected} setSelected={setSelected} setCurrentActivity={props.setCurrentActivity}/>}
       <Header title='ARCHIVES'/>
@@ -123,6 +135,10 @@ export default function Archive (props: IArchiveProps) {
           {eventArr && eventArr.map((i:any)=><button key={i.code} onClick={()=>setEvent(i)}>{i.label}</button>)}
         </Select>
       </div>
+      <div className={styles.buttonSmall}>
+            {row>0&&<button onClick={()=>setRow((state)=>state-1)} className={styles.leftSmall}>&lt;</button>}
+            {row<limit&&<button onClick={()=>setRow((state)=>state+1)} className={styles.rightSmall}>&gt;</button>}
+          </div>
      <div className={styles.archiveSVG}>
      
      <svg viewBox="0 -100 660 797" fill="none">
@@ -249,8 +265,8 @@ export default function Archive (props: IArchiveProps) {
      </clipPath>
      </defs>
           </svg>
-
      </div>
+          
     </div>
   );
 }

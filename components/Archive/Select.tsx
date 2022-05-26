@@ -43,11 +43,11 @@ export default function Select({children, title}: Props) {
 const variants = {
   open:{
     height:0,
-    border:"none"
+    border:"0px solid var(--background-black)"
   },
   close:{
     height:0,
-    border:"none",
+    border:"0px solid var(--background-black)",
     transition:{
       duration:0.3,
       ease:"easeInOut"

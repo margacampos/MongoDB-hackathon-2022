@@ -26,7 +26,7 @@ export default function Template3({title, website, date}: Props) {
 </g>
 <text id="date"  fill="white" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="15" letterSpacing="0em"><tspan x="20" y={106+((title.length)*36)}>{date}</tspan></text>
 <text id="thenewsroom.com" fill="white" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="15" letterSpacing="0em"><tspan x="350" y={106+((title.length)*36)}>{domain.hostname}</tspan></text>
-<text id="title" fill="#32281E" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" fontSize="36" letterSpacing="0em">{title.map((i, index)=><tspan key={index} x="17" y={63+(36*index)}>{i}</tspan>)}</text>
+<text id="title" fill="#32281E" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" letterSpacing="0em">{title.map((i, index)=><tspan key={index} x="17" y={63+(36*index)}>{i}</tspan>)}</text>
 <g id="subtitle">
 <text fill="#32281E" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Arial" fontSize="15" letterSpacing="0em"><tspan x="17" y={63+(title.length*36)}>You can learn more about this event in </tspan></text>
 <text onClick={()=>window.open(website,'_blank')} className="svglink" fill="#78672C" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Arial" fontSize="15" letterSpacing="0em" textDecoration="underline"><tspan x="276.849" y={63+(title.length*36)}>here</tspan></text>
