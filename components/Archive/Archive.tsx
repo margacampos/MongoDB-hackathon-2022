@@ -44,7 +44,7 @@ export default function Archive (props: IArchiveProps) {
     const [country, setCountry] = useState({label:"Country", code:""});
     const [actor, setActor] = useState({label:"Actor", code:""});
     const [event, setEvent] = useState({label:"Event", code:""});
-    const getEvents = async() =>{
+    const getEvents = async(row:number) =>{
       try {
         const res = await fetch("/api/archive-events", {
           method: "POST",
@@ -85,7 +85,9 @@ export default function Archive (props: IArchiveProps) {
     }
     useEffect(() => {
       setLoading(true);
-      getEvents()
+      setRow(0);
+      setLimit(1000);
+      getEvents(0)
       return () => {
         
       }
@@ -109,7 +111,7 @@ export default function Archive (props: IArchiveProps) {
     }, [loading]);
 
     useEffect(() => {
-      getEvents()
+      getEvents(row)
       console.log(row);
       return () => {
         
