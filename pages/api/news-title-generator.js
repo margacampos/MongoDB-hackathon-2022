@@ -1,21 +1,9 @@
 import { MongoClient, WithId } from 'mongodb';
-import type { NextApiRequest, NextApiResponse } from 'next'
-
-type Data = {
-  data?:{
-      title:string;
-      desc?:string;
-    };
-  success:boolean;
-  error?:unknown;
-  desc?:string;
-}
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
+  req,
+  res
 ) {
-    
     if(req.method==="GET" && process.env.MONGODB_URI){
       // let {url} = req.query;
       let client=new MongoClient(process.env.MONGODB_URI);
@@ -61,7 +49,7 @@ export default async function handler(
   res.status(404);
 }
 
-const getTitle = async(url:string) =>{
+const getTitle = async(url) =>{
   try {
     const response = await fetch(url);
   const data = await response.text();
