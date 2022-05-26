@@ -18,7 +18,6 @@ const About: NextPage<{gameObject:Game, setGameObject:any}> = (props:{gameObject
     const router = useRouter();
     useEffect(() => {
       if(!home)router.push("/");
-      console.log(props.gameObject)
       return () => {
         
       }

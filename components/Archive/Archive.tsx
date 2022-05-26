@@ -54,7 +54,7 @@ export default function Archive (props: IArchiveProps) {
         if(events.length<5){setLimit(row)};
         await events.map((i:any)=>i.title=arrangeTitle2(i.title.toUpperCase(),40));
         if(await events){
-          console.log(events)
+          // console.log(events)
           setSearch(await events);
           setLoading(false);
           setOpen(true);
@@ -137,7 +137,7 @@ export default function Archive (props: IArchiveProps) {
         </Select>
       </div>
       <div className={styles.buttonSmall}>
-            {row>0?<button onClick={()=>setRow((state)=>state-1)} className={styles.leftSmall}>&lt;</button>:<button className={styles.rightSmall} disabled>&lt;</button>}
+            {row>0?<button onClick={()=>setRow((state)=>state-1)} className={styles.leftSmall}>&lt;</button>:<button className={styles.leftSmall} disabled>&lt;</button>}
             {row<limit?<button onClick={()=>setRow((state)=>state+1)} className={styles.rightSmall}>&gt;</button>:<button className={styles.rightSmall} disabled>&gt;</button>}
           </div>
      <div className={styles.archiveSVG}>
@@ -155,40 +155,6 @@ export default function Archive (props: IArchiveProps) {
      <rect x="27" y={14+54*index} width="614.764" height="214" fill="#F5F2E8"/>
      </g>
      <text id="title" fill="#42413F" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" fontSize="19" letterSpacing="0em">{ i.title.map((j:string,ind:number)=><tspan key={ind} x="67.7637" y={60.1621+54*index+30*ind}>{j}</tspan>)}</text>
-     <g id="Group 24">
-     <text id="title" fill="#42413F" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" fontSize="13" letterSpacing="0em"><tspan x="67.7637" y={80+60*index+20*i.title.length} onClick={()=>window.open(i.SourceURL,'_blank')}>Find more about this event here.</tspan></text>
-     
-     <rect id="Rectangle 98" x="42.5638" y={165.745+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 94" x="42.5638" y={183.255+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 91" x="42.5638" y={130.727+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 95" x="42.5638" y={200.764+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 92" x="42.5638" y={148.236+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 96" x="42.5638" y={218.273+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     </g>
-     <g id="Group 21">
-     <rect id="Rectangle 98" x="192.364" y={165.745+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 100" x="192.364" y={183.255+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 101" x="192.364" y={130.727+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 102" x="192.364" y={200.764+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 103" x="192.364" y={148.236+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 104" x="192.364" y={218.273+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     </g>
-     <g id="Group 22">
-     <rect id="Rectangle 98_2" x="342.163" y={165.745+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 100_2" x="342.163" y={183.255+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 101_2" x="342.163" y={130.727+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 102_2" x="342.163" y={200.764+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 103_2" x="342.163" y={148.236+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 104_2" x="342.163" y={218.273+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     </g>
-     <g id="Group 23">
-     <rect id="Rectangle 98_3" x="491.963" y={165.745+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 100_3" x="491.963" y={183.255+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 101_3" x="491.963" y={130.727+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 102_3" x="491.963" y={200.764+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 103_3" x="491.963" y={148.236+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     <rect id="Rectangle 104_3" x="491.963" y={218.273+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
-     </g>
      </motion.g>)}
       <g id="tapa" className={styles.tapa} onClick={()=>setOpen(state=>!state)}>
      <motion.rect 

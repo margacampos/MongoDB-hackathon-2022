@@ -12,11 +12,10 @@ type Props = {
 }
 
 export default function FinishWeek({finish, choices, game}: Props) {
-  const [punctuation,setPunctuation] =useState((game.selectEvent+game.selectTitle)/2);
+  const [punctuation, setPunctuation] =useState((game.selectEvent+game.selectTitle)/2);
   const [title, setTitle] = useState([""]);
   useEffect(() => {
-    console.log(choices)
-    arrangeTitle(choices.event.title,setTitle);
+    arrangeTitle(choices.title.title,setTitle);
     return () => {
       
     }
@@ -33,6 +32,8 @@ export default function FinishWeek({finish, choices, game}: Props) {
           <p>your punctuation is...</p>
           <h2>{punctuation}</h2>
           <p>Your work was...{punctuation>5?" published!": " not published :("}</p>
+          <p>Find the article related to the event you selected <a style={{color:"var(--background-yellow)", textDecoration:"underline"}} href={choices.event.SourceURL} target="_blank" rel={"noreferrer"}>here</a></p>
+          <p>Find the article related to the title you selected <a style={{color:"var(--background-yellow)", textDecoration:"underline"}} href={choices.title.SourceURL} target="_blank" rel={"noreferrer"}>here</a></p>
           <button onClick={()=>finish(game.selectEvent,game.selectTitle,punctuation, "FINISH")}>GoodBye!</button>
           <button onClick={()=>finish(game.selectEvent,game.selectTitle,punctuation, "CONTINUE")}>Lets keep playing</button>
         </div>

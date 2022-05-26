@@ -9,7 +9,7 @@ type Props = {
     title:string;
     select:(type:string, choice:any, getPoints:()=>number)=>void;
     next:any;
-    choice:{event:Event, title:string, template:string};
+    choice:{event:Event, title:{title:string}, template:string};
 }
 
 export default function Templates({title,select, next, choice}: Props) {

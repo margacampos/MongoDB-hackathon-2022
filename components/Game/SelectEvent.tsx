@@ -7,7 +7,7 @@ import { Event as E } from "../../utils/eventUtils";
 type Props = {
   getNextInteraction:(event:string, punctuation:number)=>void;
   gameEvents:{result:any[]; winner:any;};
-  choice:{event:E, title:string, template:string}
+  choice:{event:E, title:{title:string}, template:string}
   finishSelection:(type:string, choice:any)=>void;
 }
 

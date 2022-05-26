@@ -31,7 +31,7 @@ export default function Layout (props: ILayoutProps) {
     tutorial: true
 })
 React.useEffect(() => {
-  console.log("layout")
+  // console.log("layout")
   setLoading(false)
   return () => {
     
@@ -42,7 +42,7 @@ React.useEffect(() => {
     <div>
       { !loading?
       <div>
-        <SettingsButton/>
+        {/* <SettingsButton/> */}
         <Achievements achieved={game.achievements}/>
       {React.cloneElement(props.children, { gameObject:game, setGameObject:setGame })}
       </div>  

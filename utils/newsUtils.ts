@@ -10,7 +10,6 @@ const getNewsTitle = async(url:string) =>{
         const data = await res.json()
         if (data.success) return data.data;
         else {
-            console.log(data)
             if (data.error)return data.error;
             return "fetch data came back";
         };

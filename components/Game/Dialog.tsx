@@ -48,13 +48,11 @@ export default function Dialog({text, setText,setImg, setPerson, when}: Props) {
     const nextText = () =>{
         //Change to next piece of dialog
         if (text[dialog.person].text.length == dialog.texto+1 && dialog.person+1==text.length){
-            console.log("closing")
             setTexto("");
             if(when==="ONCLICK")setPerson(text[dialog.person].person);
             setDialog({person:0, texto:0});
             return setText("closed");
         } else if(text[dialog.person].text.length == dialog.texto+1){
-            console.log("change of person")
             return setDialog((state)=>{return {person:state.person+1, texto:0}});
         }
         setDialog(state=>{return{person:state.person, texto:state.texto+1}})
@@ -65,7 +63,6 @@ export default function Dialog({text, setText,setImg, setPerson, when}: Props) {
         return result;
     }
     useEffect(() => {
-        console.log(dialog)
         setTexto(text[dialog.person].text[dialog.texto]);
         setImg(()=>{
             if(text[dialog.person].person==="MANAGING_EDITOR")return({src:"/characters/managingeditor.png", alt:"The newsroom Manging editor", height:724, width:365});

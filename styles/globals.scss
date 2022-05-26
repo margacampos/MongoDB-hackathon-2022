@@ -14,11 +14,11 @@ button {
   padding: 0;
   margin: 0;
   font-family: Century, Helvetica Neue, sans-serif;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none;  /* IE and Edge */
-scrollbar-width: none;
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+//   -ms-overflow-style: none;  /* IE and Edge */
+// scrollbar-width: none;
 }
 body{
 background-color: var(--background-yellow);

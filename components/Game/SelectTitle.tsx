@@ -5,25 +5,22 @@ import styles from "../../styles/Game.module.scss";
 type Props = {
   getNextInteraction:(event:string,punctuation:number)=>void;
   gameEvents:{result:any[], winner:any};
-  choice:{event:Event, title:string, template:string}
+  choice:{event:Event, title:{title:string}, template:string}
   finishSelection:(type:string, choice:any)=>void;
 }
 
 export default function SelectTitle({getNextInteraction, gameEvents, finishSelection}: Props) {
-  // const getTitlesForSelection = async () =>{
-  //   //GET 5 titles (completly random, 4/5, 3/5, 2/5, 1/5)
-  //   try {
-  //     const res = await fetch("http://localhost:3000/api/title-game-generator",{
-  //       method:"POST",
-  //       body:JSON.stringify({winner: winnerEvent})
-  //     });
-  //     const result = await res.json();
-  //     setSelection(result);
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-    
-  // }
+  function randomArrayShuffle(array:Event[]) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  }
   const getPoints = (chosen:any) => {
     let score = 0
     if (chosen === gameEvents.winner)return 10;
@@ -39,7 +36,7 @@ export default function SelectTitle({getNextInteraction, gameEvents, finishSelec
   return (
     <div className={styles.titles}>
       <h2>Select Title:</h2>
-      {gameEvents && gameEvents.result.map((i, index)=><button onClick={()=>{finishSelection("title", i);getNextInteraction("SELECT_TITLE",getPoints(i));}} key={index}>{i.title}</button>)}
+      {gameEvents && randomArrayShuffle(gameEvents.result).map((i, index)=><button onClick={()=>{finishSelection("title", i);getNextInteraction("SELECT_TITLE",getPoints(i));}} key={index}>{i.title}</button>)}
     </div>
   )
 }
