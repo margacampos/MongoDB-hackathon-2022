@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 type Props = {title:string[]; website:string; date:string;}
 
 export default function Template2({date,title,website}: Props) {
+  const [domain, setDomain] = useState(new URL(website));
   return (
     <svg viewBox="0 0 595 421" fill="none">
 <g id="Frontpage">
@@ -13,7 +14,7 @@ export default function Template2({date,title,website}: Props) {
 <rect id="Rectangle 49" x="13" y="188" width="394" height="23" fill="#32281E"/>
 </g>
 <text id="date" fill="white" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="15" letterSpacing="0em"><tspan x="19" y="203.771">{date}</tspan></text>
-<text id="website" fill="white" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="15" letterSpacing="0em"><tspan x="274" y="203.771">thenewsroom.com</tspan></text>
+<text id="website" fill="white" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="15" letterSpacing="0em"><tspan x="274" y="203.771">{domain.hostname}</tspan></text>
 <text id="title" fill="#32281E" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" fontSize="36" letterSpacing="0em">
     {title.map((i, index)=><tspan key={index} x="13" y={260+(36*index)}>{i}</tspan>)}
 </text>

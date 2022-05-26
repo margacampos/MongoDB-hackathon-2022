@@ -48,7 +48,7 @@ export default function Archive (props: IArchiveProps) {
         body: JSON.stringify({eventRootCode:event.code, countryCode:country.code, actorCode:actor.code})
       });
       const events = await res.json()
-      await events.map((i:any)=>i.title=arrangeTitle2(i.title.toUpperCase(),40))
+      await events.map((i:any)=>i.title=arrangeTitle2(i.title.toUpperCase(),17))
       if(await events){
         setSearch(await events);
         setLoading(false);
@@ -79,19 +79,20 @@ export default function Archive (props: IArchiveProps) {
 
     useEffect(() => {
       let date = new Date();
-      let dateToNumber = `${date.getFullYear()}${date.getMonth()<=8?`0${date.getMonth()+1}`:date.getMonth()+1}${date.getDate()<=9?`0${date.getDate()}`:date.getDate()}`
-      setDate(formatDate(parseInt(dateToNumber)));
+      // let dateToNumber = `${date.getFullYear()}${date.getMonth()<=8?`0${date.getMonth()+1}`:date.getMonth()+1}${date.getDate()<=9?`0${date.getDate()}`:date.getDate()}`
+      setDate(formatDate(date.getMonth(),"month"));
       getCategories();
       return () => {
         
       }
     }, []);
     useEffect(() => {
-      console.log(eventArr)
+      if(loading)setOpen(false)
+      else setOpen(true)
       return () => {
         
       }
-    }, [event])
+    }, [loading])
 
   return (
     <div style={{backgroundColor:"var(--background-yellow)", minHeight:"100vh", position:"fixed", top:0, left:0, zIndex:22, width:"100vw"}}>
@@ -114,8 +115,7 @@ export default function Archive (props: IArchiveProps) {
       </div>
      <div className={styles.archiveSVG}>
      
-     {loading ? <Loading/>
-     :<svg viewBox="0 -100 660 797" fill="none">
+     <svg viewBox="0 -100 660 797" fill="none">
      <rect id="Rounded rectangle" x="73.5" y="0.5" width="536" height="259" rx="7.5" fill="#52461B" stroke="black"/>
      {search!=[] && search.map((i, index)=><motion.g id={`Article${index}`} onClick={()=>setSelected(i)} key={index} className={styles.new}
      animate={open?{y:0}:{y:-20*index}} transition={{duration:0.1}} whileHover={{y:-70}}>
@@ -164,19 +164,19 @@ export default function Archive (props: IArchiveProps) {
      id="Rectangle 34" x="1.5" width="656" height="468" rx="8.5" fill="#DFC79E" stroke="black" strokeWidth="3"/>
      <g id="Group 8">
      <motion.rect 
-     initial={{opacity:0}} animate={open?{y:313.973+61.5*search.length, opacity:1}:{y:252.4, opacity:173}} transition={tapaTransition}
+     initial={{y:313.973+61.5*search.length}} animate={open?{y:313.973+61.5*search.length, opacity:1}:{y:252.4, opacity:1}} transition={tapaTransition}
      id="Rectangle 36" x="162.976"  width="341.482" height="15.9758" fill="black"/>
      <motion.rect 
-     initial={{opacity:0}} animate={open?{y:296+61.5*search.length, opacity:1}:{y:234.5, opacity:1}} transition={tapaTransition}
+     initial={{y:296+61.5*search.length}} animate={open?{y:296+61.5*search.length, opacity:1}:{y:234.5, opacity:1}} transition={tapaTransition}
      id="Rectangle 37" x="147"  width="15.9758" height="55.9151" rx="3" fill="black"/>
      <motion.rect 
-     initial={{opacity:0}} animate={open?{y:296+61.5*search.length, opacity:1}:{y:234.5, opacity:1}} transition={tapaTransition}
+     initial={{y:296+61.5*search.length}} animate={open?{y:296+61.5*search.length, opacity:1}:{y:234.5, opacity:1}} transition={tapaTransition}
      id="Rectangle 38" x="496.47" width="15.9758" height="55.9151" rx="3" fill="black"/>
      </g>
      <motion.rect 
-     initial={{opacity:0}} animate={open?{y:154+61.5*search.length, opacity:1}:{y:92.5, opacity:1}} transition={tapaTransition}
+     initial={{ y:154+61.5*search.length}} animate={open?{y:154+61.5*search.length, opacity:1}:{y:92.5, opacity:1}} transition={tapaTransition}
      id="Rectangle 40" x="94" width="471" height="84" rx="10" fill="#F5F2E8"/>
-     <motion.text id="November 20th, 2022"  animate={open?{y:211.391+61.5*search.length}:{y:149.891}} transition={tapaTransition} fill="black" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="40" letterSpacing="0em"><motion.tspan x="131" >{date}</motion.tspan></motion.text>
+     <motion.text id="November 20th, 2022" initial={{ y:211.391+61.5*search.length}} animate={open?{y:211.391+61.5*search.length}:{y:149.891}} transition={tapaTransition} fill="black" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="40" letterSpacing="0em"><tspan x="131" >{date}</tspan></motion.text>
      </g>
      <defs>
      <filter id="filter0_d_175_600" x="-3" y="-12" width="674.764" height="274" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -233,7 +233,7 @@ export default function Archive (props: IArchiveProps) {
      <rect width="659" height="777" fill="white"/>
      </clipPath>
      </defs>
-          </svg>}
+          </svg>
 
      </div>
     </div>

@@ -24,15 +24,15 @@ const Home: any = ({setStart, start, gameObject}:Props) => {
   const homeButtons:(ButtonsBig|ButtonsGrid)[]= [
     {
         text:"Enter the newsroom",
-        onClick:()=>{setStart(true)},
+        onClick:()=>{},
         grid:false,
-        router:""
+        router:"/newsroom"
     },
     {
       text:"Look in the archives",
-      onClick:()=>{setArchive(true)},
+      onClick:()=>{},
       grid:false,
-      router:""
+      router:"/archives"
     },
     {
         button:[{
@@ -50,12 +50,9 @@ const Home: any = ({setStart, start, gameObject}:Props) => {
     }
 ];
   const Router = useRouter();
-  const [code, setCode]:[any[], Dispatch<SetStateAction<any[]>>] = useState([{eventCode:""}])
-  const [archive, setArchive] = useState(false);
   
   return (
     <div className={styles.container}>
-      {archive && <Archive setCurrentActivity={setArchive}/>}
       {gameObject && <Achievements achieved={gameObject.achievements}/>}
       <Head>
         <title>THE NEWSROOM</title>

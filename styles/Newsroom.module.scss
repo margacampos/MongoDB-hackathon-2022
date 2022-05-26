@@ -13,7 +13,7 @@
     bottom: 0;
     width: auto;
     height: 100vh;
-    left: -800px;
+    left: 0px;
     // transform: translateX(-50%);
     z-index: 5;
     overflow: hidden;
@@ -101,8 +101,11 @@
 }
 .newPopUp{
     @include layout.popUp;
+    z-index: 22;
+    width: 50vw;
+    min-width: 300px;
     display: block;
     padding: 1rem;
     background-color: var(--background-yellow);
-    @include buttons.button;
+    
 }

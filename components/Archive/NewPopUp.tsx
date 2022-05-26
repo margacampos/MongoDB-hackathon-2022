@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "../../styles/Newsroom.module.scss"
 import CloseButton from '../CloseButton'
+import Template1 from '../Game/Templates/Template1';
+import Template2 from '../Game/Templates/Template2';
+import Template3 from '../Game/Templates/Template3';
 
 type Props = {event:any; setSelected:any, setCurrentActivity:any}
 
 export default function NewPopUp({event, setSelected, setCurrentActivity}: Props) {
+  const [random, setRandom ] = useState(Math.floor(Math.random()*3))
     const handleSelect = () => {
         //sent event and back to newsroom
         setCurrentActivity("")
@@ -12,9 +16,8 @@ export default function NewPopUp({event, setSelected, setCurrentActivity}: Props
   return (
     <div className={styles.newPopUp}>
         <CloseButton close={setSelected}/>
-        <p>{event.title && event.title.map((i:string, index:number)=>`${i} `)}</p>
-        <p>Learn more about this event <a href={event.SourceURL} >here</a></p>
-        <button onClick={()=>handleSelect()}>Select event</button>
+        {random===0?<Template1 title={event.title} website={event.SourceURL} date={event.Day}/>:random===1?<Template2 title={event.title} website={event.SourceURL} date={event.Day}/>:<Template3 title={event.title} website={event.SourceURL} date={event.Day}/>}
+        {/* <button onClick={()=>handleSelect()}>Select event</button> */}
     </div>
   )
 }

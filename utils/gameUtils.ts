@@ -170,7 +170,8 @@ const arrangeTitle2 = (title:string, number:number) =>{
           if(words.length===0){rows.push(quote); return rows};
     }
 }
-const formatDate = (date:number) =>{
+const formatDate = (date:number, type?:string) =>{
+    if(type==="month")return months[date];
     let stringDate = date.toString();
     let str = `${stringDate.slice(0,4)}-${stringDate.slice(4,6)}-${stringDate.slice(6,8)}`
     let dateToFormat = new Date(str);
@@ -185,3 +186,5 @@ const formatDate = (date:number) =>{
 }
 export {getEvent, genDialog, getClueDialog, arrangeTitle, formatDate, arrangeTitle2}
 
+const months = ["January","February","March","April","May","June","July",
+"August","September","October","November","December"]
