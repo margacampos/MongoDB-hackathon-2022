@@ -128,7 +128,15 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
             let fired = [];
             gameObject.punctuation.map((i)=>fired.length>=4?gameObject.achievements.push("fired"):i<5?fired.push(i):fired=[]);
         }
-        
+
+        //Published
+        if(!gameObject.achievements.includes("published")){
+            if(gameObject.punctuation.find((i)=>i>5))gameObject.achievements.push("published");
+        }
+        //Not Published
+        if(!gameObject.achievements.includes("notpublished")){
+            if(gameObject.punctuation.find((i)=>i<5))gameObject.achievements.push("notpublished");
+        }
     }
     const startOnClickDialog = (eventDialog:any, event:string, person:string) =>{
         let dialog:any[] = [];
@@ -195,6 +203,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         updateGameObject(gameObject.tutorial, selectTitle, selectEvent, punctuation);
         setCurrentActivity("");
         setDone({START:false, AFTER_EVENT:false, AFTER_TITLE:false, AFTER_LAYOUT:false})
+        checkForAchievements();
     }
 
     const getNextInteraction = (event:string, punctuation:number) =>{

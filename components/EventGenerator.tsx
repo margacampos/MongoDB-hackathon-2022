@@ -15,7 +15,7 @@ export default function EventGenerator (props: IEventGeneratorProps) {
           set(e.target.value);
         }
     const getEvent =async()=>{
-        console.log("called")
+        // console.log("called")
         try {
             const res = await fetch("http://localhost:3000/api/events-and-articles-today");
             const event:{eventCode:string}[] = await res.json();
