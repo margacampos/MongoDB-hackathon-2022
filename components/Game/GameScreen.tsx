@@ -17,6 +17,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { valueD, valueI, valueP, variants } from '../../utils/newsUtils'
 import Ask from './Ask'
 import Archive from '../Archive/Archive'
+import CloseButton from '../CloseButton'
 
 type Props = {
     gameObject:Game;
@@ -232,6 +233,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
       <div id={styles.screen}>
 {gameEvents ?
     <div >
+        <CloseButton close={setStart}/>
         <AnimatePresence >
         {texto!="closed" || person!="" ?
         <motion.div
