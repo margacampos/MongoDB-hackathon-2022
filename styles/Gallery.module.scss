@@ -13,6 +13,15 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    a{
+        background-color: var(--background-black);
+        border-radius: 5px;
+        color: var(--background-yellow);
+        padding: 0.5rem 1rem;
+        &:hover{
+        color: var(--main-yellow);
+        }
+      }
 }
 .img{
     max-width: 90vw;

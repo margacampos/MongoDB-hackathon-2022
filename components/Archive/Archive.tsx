@@ -43,31 +43,41 @@ export default function Archive (props: IArchiveProps) {
     const [actor, setActor] = useState({label:"Actor", code:""});
     const [event, setEvent] = useState({label:"Event", code:""});
     const getEvents = async() =>{
-      const res = await fetch("/api/archive-events", {
-        method: "POST",
-        body: JSON.stringify({eventRootCode:event.code, countryCode:country.code, actorCode:actor.code})
-      });
-      const events = await res.json()
-      await events.map((i:any)=>i.title=arrangeTitle2(i.title.toUpperCase(),17))
-      if(await events){
-        setSearch(await events);
-        setLoading(false);
-        setOpen(true);
+      try {
+        const res = await fetch("/api/archive-events", {
+          method: "POST",
+          body: JSON.stringify({eventRootCode:event.code, countryCode:country.code, actorCode:actor.code})
+        });
+        const events = await res.json()
+        await events.map((i:any)=>i.title=arrangeTitle2(i.title.toUpperCase(),17))
+        if(await events){
+          setSearch(await events);
+          setLoading(false);
+          setOpen(true);
+        }
+      } catch (error) {
+       console.log(error) 
       }
+      
     }
     const getCategories = async()=>{
-      let actorArr = await(await(await fetch("/api/categories/actors")).json())[0].actors;
+      try {
+        let actorArr = await(await(await fetch("/api/categories/actors")).json())[0].actors;
       let actors:any = [];
-      await actorArr.forEach((i:string)=>actors.push({code:i, label:getActorCodeLabel(i)}))
+      await actorArr.forEach((i:string)=>getActorCodeLabel(i)==="error"?"":actors.push({code:i, label:getActorCodeLabel(i)}))
       setActorArr(actors);
       let locationArr = await(await(await fetch("/api/categories/locations")).json())[0].locations;
       let location:any = [];
-      await locationArr.forEach((i:string)=>location.push({code:i, label:getLocCodeLabel(i)}))
+      await locationArr.forEach((i:string)=>getLocCodeLabel(i)==="error"?"":location.push({code:i, label:getLocCodeLabel(i)}))
       setCountryArr(location);
       let eventArrCode = await(await(await fetch("/api/categories/event-codes")).json())[0].EventCode;
       let eventCode:any = [];
       await eventArrCode.forEach((i:string)=>getEventCodeLabel(i).label==="error"?"":eventCode.push({code:i, label:getEventCodeLabel(i).label}));
       setEventArr(eventCode);
+      } catch (error) {
+        console.log(error)
+      }
+      
     }
     useEffect(() => {
       setLoading(true);
@@ -117,14 +127,19 @@ export default function Archive (props: IArchiveProps) {
      
      <svg viewBox="0 -100 660 797" fill="none">
      <rect id="Rounded rectangle" x="73.5" y="0.5" width="536" height="259" rx="7.5" fill="#52461B" stroke="black"/>
-     {search!=[] && search.map((i, index)=><motion.g id={`Article${index}`} onClick={()=>setSelected(i)} key={index} className={styles.new}
-     animate={open?{y:0}:{y:-20*index}} transition={{duration:0.1}} whileHover={{y:-70}}>
+     {search!=[] && search.map((i, index)=>
+     <motion.g 
+     id={`Article${index}`} 
+     onClick={()=>setSelected(i)} 
+     key={index} 
+     className={styles.new}
+     animate={open?{y:0, opacity:1}:{y:-20*index,opacity:0}} transition={{duration:0.1}} whileHover={{y:-70}}>
      <g id="Rectangle 53" filter={`url(#filter${index}_d_175_600)`}>
      <rect x="27" y={14+54*index} width="614.764" height="214" fill="#F5F2E8"/>
      </g>
      <text id="title" fill="#42413F" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" fontSize="19" letterSpacing="0em">{ i.title.map((j:string,ind:number)=><tspan key={ind} x="67.7637" y={60.1621+54*index+30*ind}>{j}</tspan>)}</text>
      <g id="Group 24">
-     <text id="title" fill="#42413F" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" fontSize="13" letterSpacing="0em"><tspan x="67.7637" y={80+54*index+20*i.title.length} onClick={()=>window.open(i.SourceURL,'_blank')}>Find more about this event here.</tspan></text>
+     <text id="title" fill="#42413F" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" fontSize="13" letterSpacing="0em"><tspan x="67.7637" y={80+60*index+20*i.title.length} onClick={()=>window.open(i.SourceURL,'_blank')}>Find more about this event here.</tspan></text>
      
      <rect id="Rectangle 98" x="42.5638" y={165.745+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>
      <rect id="Rectangle 94" x="42.5638" y={183.255+54*index+20*i.title.length} width="133.264" height="9.72727" fill="#52461B"/>

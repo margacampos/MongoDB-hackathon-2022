@@ -107,5 +107,14 @@
     display: block;
     padding: 1rem;
     background-color: var(--background-yellow);
-    
+    a{
+        background-color: var(--background-black);
+        border-radius: 5px;
+        color: var(--background-yellow);
+        padding: 0.5rem 1rem;
+        text-decoration: underline;
+        &:hover{
+        color: var(--main-yellow);
+        }
+      }
 }
