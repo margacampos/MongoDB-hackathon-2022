@@ -2,6 +2,10 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    button{
+    font-size: 30px;
+
+    }
 }
 .newspaper{
     background-color: var(--background-yellow);
@@ -22,8 +26,7 @@
 }
 
 @media (max-width:500px) {
-    .templates{
-    }
+    
     .img{
         min-width: 270px;
     }

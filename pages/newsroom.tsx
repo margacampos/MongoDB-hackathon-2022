@@ -25,7 +25,7 @@ const About: NextPage<{gameObject:Game, setGameObject:any}> = (props:{gameObject
     }, [home, router])
     
   return (
-    <div className={styles.container}>
+    <div >
       {props.gameObject && props.gameObject.punctuation?<GameScreen gameObject={props.gameObject} setGameObject={props.setGameObject} setStart={setHome}/>:<Loading/>}
     </div>
   )

@@ -112,7 +112,6 @@ export default function Archive (props: IArchiveProps) {
 
     useEffect(() => {
       getEvents(row)
-      console.log(row);
       return () => {
         
       }
