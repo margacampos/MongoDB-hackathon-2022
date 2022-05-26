@@ -138,8 +138,8 @@ export default function Archive (props: IArchiveProps) {
         </Select>
       </div>
       <div className={styles.buttonSmall}>
-            {row>0&&<button onClick={()=>setRow((state)=>state-1)} className={styles.leftSmall}>&lt;</button>}
-            {row<limit&&<button onClick={()=>setRow((state)=>state+1)} className={styles.rightSmall}>&gt;</button>}
+            {row>0?<button onClick={()=>setRow((state)=>state-1)} className={styles.leftSmall}>&lt;</button>:<button className={styles.rightSmall} disabled>&lt;</button>}
+            {row<limit?<button onClick={()=>setRow((state)=>state+1)} className={styles.rightSmall}>&gt;</button>:<button className={styles.rightSmall} disabled>&gt;</button>}
           </div>
      <div className={styles.archiveSVG}>
      
