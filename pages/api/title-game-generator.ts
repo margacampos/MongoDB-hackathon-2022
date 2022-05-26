@@ -14,21 +14,23 @@ export default async function handler(
         try {
             await client.connect();
             const database = client.db(process.env.MONGODB_DB);
-            const events = database.collection("eventsCSV");
+            const events = database.collection("events");
             
             const cursor = events.aggregate<Event>([
               {
                 '$match': {
-                  'Actor1Type1Code': {
+                  'title': {
                     '$ne': null
                   }, 
-                  'GoldsteinScale': {
-                    '$gte': 8
-                  }, 
-                  'NumArticles': 10, 
-                  'AvgTone': {
-                    '$gte': 7
+                  'Actor1CountryCode': {
+                    '$in': [
+                      'GBR', 'USA', 'CEU', 'EEU', 'EUR', 'NMR', 'MDT', 'AUS', 'VGB', 'CAN', 'IMY'
+                    ]
                   }
+                }
+              }, {
+                '$sample': {
+                  'size': 5
                 }
               }, {
                 '$project': {
@@ -42,16 +44,9 @@ export default async function handler(
                   'AvgTone': {
                     '$toDecimal': '$AvgTone'
                   }, 
-                  'SourceURL': 1,
-                  'Day':1
-                }
-              }, {
-                '$skip': 10
-              }, {
-                '$limit': 10
-              }, {
-                '$sample': {
-                  'size': 5
+                  'SourceURL': '$SOURCEURL', 
+                  'Day': '$SQLDATE', 
+                  'title': 1
                 }
               }
             ]);

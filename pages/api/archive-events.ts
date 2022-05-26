@@ -9,44 +9,42 @@ export default async function handler(
   res: NextApiResponse<Event[]>
 ) {
     let client; 
-    
+
     if(process.env.MONGODB_URI && req.method==="POST"){
         client=new MongoClient(process.env.MONGODB_URI);
         try {
             await client.connect();
             const database = client.db(process.env.MONGODB_DB);
-            const events = database.collection("eventsCSV");
+            const events = database.collection("events");
             let body = JSON.parse(req.body)
             let match:{
-              Day:{$gte:number;},
-                GoldsteinScale: {
+              Day?:{$gte:number;},
+                GoldsteinScale?: {
                   $gte:number;
                 }, 
-                NumArticles:number; 
-                AvgTone: {
+                NumArticles?:number; 
+                AvgTone?: {
                   $gte:number;
                 },
                 Actor1Type1Code?:string;
                 Actor1CountryCode?:string;
-                EventRootCode?:string;
-            } = {
-                'Day':{$gte:20220301},
-                'GoldsteinScale': {
-                  '$gte': 8
-                }, 
-                'NumArticles': 10, 
-                'AvgTone': {
-                  '$gte': 7
-                }
-              }
+                EventCode?:string;
+            } = {};
+
             if(body.actorCode!="")match.Actor1Type1Code= body.actorCode;
             if(body.countryCode!="")match.Actor1CountryCode=body.countryCode;
-            if(body.eventRootCode!="")match.EventRootCode=body.eventRootCode;
+            if(body.eventRootCode!="")match.EventCode=body.eventRootCode;
 
             const cursor = events.aggregate<Event>([
               {
                 '$match': match
-              }, {
+              }, 
+              {
+                '$sample': {
+                  'size': 5
+                }
+              }, 
+              {
                 '$project': {
                   '_id': 0, 
                   'actor1': '$Actor1Type1Code', 
@@ -58,27 +56,27 @@ export default async function handler(
                   'AvgTone': {
                     '$toDecimal': '$AvgTone'
                   }, 
-                  'SourceURL': 1,
-                  'Day':1
+                  'SourceURL': '$SOURCEURL', 
+                  'Day': '$SQLDATE', 
+                  'title': 1
                 }
-              }, {
-                '$skip': 0
-              }, {
-                '$limit': 10
-              }, {
-                '$sample': {
-                  'size': 5
+              },
+              {
+                "$match":{
+                  'AvgTone': {
+                    '$gte': 7
+                  }
                 }
               }
             ]);
 
               let eventList:Event[] = await cursor.toArray();
-              for (let i=0; i<eventList.length; i++){
-                let url = eventList[i].SourceURL;
-                // if(url!=undefined)eventList[i].title = await convertToTitles(url);
-                if(url!=undefined)eventList[i].title = getEventName(eventList[i]);
+              // for (let i=0; i<eventList.length; i++){
+              //   let url = eventList[i].SourceURL;
+              //   // if(url!=undefined)eventList[i].title = await convertToTitles(url);
+              //   if(url!=undefined)eventList[i].title = getEventName(eventList[i]);
 
-              }
+              // }
             res.status(200).json(eventList); //Change to notice when titles are missing
         } catch (error) {
             console.log(error)
