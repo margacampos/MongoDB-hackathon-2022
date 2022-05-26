@@ -8,6 +8,8 @@ import { motion } from 'framer-motion';
 import Loading from '../Loading';
 import { arrangeTitle2, formatDate } from '../../utils/gameUtils';
 import NewPopUp from './NewPopUp';
+import CloseButton from '../CloseButton';
+import { getActorCodeLabel, getEventCodeLabel, getLocCodeLabel } from '../../utils/eventUtils';
 
 interface IArchiveProps {
   setCurrentActivity:any;
@@ -32,6 +34,11 @@ export default function Archive (props: IArchiveProps) {
     const [date, setDate] = useState("")
     const [selected, setSelected]:[{}|boolean, React.Dispatch<React.SetStateAction<any>>] = useState(false)
     const [loading, setLoading] = useState(false)
+    //Categories
+    const [countryArr, setCountryArr]:any = useState([]);
+    const [actorArr, setActorArr]:any = useState([]);
+    const [eventArr, setEventArr]:any = useState([]);
+    //Values
     const [country, setCountry] = useState({label:"Country", code:""});
     const [actor, setActor] = useState({label:"Actor", code:""});
     const [event, setEvent] = useState({label:"Event", code:""});
@@ -48,6 +55,20 @@ export default function Archive (props: IArchiveProps) {
         setOpen(true);
       }
     }
+    const getCategories = async()=>{
+      let actorArr = await(await(await fetch("/api/categories/actors")).json())[0].actors;
+      let actors:any = [];
+      await actorArr.forEach((i:string)=>actors.push({code:i, label:getActorCodeLabel(i)}))
+      setActorArr(actors);
+      let locationArr = await(await(await fetch("/api/categories/locations")).json())[0].locations;
+      let location:any = [];
+      await locationArr.forEach((i:string)=>location.push({code:i, label:getLocCodeLabel(i)}))
+      setCountryArr(location);
+      let eventArrCode = await(await(await fetch("/api/categories/event-codes")).json())[0].EventCode;
+      let eventCode:any = [];
+      await eventArrCode.forEach((i:string)=>getEventCodeLabel(i).label==="error"?"":eventCode.push({code:i, label:getEventCodeLabel(i).label}));
+      setEventArr(eventCode);
+    }
     useEffect(() => {
       setLoading(true);
       getEvents()
@@ -55,31 +76,40 @@ export default function Archive (props: IArchiveProps) {
         
       }
     }, [country,actor,event])
+
     useEffect(() => {
       let date = new Date();
       let dateToNumber = `${date.getFullYear()}${date.getMonth()<=8?`0${date.getMonth()+1}`:date.getMonth()+1}${date.getDate()<=9?`0${date.getDate()}`:date.getDate()}`
       setDate(formatDate(parseInt(dateToNumber)));
+      getCategories();
       return () => {
         
       }
     }, []);
-    
+    useEffect(() => {
+      console.log(eventArr)
+      return () => {
+        
+      }
+    }, [event])
+
   return (
-    <div style={{backgroundColor:"var(--background-yellow)", minHeight:"100vh"}}>
+    <div style={{backgroundColor:"var(--background-yellow)", minHeight:"100vh", position:"fixed", top:0, left:0, zIndex:22, width:"100vw"}}>
+      <CloseButton close={props.setCurrentActivity}/>
       {selected && <NewPopUp event={selected} setSelected={setSelected} setCurrentActivity={props.setCurrentActivity}/>}
       <Header title='ARCHIVES'/>
       <div className={styles.selection}>
         <Select title={country.label}>
           <button key={"none"} onClick={()=>setCountry({label:"Country", code:""})}>None</button>
-          {cameoCountryCodes.map((i)=><button key={i.code} onClick={()=>setCountry(i)}>{i.label}</button>)}
+          {countryArr && countryArr.map((i:any)=><button key={i.code} onClick={()=>setCountry(i)}>{i.label}</button>)}
         </Select>
         <Select title={actor.label}>
           <button key={"none"} onClick={()=>setActor({label:"Actor", code:""})}>None</button>
-          {cameoTypeCodes.map((i)=><button key={i.code} onClick={()=>setActor(i)}>{i.label}</button>)}
+          {actorArr && actorArr.map((i:any)=><button key={i.code} onClick={()=>setActor(i)}>{i.label}</button>)}
         </Select>
         <Select title={event.label}>
           <button key={"none"} onClick={()=>setEvent({label:"Event", code:""})}>None</button>
-          {cameoEventCodes.map((i)=><button key={i.rootCode} onClick={()=>setEvent({label:i.label.toLowerCase(), code:i.rootCode})}>{i.label.toLowerCase()}</button>)}
+          {eventArr && eventArr.map((i:any)=><button key={i.code} onClick={()=>setEvent(i)}>{i.label}</button>)}
         </Select>
       </div>
      <div className={styles.archiveSVG}>
