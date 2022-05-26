@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Image from "next/image";
 
 type Props = {
     achieved:string[]
@@ -6,10 +7,10 @@ type Props = {
 
 export default function Achievements({achieved}: Props) {
   return (
-    <div style={{position:"fixed", display:"flex", maxWidth:"100vw", bottom:0,left:0}}>
+    <div style={{position:"fixed", display:"flex", maxWidth:"90vw", bottom:10,left:10, zIndex:1}}>
         {achieved.map((i, index)=>{
-            if(i==="eotm")return <p key={index}>Employee of the month</p>;
-            else if (i==="fired")return <p key={index}>Fired</p>;
+            if(i==="eotm")return <Image width={100} height={100} src="/eotm.svg" alt='Employee of the month. Newsrooms badge.'/>;
+            else if (i==="fired")return <Image width={100} height={100} src="/fftn.svg" alt='Fired from the newsroom. Newsrooms badge.'/>;
         })}
         
     </div>

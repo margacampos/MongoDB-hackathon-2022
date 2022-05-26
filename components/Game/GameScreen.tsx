@@ -116,7 +116,19 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     //             } 
     // }
     const checkForAchievements=()=>{
-        //Check on gameObject for achievements and activate respective popUps
+        
+        //Employee of the month
+        if(!gameObject.achievements.includes("eotm")){
+            let eotm = [];
+            gameObject.punctuation.map((i)=>eotm.length>=4?gameObject.achievements.push("eotm"):i>=9?eotm.push(i):eotm=[]);
+        }
+        
+        //Fired
+        if(!gameObject.achievements.includes("eotm")){
+            let fired = [];
+            gameObject.punctuation.map((i)=>fired.length>=4?gameObject.achievements.push("fired"):i<5?fired.push(i):fired=[]);
+        }
+        
     }
     const startOnClickDialog = (eventDialog:any, event:string, person:string) =>{
         let dialog:any[] = [];
@@ -133,7 +145,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
             let text = genDialog(game.currentMoment, event, i, "AFTEREVENT" );
             if(text[0]!="")dialog.push({person:i, text:text});
         });
-        setWhen("AFTEREVENT");
+        setWhen(event);
         if(dialog.length>0){
             setTexto(dialog);
             setDone((state)=>{
@@ -182,6 +194,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         setType(type);
         updateGameObject(gameObject.tutorial, selectTitle, selectEvent, punctuation);
         setCurrentActivity("");
+        setDone({START:false, AFTER_EVENT:false, AFTER_TITLE:false, AFTER_LAYOUT:false})
     }
 
     const getNextInteraction = (event:string, punctuation:number) =>{
@@ -214,7 +227,6 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     }, [game])
 
     useEffect(() => {
-        console.log(gameObject)
         if(type==="FINISH"){
             setStart(false)
             setType("NOTHING")
@@ -222,7 +234,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
             resetGame()
             setType("NOTHING")
         }
-      
+      checkForAchievements();
       return () => {
         
       }
