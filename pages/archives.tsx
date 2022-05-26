@@ -23,6 +23,10 @@ const About: NextPage = () => {
     
   return (
     <div >
+      <Head>
+        <title>Archives | THE NEWSROOM</title>
+        <meta name="description" content="The Newsroom's archives contain the most relevant (and positive) news of last month as recorded by the GDELT database." />
+      </Head>
       <Archive setCurrentActivity={setHome}/>
     </div>
   )

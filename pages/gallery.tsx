@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import styles from "../styles/Gallery.module.scss"
 import Link from "next/link";
+import Head from "next/head";
 const Display: NextPage = () => {
     const [img, setImg] = useState(0)
     const Router = useRouter();
@@ -42,6 +43,10 @@ const Display: NextPage = () => {
     ]
     return (
       <div className={styles.container}>
+          <Head>
+        <title>Gallery | THE NEWSROOM</title>
+        <meta name="description" content="The Newsroom's gallery contains information about the project and characters." />
+      </Head>
           <div className={styles.infoContainer}>
             <div className={styles.person}>
                 <div className={styles.img}>

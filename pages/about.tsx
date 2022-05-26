@@ -24,15 +24,22 @@ const About: NextPage = () => {
           
           <section>
               <Link href="/">back</Link>
-              <h2>Welcome to GDELT newsroom</h2>
-              <h3>We are still in development</h3>
-              <p>This project started because of the mongodb hackathon 2022 but I will continue to develop it as I have grown fond of it.</p>
+              <h2>📰 Welcome to The Newsroom 📰</h2>
+              <h3>What is the goal?</h3>
+              <p>To show people positive news happening all around the world in an engaging/creative way. All the events showed in The Newsroom are real and the related articles can be accessed by clicking on the respective links.</p>
               <h3>What is this?</h3>
-              <p>Right now it is a simple visual novel type of game where by talking to your co-workers on the newsroom, you have to guess the right choices for the event they are looking for that week.</p>
-              <p>It is powered by the GDELT database which means all the events present in the game are real.</p>
-              <h3>What is it for?</h3>
-              <p>In the future I would like it to be a funny game where you catch up on present events and learn about the different people behind newspapers and maybe one day I might make one for tv and another for radio too, who knows.</p>
-              <p>Anyway, I hope you enjoy it! Any opinion is welcomed, just keep in mind It is still in early development.</p>
+              <p>This is a project made for the MongoDB World Hackathon 2022. It is also a place where you can find the most relevant (and positive) global news of last month as recorded by the GDELT database.</p>
+              <h3>What you can do...</h3>
+              <p>Right now you can:</p>
+              <ul>
+                <li><b>Enter The Newsroom:</b> Move around and talk to other characters in this visual novel kind of game while completing tasks and trying to make front page.</li>
+                <li><b>Visit the archives:</b> Find news to share or just learn more about what was happening around the world this last month.</li>
+                <li><b>Gallery:</b> Learn more about the different jobs involved in making a newspaper and find more about this project.</li>
+              </ul>
+              <h3>If you are interested in how it works...</h3>
+              <p>Visit the github repository: <a href="https://github.com/margacampos/MongoDB-hackathon-2022" target={"_blank"} rel={"noreferrer"}>https://github.com/margacampos/MongoDB-hackathon-2022</a></p>
+              <h3>Thank you for visiting!</h3>
+              <Image src={"/group.png"} alt={"Image of The Newsroom's staff"} width={1781} height={724}/>
           </section>
         </div>
         <Buttons buttons={aboutButtons}/>

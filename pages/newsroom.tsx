@@ -25,6 +25,10 @@ const About: NextPage<{gameObject:Game, setGameObject:any}> = (props:{gameObject
     
   return (
     <div >
+      <Head>
+        <title>Newsroom | THE NEWSROOM</title>
+        <meta name="description" content="The Newsroom is a visual novel type of game where you talk to the characters and complete task to try and get the front page." />
+      </Head>
       {props.gameObject && props.gameObject.punctuation?<GameScreen gameObject={props.gameObject} setGameObject={props.setGameObject} setStart={setHome}/>:<Loading/>}
     </div>
   )
