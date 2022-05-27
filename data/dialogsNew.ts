@@ -103,6 +103,27 @@ const eventDialogs = [
             ART_DIRECTOR:{type:"actor", knowledge:0},
             REPORTER:{type:"eventCode", knowledge:0}
         }
+    },
+    {
+        event:"sick",
+        dialog:{
+            START:["MANAGING_EDITOR", "NEWS_EDITOR"],
+            AFTER_EVENT:["REPORTER"],
+            AFTER_TITLE:["MANAGING_EDITOR"],
+            AFTER_LAYOUT:["REPORTER","MANAGING_EDITOR"]
+        },
+        available:{
+            START:["REPORTER", "NEWS_EDITOR", "MANAGING_EDITOR"],
+            AFTER_EVENT:["MANAGING_EDITOR", "NEWS_EDITOR"],
+            AFTER_TITLE:["NEWS_EDITOR", "MANAGING_EDITOR"],
+            AFTER_LAYOUT:["MANAGING_EDITOR", "NEWS_EDITOR", "REPORTER"]
+        },
+        knowledge:{
+            MANAGING_EDITOR:{type:"location", knowledge:0},
+            NEWS_EDITOR:{type:"eventCode", knowledge:0}, 
+            ART_DIRECTOR:{type:"none", knowledge:0},
+            REPORTER:{type:"actor", knowledge:0}
+        }
     }
     
 ]
@@ -223,6 +244,15 @@ const simpleDialogs =[
                     AFTER_TITLE:[""]
                 }
             },
+            {
+                eventId:"sick",
+                dialogs:{
+                    START:["Bonjour!", "Aaliyah called sick this morning, do you think you can handle chosing the design alone?", "Great! I'm here if you need help."],
+                    AFTER_LAYOUT:["I think so too. Aaliyah will be happy to know you did great in her absence."],
+                    AFTER_EVENT:[""],
+                    AFTER_TITLE:["I noticed you chose a title already, now is time to choose the design.", "I'll be around if you need help."]
+                }
+            },
         ]
         
     },
@@ -258,6 +288,15 @@ const simpleDialogs =[
                     AFTER_TITLE:[""]
                 }
             },
+            {
+                eventId:"sick",
+                dialogs:{
+                    START:["I'm sure she will be fine soon.", "If you need help I will be around."],
+                    AFTER_LAYOUT:[""],
+                    AFTER_EVENT:[""],
+                    AFTER_TITLE:[""]
+                }
+            },
         ]
         
     },
@@ -288,6 +327,15 @@ const simpleDialogs =[
                     START:[""],
                     AFTER_LAYOUT:[""],
                     AFTER_EVENT:["Thank you, I don't think this story will take much time.", "See you tomorrow!"],
+                    AFTER_TITLE:[""]
+                }
+            },
+            {
+                eventId:"sick",
+                dialogs:{
+                    START:["I'm sure she will be fine soon.", "If you need help I will be around."],
+                    AFTER_LAYOUT:["I'm heading home. Love the design you chose, really fits the story."],
+                    AFTER_EVENT:["I'm on my way then, see you!"],
                     AFTER_TITLE:[""]
                 }
             },
@@ -369,6 +417,15 @@ const simpleOnClickDialogs =[
                     AFTER_TITLE:["Remember you can make changes to your choices."]
                 }
             },
+            {
+                eventId:"sick",
+                dialogs:{
+                    START:["Do you need any help?"],
+                    AFTER_LAYOUT:["Do you need anything?"],
+                    AFTER_EVENT:["How can I help you?"],
+                    AFTER_TITLE:["I'm sure you will make a great design choice!"]
+                }
+            },
         ]
         
     },
@@ -411,6 +468,15 @@ const simpleOnClickDialogs =[
                     AFTER_TITLE:["How are you?"]
                 }
             },
+            {
+                eventId:"sick",
+                dialogs:{
+                    START:["Do you need any help?"],
+                    AFTER_LAYOUT:["I think you did great."],
+                    AFTER_EVENT:["Let's choose a title."],
+                    AFTER_TITLE:["I'm sure Aaliyah will be happy with your decision."]
+                }
+            },
         ]
         
     },
@@ -451,6 +517,15 @@ const simpleOnClickDialogs =[
                     AFTER_LAYOUT:["Today was kind of boring..."],
                     AFTER_EVENT:["This story will be great, I can feel it."],
                     AFTER_TITLE:["Anything I can help you with?"]
+                }
+            },
+            {
+                eventId:"sick",
+                dialogs:{
+                    START:["I hope Aaliyah is okay...", "I'll send her a 'Get well' card later."],
+                    AFTER_LAYOUT:["I'm off to the post office, need anything?"],
+                    AFTER_EVENT:[""],
+                    AFTER_TITLE:[""]
                 }
             },
         ]

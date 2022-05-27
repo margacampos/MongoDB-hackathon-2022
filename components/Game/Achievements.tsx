@@ -31,6 +31,7 @@ export default function Achievements({achieved}: Props) {
                 else if (i==="fired")return <Image key={i} width={100} height={100} src="/fftn.svg" alt='Fired from the newsroom. Newsrooms badge.'/>;
                 else if (i==="published")return<Image key={i} src="/published.svg" alt="Your work was published badge" width={100} height={100}/>;
                 else if (i==="notpublished")return<Image key={i} src="/notpublished.svg" alt="Your work was not published badge" width={100} height={100}/>;
+                else if (i==="Uafa")return<Image key={i} src="/uafa.svg" alt="Used the archives to find an article badge" width={100} height={100}/>;
             })}</>
           }
             </motion.div>}

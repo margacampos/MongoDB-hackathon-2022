@@ -40,7 +40,6 @@ React.useEffect(() => {
   }
 }, [])
 React.useEffect(() => {
-  console.log("called")
   setPopUp(true);
   const timeout = setTimeout(()=>setPopUp(false),5000);
   return () => {
