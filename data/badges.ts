@@ -22,7 +22,7 @@ const Badges = [
     {
         id:"fired",
         comment:"Got a score of less than five 4 consecutive weeks.",
-        src:"/fired.svg"
+        src:"/fftn.svg"
     },
 ];
 export {Badges};
