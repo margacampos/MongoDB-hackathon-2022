@@ -14,7 +14,7 @@ export default function Header (props: IHeaderProps) {
         </h1>
         <div className={styles.info}>
           <p>Since 2022</p>
-          <p>MongoDB 2022 Hackathon</p>
+          <p>MongoDB World Hackathon 	&apos;22</p>
         </div>
     </div>
   );

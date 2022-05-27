@@ -24,13 +24,15 @@ export default function Achievements({achieved}: Props) {
           animate={{height:120}}
           exit={{height:1}}
           transition={{duration:0.3}}
-          id='badges' style={{display:"flex", backgroundColor:"var(--background-black)", padding:"1rem", borderRadius:"0 10px 0 0" }}>
-            {achieved.map((i, index)=>{
+          id='badges' style={{display:"flex", backgroundColor:"var(--background-black)", padding:"1rem", borderRadius:"0 10px 0 0" , overflowY:"hidden"}}>
+            {achieved.length<1?<p style={{color:"var(--background-yellow)"}}>You have no badges yet.</p>
+            :<>{achieved.map((i, index)=>{
                 if(i==="eotm")return <Image key={i} width={100} height={100} src="/eotm.svg" alt='Employee of the month. Newsrooms badge.'/>;
                 else if (i==="fired")return <Image key={i} width={100} height={100} src="/fftn.svg" alt='Fired from the newsroom. Newsrooms badge.'/>;
                 else if (i==="published")return<Image key={i} src="/published.svg" alt="Your work was published badge" width={100} height={100}/>;
                 else if (i==="notpublished")return<Image key={i} src="/notpublished.svg" alt="Your work was not published badge" width={100} height={100}/>;
-            })}
+            })}</>
+          }
             </motion.div>}
       </AnimatePresence>
         
