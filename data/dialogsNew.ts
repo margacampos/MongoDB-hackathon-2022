@@ -21,6 +21,27 @@ const eventDialogs = [
         }
     },
     {
+        event:"empty",
+        dialog:{
+            START:[""],
+            AFTER_EVENT:[""],
+            AFTER_TITLE:[""],
+            AFTER_LAYOUT:[""]
+        },
+        available:{
+            START:["MANAGING_EDITOR", "NEWS_EDITOR"],
+            AFTER_EVENT:["MANAGING_EDITOR","ART_DIRECTOR"],
+            AFTER_TITLE:["NEWS_EDITOR", "REPORTER", "ART_DIRECTOR"],
+            AFTER_LAYOUT:["MANAGING_EDITOR"]
+        },
+        knowledge:{
+            MANAGING_EDITOR:{type:"location", knowledge:0},
+            NEWS_EDITOR:{type:"actor", knowledge:0},
+            ART_DIRECTOR:{type:"none", knowledge:0},
+            REPORTER:{type:"eventCode", knowledge:0}
+        }
+    },
+    {
         event:"cupcakes",
         dialog:{
             START:["REPORTER", "NEWS_EDITOR"],
@@ -36,12 +57,53 @@ const eventDialogs = [
         },
         knowledge:{
             MANAGING_EDITOR:{type:"none", knowledge:0},
-            NEWS_EDITOR:{type:"actor", knowledge:0},
+            NEWS_EDITOR:{type:"actor", knowledge:0}, 
             ART_DIRECTOR:"location",
             REPORTER:{type:"eventCode", knowledge:0}
         }
     },
-    
+    {
+        event:"empty",
+        dialog:{
+            START:[""],
+            AFTER_EVENT:[""],
+            AFTER_TITLE:[""],
+            AFTER_LAYOUT:[""]
+        },
+        available:{
+            START:["REPORTER", "NEWS_EDITOR", "ART_DIRECTOR"],
+            AFTER_EVENT:["MANAGING_EDITOR","REPORTER"],
+            AFTER_TITLE:["NEWS_EDITOR", "ART_DIRECTOR"],
+            AFTER_LAYOUT:["MANAGING_EDITOR", "ART_DIRECTOR"]
+        },
+        knowledge:{
+            MANAGING_EDITOR:{type:"location", knowledge:0},
+            NEWS_EDITOR:{type:"actor", knowledge:0},
+            ART_DIRECTOR:{type:"none", knowledge:0},
+            REPORTER:{type:"eventCode", knowledge:0}
+        }
+    },
+    {
+        event:"missingcoat",
+        dialog:{
+            START:["MANAGING_EDITOR", "NEWS_EDITOR"],
+            AFTER_EVENT:["REPORTER","NEWS_EDITOR"],
+            AFTER_TITLE:["ART_DIRECTOR"],
+            AFTER_LAYOUT:["ART_DIRECTOR","MANAGING_EDITOR"]
+        },
+        available:{
+            START:["REPORTER", "NEWS_EDITOR"],
+            AFTER_EVENT:["MANAGING_EDITOR", "NEWS_EDITOR"],
+            AFTER_TITLE:["NEWS_EDITOR","ART_DIRECTOR"],
+            AFTER_LAYOUT:["MANAGING_EDITOR", "NEWS_EDITOR", "REPORTER"]
+        },
+        knowledge:{
+            MANAGING_EDITOR:{type:"location", knowledge:0},
+            NEWS_EDITOR:{type:"none", knowledge:0}, 
+            ART_DIRECTOR:{type:"actor", knowledge:0},
+            REPORTER:{type:"eventCode", knowledge:0}
+        }
+    }
     
 ]
 //0=>knows themselves 1=>Knows from someone 2=>Thinks they know
@@ -152,7 +214,15 @@ const simpleDialogs =[
                     AFTER_TITLE:[""]
                 }
             },
-
+            {
+                eventId:"missingcoat",
+                dialogs:{
+                    START:["Hey! How are you today?", "I'll be here if you need anything."],
+                    AFTER_LAYOUT:["I think it's time to present your work. Do you think it's ready?", "You still have time to change a few things."],
+                    AFTER_EVENT:[""],
+                    AFTER_TITLE:[""]
+                }
+            },
         ]
         
     },
@@ -179,7 +249,15 @@ const simpleDialogs =[
                     AFTER_EVENT:[""]
                 }
             },
-
+            {
+                eventId:"missingcoat",
+                dialogs:{
+                    START:["Well I can't find my coat, has anyone seen it?", "Anyway, let's assign Thomas a story. If you see my coat please let me know."],
+                    AFTER_LAYOUT:[""],
+                    AFTER_EVENT:["Let's think of a title while we wait."],
+                    AFTER_TITLE:[""]
+                }
+            },
         ]
         
     },
@@ -204,7 +282,15 @@ const simpleDialogs =[
                     AFTER_LAYOUT:["🎶 Happy birthday to you 🎶"]
                 }
             },
-
+            {
+                eventId:"missingcoat",
+                dialogs:{
+                    START:[""],
+                    AFTER_LAYOUT:[""],
+                    AFTER_EVENT:["Thank you, I don't think this story will take much time.", "See you tomorrow!"],
+                    AFTER_TITLE:[""]
+                }
+            },
         ]
         
     },
@@ -230,7 +316,15 @@ const simpleDialogs =[
                     START:[""]
                 }
             },
-
+            {
+                eventId:"missingcoat",
+                dialogs:{
+                    START:[""],
+                    AFTER_LAYOUT:["The one you chose was actually my favourite.", "Thank you for your help."],
+                    AFTER_EVENT:[""],
+                    AFTER_TITLE:["Good morning! Could you give me your opinion on the designs I've made?", "I'll be waiting."]
+                }
+            },
         ]
         
     }
@@ -244,7 +338,7 @@ const simpleOnClickDialogs =[
                 dialogs:{
                     START:["Remember to always ask questions when needed."],
                     AFTER_LAYOUT:["Remember you can still make changes to your choices."],
-                    AFTER_EVENT:[""],
+                    AFTER_EVENT:["Remember to see your 'To do' list so you don't forget anything."],
                     AFTER_TITLE:[""]
                 }
             },
@@ -253,11 +347,28 @@ const simpleOnClickDialogs =[
                 dialogs:{
                     START:[""],
                     AFTER_LAYOUT:["Thank you so much! I can not believe you remembered!"],
-                    AFTER_EVENT:["Did anyone brought chocolate?"],
+                    AFTER_EVENT:["Did anyone bring chocolate?"],
                     AFTER_TITLE:[""]
                 }
             },
-
+            {
+                eventId:"missingcoat",
+                dialogs:{
+                    START:[""],
+                    AFTER_LAYOUT:["Have you made any changes yet?"],
+                    AFTER_EVENT:["Have you seen Jakub's coat? It probably is around here somewhere."],
+                    AFTER_TITLE:[""]
+                }
+            },
+            {
+                eventId:"empty",
+                dialogs:{
+                    START:["How are you? Remember to always ask questions when needed."],
+                    AFTER_LAYOUT:["Remember you can still make changes to your choices."],
+                    AFTER_EVENT:["Remember to see your 'To do' list so you don't forget anything."],
+                    AFTER_TITLE:["Remember you can make changes to your choices."]
+                }
+            },
         ]
         
     },
@@ -267,24 +378,39 @@ const simpleOnClickDialogs =[
             {
                 eventId:"firstday",
                 dialogs:{
-                    START:["Hello, my name is Jakub and I am the news editor.", "The first thing we need to do is assign a story for Thomas to cover.",
-                    "Here I have some of the current events, all you have to do is choose the one you think will fit better this weeks newspaper.",
-                    "If you are not sure what decision to make, ask around.", "There will always be someone that knows the answer."],
+                    START:["Do you need help choosing the event?"],
                     AFTER_LAYOUT:[""],
-                    AFTER_EVENT:[""],
-                    AFTER_TITLE:["Almost finished the week already, how do you feel?","Do you like the job? I can see why Gabrielle hired you.", "Anyway, I'm going back to work.","See you next week!"]
+                    AFTER_EVENT:["I liked your decision. Now we need to write the title."],
+                    AFTER_TITLE:["Just read the title you chose. You are doing great for your first week."]
                 }
             },
             {
                 eventId:"cupcakes",
                 dialogs:{
-                    START:["I don't know if I can concentrate with this smell, I'm hungry and I just had breakfast!", "Good luck today!"],
-                    AFTER_TITLE:["Gabrielle is leaving for a few hours and we thought later today would be a great moment for singing happy birthday.","What do you think? I will be in the newsroom if you need anything."],
-                    AFTER_LAYOUT:["🎶 Happy birthday dear Gabrielle 🎶", "🎶 Happy birthday to you 🎶"],
+                    START:["How can I help you?"],
+                    AFTER_TITLE:["Gabrielle is leaving for a few hours and we thought later today would be a great moment for singing happy birthday.","What do you think?"],
+                    AFTER_LAYOUT:["This cupcakes are delicious."],
                     AFTER_EVENT:[""]
                 }
             },
-
+            {
+                eventId:"missingcoat",
+                dialogs:{
+                    START:["I might have left my coat in the car..."],
+                    AFTER_LAYOUT:["I found my coat! It was in the archives.", "I don't know how it ended up there."],
+                    AFTER_EVENT:["I am pretty sure I did not leave it at home..."],
+                    AFTER_TITLE:["I am going to take a look around and see if I can find my coat.", "Is there anything you need?"]
+                }
+            },
+            {
+                eventId:"empty",
+                dialogs:{
+                    START:["Good morning!"],
+                    AFTER_LAYOUT:["You are an expert by now."],
+                    AFTER_EVENT:["Choosing events is easier when you know what you are looking for."],
+                    AFTER_TITLE:["How are you?"]
+                }
+            },
         ]
         
     },
@@ -296,20 +422,37 @@ const simpleOnClickDialogs =[
                 dialogs:{
                     START:[""],
                     AFTER_LAYOUT:[""],
-                    AFTER_TITLE:[""],
+                    AFTER_TITLE:["I have not read the title you chose yet but I'm sure it's great. Need any help?"],
                     AFTER_EVENT:["Sorry I'm a little late. I forgot you were starting today and got a little carried away talking to Jakub.", "I'm Thomas by the way, these team's reporter.", "I would show you around or something but you know, it is a little late. Do you have the story I need to cover?","Okay, thanks. It has been a pleasure meeting you! Hope we can talk more some other day!"],
                 }
             },
             {
                 eventId:"cupcakes",
                 dialogs:{
-                    AFTER_TITLE:[""],
-                    START:["Hey! How are things going?", "Can you smell chocolate?", "I knew it! Today is Gabrielle's birthday so I brought some chocolate cupcakes.", "It was supposed to be a surprise but... chocolate smells delicious. Now I'm sure she will notice.", "If she asks, could you keep the secret?"],
-                    AFTER_EVENT:["It is definetly not coming from me!"]  ,
-                    AFTER_LAYOUT:["🎶 Happy birthday to you 🎶"]
+                    AFTER_TITLE:["I'm preparing my voice for singing.","LA, La, la, La, LA, LAAAA 🎶"],
+                    START:["Remember to keep the secret"],
+                    AFTER_EVENT:["Today no one brought chocolate to the office Gabrielle. Please, stop asking."] ,
+                    AFTER_LAYOUT:["🎶 Cumpleaños feliz 🎶","🎶 Cumpleaños feliz 🎶", "🎶 Te deseamos tooodooos 🎶", "🎶 Un cumpleaños feliz 🎶"]
                 }
             },
-
+            {
+                eventId:"missingcoat",
+                dialogs:{
+                    START:["Hello! I am waiting on your assigment. Do you need my help choosing?"],
+                    AFTER_LAYOUT:["I went to the archives earlier but did not see Jakub's coat.", "How strange..."],
+                    AFTER_EVENT:[""],
+                    AFTER_TITLE:[""]
+                }
+            },
+            {
+                eventId:"empty",
+                dialogs:{
+                    START:["Welcome back!"],
+                    AFTER_LAYOUT:["Today was kind of boring..."],
+                    AFTER_EVENT:["This story will be great, I can feel it."],
+                    AFTER_TITLE:["Anything I can help you with?"]
+                }
+            },
         ]
         
     },
@@ -319,8 +462,7 @@ const simpleOnClickDialogs =[
             {
                 eventId:"firstday",
                 dialogs:{
-                    AFTER_EVENT:["Was that Thomas running?", "Welcome to the newsroom. I'm the newspaper's art director, Aaliyah.", "I was told the both of us would be working on the front page today. I have some ideas for how I want it to look but I need to talk to Jakub, have you seen him?",
-                    "If you see him could you tell him I'm looking for him?","I am looking forward to working with you."],
+                    AFTER_EVENT:["I'm looking forward to working together."],
                     AFTER_TITLE:["Hey! can I borrow you a minute?", "I need you to choose what design you prefer."],
                     START:[""],
                     AFTER_LAYOUT:[""]
@@ -329,13 +471,30 @@ const simpleOnClickDialogs =[
             {
                 eventId:"cupcakes",
                 dialogs:{
-                    AFTER_LAYOUT:["🎶 Happy birthday to you 🎶"],
-                    AFTER_TITLE:["I just found out today is Gabrielle's birthday!", "I can't believe I forgot...", "At least Thomas brought cupcakes."],
+                    AFTER_LAYOUT:["This cupcakes are great."],
+                    AFTER_TITLE:["Did you know today was Gabrielle's birthday?", "I can't believe I forgot...", "At least Thomas brought cupcakes."],
                     AFTER_EVENT:[""],
                     START:[""]
                 }
             },
-
+            {
+                eventId:"missingcoat",
+                dialogs:{
+                    START:[""],
+                    AFTER_LAYOUT:[""],
+                    AFTER_EVENT:[""],
+                    AFTER_TITLE:["Choosing the design can wait. What can I help you with?"]
+                }
+            },
+            {
+                eventId:"empty",
+                dialogs:{
+                    START:["How are you doing?"],
+                    AFTER_LAYOUT:["I think today's design really fits the story."],
+                    AFTER_EVENT:["I'm already imagining how the story you chose will look in the front page."],
+                    AFTER_TITLE:["Let's choose a design."]
+                }
+            },
         ]
         
     }

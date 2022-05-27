@@ -165,7 +165,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         }
         //Not Published
         if(!gameObject.achievements.includes("notpublished")){
-            if(gameObject.punctuation.find((i)=>i<5))setGameObject((state)=>{
+            if(gameObject.punctuation.find((i)=>i<=5))setGameObject((state)=>{
                 return({
                   name: state.name,
                   punctuation: state.punctuation,
@@ -180,7 +180,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     }
     const startOnClickDialog = (eventDialog:any, event:string, person:string) =>{
         let dialog:any[] = [];
-        eventDialog.dialog[game.currentMoment].map((i:string)=>{
+        eventDialog.available[game.currentMoment].map((i:string)=>{
             if(i==person)dialog.push({person:i, text:genDialog(game.currentMoment, event, i, "ONCLICK" )});
         });
         setWhen("ONCLICK")
