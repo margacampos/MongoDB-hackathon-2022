@@ -284,6 +284,9 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
             setType("NOTHING")
         }
       checkForAchievements();
+      if (typeof(Storage) !== "undefined") {
+        window.localStorage.setItem("NewsroomGame", JSON.stringify(gameObject))
+      }
       return () => {
         
       }

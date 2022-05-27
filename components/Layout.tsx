@@ -33,12 +33,17 @@ export default function Layout (props: ILayoutProps) {
     tutorial: true
 })
 React.useEffect(() => {
-  // console.log("layout")
+  if (typeof(Storage) !== "undefined") {
+    let stored = window.localStorage.getItem("NewsroomGame");
+  if(stored){
+    setGame(JSON.parse(stored));
+  }
+  } 
   setLoading(false)
   return () => {
     
   }
-}, [])
+}, []);
 React.useEffect(() => {
   setPopUp(true);
   const timeout = setTimeout(()=>setPopUp(false),5000);
