@@ -21,7 +21,7 @@ const Display: NextPage = () => {
         },
         {
             title: "Gabrielle, the managing editor",
-            text:[ "Wait, You don't know what a manging editor is? It might not be as heard of as a reporter but the managing editor's job is crucial.", "They might also be called a Content Manager and their job is to create content strategies and oversee their implementation processes.","Being a managing editor is no easy job. You need to be organized, know how everyone is doing and make sure everyone meets their deadlines.","They usually manage a team of writers, editor and graphic designers just like you see Gabrielle do in this game."],
+            text:[ "Wait, You don't know what a managing editor is? It might not be as heard of as a reporter but the managing editor's job is crucial.", "They might also be called a Content Manager and their job is to create content strategies and oversee their implementation processes.","Being a managing editor is no easy job. You need to be organized, know how everyone is doing and make sure everyone meets their deadlines.","They usually manage a team of writers, editor and graphic designers just like you see Gabrielle do in this game."],
             img:{src:"/characters/managingeditor.png", alt:"The newsroom Manging editor", height:724, width:365}
         },
         {
@@ -32,13 +32,18 @@ const Display: NextPage = () => {
         },
         {
             title: "Jakub, the news editor",
-            text:["A news editor is responsible for planning and creating written materials.", "They edit copy and improve it. They also assign stories to reporters.", "In this game you were initialy meant to be a news editor but as the idea developed I decided to involve different activities to show more about what goes on qhen developing a newspaper."],
+            text:["A news editor is responsible for planning and creating written materials.", "They edit copy and improve it. They also assign stories to reporters.", "In this game you were initialy meant to be a news editor but as the idea developed I decided to involve different activities to show more about what goes on when making a newspaper."],
             img:{src:"/characters/newseditor.png", alt:"The newsroom News editor", height:543, width:654}
         },
         {
             title: "Aaliyah, the art director",
             text:["Art directors are really important. They ensure every piece of art, image, etc... looks cohesive and that the quality of each is the best it can be.", "In the game Aaliyah asks us to help her chose beetween different designs for the newspaper. In real life this job would be done by the team of designers the art director manages."],
             img:{src:"/characters/artdirector.png", alt:"The newsroom Art director", height:659, width:430}
+        },
+        {
+            title:"Badges",
+            text:["There are multiple badges you can earn while in the newsroom or in the archives.", "When you earn a badge, a pop up will appear explaining you why. Later you can check your badges and see them on the bottom left side of the screen.", "You can see some of them in the image above. Clue: If you finish one week in the newsroom I'm sure you will get one."],
+            img:{src:"/badges.svg", alt:"Badges you can earn in The Newsroom", height:569, width:1611}
         }
     ]
     return (
