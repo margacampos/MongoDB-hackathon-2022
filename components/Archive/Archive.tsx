@@ -4,15 +4,18 @@ import styles from "../../styles/Newsroom.module.scss"
 import { cameoCountryCodes, cameoEventCodes, cameoTypeCodes } from '../../data/cameoCodes';
 import Select from './Select';
 import Header from '../Header';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Loading from '../Loading';
 import { arrangeTitle2, formatDate } from '../../utils/gameUtils';
 import NewPopUp from './NewPopUp';
 import CloseButton from '../CloseButton';
 import { getActorCodeLabel, getEventCodeLabel, getLocCodeLabel } from '../../utils/eventUtils';
+import { Game } from '../Layout';
 
 interface IArchiveProps {
   setCurrentActivity:any;
+  gameObject:Game;
+  setGameObject:React.Dispatch<React.SetStateAction<Game>>;
 }
 
 const tapaTransition = {
@@ -120,7 +123,9 @@ export default function Archive (props: IArchiveProps) {
   return (
     <div style={{backgroundColor:"var(--background-yellow)", minHeight:"100vh", width:"100vw"}}>
       <CloseButton close={props.setCurrentActivity}/>
-      {selected && <NewPopUp event={selected} setSelected={setSelected} setCurrentActivity={props.setCurrentActivity}/>}
+      <AnimatePresence>
+        {selected && <NewPopUp event={selected} setSelected={setSelected} gameObject={props.gameObject} setGameObject={props.setGameObject}/>}
+      </AnimatePresence>
       <Header title='ARCHIVES'/>
       <div className={styles.selection}>
         <Select title={country.label}>

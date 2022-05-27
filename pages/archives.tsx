@@ -1,16 +1,16 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import Archive from '../components/Archive/Archive'
-import Buttons from '../components/Buttons'
-import Header from '../components/Header'
-import { aboutButtons } from '../data/buttons'
-import styles from '../styles/Home.module.scss'
+import { Game } from '../components/Layout'
 
-const About: NextPage = () => {
+
+type Props ={
+  gameObject:Game;
+  setGameObject:React.Dispatch<React.SetStateAction<Game>>;
+}
+const About: NextPage<Props> = (props:Props) => {
     const [home, setHome] = useState(true);
     const router = useRouter();
     useEffect(() => {
@@ -27,7 +27,7 @@ const About: NextPage = () => {
         <title>Archives | THE NEWSROOM</title>
         <meta name="description" content="The Newsroom's archives contain the most relevant (and positive) news of last month as recorded by the GDELT database." />
       </Head>
-      <Archive setCurrentActivity={setHome}/>
+      <Archive setCurrentActivity={setHome} setGameObject={props.setGameObject} gameObject={props.gameObject}/>
     </div>
   )
 }

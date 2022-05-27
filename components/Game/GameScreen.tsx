@@ -120,22 +120,62 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         //Employee of the month
         if(!gameObject.achievements.includes("eotm")){
             let eotm = [];
-            gameObject.punctuation.map((i)=>eotm.length>=4?gameObject.achievements.push("eotm"):i>=9?eotm.push(i):eotm=[]);
+            gameObject.punctuation.map((i)=>eotm.length>=4?setGameObject((state)=>{
+                return({
+                  name: state.name,
+                  punctuation: state.punctuation,
+                  selectEvent:state.selectEvent,
+                  selectTitle:state.selectTitle,
+                  media: state.media,
+                  doneEvents:state.doneEvents,
+                  achievements: state.achievements.length<1?["eotm"]:[...state.achievements, "eotm"],
+                  tutorial: state.tutorial
+              })}):i>=9?eotm.push(i):eotm=[]);
         }
         
         //Fired
-        if(!gameObject.achievements.includes("eotm")){
+        if(!gameObject.achievements.includes("fired")){
             let fired = [];
-            gameObject.punctuation.map((i)=>fired.length>=4?gameObject.achievements.push("fired"):i<5?fired.push(i):fired=[]);
+            gameObject.punctuation.map((i)=>fired.length>=4?setGameObject((state)=>{
+                return({
+                  name: state.name,
+                  punctuation: state.punctuation,
+                  selectEvent:state.selectEvent,
+                  selectTitle:state.selectTitle,
+                  media: state.media,
+                  doneEvents:state.doneEvents,
+                  achievements: state.achievements.length<1?["fired"]:[...state.achievements, "fired"],
+                  tutorial: state.tutorial
+              })}):i<5?fired.push(i):fired=[]);
         }
 
         //Published
         if(!gameObject.achievements.includes("published")){
-            if(gameObject.punctuation.find((i)=>i>5))gameObject.achievements.push("published");
+            if(gameObject.punctuation.find((i)=>i>5))setGameObject((state)=>{
+                return({
+                  name: state.name,
+                  punctuation: state.punctuation,
+                  selectEvent:state.selectEvent,
+                  selectTitle:state.selectTitle,
+                  media: state.media,
+                  doneEvents:state.doneEvents,
+                  achievements: state.achievements.length<1?["published"]:[...state.achievements, "published"],
+                  tutorial: state.tutorial
+              })});
         }
         //Not Published
         if(!gameObject.achievements.includes("notpublished")){
-            if(gameObject.punctuation.find((i)=>i<5))gameObject.achievements.push("notpublished");
+            if(gameObject.punctuation.find((i)=>i<5))setGameObject((state)=>{
+                return({
+                  name: state.name,
+                  punctuation: state.punctuation,
+                  selectEvent:state.selectEvent,
+                  selectTitle:state.selectTitle,
+                  media: state.media,
+                  doneEvents:state.doneEvents,
+                  achievements: state.achievements.length<1?["notpublished"]:[...state.achievements, "notpublished"],
+                  tutorial: state.tutorial
+              })});
         }
     }
     const startOnClickDialog = (eventDialog:any, event:string, person:string) =>{
@@ -331,17 +371,6 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         exit="exit"
         className={styles.display}>
             <FinishWeek finish={finishWeek} game={game} choices={choices}/>
-        </motion.div>
-        :currentActivity==="ARCHIVES"?
-        <motion.div
-        key="ARCHIVES"
-        variants={variants}
-        custom={valueP}
-        initial="enter"
-        animate="center"
-        exit="exit"
-        className={styles.display}>
-            <Archive setCurrentActivity={setCurrentActivity}/>
         </motion.div>
         :<motion.div
         key="TODO"

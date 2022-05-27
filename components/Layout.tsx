@@ -1,5 +1,7 @@
+import { AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import Achievements from './Game/Achievements';
+import AchivePopUp from './Game/AchivePopUp';
 import GameScreen from './Game/GameScreen';
 import Loading from './Loading';
 import SettingsButton from './settings/SettingsButton';
@@ -19,7 +21,7 @@ export interface Game{
 }
 export default function Layout (props: ILayoutProps) {
   const [loading, setLoading] = React.useState(true);
-  const [start, setStart] = React.useState(false);
+  const [popUp, setPopUp] = React.useState(false);
   const [game, setGame]:[Game,React.Dispatch<React.SetStateAction<Game>>] = React.useState({
     name: "",
     punctuation: [0],
@@ -37,6 +39,15 @@ React.useEffect(() => {
     
   }
 }, [])
+React.useEffect(() => {
+  console.log("called")
+  setPopUp(true);
+  const timeout = setTimeout(()=>setPopUp(false),5000);
+  return () => {
+    clearTimeout(timeout);
+  }
+}, [game.achievements])
+
 
   return (
     <div>
@@ -44,7 +55,11 @@ React.useEffect(() => {
       <div>
         {/* <SettingsButton/> */}
         <Achievements achieved={game.achievements}/>
-      {React.cloneElement(props.children, { gameObject:game, setGameObject:setGame })}
+        <AnimatePresence>
+          {popUp && <AchivePopUp achieved={game.achievements[game.achievements.length-1]}/>}
+        </AnimatePresence> 
+        {React.cloneElement(props.children, { gameObject:game, setGameObject:setGame })}
+
       </div>  
     :<Loading/>}
     </div>
