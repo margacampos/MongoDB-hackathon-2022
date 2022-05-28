@@ -297,7 +297,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
       <div id={styles.screen}>
 {gameEvents ?
     <div >
-        <CloseButton close={setStart}/>
+        
         <AnimatePresence >
         {texto!="closed" || person!="" ?
         <motion.div
@@ -387,6 +387,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
                 <ToDo name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}} setCurrentActivity={setCurrentActivity}/>
             </div>}
             <div className={styles.newsroom}>
+            <CloseButton close={setStart}/>
                 <Newsroom setCurrentActivity={setCurrentActivity} startDialog={startOnClickDialog} available={game.eventDialog.available[game.currentMoment]} setTodo={setTodo} eventDialog={game.eventDialog} event={game.currentEvent} setPerson={setPerson} person={person}/>
             </div>
         </motion.div>

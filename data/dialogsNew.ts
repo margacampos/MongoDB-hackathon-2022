@@ -219,7 +219,7 @@ const simpleDialogs =[
                 eventId:"firstday",
                 dialogs:{
                     START:["Welcome to the newsroom! I am Gabrielle the managing editor.","Here, you will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
-                    "Once you have finished, the editor-in-chief will review your work and judge if it is ready to publish.", "Soon Jakub will be here to help you.",
+                    "Once you have finished, the editor-in-chief will review your work and judge if it is ready to publish.", "You can see the 'To do' list I left for you to know which tasks are left. (Remember you can move around the newsroom by dragging and talk to me or others by clicking on us...)",
                     "If you need anything, just ask."],
                     AFTER_LAYOUT:["How was your first week?", "Now all you have to do is present your work to the editor in chief.", "She will be the one to say if your work will be published or not.","I'll stay a little longer in case you need anything, It really was nice meeting you."],
                     AFTER_EVENT:[""],
@@ -262,7 +262,7 @@ const simpleDialogs =[
             {
                 eventId:"firstday",
                 dialogs:{
-                    START:["Hello, my name is Jakub and I am the news editor.", "The first thing we need to do is assign a story for Thomas to cover.",
+                    START:["Hello, my name is Jakub and I am the news editor.", "The first thing we need to do is assign a story for Thomas to cover. Later, we will find the story's perfect title.",
                     "Here I have some of the current events, all you have to do is choose the one you think will fit better this weeks newspaper.",
                     "If you are not sure what decision to make, ask around.", "There will always be someone that knows the answer."],
                     AFTER_LAYOUT:[""],
@@ -309,7 +309,7 @@ const simpleDialogs =[
                     START:[""],
                     AFTER_LAYOUT:[""],
                     AFTER_TITLE:[""],
-                    AFTER_EVENT:["Sorry I'm a little late. I forgot you were starting today and got a little carried away talking to Jakub.", "I'm Thomas by the way, these team's reporter.", "I would show you around or something but you know, it is a little late. Do you have the story I need to cover?","Okay, thanks. It has been a pleasure meeting you! Hope we can talk more some other day!"],
+                    AFTER_EVENT:["Sorry I'm a little late. I forgot you were starting today and got a little carried away talking to Jakub.", "I'm Thomas by the way, these team's reporter. I write stories based on the news editor's assigments and gather information based on interviews, observation, research...", "I would show you around or something but you know, it is a little late. Do you have the story I need to cover?","Okay, thanks. It has been a pleasure meeting you! Hope we can talk more some other day!"],
                 }
             },
             {
@@ -348,8 +348,7 @@ const simpleDialogs =[
             {
                 eventId:"firstday",
                 dialogs:{
-                    AFTER_EVENT:["Was that Thomas running?", "Welcome to the newsroom. I'm the newspaper's art director, Aaliyah.", "I was told the both of us would be working on the front page today. I have some ideas for how I want it to look but I need to talk to Jakub, have you seen him?",
-                    "If you see him could you tell him I'm looking for him?","I am looking forward to working with you."],
+                    AFTER_EVENT:["Was that Thomas running?", "Welcome to the newsroom. I'm the newspaper's art director, Aaliyah. I'm in charge of the design and quality and cohesiveness of the art of our newspaper.", "I was told the both of us would be working on the front page today. I already have some ideas for how I want it to look.","I am looking forward to working with you."],
                     AFTER_TITLE:["Hey! can I borrow you a minute?", "I need you to choose what design you prefer."],
                     START:[""],
                     AFTER_LAYOUT:[""]

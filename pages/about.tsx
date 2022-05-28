@@ -42,7 +42,7 @@ const About: NextPage = () => {
               <Image src={"/group.png"} alt={"Image of The Newsroom's staff"} width={1781} height={724}/>
           </section>
         </div>
-        <Buttons buttons={aboutButtons}/>
+        
       </main>
 
       <footer className={styles.footer}>

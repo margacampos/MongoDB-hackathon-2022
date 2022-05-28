@@ -9,7 +9,7 @@ type Props = {
     title:string;
     select:(type:string, choice:any, getPoints:()=>number)=>void;
     next:any;
-    choice:{event:Event, title:{title:string}, template:string};
+    choice:{event:Event, title:Event, template:string};
 }
 
 export default function Templates({title,select, next, choice}: Props) {
@@ -33,18 +33,18 @@ export default function Templates({title,select, next, choice}: Props) {
       <div className={styles.templates}>
         <div className={styles.newspaper}>
             <button className={styles.img} onClick={()=>{select("template","template1",()=>5);next("SELECT_LAYOUT", 5)}}>
-                <Template1 title={displayTitle} date={formatDate(choice.event.Day as number)} website={choice.event.SourceURL as string}/>
+                <Template1 title={displayTitle} date={formatDate(choice.title.Day as number)} website={choice.title.SourceURL as string}/>
             </button>
             
         </div>  
         <div className={styles.newspaper}>
             <button className={styles.img} onClick={()=>{select("template","template2",()=>5);next("SELECT_LAYOUT", 5)}}>
-                <Template2 title={displayTitle} date={formatDate(choice.event.Day as number)} website={choice.event.SourceURL as string}/>
+                <Template2 title={displayTitle} date={formatDate(choice.title.Day as number)} website={choice.title.SourceURL as string}/>
             </button>
         </div> 
         <div className={styles.newspaper}>
             <button className={styles.img} onClick={()=>{select("template","template3",()=>5);next("SELECT_LAYOUT", 5)}}>
-                <Template3 title={displayTitle} date={formatDate(choice.event.Day as number)} website={choice.event.SourceURL as string}/>
+                <Template3 title={displayTitle} date={formatDate(choice.title.Day as number)} website={choice.title.SourceURL as string}/>
             </button>
         </div> 
       </div>
