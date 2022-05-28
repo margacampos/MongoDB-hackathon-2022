@@ -50,7 +50,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         }
         );
     const [when, setWhen] = useState("START")
-    const [choices, setChoices] = useState({event:{SourceURL:"", eventCode:""}, title:{title:""}, template:""})
+    const [choices, setChoices] = useState({event:{SourceURL:"", eventCode:""}, title:{title:"", SourceURL:"", eventCode:""}, template:""})
     const [img, setImg] = useState({src:"", alt:"", height:0, width:0})
     const [currentActivity, setCurrentActivity] = useState("")
     const [todo, setTodo] = useState(true);
