@@ -4,8 +4,9 @@ export default async function handler(
   req,
   res
 ) {
-    if(req.method==="GET" && process.env.MONGODB_URI){
-      // let {url} = req.query;
+   let {key} = req.query;
+    if(req.method==="GET" && process.env.MONGODB_URI && process.env.KEY===key){
+     
       let client=new MongoClient(process.env.MONGODB_URI);
       try {
         await client.connect();

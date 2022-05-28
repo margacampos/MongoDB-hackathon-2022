@@ -1,7 +1,7 @@
 import { AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import Achievements from './Game/Achievements';
-import AchivePopUp from './Game/AchivePopUp';
+import AchivePopUp from './Game/AchievePopUp';
 import GameScreen from './Game/GameScreen';
 import Loading from './Loading';
 import SettingsButton from './settings/SettingsButton';
