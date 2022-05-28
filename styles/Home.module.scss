@@ -1,5 +1,19 @@
 @use 'partials/buttons' as *;
 
+#search{
+  position:fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  input{
+    display: block;
+    margin-top: 1rem;
+  }
+  background-color: var(--background-black);
+  color: var(--background-yellow);
+  padding: 1rem;
+}
+
 .container {
   padding: 0 2rem;
   background-color: var(--background-yellow);
@@ -58,7 +72,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--main-yellow);
   overflow: hidden;
   padding: 1rem;
   img{
