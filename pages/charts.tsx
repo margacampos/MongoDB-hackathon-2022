@@ -54,6 +54,9 @@ const About: NextPage = () => {
         
         <div style={{display:"flex", flexWrap:"wrap", justifyContent:"center"}}>
             <div style={{overflowX:"auto"}}>
+              <h2>Top 10 most clicked articles</h2>
+              <iframe style={{background: "#FFFFFF",border: "none",borderRadius: "2px",boxShadow: "0 2px 10px 0 rgba(70, 76, 79, .2)"}} width="640" height="480" src="https://charts.mongodb.com/charts-hackathon2022-fecot/embed/charts?id=62927fa0-7d6f-46d8-8651-5694f6558028&maxDataAge=1800&theme=light&autoRefresh=true"></iframe>            </div>
+            <div style={{overflowX:"auto"}}>
               <h2>Most frequent event code this month</h2>
               <iframe style={{background: "#FFFFFF",border: "none", borderRadius: "2px",boxShadow: "0 2px 10px 0 rgba(70, 76, 79, .2)"}} width="640" height="480" src="https://charts.mongodb.com/charts-hackathon2022-fecot/embed/charts?id=62922e6b-cb9e-404d-8312-56485574984f&maxDataAge=86400&theme=light&autoRefresh=true"></iframe>
             </div>

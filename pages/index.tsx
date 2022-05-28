@@ -35,7 +35,7 @@ const Home: any = ({setStart, start, gameObject}:Props) => {
           router:"/archives"
       },
       {
-          text:"See last month charts",
+          text:"Information in charts",
           router:"/charts",
           onClick:()=>{}
       }],
