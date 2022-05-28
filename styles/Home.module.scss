@@ -57,10 +57,16 @@
     font-size: large;
     margin: 0 0 0.5rem;
   }
-  div{display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;}
+  div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    button{
+      margin-bottom: 0.5rem;
+
+    }
+  }
 }  
 }
 

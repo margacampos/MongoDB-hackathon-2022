@@ -29,10 +29,18 @@ const Home: any = ({setStart, start, gameObject}:Props) => {
         router:"/newsroom"
     },
     {
-      text:"Look in the archives",
-      onClick:()=>{},
-      grid:false,
-      router:"/archives"
+      button:[{
+          text:"Look in the archives",
+          onClick:()=>{},
+          router:"/archives"
+      },
+      {
+          text:"See last month charts",
+          router:"/charts",
+          onClick:()=>{}
+      }],
+      grid:true,
+      gridID:1
     },
     {
         button:[{
@@ -47,7 +55,7 @@ const Home: any = ({setStart, start, gameObject}:Props) => {
         }],
         grid:true,
         gridID:1
-    }
+    },
 ];
   const Router = useRouter();
   
