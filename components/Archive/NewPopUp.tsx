@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react'
 import styles from "../../styles/Newsroom.module.scss"
 import { arrangeTitle2, formatDate } from '../../utils/gameUtils';
+import { setArticleClicked } from '../../utils/newsUtils';
 import CloseButton from '../CloseButton'
 import Template1 from '../Game/Templates/Template1';
 import Template2 from '../Game/Templates/Template2';
@@ -29,6 +30,7 @@ export default function NewPopUp({event, setSelected, setGameObject, gameObject}
       })
     }
   }
+  
     useEffect(() => {
       setRandom(Math.floor(Math.random()*3))
     
@@ -46,9 +48,9 @@ export default function NewPopUp({event, setSelected, setGameObject, gameObject}
     >
         <CloseButton close={setSelected}/>
         <div className={styles.templatePop}>
-          {event&&(random===0?<Template1 title={arrangeTitle2(event.title.join(""), 20) as string[]} website={event.SourceURL} date={formatDate(event.Day)}/>:random===1?<Template2 title={arrangeTitle2(event.title.join(""), 20) as string[]} website={event.SourceURL} date={formatDate(event.Day)}/>:<Template3 title={arrangeTitle2(event.title.join(""), 25) as string[]} website={event.SourceURL} date={formatDate(event.Day)}/>)}
+          {event&&(random===0?<Template1 title={arrangeTitle2(event.title.join(""), 20) as string[]} website={event.SourceURL} date={formatDate(event.Day)} event/>:random===1?<Template2 title={arrangeTitle2(event.title.join(""), 20) as string[]} website={event.SourceURL} date={formatDate(event.Day)} event/>:<Template3 title={arrangeTitle2(event.title.join(""), 25) as string[]} website={event.SourceURL} date={formatDate(event.Day)} event/>)}
         </div>
-        <a onClick={checkAchivements} href={event.SourceURL} target="_blank" rel="noreferrer">Read this article</a>
+        <a onClick={()=>{checkAchivements();setArticleClicked(event, "archive")}} href={event.SourceURL} target="_blank" rel="noreferrer">Read this article</a>
     </motion.div>
   )
 }

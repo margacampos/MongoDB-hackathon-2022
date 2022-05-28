@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import { setArticleClicked } from '../../../utils/newsUtils';
 
-type Props = {title:string[]; website:string; date:string;}
+type Props = {title:string[]; website:string; date:string; event:any;}
 
-export default function Template3({title, website, date}: Props) {
+export default function Template3({title, website, date, event}: Props) {
   const [domain, setDomain] = useState(new URL(website));
   return (
     <svg viewBox="0 0 595 421" fill="none">
@@ -29,7 +30,7 @@ export default function Template3({title, website, date}: Props) {
 <text id="title" fill="#32281E" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Maison mono" letterSpacing="0em">{title.map((i, index)=><tspan key={index} x="17" y={63+(36*index)}>{i}</tspan>)}</text>
 <g id="subtitle">
 <text fill="#32281E" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Arial" fontSize="15" letterSpacing="0em"><tspan x="17" y={63+(title.length*36)}>You can learn more about this event in </tspan></text>
-<text onClick={()=>window.open(website,'_blank')} className="svglink" fill="#78672C" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Arial" fontSize="15" letterSpacing="0em" textDecoration="underline"><tspan x="276.849" y={63+(title.length*36)}>here</tspan></text>
+<text onClick={()=>{window.open(website,'_blank');setArticleClicked(event, "template3");}} className="svglink" fill="#78672C" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Arial" fontSize="15" letterSpacing="0em" textDecoration="underline"><tspan x="276.849" y={63+(title.length*36)}>here</tspan></text>
 </g>
 </g>
 <defs>

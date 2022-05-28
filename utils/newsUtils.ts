@@ -18,6 +18,28 @@ const getNewsTitle = async(url:string) =>{
         return "error";
     }
 }
+const setArticleClicked = async(event:any, type:string) =>{
+    if(!event||!type)return console.log("error");
+    let article;
+    if(typeof event.title != "string"){
+        article = {
+            SourceURL: event.SourceURL,
+            title: event.title.join(),
+            AvgTone: event.AvgTone,
+            eventCode: event.eventCode,
+            actor1:event.actor1,
+            actor2:event.actor2,
+            location1:event.location1,
+            location2:event.location2,
+            Day:event.Day,
+            GoldsteinScale:event.GoldsteinScale
+          }
+    }
+    await fetch("/api/add-clicked-article", {
+        method: "POST",
+        body: JSON.stringify({event:article?article:event, type:type})
+      });
+}
 const variants = {
     enter:(value:{enter:string, center:string, exit:string, duration:string})=>{
         return({
@@ -70,4 +92,4 @@ const pageVariants = {}
 // { 
 //     mode: 'no-cors' // 'cors' by default
 // }
-export {getNewsTitle, variants, valueD, valueI, valueP};
+export {getNewsTitle, variants, valueD, valueI, valueP, setArticleClicked};

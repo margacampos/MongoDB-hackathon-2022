@@ -33,18 +33,18 @@ export default function Templates({title,select, next, choice}: Props) {
       <div className={styles.templates}>
         <div className={styles.newspaper}>
             <button className={styles.img} onClick={()=>{select("template","template1",()=>5);next("SELECT_LAYOUT", 5)}}>
-                <Template1 title={displayTitle} date={formatDate(choice.title.Day as number)} website={choice.title.SourceURL as string}/>
+                <Template1 event={choice.title} title={displayTitle} date={formatDate(choice.title.Day as number)} website={choice.title.SourceURL as string}/>
             </button>
             
         </div>  
         <div className={styles.newspaper}>
             <button className={styles.img} onClick={()=>{select("template","template2",()=>5);next("SELECT_LAYOUT", 5)}}>
-                <Template2 title={displayTitle} date={formatDate(choice.title.Day as number)} website={choice.title.SourceURL as string}/>
+                <Template2 event={choice.title} title={displayTitle} date={formatDate(choice.title.Day as number)} website={choice.title.SourceURL as string}/>
             </button>
         </div> 
         <div className={styles.newspaper}>
             <button className={styles.img} onClick={()=>{select("template","template3",()=>5);next("SELECT_LAYOUT", 5)}}>
-                <Template3 title={displayTitle} date={formatDate(choice.title.Day as number)} website={choice.title.SourceURL as string}/>
+                <Template3 event={choice.title} title={displayTitle} date={formatDate(choice.title.Day as number)} website={choice.title.SourceURL as string}/>
             </button>
         </div> 
       </div>

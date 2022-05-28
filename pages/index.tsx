@@ -54,7 +54,7 @@ const Home: any = ({setStart, start, gameObject}:Props) => {
             onClick:()=>{}
         }],
         grid:true,
-        gridID:1
+        gridID:2
     },
 ];
   const Router = useRouter();
