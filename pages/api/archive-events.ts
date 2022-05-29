@@ -17,24 +17,13 @@ export default async function handler(
             const database = client.db(process.env.MONGODB_DB);
             const events = database.collection("events");
             let body = JSON.parse(req.body)
-            let match:{
-              Day?:{$gte:number;},
-                GoldsteinScale?: {
-                  $gte:number;
-                }, 
-                NumArticles?:number; 
-                AvgTone?: {
-                  $gte:number;
-                },
-                Actor1Type1Code?:string;
-                Actor1CountryCode?:string;
-                EventCode?:string;
-            } = {};
-
-            if(body.actorCode!="")match.Actor1Type1Code= body.actorCode;
-            if(body.countryCode!="")match.Actor1CountryCode=body.countryCode;
-            if(body.eventRootCode!="")match.EventCode=body.eventRootCode;
-
+            let match:any =(body.actorCode!=""||body.eventRootCode!=""||body.countryCode!="")?{"$and":[]}:{};
+            if(match.$and){
+              if(body.actorCode!="")match.$and.push({ $or: [ { Actor1Type1Code: body.actorCode}, { Actor2Type1Code : body.actorCode } ] });
+              if(body.countryCode!="")match.$and.push({ $or: [ {Actor1CountryCode:body.countryCode}, { Actor2CountryCode : body.countryCode} ] });
+              if(body.eventRootCode!="")match.$and.push({EventCode:body.eventRootCode});
+            }
+            
             const cursor = events.aggregate<Event>([
               {
                 '$match': match
