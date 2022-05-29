@@ -1,9 +1,14 @@
 # 📰 Welcome to The Newsroom 📰
 Find the project live here: https://mongo-db-hackathon-2022.vercel.app/
+
+Art made using [Figma](https://www.figma.com/), [Illustrator](https://www.adobe.com/uk/products/illustrator.html?mv=search&mv=search&sdid=KCJMVLF6&ef_id=EAIaIQobChMIid2mt5iF-AIV0N_tCh0X3ARLEAAYASAAEgI3TPD_BwE:G:s&s_kwcid=AL!3085!3!520938467018!e!!g!!illustrator!1426208085!56320331672&gclid=EAIaIQobChMIid2mt5iF-AIV0N_tCh0X3ARLEAAYASAAEgI3TPD_BwE) and [Photoshop](https://www.adobe.com/uk/products/photoshop/landpa.html?mv=search&mv=search&sdid=GVTYXZY8&ef_id=EAIaIQobChMI_O6UyZiF-AIV5YFQBh1K8A1nEAAYASAAEgK2u_D_BwE:G:s&s_kwcid=AL!3085!3!594259336243!e!!g!!photoshop!17011954559!138864791987&gclid=EAIaIQobChMI_O6UyZiF-AIV5YFQBh1K8A1nEAAYASAAEgK2u_D_BwE).
+
+Find the video presentation here: https://www.youtube.com/watch?v=A4E2kzwLZIk 
+
 ![the-newsroom-background-final](https://user-images.githubusercontent.com/80516949/170366202-dfd86e31-9a9a-4ad9-97b6-8fd554e1bcf7.svg)
 
 ## What is the goal?
-To show people positive news happening all around the world in an engaging/creative way. All the events showed in The Newsroom are real and the related articles can be accessed by clicking on the respective links.
+To show people news happening all around the world in an engaging/creative way. All the events showed in The Newsroom are real and the related articles can be accessed by clicking on the respective links.
 ### Example:
 If you see an article like this, there is always a place where you can click to find the full real article. In this case, you would need to click in "here" to open a new tab with the article related.
 
