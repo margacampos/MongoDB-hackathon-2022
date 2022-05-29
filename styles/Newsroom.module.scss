@@ -170,7 +170,12 @@
         font-size: small;
     }
 }
-
+.button{
+    cursor: pointer;
+    &:hover{
+        fill: var(--background-yellow);
+    }
+}
 @media (max-width:800px) {
     .archiveSVG{
         display: block;

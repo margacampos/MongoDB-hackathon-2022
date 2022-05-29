@@ -384,7 +384,7 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         exit="exit"
         style={{position:"inherit", height:"100vh", width:"100vw"}}>
             {todo && <div className={styles.todo} style={{zIndex:11}}>
-                <ToDo name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}} setCurrentActivity={setCurrentActivity}/>
+                <ToDo setTodo={setTodo} name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}} setCurrentActivity={setCurrentActivity}/>
             </div>}
             <div className={styles.newsroom}>
             <CloseButton close={setStart}/>

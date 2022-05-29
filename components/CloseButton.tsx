@@ -6,7 +6,7 @@ export interface ICloseButtonProps {
 
 export default function CloseButton (props: ICloseButtonProps) {
   return (
-    <button onClick={()=>props.close(false)} className="closeButton">
+    <button onClick={()=>props.close(false)} className="closeButton" style={{padding:0, borderRadius:"50%"}}>
         X
     </button>
   );
