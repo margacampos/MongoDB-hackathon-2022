@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Event } from '../../utils/eventUtils';
 import styles from "../../styles/Game.module.scss";
+import { htmlEntities } from '../../utils/gameUtils';
 
 type Props = {
   getNextInteraction:(event:string,punctuation:number)=>void;
@@ -36,7 +37,7 @@ export default function SelectTitle({getNextInteraction, gameEvents, finishSelec
   return (
     <div className={styles.titles}>
       <h2>Select Title:</h2>
-      {gameEvents && randomArrayShuffle(gameEvents.result).map((i, index)=><button onClick={()=>{finishSelection("title", i);getNextInteraction("SELECT_TITLE",getPoints(i));}} key={index}>{i.title}</button>)}
+      {gameEvents && randomArrayShuffle(gameEvents.result).map((i, index)=><button onClick={()=>{finishSelection("title", i);getNextInteraction("SELECT_TITLE",getPoints(i));}} key={index}>{htmlEntities(i.title as string)}</button>)}
     </div>
   )
 }

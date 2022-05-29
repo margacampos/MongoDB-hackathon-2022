@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from "../../styles/Game.module.scss"
-import { arrangeTitle, formatDate } from '../../utils/gameUtils';
+import { arrangeTitle, formatDate, htmlEntities } from '../../utils/gameUtils';
 import Template1 from './Templates/Template1';
 import Template2 from './Templates/Template2';
 import Template3 from './Templates/Template3';
@@ -17,7 +17,7 @@ export default function FinishWeek({finish, choices, game}: Props) {
   const [punctuation, setPunctuation] =useState((game.selectEvent+game.selectTitle)/2);
   const [title, setTitle] = useState([""]);
   useEffect(() => {
-    arrangeTitle(choices.title.title,setTitle);
+    arrangeTitle(htmlEntities(choices.title.title),setTitle);
     return () => {
       
     }

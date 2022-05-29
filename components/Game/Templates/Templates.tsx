@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from "../../../styles/templates/Templates.module.scss"
 import { Event } from '../../../utils/eventUtils';
-import { arrangeTitle, formatDate } from '../../../utils/gameUtils';
+import { arrangeTitle, formatDate, htmlEntities } from '../../../utils/gameUtils';
 import Template1 from './Template1';
 import Template2 from './Template2';
 import Template3 from './Template3';
@@ -20,9 +20,9 @@ export default function Templates({title,select, next, choice}: Props) {
     }
     useEffect(() => {
       if(title.length>27){
-         arrangeTitle(title, setDisplayTitle);
+         arrangeTitle(htmlEntities(title), setDisplayTitle);
       }else{
-          setDisplayTitle([title])
+          setDisplayTitle([htmlEntities(title)])
       }
       return () => {
         

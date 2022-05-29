@@ -184,7 +184,13 @@ const formatDate = (date:number, type?:string) =>{
     } = {weekday: "long", year: 'numeric', month: 'long', day: 'numeric' }
     return dateToFormat.toLocaleDateString("en-GB",options);
 }
-export {getEvent, genDialog, getClueDialog, arrangeTitle, formatDate, arrangeTitle2}
+const htmlEntities = (str:string) =>{
+        return str.replace(/&#(\d+);/g, function(match, dec) {
+            return String.fromCharCode(dec);
+        });
+}
+
+export {getEvent, genDialog, getClueDialog, arrangeTitle, formatDate, arrangeTitle2, htmlEntities}
 
 const months = ["January","February","March","April","May","June","July",
 "August","September","October","November","December"]

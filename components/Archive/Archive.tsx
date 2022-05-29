@@ -6,7 +6,7 @@ import Select from './Select';
 import Header from '../Header';
 import { AnimatePresence, motion } from 'framer-motion';
 import Loading from '../Loading';
-import { arrangeTitle2, formatDate } from '../../utils/gameUtils';
+import { arrangeTitle2, formatDate, htmlEntities } from '../../utils/gameUtils';
 import NewPopUp from './NewPopUp';
 import CloseButton from '../CloseButton';
 import { getActorCodeLabel, getEventCodeLabel, getLocCodeLabel } from '../../utils/eventUtils';
@@ -55,7 +55,7 @@ export default function Archive (props: IArchiveProps) {
         });
         const events = await res.json();
         if(events.length<5){setLimit(row)};
-        await events.map((i:any)=>i.title=arrangeTitle2(i.title.toUpperCase(),40));
+        await events.map((i:any)=>i.title=arrangeTitle2(htmlEntities(i.title.toUpperCase()),40));
         if(await events){
           // console.log(events)
           setSearch(await events);
