@@ -11,7 +11,7 @@ const Display: NextPage = () => {
     const info = [
         {
             title:"Welcome to the newsroom gallery",
-            text:["In this gallery you will find information about the game characters and what their jobs mean.", "You will also find some information on how the newsroom was made, how it works and some tips for getting some of the achievements.", "Ah! And I might also put here some future improvements I'm working on.", "Enjoy!"],
+            text:["In this gallery you will find information about the game characters and what their jobs mean.", "You will also find some information on how the newsroom was made, how it works and some tips for getting some of the achievements.", "Enjoy!"],
             img: {
                 src:"/newsroom/the-newsroom-background-final.png",
                 alt:"This is the newsroom.",
@@ -21,13 +21,13 @@ const Display: NextPage = () => {
         },
         {
             title: "Gabrielle, the managing editor",
-            text:[ "Wait, You don't know what a managing editor is? It might not be as heard of as a reporter but the managing editor's job is crucial.", "They might also be called a Content Manager and their job is to create content strategies and oversee their implementation processes.","Being a managing editor is no easy job. You need to be organized, know how everyone is doing and make sure everyone meets their deadlines.","They usually manage a team of writers, editor and graphic designers just like you see Gabrielle do in this game."],
+            text:[ "Wait, You don't know what a managing editor is? It might not be as heard of as a reporter but the managing editor's job is crucial.", "They might also be called a Content Manager and their job is to create content strategies and oversee their implementation processes.","Being a managing editor is no easy job. You need to be organized, know how everyone is doing and make sure everyone meets their deadlines.","They usually manage a team of writers, editors and graphic designers just like you see Gabrielle do in this game."],
             img:{src:"/characters/managingeditor.png", alt:"The newsroom Manging editor", height:724, width:365}
         },
         {
             title: "Thomas, the reporter",
             text:["Reporters are always ready to write and curious. They seek the truth and are one of the pillars in any newsroom.", "They receive assignments or evaluate news leads and news tips to develop story ideas.",
-        "They also gather and verify factual information regarding story through interview, observation, and research.", "In the game you are meant to give Thomas an assigment for him to write about."],
+        "They also gather and verify factual information through interview, observation, and research.", "In the game you are meant to give Thomas an assigment for him to write about."],
             img:{src:"/characters/reporter.png", alt:"The newsroom reporter", height:676, width:332}
         },
         {
