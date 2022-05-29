@@ -7,14 +7,15 @@ type Props = {
   setCurrentActivity:React.Dispatch<React.SetStateAction<string>>;
   available:string[];
   startDialog:any;
-  setTodo:any;
+  setTodo:React.Dispatch<React.SetStateAction<boolean>>;
   setPerson:React.Dispatch<React.SetStateAction<string>>;
   person:string;
   eventDialog:any; 
   event:any;
+  setHelp:React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function Newsroom({available,startDialog, setTodo, setPerson, setCurrentActivity, person, eventDialog, event}: Props) {
+export default function Newsroom({available,startDialog, setTodo, setHelp, setPerson, setCurrentActivity, person, eventDialog, event}: Props) {
     // width="2401" height="812" 
     const dragRef = useRef(null);
     // const [img, setImg] = useState({src:"", alt:"", width:"", height:""});
@@ -28,8 +29,6 @@ export default function Newsroom({available,startDialog, setTodo, setPerson, set
     useEffect(() => {
       if(person){
           setTodo(false);
-      }else{
-          setTodo(true);
       }
     
       return () => {
@@ -223,12 +222,12 @@ export default function Newsroom({available,startDialog, setTodo, setPerson, set
 <path id="Vector_95" d="M1407.34 673.34H1289.46V683.41H1407.34V673.34Z" fill="#32281E"/>
 <path id="Vector_96" d="M1317.3 640.17H1289.46V650.24H1317.3V640.17Z" fill="#32281E"/>
 
-<g id="buttonOpen" onClick={()=>setTodo((state:boolean)=>!state)} fill="#DFC79E"  className={styles.button}>
+<g id="buttonOpen" onClick={()=>{setTodo((state:boolean)=>!state);setHelp(false)}} fill="#DFC79E"  className={styles.button}>
 <rect id="Rectangle 1" x="1157.5" y="435.5" width="374" height="83" rx="11.5" stroke="#32281E" strokeWidth="5"/>
 <text id="OPEN TO DO LIST" fill="black" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="36" letterSpacing="0em"><tspan x="1179.05" y="491.352">OPEN TO DO LIST</tspan></text>
 </g>
-<g id="buttonHelp">
-<rect id="Rectangle 4" x="1156.5" y="532.5" width="249" height="55" rx="11.5" fill="#DFC79E" stroke="#32281E" strokeWidth="5"/>
+<g id="buttonHelp" onClick={()=>{setHelp((state:boolean)=>!state);setTodo(false)}} fill="#DFC79E"  className={styles.button}>
+<rect id="Rectangle 4" x="1156.5" y="532.5" width="249" height="55" rx="11.5" stroke="#32281E" strokeWidth="5"/>
 <text id="HELP" fill="black" xmlSpace="preserve" style={{whiteSpace: "pre"}} fontFamily="Century" fontSize="32" letterSpacing="0em"><tspan x="1234.27" y="572.312">HELP</tspan></text>
 </g>
 <g id="logo">

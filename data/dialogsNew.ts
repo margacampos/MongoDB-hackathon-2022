@@ -219,7 +219,7 @@ const simpleDialogs =[
                 eventId:"firstday",
                 dialogs:{
                     START:["Welcome to the newsroom! I am Gabrielle the managing editor.","Here, you will be working with Jakub the news editor, Aaliyah the art director and Thomas the reporter on the front page of our newspaper.",
-                    "Once you have finished, the editor-in-chief will review your work and judge if it is ready to publish.", "You can see the 'To do' list I left for you to know which tasks are left. (Remember you can move around the newsroom by dragging and talk to me or others by clicking on us...)",
+                    "Once you have finished, the editor-in-chief will review your work and judge if it is ready to publish.", "You can see the 'To do' list I left for you to know which task to do next. (Remember you can move around the newsroom by dragging and talk to me or others by clicking on us...)",
                     "If you need anything, just ask."],
                     AFTER_LAYOUT:["How was your first week?", "Now all you have to do is present your work to the editor in chief.", "She will be the one to say if your work will be published or not.","I'll stay a little longer in case you need anything, It really was nice meeting you."],
                     AFTER_EVENT:[""],

@@ -18,6 +18,7 @@ import { valueD, valueI, valueP, variants } from '../../utils/newsUtils'
 import Ask from './Ask'
 import Archive from '../Archive/Archive'
 import CloseButton from '../CloseButton'
+import Help from './Help'
 
 type Props = {
     gameObject:Game;
@@ -53,7 +54,8 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     const [choices, setChoices] = useState({event:{SourceURL:"", eventCode:""}, title:{title:"", SourceURL:"", eventCode:""}, template:""})
     const [img, setImg] = useState({src:"", alt:"", height:0, width:0})
     const [currentActivity, setCurrentActivity] = useState("")
-    const [todo, setTodo] = useState(true);
+    const [todo, setTodo] = useState(false);
+    const [help, setHelp] = useState(gameObject.tutorial?true:false);
     const [type, setType] =useState("NOTHING");
     const resetGame = () =>{
         getEventsFromDatabase()
@@ -383,12 +385,26 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
         animate="center"
         exit="exit"
         style={{position:"inherit", height:"100vh", width:"100vw"}}>
-            {todo && <div className={styles.todo} style={{zIndex:11}}>
+            <AnimatePresence>
+            {todo && <motion.div className={styles.todo} 
+            initial="enter"
+            animate="center"
+            exit="exit"
+            variants={variantsNews}>
                 <ToDo setTodo={setTodo} name={gameObject.name} obj={{selectEvent: game.selectEvent, selectLayout: game.selectLayout, selectTitle:game.selectTitle}} setCurrentActivity={setCurrentActivity}/>
-            </div>}
+            </motion.div>}
+            {help && <motion.div className={styles.todo} 
+            initial="enter"
+            animate="center"
+            exit="exit"
+            variants={variantsNews}>
+                <Help setHelp={setHelp} />
+            </motion.div>}
+            </AnimatePresence>
+            
             <div className={styles.newsroom}>
             <CloseButton close={setStart}/>
-                <Newsroom setCurrentActivity={setCurrentActivity} startDialog={startOnClickDialog} available={game.eventDialog.available[game.currentMoment]} setTodo={setTodo} eventDialog={game.eventDialog} event={game.currentEvent} setPerson={setPerson} person={person}/>
+                <Newsroom setCurrentActivity={setCurrentActivity} startDialog={startOnClickDialog} available={game.eventDialog.available[game.currentMoment]} setTodo={setTodo} setHelp={setHelp} eventDialog={game.eventDialog} event={game.currentEvent} setPerson={setPerson} person={person}/>
             </div>
         </motion.div>
         
@@ -401,3 +417,27 @@ export default function GameScreen({gameObject, setGameObject, setStart}: Props)
     
   )
 }
+
+const variantsNews = {
+    enter:{
+      opacity:0,
+      x:100,
+      transition:{
+        duration:0.3
+      }
+    },
+    center:{
+      opacity:1,
+      x:0,
+      transition:{
+        duration:0.3
+      }
+    },
+    exit:{
+      opacity:0,
+      x:100,
+      transition:{
+        duration:0.3
+      }
+    }
+  }
