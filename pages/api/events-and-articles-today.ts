@@ -25,15 +25,25 @@ export default async function handler(
             
             const cursor = events.aggregate<Event>([
               {
-                '$match': {
-                  'title': {
-                    '$ne': null
-                  }, 
-                  'Actor1CountryCode': {
+                '$match':{ 
+                  "$and":[
+                    {"title": {
+                      '$ne': null
+                    }} 
+                  , 
+                  {"$or":[
+                    {'Actor1CountryCode': {
                     '$in': [
                       'GBR', 'USA', 'CEU', 'EEU', 'EUR', 'NMR', 'MDT', 'AUS', 'VGB', 'CAN', 'IMY'
                     ]
-                  }
+                  }},
+                  {'Actor2CountryCode': {
+                    '$in': [
+                      'GBR', 'USA', 'CEU', 'EEU', 'EUR', 'NMR', 'MDT', 'AUS', 'VGB', 'CAN', 'IMY'
+                    ]
+                  }},
+                ]}
+                ]
                 }
               }, {
                 '$sample': {

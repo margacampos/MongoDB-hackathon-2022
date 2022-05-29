@@ -2237,7 +2237,844 @@ const cameoEventCodes:cameoEvent[] = [
                 ]
             }
         ]
-    }
+    },
+    {
+        rootCode:"09",
+        label:"INVESTIGATE",
+        codes:[
+            {
+                code:"090",
+                label:"Investigate, not specified below",
+                decor:"investigated"
+            },
+            {
+                code:"091",
+                label:"Investigate crime, corruption",
+                decor:"investigated crime, corruption"
+            },
+            {
+                code:"092",
+                label:"Investigate human rights abuses",
+                decor:"investigated human rights abuses"
+            },
+            {
+                code:"093",
+                label:"Investigate military action",
+                decor:"investigated military action"
+            },
+            {
+                code:"094",
+                label:"Investigate war crimes",
+                decor:"investigated war crimes"
+            }
+        ]
+    },
+    {
+        rootCode:"10",
+        label:"DEMAND",
+        codes:[
+            {
+                code:"100",
+                label:"Demand, not specified below",
+                decor:"demanded"
+            },
+            {
+                code:"101",
+                label:"Demand information, investigation",
+                decor:"demanded",
+                codes:[
+                    {
+                        code:"1011",
+                        label:"Demand economic cooperation",
+                        decor:"demanded economic cooperation"
+                    },
+                    {
+                        code:"1012",
+                        label:"Demand military cooperation",
+                        decor:"demanded military cooperation"
+                    },
+                    {
+                        code:"1013",
+                        label:"Demand judicial cooperation",
+                        decor:"demanded judicial cooperation"
+                    },
+                    {
+                        code:"1014",
+                        label:"Demand intelligence cooperation",
+                        decor:"demanded intelligence cooperation"
+                    }
+                ]
+            },
+            {
+                code:"102",
+                label:"Demand policy support",
+                decor:"demanded policy support"
+            },
+            {
+                code:"103",
+                label:"Demand aid, protection, or peacekeeping",
+                decor:"demanded aid, protection, or peacekeeping",
+                codes:[
+                    {
+                        code:"1031",
+                        label:"Demand economic aid",
+                        decor:"demanded economic aid"
+                    },
+                    {
+                        code:"1032",
+                        label:"Demand military aid",
+                        decor:"demanded military aid"
+                    },
+                    {
+                        code:"1033",
+                        label:"Demand humanitarian aid",
+                        decor:"demanded humanitarian aid"
+                    },
+                    {
+                        code:"1034",
+                        label:"Demand military protection or peacekeeping",
+                        decor:"demanded military protection or peacekeeping"
+                    }
+                ]
+            },
+            {
+                code:"104",
+                label:"Demand political reform, not specified below",
+                decor:"demanded political reform",
+                codes:[
+                    {
+                        code:"1041",
+                        label:"Demand change in leadership",
+                        decor:"demanded change in leadership"
+                    },
+                    {
+                        code:"1042",
+                        label:"Demand policy change",
+                        decor:"demanded policy change"
+                    },
+                    {
+                        code:"1043",
+                        label:"Demand rights",
+                        decor:"demanded rights"
+                    },
+                    {
+                        code:"1044",
+                        label:"Demand change in institutions, regime",
+                        decor:"demanded change in institutions, regime"
+                    }
+                ]
+            },
+            {
+                code:"105",
+                label:"Demand mediation",
+                decor:"demanded mediation",
+                codes:[
+                    {
+                        code:"1051",
+                        label:"Demand easing of administrative sanctions",
+                        decor:"demanded easing of administrative sanctions"
+                    },
+                    {
+                        code:"1052",
+                        label:"Demand easing of political dissent",
+                        decor:"demanded easing of political dissent"
+                    },
+                    {
+                        code:"1053",
+                        label:"Demand release of persons or property",
+                        decor:"demanded release of persons or property"
+                    },
+                    {
+                        code:"1054",
+                        label:"Demand easing of economic sanctions, boycott, or embargo",
+                        decor:"demanded easing of economic sanctions, boycott, or embargo"
+                    },
+                    {
+                        code:"1055",
+                        label:"Demand that target allows international involvement (non-mediation)",
+                        decor:"demanded that target allows international involvement (non-mediation)"
+                    },
+                    {
+                        code:"1056",
+                        label:"Demand de-escalation of military engagement",
+                        decor:"demanded de-escalation of military engagement"
+                    }
+                ]
+            },
+            {
+                code:"106",
+                label:"Demand meeting, negotiation",
+                decor:"demanded meeting, negotiation"
+            },
+            {
+                code:"107",
+                label:"Demand ceasefire",
+                decor:"demanded ceasefire"
+            },
+            {
+                code:"108",
+                label:"Demand meeting, negotiation",
+                decor:"demanded meeting, negotiation"
+            }
+        ]
+    },
+    {
+        rootCode:"11",
+        label:"DISAPPROVE",
+        codes:[
+            {
+                code:"110",
+                label:"Demand ceasefire",
+                decor:"demanded ceasefire"
+            },
+            {
+                code:"111",
+                label:"Demand meeting, negotiation",
+                decor:"demanded meeting, negotiation"
+            },
+            {
+                code:"112",
+                label:"Accuse, not specified below",
+                decor:"accused",
+                codes:[
+                    {
+                        code:"1121",
+                        label:"Accuse of crime, corruption",
+                        decor:"accused of crime, corruption"
+                    },
+                    {
+                        code:"1122",
+                        label:"Accuse of human rights abuses",
+                        decor:"accused of human rights abuses"
+                    },
+                    {
+                        code:"1123",
+                        label:"Accuse of aggression",
+                        decor:"accused of aggression"
+                    },
+                    {
+                        code:"1124",
+                        label:"Accuse of war crimes",
+                        decor:"accused of war crimes"
+                    },
+                    {
+                        code:"1125",
+                        label:"Accuse of espionage, treason",
+                        decor:"accused of espionage, treason"
+                    }
+                ]
+            },
+            {
+                code:"113",
+                label:"Rally opposition against",
+                decor:"rallied opposition against"
+            },
+            {
+                code:"114",
+                label:"Complain officially",
+                decor:"complained officially"
+            },
+            {
+                code:"115",
+                label:"Bring lawsuit against",
+                decor:"brought lawsuit against"
+            },
+            {
+                code:"116",
+                label:"Find guilty or liable (legally)",
+                decor:"found guilty or liable (legally)"
+            }
+        ]
+    },
+    {
+        rootCode:"12",
+        label:"REJECT",
+        codes:[
+            {
+                code:"120",
+                label:"Reject, not specified below",
+                decor:"rejected"
+            },
+            {
+                code:"121",
+                label:"Reject material cooperation",
+                decor:"rejected material cooperation",
+                codes:[
+                    {
+                        code:"1211",
+                        label:"Reject economic cooperation",
+                        decor:"rejected economic cooperation"
+                    },
+                    {
+                        code:"1212",
+                        label:"Reject military cooperation",
+                        decor:"rejected military cooperation"
+                    }
+                ]
+            },
+            {
+                code:"122",
+                label:"Reject request or demand for material aid, not specified below",
+                decor:"rejected request or demand for material aid",
+                codes:[
+                    {
+                        code:"1221",
+                        label:"Reject request for economic aid",
+                        decor:"rejected request for economic aid"
+                    },
+                    {
+                        code:"1222",
+                        label:"Reject request for military aid",
+                        decor:"rejected request for military aid"
+                    },
+                    {
+                        code:"1223",
+                        label:"Reject request for humanitarian aid",
+                        decor:"rejected request for humanitarian aid"
+                    },
+                    {
+                        code:"1224",
+                        label:"Reject request for military protection or peacekeeping",
+                        decor:"rejected request for military protection or peacekeeping"
+                    }
+                ]
+            },
+            {
+                code:"123",
+                label:"Reject request or demand for political reform, not specified below",
+                decor:"rejected request or demand for political reform",
+                codes:[
+                    {
+                        code:"1231",
+                        label:"Reject request for change in leadership",
+                        decor:"rejected request for change in leadership"
+                    },
+                    {
+                        code:"1232",
+                        label:"Reject request for policy change",
+                        decor:"rejected request for policy change"
+                    },
+                    {
+                        code:"1233",
+                        label:"Reject request for rights",
+                        decor:"rejected request for rights"
+                    },
+                    {
+                        code:"1234",
+                        label:"Reject request for change in institutions, regime",
+                        decor:"rejected request for change in institutions, regime"
+                    }
+                ]
+            },
+            {
+                code:"124",
+                label:"Refuse to yield, not specified below",
+                decor:"refused to yield",
+                codes:[
+                    {
+                        code:"1241",
+                        label:"Refuse to ease administrative sanctions",
+                        decor:"refused to ease administrative sanctions"
+                    },
+                    {
+                        code:"1242",
+                        label:"Refuse to ease popular dissent",
+                        decor:"refused to ease popular dissent"
+                    },
+                    {
+                        code:"1243",
+                        label:"Refuse to release persons or property",
+                        decor:"refused to release persons or property"
+                    },
+                    {
+                        code:"1244",
+                        label:"Refuse to ease economic sanctions, boycott, or embargo",
+                        decor:"refused to ease economic sanctions, boycott, or embargo"
+                    },
+                    {
+                        code:"1245",
+                        label:"Refuse to allow international involvement (non mediation)",
+                        decor:"refused to allow international involvement (non mediation)"
+                    },
+                    {
+                        code:"1246",
+                        label:"Refuse to de-escalate military engagement",
+                        decor:"refused to de-escalate military engagement"
+                    }
+                ]
+            },
+            {
+                code:"125",
+                label:"Reject proposal to meet, discuss, or negotiate",
+                decor:"rejected proposal to meet, discuss, or negotiate"
+            },
+            {
+                code:"126",
+                label:"Reject mediation",
+                decor:"rejected mediation"
+            },
+            {
+                code:"127",
+                label:"Reject plan, agreement to settle dispute",
+                decor:"rejected plan, agreement to settle dispute"
+            },
+            {
+                code:"128",
+                label:"Defy norms, law",
+                decor:"Defied norms, law"
+            },
+            {
+                code:"129",
+                label:"Veto",
+                decor:"vetoed"
+            }
+        ]
+    },
+    {
+        rootCode:"13",
+        label:"THREATEN",
+        codes:[
+            {
+                code:"130",
+                label:"Threaten, not specified below",
+                decor:"threatened "
+            },
+            {
+                code:"131",
+                label:"Threaten non-force, not specified below",
+                decor:"threatened non-force",
+                codes:[
+                    {
+                        code:"1311",
+                        label:"Threaten to reduce or stop aid",
+                        decor:"threatened to reduce or stop aid"
+                    },
+                    {
+                        code:"1312",
+                        label:"Threaten to boycott, embargo, or sanction",
+                        decor:"threatened to boycott, embargo, or sanction"
+                    },
+                    {
+                        code:"1313",
+                        label:"Threaten to reduce or break relations",
+                        decor:"threatened to reduce or break relations"
+                    }
+                ]
+            },
+            {
+                code:"132",
+                label:"Threaten with administrative sanctions, not specified below",
+                decor:"threatened with administrative sanctions",
+                codes:[
+                    {
+                        code:"1321",
+                        label:"Threaten to impose restrictions on political freedoms",
+                        decor:"threatened to impose restrictions on political freedoms"
+                    },
+                    {
+                        code:"1322",
+                        label:"Threaten to ban political parties or politicians",
+                        decor:"threatened to ban political parties or politicians"
+                    },
+                    {
+                        code:"1323",
+                        label:"Threaten to impose curfew",
+                        decor:"threatened to impose curfew"
+                    },
+                    {
+                        code:"1324",
+                        label:"Threaten to impose state of emergency or martial law",
+                        decor:"threatened to impose state of emergency or martial law"
+                    }
+                ]
+            },
+            {
+                code:"133",
+                label:"Threaten political dissent, protest",
+                decor:"threatened political dissent, protest"
+            },
+            {
+                code:"134",
+                label:"Threaten to halt negotiations",
+                decor:"threatened to halt negotiations"
+            },
+            {
+                code:"135",
+                label:"Threaten to halt mediation",
+                decor:"threatened to halt mediation"
+            },
+            {
+                code:"136",
+                label:"Threaten to halt international involvement (non-mediation)",
+                decor:"threatened to halt international involvement (non-mediation)"
+            },
+            {
+                code:"137",
+                label:"Threaten with violent repression",
+                decor:"threatened with violent repression"
+            },
+            {
+                code:"138",
+                label:"Threaten to use military force, not specified below",
+                decor:"threatened to use military force",
+                codes:[
+                    {
+                        code:"1381",
+                        label:"Threaten blockade",
+                        decor:"threatened blockade"
+                    },
+                    {
+                        code:"1382",
+                        label:"Threaten occupation",
+                        decor:"threatened occupation"
+                    },
+                    {
+                        code:"1383",
+                        label:"Threaten unconventional violence",
+                        decor:"threatened unconventional violence"
+                    },
+                    {
+                        code:"1384",
+                        label:"Threaten conventional attack",
+                        decor:"threatened conventional attack"
+                    },
+                    {
+                        code:"1385",
+                        label:"Threaten attack with WMD",
+                        decor:"threatened attack with WMD"
+                    }
+                ]
+            },
+            {
+                code:"139",
+                label:"Give ultimatum",
+                decor:"gave ultimatum"
+            }
+        ]
+    },
+    {
+        rootCode:"14",
+        label:"PROTEST",
+        codes:[
+            {
+                code:"140",
+                label:"Engage in political dissent, not specified below",
+                decor:"engaged in political dissent"
+            },
+            {
+                code:"141",
+                label:"Demonstrate or rally",
+                decor:"demonstrated or rallied",
+                codes:[
+                    {
+                        code:"1411",
+                        label:"Demonstrate for leadership change",
+                        decor:"demonstrated for leadership change"
+                    },
+                    {
+                        code:"1412",
+                        label:"Demonstrate for policy change",
+                        decor:"demonstrated for policy change"
+                    },
+                    {
+                        code:"1413",
+                        label:"Demonstrate for rights",
+                        decor:"demonstrated for rights"
+                    },
+                    {
+                        code:"1414",
+                        label:"Demonstrate for change in institutions, regime",
+                        decor:"demonstrated for change in institutions, regime"
+                    }
+                ]
+            },
+            {
+                code:"142",
+                label:"Conduct hunger strike, not specified below",
+                decor:"conducted hunger strike",
+                codes:[
+                    {
+                        code:"1421",
+                        label:"Conduct hunger strike for leadership change",
+                        decor:"conducted hunger strike for leadership change"
+                    },
+                    {
+                        code:"1422",
+                        label:"Conduct hunger strike for policy change",
+                        decor:"conducted hunger strike for policy change"
+                    },
+                    {
+                        code:"1423",
+                        label:"Conduct hunger strike for rights",
+                        decor:"conducted hunger strike for rights"
+                    },
+                    {
+                        code:"1424",
+                        label:"Conduct hunger strike for change in institutions, regime",
+                        decor:"conducted hunger strike for change in institutions, regime"
+                    }
+                ]
+            },
+            {
+                code:"143",
+                label:"Conduct strike or boycott, not specified below",
+                decor:"conducted strike or boycott",
+                codes:[
+                    {
+                        code:"1431",
+                        label:"Conduct strike or boycott for leadership change",
+                        decor:"conducted strike or boycott for leadership change"
+                    },
+                    {
+                        code:"1432",
+                        label:"Conduct strike or boycott for policy change",
+                        decor:"conducted strike or boycott for policy change"
+                    },
+                    {
+                        code:"1433",
+                        label:"Conduct strike or boycott for rights",
+                        decor:"conducted strike or boycott for rights"
+                    },
+                    {
+                        code:"1434",
+                        label:"Conduct strike or boycott for change in institutions, regime",
+                        decor:"conducted strike or boycott for change in institutions, regime"
+                    }
+                ]
+            },
+            {
+                code:"144",
+                label:"Obstruct passage, block",
+                decor:"obstructed passage, block",
+                codes:[
+                    {
+                        code:"1441",
+                        label:"Obstruct passage to demand leadership change",
+                        decor:"obstructed passage to demand leadership change"
+                    },
+                    {
+                        code:"1442",
+                        label:"Obstruct passage to demand policy change",
+                        decor:"obstructed passage to demand policy change"
+                    },
+                    {
+                        code:"1443",
+                        label:"Obstruct passage to demand rights",
+                        decor:"obstructed passage to demand rights"
+                    },
+                    {
+                        code:"1444",
+                        label:"Obstruct passage to demand change in institutions, regime",
+                        decor:"obstructed passage to demand change in institutions, regime"
+                    }
+                ]
+            },
+            {
+                code:"145",
+                label:"Protest violently, riot",
+                decor:"protested violently, riot",
+                codes:[
+                    {
+                        code:"1451",
+                        label:"Engage in violent protest for leadership change",
+                        decor:"engaged in violent protest for leadership change"
+                    },
+                    {
+                        code:"1452",
+                        label:"Engage in violent protest for policy change",
+                        decor:"engaged in violent protest for policy change"
+                    },
+                    {
+                        code:"1453",
+                        label:"Obstruct passage to demand rights",
+                        decor:"obstructed passage to demand rights"
+                    },
+                    {
+                        code:"1454",
+                        label:"Engage in violent protest for change in institutions, regime",
+                        decor:"engaged in violent protest for change in institutions, regime"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        rootCode:"15",
+        label:"EXHIBIT FORCE POSTURE",
+        codes:[
+            {
+                code:"150",
+                label:"Demonstrate military or police power, not specified below",
+                decor:"demonstrated military or police power"
+            },
+            {
+                code:"151",
+                label:"Increase police alert status",
+                decor:"increased police alert status"
+            },
+            {
+                code:"152",
+                label:"Increase military alert status",
+                decor:"increased military alert status"
+            },
+            {
+                code:"153",
+                label:"Mobilize or increase police power",
+                decor:"mobilized or increased police power"
+            },
+            {
+                code:"154",
+                label:"Mobilize or increase armed forces ",
+                decor:"mobilized or increased armed forces "
+            }
+        ]
+    },
+    {
+        rootCode:"16",
+        label:"REDUCE RELATIONS",
+        codes:[
+            {
+                code:"160",
+                label:"Reduce relations, not specified below",
+                decor:"reduced relations"
+            },
+            {
+                code:"161",
+                label:"Reduce or break diplomatic relations",
+                decor:"reduced or broke diplomatic relations"
+            },
+            {
+                code:"162",
+                label:"Reduce or stop aid, not specified below",
+                decor:"reduced or stopped aid",
+                codes:[
+                    {
+                        code:"1621",
+                        label:"Reduce or stop economic assistance",
+                        decor:"reduced or stopped economic assistance"
+                    },
+                    {
+                        code:"1622",
+                        label:"Reduce or stop military assistance",
+                        decor:"reduced or stopped military assistance"
+                    },
+                    {
+                        code:"1623",
+                        label:"Reduce or stop humanitarian assistance",
+                        decor:"reduced or stopped humanitarian assistance"
+                    }
+                ]
+            },
+            {
+                code:"163",
+                label:"Impose embargo, boycott, or sanctions",
+                decor:"imposed embargo, boycott, or sanctions"
+            },
+            {
+                code:"164",
+                label:"Halt negotiations",
+                decor:"halted negotiations"
+            },
+            {
+                code:"165",
+                label:"Halt mediation",
+                decor:"halted mediation"
+            },
+            {
+                code:"166",
+                label:"Expel or withdraw, not specified below",
+                decor:"expelled or withdrawn",
+                codes:[
+                    {
+                        code:"1661",
+                        label:"Expel or withdraw peacekeepers",
+                        decor:"expelled or withdrawn peacekeepers"
+                    },
+                    {
+                        code:"1662",
+                        label:"Expel or withdraw inspectors, observers",
+                        decor:"expelled or withdrawn inspectors, observers"
+                    },
+                    {
+                        code:"1663",
+                        label:"Expel or withdraw aid agencies",
+                        decor:"expelled or withdrawn aid agencies"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        rootCode:"17",
+        label:"COERCE",
+        codes:[
+            {
+                code:"170",
+                label:"Coerce, not specified below",
+                decor:"coerced"
+            },
+            {
+                code:"171",
+                label:"Seize or damage property, not specified below",
+                decor:"seized or damaged property",
+                codes:[
+                    {
+                        code:"1711",
+                        label:"Confiscate property",
+                        decor:"confiscated property"
+                    },
+                    {
+                        code:"1712",
+                        label:"Destroy property",
+                        decor:"destroyed property"
+                    }
+                ]
+            },
+            {
+                code:"172",
+                label:"Impose administrative sanctions, not specified below",
+                decor:"imposed administrative sanctions",
+                codes:[
+                    {
+                        code:"1721",
+                        label:"Impose restrictions on political freedoms",
+                        decor:"imposed restrictions on political freedoms"
+                    },
+                    {
+                        code:"1722",
+                        label:"Ban political parties or politicians",
+                        decor:"banned political parties or politicians"
+                    },
+                    {
+                        code:"1723",
+                        label:"Impose curfew",
+                        decor:"imposed curfew"
+                    },
+                    {
+                        code:"1724",
+                        label:"Impose state of emergency or martial law",
+                        decor:"imposed state of emergency or martial law"
+                    }
+                ]
+            },
+            {
+                code:"173",
+                label:"Arrest, detain, or charge with legal action",
+                decor:"Arrested, detained, or charged with legal action"
+            },
+            {
+                code:"174",
+                label:"Expel or deport individuals",
+                decor:"expelled or deported individuals"
+            },
+            {
+                code:"175",
+                label:"Use tactics of violent repression",
+                decor:"used tactics of violent repression"
+            }
+        ]
+    },
+    
 ]
 const cameoCountryCodes = [
     {

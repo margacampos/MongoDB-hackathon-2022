@@ -18,7 +18,7 @@ export default function Event({event}: Props) {
   return (
     <div className={styles.event}>
       <hr />
-        <h2>{ev && ev.name}</h2>
+        <h2>{ev && ev.name!="Could not find event code" && ev.name}</h2>
         <hr />
         {/* <div>
             <h3>In this event...</h3>
