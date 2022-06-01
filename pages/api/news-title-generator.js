@@ -6,6 +6,7 @@ export default async function handler(
 ) {
     if(req.method==="POST"){
    let body = JSON.parse(req.body);
+   console.log(body)
     if (process.env.MONGODB_URI && body && process.env.KEY===body.key){
      
       let client=new MongoClient(process.env.MONGODB_URI);
