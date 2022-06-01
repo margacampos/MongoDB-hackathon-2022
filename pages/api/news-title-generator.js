@@ -6,8 +6,8 @@ export default async function handler(
 ) {
     if(req.method==="POST"){
    let body;
-   if(typeof req.body ==="object"){
-        body.key = req.body.key;
+   if(typeof req.body ==="object" && req.body.key){
+        body = {key: req.body.key};
       }else{
         body = JSON.parse(req.body);
       }
