@@ -4,8 +4,8 @@ export default async function handler(
   req,
   res
 ) {
-   let {key} = req.query;
-    if(req.method==="GET" && process.env.MONGODB_URI && process.env.KEY===key){
+   let body = JSON.parse(req.body);
+    if(req.method==="POST" && process.env.MONGODB_URI && body && process.env.KEY===body.key){
      
       let client=new MongoClient(process.env.MONGODB_URI);
       try {
@@ -31,22 +31,7 @@ export default async function handler(
           res.status(404).send({success:false, error});
        } 
     }
-    // if(req.method==="POST" && req.body){
-    //   const body = JSON.parse(req.body)
-    // console.log(body)
-    //    try {
-    //      res.send({title:"hola"})
-    //     //  console.log(body.url)
-    //     // const response = await fetch(body.url);
-    //     // const data = await response.text();
-    //     // const match = data.match(/<title>(.+)<\/title>/);
-    //     // const desc = data.match(/<meta name="description" content="(.+)"/);
-    //     // if (response.status!=404 && match) res.status(200).send({data:{title:match[1], desc:desc?desc[1]:undefined}, success:true});
-    //     // else res.status(200).send({success:false, error:"page not found"});
-    //    } catch (error) {
-    //       res.status(404).send({success:false, error});
-    //    } 
-    // }
+   
   res.status(404);
 }
 
