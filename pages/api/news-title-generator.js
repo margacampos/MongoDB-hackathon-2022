@@ -5,8 +5,12 @@ export default async function handler(
   res
 ) {
     if(req.method==="POST"){
-   let body = JSON.parse(req.body);
-   console.log(body)
+   let body;
+   if(typeof req.body ==="object"){
+        body.key = req.body.key;
+      }else{
+        body = JSON.parse(req.body);
+      }
     if (process.env.MONGODB_URI && body && process.env.KEY===body.key){
      
       let client=new MongoClient(process.env.MONGODB_URI);
