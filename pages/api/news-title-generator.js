@@ -4,8 +4,9 @@ export default async function handler(
   req,
   res
 ) {
+    if(req.method==="POST"){
    let body = JSON.parse(req.body);
-    if(req.method==="POST" && process.env.MONGODB_URI && body && process.env.KEY===body.key){
+    if (process.env.MONGODB_URI && body && process.env.KEY===body.key){
      
       let client=new MongoClient(process.env.MONGODB_URI);
       try {
@@ -32,8 +33,8 @@ export default async function handler(
        } 
     }
    
-  res.status(404);
 }
+res.status(404);
 
 const getTitle = async(url) =>{
   try {
@@ -49,3 +50,4 @@ const getTitle = async(url) =>{
   
   //.send({data:{title:match[1], desc:desc?desc[1]:undefined}, success:true});
 }
+} 
