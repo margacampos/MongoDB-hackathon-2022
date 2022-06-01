@@ -34,7 +34,7 @@ export default async function handler(
     }
    
 }
-res.status(404);
+res.status(404).send();
 
 const getTitle = async(url) =>{
   try {
