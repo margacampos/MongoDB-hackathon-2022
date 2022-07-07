@@ -6,7 +6,7 @@ import { Event, getEventName } from '../../utils/eventUtils';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Event[]>
+  res: NextApiResponse<Event[] | { success: Boolean }>
 ) {
     let client; 
     const convertToTitles = async(url:string) => {
@@ -76,6 +76,7 @@ export default async function handler(
 
               // }
             if(eventList[0].title)res.status(200).json(eventList);
+            else res.send({success: false});
         } catch (error) {
             console.log(error)
         } finally{
